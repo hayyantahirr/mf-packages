@@ -44,7 +44,7 @@ const Navbar = () => {
             }`}
             style={{
               backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(40px)",
               border: "1px solid rgba(255, 255, 255, 0.18)",
             }}
           >
