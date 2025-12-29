@@ -54,7 +54,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-[80%] h-[80%] group">
+    <div className="relative w-[80%] h-[80%] group mx-auto">
       {/* Main Carousel Container */}
       <div className="relative w-full h-full overflow-hidden rounded-3xl ">
         {/* Slides */}
@@ -91,7 +91,7 @@ const Carousel = () => {
           className="absolute left-4 top-1/2 -translate-y-1/2 p-3  cursor-pointer"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-6 h-6 text-[#1D2D44]" />
+          <ChevronLeft className="w-6 h-6 text-[#cdeaf9]" />
         </button>
 
         <button
@@ -99,7 +99,7 @@ const Carousel = () => {
           className="absolute right-4 top-1/2 -translate-y-1/2 p-3  cursor-pointer"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-6 h-6 text-[#1D2D44]" />
+          <ChevronRight className="w-6 h-6 text-[#cdeaf9]" />
         </button>
 
         {/* Decorative Elements */}

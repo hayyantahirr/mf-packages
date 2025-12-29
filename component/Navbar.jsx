@@ -43,8 +43,8 @@ const Navbar = () => {
                 : "bg-linear-to-r from-[#1D2D44]/80 via-[#1D2D44]/70 to-[#1D2D44]/80 shadow-xl"
             }`}
             style={{
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(40px)",
+              backdropFilter: "blur(5px)",
+              WebkitBackdropFilter: "blur(10px)",
               border: "1px solid rgba(255, 255, 255, 0.18)",
             }}
           >
