@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const page = () => {
-  return (
-    <div>page</div>
-  )
-}
+  return <></>;
+};
 
-export default page
+export default page;
