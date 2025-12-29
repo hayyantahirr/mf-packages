@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import Hero from "@/component/home/Hero";
+import React from "react";
 
 const page = () => {
-  return <></>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 };
 
 export default page;
