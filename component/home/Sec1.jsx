@@ -157,7 +157,7 @@ const Sec1 = () => {
 
         {/* Stats Section */}
         <div className="relative">
-          <div className="bg-linear-to-r from-[#1D2D44] via-[#1D2D44]/95 to-[#1D2D44] rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10 overflow-hidden">
+          <div className="bg-linear-to-r from-[#1D2D44] via-[#1D2D44]/95 to-[#1D2D44] rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10 overflow-hidden cursor-pointer">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div
@@ -209,28 +209,6 @@ const Sec1 = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex flex-col md:flex-row items-center gap-4 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-green-200">
-            <div className="flex items-center space-x-3">
-              <div className="p-3 bg-linear-to-br from-green-500 to-emerald-600 rounded-full">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-[#1D2D44] font-bold text-lg">
-                  Join the Green Revolution
-                </div>
-                <div className="text-gray-600 text-sm">
-                  Make the switch to sustainable packaging today
-                </div>
-              </div>
-            </div>
-            <button className="px-8 py-3 bg-linear-to-r from-[#D00000] to-[#D00000]/90 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 whitespace-nowrap">
-              Get Started
-            </button>
           </div>
         </div>
       </div>
