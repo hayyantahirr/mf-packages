@@ -82,7 +82,7 @@ const Sec2 = () => {
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
           {/* Left Side - Image Section */}
-          <div className="relative order-2 lg:order-1">
+          <div className="relative order-2 lg:order-1 ">
             <div className="relative group">
               {/* Main Image Container */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
@@ -154,7 +154,7 @@ const Sec2 = () => {
                     {step.features.map((feature, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center space-x-2 bg-linear-to-r from-green-50 to-emerald-50 px-3 py-2 rounded-lg border border-green-200"
+                        className="flex items-center space-x-1 bg-linear-to-r from-green-50 to-emerald-50 px-2 py-2 rounded-lg border border-green-200"
                       >
                         <CheckCircle2 className="w-4 h-4 text-green-600" />
                         <span className="text-sm font-medium text-green-700">
