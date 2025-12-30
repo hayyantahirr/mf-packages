@@ -5,6 +5,9 @@ body {
   padding-top: 5rem;
 }
 
+/* *{
+  border: 1 px solid red;
+} */
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
