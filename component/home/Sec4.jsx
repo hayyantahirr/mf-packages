@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Phone, MessageCircle, Clock, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const Sec4 = () => {
   // Team members data
@@ -28,7 +29,10 @@ const Sec4 = () => {
   ];
 
   return (
-    <section id="team" className="relative py-8 md:py-15 overflow-hidden bg-linear-to-b from-white via-green-50/20 to-white">
+    <section
+      id="team"
+      className="relative py-8 md:py-15 overflow-hidden bg-linear-to-b from-white via-green-50/20 to-white"
+    >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ============================================
             SECTION HEADER WITH 24/7 HIGHLIGHT
@@ -105,7 +109,10 @@ const Sec4 = () => {
               {/* Right side - Contact options */}
               <div className="space-y-4">
                 {/* General WhatsApp */}
-                <button className="w-full flex items-center justify-between bg-linear-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                <Link
+                  href="https://wa.me/+923322464729"
+                  className="w-full flex items-center justify-between bg-linear-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer"
+                >
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-white/20 rounded-lg">
                       <svg
@@ -139,7 +146,7 @@ const Sec4 = () => {
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
-                </button>
+                </Link>
 
                 {/* General Phone */}
                 <button className="w-full flex items-center justify-between bg-linear-to-r from-[#1D2D44] to-[#1D2D44]/90 text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">

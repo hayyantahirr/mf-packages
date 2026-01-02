@@ -144,7 +144,7 @@ const ContactPage = () => {
             <div className="space-y-4">
               {/* Phone */}
               <a
-                href="tel:+923001234567"
+                href="tel:+92 332 2464729"
                 className="flex items-center space-x-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 group"
               >
                 <div className="p-3 bg-linear-to-br from-[#D00000] to-[#D00000]/80 rounded-xl">
@@ -155,7 +155,7 @@ const ContactPage = () => {
                     Call Us
                   </div>
                   <div className="text-[#1D2D44] font-bold group-hover:text-green-600 transition-colors">
-                    +92 300 1234567
+                    +92 332 2464729
                   </div>
                 </div>
               </a>
