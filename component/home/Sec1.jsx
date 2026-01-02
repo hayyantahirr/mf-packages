@@ -104,10 +104,10 @@ const Sec1 = () => {
               </svg>
             </span>
             <br />
-            One Package at a Time
+           
           </h2>
 
-          <p className="text-lg md:text-xl text-[#ffffff] opacity-35 leading-relaxed">
+          <p className="text-lg md:text-xl text-[#ffffff] opacity-35 ">
             At MF Packages, we're committed to revolutionizing Pakistan's
             packaging industry through sustainable innovation. Our goal is to
             protect the environment while empowering businesses with

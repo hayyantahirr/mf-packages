@@ -7,7 +7,9 @@ const page = () => {
   return (
     <>
       <Hero />
+      {/* Our mission */}
       <Sec1 />
+      {/* Our Process */}
       <Sec2 />
     </>
   );
