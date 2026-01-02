@@ -28,7 +28,7 @@ const Sec4 = () => {
   ];
 
   return (
-    <section className="relative py-8 md:py-15 overflow-hidden bg-linear-to-b from-white via-green-50/20 to-white">
+    <section id="team" className="relative py-8 md:py-15 overflow-hidden bg-linear-to-b from-white via-green-50/20 to-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ============================================
             SECTION HEADER WITH 24/7 HIGHLIGHT

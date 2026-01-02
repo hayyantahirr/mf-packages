@@ -86,7 +86,7 @@ const Sec3 = () => {
   };
 
   return (
-    <section className="relative py-7 md:py-15 overflow-hidden bg-[#1D2D44]">
+    <section id="certifications" className="relative py-7 md:py-15 overflow-hidden bg-[#1D2D44]">
       <div className="relative max-w-7xl mx-auto px-4  md:px-8">
         {/* ============================================
             SECTION HEADER
