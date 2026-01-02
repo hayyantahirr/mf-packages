@@ -1,30 +1,9 @@
-/**
- * Section 2: Manufacturing Process Overview
- *
- * This server-side component visually explains MF Packages' cross-border
- * manufacturing process - from biodegradable kraft pouch production in China
- * to printing, branding, and distribution in Pakistan.
- *
- * Structure:
- * 1. Section Header - Introduces the global manufacturing concept
- * 2. Process Timeline - Visual flow from China to Pakistan
- * 3. China Manufacturing Stage - Factory imagery and production details
- * 4. Pakistan Printing Stage - Printing engineer and distribution details
- * 5. Capabilities Footer - Key manufacturing strengths
- *
- * Images Used:
- * - /CN-flag.jpg - China flag for manufacturing origin
- * - /PK-flag.png - Pakistan flag for printing/distribution
- * - /factory-display/* - Chinese factory and production imagery
- * - /printing-engineer.png - Pakistan-based printing operations
- */
-
 import React from "react";
 import Image from "next/image";
 
 const Sec2 = () => {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-white">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-linear-to-b from-white via-slate-50/50 to-white">
       {/* ============================================
           BACKGROUND DECORATIVE ELEMENTS
           Subtle industrial-themed background patterns
@@ -39,8 +18,8 @@ const Sec2 = () => {
           }}
         ></div>
         {/* Gradient orbs for depth */}
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-[#1D2D44]/5 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-green-500/5 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-linear-to-br from-[#1D2D44]/5 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-linear-to-tr from-green-500/5 to-transparent rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +29,7 @@ const Sec2 = () => {
             ============================================ */}
         <div className="text-center max-w-4xl mx-auto mb-20">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-slate-100 to-gray-100 px-6 py-3 rounded-full border border-slate-200 shadow-lg mb-8">
+          <div className="inline-flex items-center space-x-3 bg-linear-to-r from-slate-100 to-gray-100 px-6 py-3 rounded-full border border-slate-200 shadow-lg mb-8">
             <svg
               className="w-5 h-5 text-[#1D2D44]"
               fill="none"
@@ -72,7 +51,7 @@ const Sec2 = () => {
           {/* Main Heading */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1D2D44] mb-6 leading-tight">
             Global Production,{" "}
-            <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               Local Excellence
             </span>
           </h2>
@@ -108,7 +87,7 @@ const Sec2 = () => {
 
             {/* Arrow Flow */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 md:w-16 h-0.5 bg-gradient-to-r from-[#D00000] to-green-500"></div>
+              <div className="w-8 md:w-16 h-0.5 bg-linear-to-r from-[#D00000] to-green-500"></div>
               <svg
                 className="w-6 h-6 text-green-600"
                 fill="currentColor"
@@ -172,7 +151,7 @@ const Sec2 = () => {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D2D44]/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/80 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-center space-x-2 mb-3">
@@ -202,7 +181,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Material Processing
@@ -218,7 +197,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Quality Assurance
@@ -286,7 +265,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Custom Branding
@@ -302,7 +281,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Ready for Distribution
@@ -321,7 +300,7 @@ const Sec2 = () => {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D2D44]/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/80 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-center space-x-2 mb-3">
@@ -368,7 +347,7 @@ const Sec2 = () => {
             Key manufacturing strengths and value props
             ============================================ */}
         <div className="relative">
-          <div className="bg-gradient-to-r from-[#1D2D44] via-[#1D2D44]/98 to-[#1D2D44] rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
+          <div className="bg-linear-to-r from-[#1D2D44] via-[#1D2D44]/98 to-[#1D2D44] rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div

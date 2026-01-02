@@ -3,43 +3,20 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Carousel = () => {
+const Carousel = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const slides = [
-    {
-      image: "/carousel/almunium-retort-pouch.png",
-      title: "Aluminum Retort Pouch",
-    },
-    {
-      image: "/carousel/brown-kraft-almunium-lamination.png",
-      title: "Brown Kraft Aluminum",
-    },
-    {
-      image: "/carousel/brown-kraft-flat-bottom.png",
-      title: "Brown Kraft Flat Bottom",
-    },
-    {
-      image: "/carousel/coffee-flat-bottom.png",
-      title: "Coffee Flat Bottom",
-    },
-    {
-      image: "/carousel/front-transparent-back-almunium.png",
-      title: "Transparent Front Pouch",
-    },
-  ];
-
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || !slides || slides.length === 0) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 4000); // Change slide every 4 seconds
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slides.length]);
+  }, [isAutoPlaying, slides]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -53,10 +30,14 @@ const Carousel = () => {
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
+  if (!slides || slides.length === 0) {
+    return <div>No slides available</div>;
+  }
+
   return (
-    <div className="relative w-[80%] h-[80%] group mx-auto">
+    <div className="relative w-full h-full group">
       {/* Main Carousel Container */}
-      <div className="relative w-full h-full overflow-hidden rounded-3xl ">
+      <div className="relative w-full h-full overflow-hidden rounded-3xl">
         {/* Slides */}
         <div className="relative w-full h-full">
           {slides.map((slide, index) => (
@@ -79,8 +60,6 @@ const Carousel = () => {
                   />
                 </div>
               </div>
-
-              {/* Slide Title */}
             </div>
           ))}
         </div>
@@ -88,21 +67,19 @@ const Carousel = () => {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-3  cursor-pointer"
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 cursor-pointer hover:scale-110 transition-transform"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-6 h-6 text-[#cdeaf9]" />
+          <ChevronLeft className="w-6 h-6 text-white/80 hover:text-white" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-3  cursor-pointer"
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 cursor-pointer hover:scale-110 transition-transform"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-6 h-6 text-[#cdeaf9]" />
+          <ChevronRight className="w-6 h-6 text-white/80 hover:text-white" />
         </button>
-
-        {/* Decorative Elements */}
       </div>
     </div>
   );

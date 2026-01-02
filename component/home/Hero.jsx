@@ -4,6 +4,28 @@ import { Leaf, Recycle, Shield, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const Hero = () => {
+  const slides = [
+    {
+      image: "/carousel/almunium-retort-pouch.png",
+      title: "Aluminum Retort Pouch",
+    },
+    {
+      image: "/carousel/brown-kraft-almunium-lamination.png",
+      title: "Brown Kraft Aluminum",
+    },
+    {
+      image: "/carousel/brown-kraft-flat-bottom.png",
+      title: "Brown Kraft Flat Bottom",
+    },
+    {
+      image: "/carousel/coffee-flat-bottom.png",
+      title: "Coffee Flat Bottom",
+    },
+    {
+      image: "/carousel/front-transparent-back-almunium.png",
+      title: "Transparent Front Pouch",
+    },
+  ];
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-linear-to-br ">
       {/* Main Content Container */}
@@ -88,7 +110,8 @@ const Hero = () => {
 
           {/* Right Side - Carousel */}
           <div className="relative h-[600px] lg:h-[700px] ">
-            <Carousel />
+            
+            <Carousel slides={slides}/>
           </div>
         </div>
       </div>
