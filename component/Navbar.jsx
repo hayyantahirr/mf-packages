@@ -2,12 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ShoppingCart, Menu, X, Leaf } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("/");
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,11 +54,7 @@ const Navbar = () => {
 
             <div className="relative flex items-center justify-between px-6 py-4">
               {/* Logo Section with Eco Badge */}
-              <Link
-                href="/"
-                className="flex items-center space-x-3 group"
-                onClick={() => setActiveLink("/")}
-              >
+              <Link href="/" className="flex items-center space-x-3 group">
                 <div className="relative">
                   <div className="absolute inset-0  rounded-full   transition-all duration-500"></div>
                   <div className="relative w-14 h-14 bg-white/10 rounded-full p-2 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2">
@@ -90,7 +87,6 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     href={link.href}
-                    onClick={() => setActiveLink(link.href)}
                     className="relative px-5 py-2.5 text-[#f1ead6] font-medium transition-all duration-300 group"
                     style={{
                       animationDelay: `${index * 50}ms`,
@@ -100,7 +96,7 @@ const Navbar = () => {
                     <span className="absolute inset-0 bg-white/10 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 backdrop-blur-sm"></span>
 
                     {/* Active State */}
-                    {activeLink === link.href && (
+                    {pathname === link.href && (
                       <span className="absolute inset-0 bg-[#D00000]/30 rounded-xl border border-[#D00000]/50"></span>
                     )}
 
@@ -173,11 +169,10 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => {
-                      setActiveLink(link.href);
                       setIsMobileMenuOpen(false);
                     }}
                     className={`block px-5 py-3 text-[#f1ead6] font-medium rounded-xl transition-all duration-300 ${
-                      activeLink === link.href
+                      pathname === link.href
                         ? "bg-[#D00000]/30 border border-[#D00000]/50"
                         : "hover:bg-white/10 border border-transparent"
                     }`}
