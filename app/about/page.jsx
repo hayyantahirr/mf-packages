@@ -11,6 +11,7 @@ import {
   Leaf 
 } from "lucide-react";
 import Link from "next/link";
+import FAQs from "@/component/FAQs";
 /**
  * AboutPage Component
  * A premium, server-side rendered "About Us" page for MF Packages.
@@ -90,7 +91,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 3. Tech & Equipment Section */}
-      <section className="py-24 px-6">
+      <section className="py-18 px-6">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold">Advanced Manufacturing Fleet</h2>
@@ -126,7 +127,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 4. Products & Sustainability Section */}
-      <section className="py-24 px-6 ">
+      <section className="py-18 px-6 ">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative group rounded-3xl overflow-hidden border border-white/10">
             <Image 
@@ -176,7 +177,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 5. Global Shipping & Logistics */}
-      <section className="py-24 px-6 relative overflow-hidden">
+      <section className="py-18 px-6 relative overflow-hidden">
         {/* Background Decorative Blur */}
         {/* <div className="absolute -left-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D00000]/10 rounded-full blur-[120px] pointer-events-none" /> */}
         
@@ -248,7 +249,7 @@ export default async function AboutPage() {
 
 
       {/* Footer-like CTA */}
-      <section className="py-24 px-6 text-center">
+      <section className="py-16 px-6 text-center">
         <div className="max-w-2xl mx-auto space-y-8">
           <h2 className="text-3xl font-bold">Ready to Elevate Your Packaging?</h2>
           <p className="text-slate-400">Join small startups and large corporations worldwide in choosing sustainable, high-quality solutions.</p>
@@ -261,6 +262,7 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
+      <FAQs/>
     </main>
   );
 }
