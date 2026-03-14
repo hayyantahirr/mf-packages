@@ -139,14 +139,10 @@ const BlogsPage = () => {
 
                 {/* Excerpt */}
                 <p className="text-gray-600 line-clamp-3">{blog.excerpt}</p>
-
-                
               </div>
             </article>
           ))}
         </div>
-
-        
 
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
