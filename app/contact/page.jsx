@@ -8,7 +8,12 @@ import {
   Facebook,
   Instagram,
   MessageCircle,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
+import { db } from "@/config/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -18,15 +23,39 @@ const ContactPage = () => {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle, submitting, success, error
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add form submission logic here
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const docRef = await addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+      console.log("Document written with ID: ", docRef.id);
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      // Reset success status after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      setStatus("error");
+      setErrorMsg("Something went wrong. Please try again later.");
+    }
   };
 
   return (
@@ -50,7 +79,7 @@ const ContactPage = () => {
           {/* Left Side - Contact Form */}
           <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
             <h2 className="text-2xl md:text-3xl font-bold text-[#1D2D44] mb-6">
-              Get A Quote 
+              Get A Quote
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -130,11 +159,41 @@ const ContactPage = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center space-x-2 bg-linear-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                disabled={status === "submitting"}
+                className={`w-full flex items-center justify-center space-x-2 px-6 py-4 rounded-xl font-semibold shadow-lg transition-all duration-300 hover:scale-105 ${
+                  status === "submitting"
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-linear-to-r from-green-500 to-green-600 text-white hover:shadow-xl"
+                }`}
               >
-                <Send className="w-5 h-5" />
-                <span>Send Message</span>
+                {status === "submitting" ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
+
+              {status === "success" && (
+                <div className="flex items-center space-x-2 text-green-600 bg-green-50 p-4 rounded-xl border border-green-200">
+                  <CheckCircle2 className="w-5 h-5" />
+                  <span className="font-medium">
+                    Message sent successfully! We'll get back to you soon.
+                  </span>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="flex items-center space-x-2 text-red-600 bg-red-50 p-4 rounded-xl border border-red-200">
+                  <AlertCircle className="w-5 h-5" />
+                  <span className="font-medium">{errorMsg}</span>
+                </div>
+              )}
             </form>
           </div>
 
