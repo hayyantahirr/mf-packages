@@ -50,7 +50,7 @@ const ContactPage = () => {
           {/* Left Side - Contact Form */}
           <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
             <h2 className="text-2xl md:text-3xl font-bold text-[#1D2D44] mb-6">
-              Send Us a Message
+              Get A Quote 
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
