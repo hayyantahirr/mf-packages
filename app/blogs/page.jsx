@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   Calendar,
   Clock,
@@ -9,52 +8,61 @@ import {
   Recycle,
   Globe,
 } from "lucide-react";
+import { db } from "@/config/firebase";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
-const BlogsPage = () => {
-  const blogs = [
-    {
-      id: 1,
-      title: "The Rise of Kraft Pouches: A Sustainable Packaging Revolution",
-      excerpt:
-        "Discover how kraft pouches are transforming the packaging industry with their biodegradable properties and minimal environmental impact.",
-      content:
-        "Kraft pouches have emerged as a game-changer in sustainable packaging. Made from renewable resources, these pouches decompose naturally without leaving harmful residues. Their production requires less energy compared to traditional plastic packaging, making them an eco-friendly choice for businesses committed to environmental responsibility.",
-      image: "/carousel/brown-kraft-flat-bottom.png",
-      date: "January 15, 2025",
-      readTime: "5 min read",
-      category: "Sustainability",
-      icon: Leaf,
-      color: "from-green-500 to-emerald-600",
-    },
-    {
-      id: 2,
-      title: "How Biodegradable Packaging Reduces Carbon Footprint",
-      excerpt:
-        "Learn about the environmental benefits of switching to biodegradable packaging and its positive impact on our planet.",
-      content:
-        "Biodegradable packaging significantly reduces carbon emissions throughout its lifecycle. Unlike conventional plastics that persist for centuries, biodegradable materials break down naturally, returning nutrients to the soil. This circular approach to packaging helps combat climate change while maintaining product quality and safety standards.",
-      image: "/carousel/brown-kraft-almunium-lamination.png",
-      date: "January 10, 2025",
-      readTime: "4 min read",
-      category: "Environment",
-      icon: Recycle,
-      color: "from-blue-500 to-cyan-600",
-    },
-    {
-      id: 3,
-      title: "Pakistan's Journey Towards Eco-Friendly Food Packaging",
-      excerpt:
-        "Explore how Pakistan is embracing sustainable packaging solutions and leading the way in environmental conservation.",
-      content:
-        "Pakistan is witnessing a remarkable shift towards eco-friendly packaging solutions. Local businesses are increasingly adopting kraft pouches and biodegradable materials, reducing plastic waste significantly. This movement not only protects the environment but also creates economic opportunities in the green packaging sector, positioning Pakistan as a leader in sustainable practices.",
-      image: "/carousel/coffee-flat-bottom.png",
-      date: "January 5, 2025",
-      readTime: "6 min read",
-      category: "Industry",
-      icon: Globe,
-      color: "from-[#D00000] to-red-600",
-    },
-  ];
+import BlogGrid from "./BlogGrid";
+
+const BlogsPage = async () => {
+  let blogs = [];
+  let error = null;
+
+  try {
+    const blogsRef = collection(db, "blogs");
+    const q = query(blogsRef, orderBy("date", "desc"));
+    const querySnapshot = await getDocs(q);
+
+    blogs = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      // Sanitize data for Client Component: convert Timestamps to serializable values
+      const sanitizedData = { ...data };
+
+      if (data.createdAt && typeof data.createdAt.toMillis === "function") {
+        sanitizedData.createdAt = data.createdAt.toMillis();
+      }
+      if (data.updatedAt && typeof data.updatedAt.toMillis === "function") {
+        sanitizedData.updatedAt = data.updatedAt.toMillis();
+      }
+
+      return {
+        id: doc.id,
+        ...sanitizedData,
+      };
+    });
+  } catch (err) {
+    console.error("Error fetching blogs:", err);
+    try {
+      const querySnapshot = await getDocs(collection(db, "blogs"));
+      blogs = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        const sanitizedData = { ...data };
+
+        if (data.createdAt && typeof data.createdAt.toMillis === "function") {
+          sanitizedData.createdAt = data.createdAt.toMillis();
+        }
+        if (data.updatedAt && typeof data.updatedAt.toMillis === "function") {
+          sanitizedData.updatedAt = data.updatedAt.toMillis();
+        }
+
+        return {
+          id: doc.id,
+          ...sanitizedData,
+        };
+      });
+    } catch (innerErr) {
+      error = "Failed to load blogs. Please try again later.";
+    }
+  }
 
   return (
     <div className="min-h-screen bg-linear-to-b ">
@@ -92,57 +100,17 @@ const BlogsPage = () => {
 
       {/* Blog Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog, index) => (
-            <article
-              key={blog.id}
-              className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-green-200 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Image */}
-              <div className="relative h-64 bg-linear-to-br from-gray-100 to-gray-50 overflow-hidden">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/60 to-transparent"></div>
-
-                {/* Category Badge */}
-                <div
-                  className={`absolute top-4 left-4 flex items-center space-x-2 bg-linear-to-r ${blog.color} text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg`}
-                >
-                  <blog.icon className="w-4 h-4" />
-                  <span>{blog.category}</span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                {/* Meta Info */}
-                <div className="flex items-center space-x-4 text-sm text-gray-600">
-                  <div className="flex items-center space-x-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{blog.date}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{blog.readTime}</span>
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h2 className="text-xl md:text-2xl font-bold text-[#1D2D44] group-hover:text-green-600 transition-colors line-clamp-2">
-                  {blog.title}
-                </h2>
-
-                {/* Excerpt */}
-                <p className="text-gray-600 line-clamp-3">{blog.excerpt}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+        {error ? (
+          <div className="text-center py-20 bg-red-50 rounded-3xl border border-red-100 italic text-red-600">
+            {error}
+          </div>
+        ) : blogs.length === 0 ? (
+          <div className="text-center py-20 bg-gray-50 rounded-3xl border border-gray-100 italic text-gray-500">
+            No blogs found. Stay tuned for our upcoming insights!
+          </div>
+        ) : (
+          <BlogGrid blogs={blogs} />
+        )}
 
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
