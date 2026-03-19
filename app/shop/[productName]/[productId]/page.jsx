@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import ProductImageGallery from "@/component/shop/ProductImageGallery";
+import ProductPricingSection from "@/component/shop/ProductPricingSection";
 
 export default async function SingleProductPage({ params }) {
   const { productName: rawProductName, productId } = await params;
@@ -124,69 +125,12 @@ export default async function SingleProductPage({ params }) {
               </h1>
             </div>
 
-            {/* Pricing Section */}
-            <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 space-y-8 backdrop-blur-md shadow-2xl">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-white/10">
-                <div className="space-y-1">
-                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                    Printing Cost per color per side
-                  </span>
-                  <div className="flex items-baseline justify-start gap-2">
-                    <span className="text-sm font-black text-slate-400">
-                      + Rs.
-                    </span>
-                    <span className="text-4xl font-black text-[#D00000] tracking-tighter">
-                      {product.printingPrice || "0"}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="space-y-1 text-right">
-                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                    Base Unit Price
-                  </span>
-                  <div className="flex items-baseline justify-end gap-2">
-                    <span className="text-sm font-black text-slate-400">
-                      Rs.
-                    </span>
-                    <span className="text-6xl font-black text-white tracking-tighter">
-                      {product.price || "---"}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
-                  <Truck size={18} className="text-[#D00000]" />
-                  <span>Free Shipping on Volume Orders over Rs. 10,000</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
-                  <Printer size={18} className="text-[#D00000]" />
-                  <span>
-                    Custom Branding Available: Standard 10-day lead time
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
-                  <Info size={18} className="text-[#D00000]" />
-                  <span>
-                    Minimum order quantity is 1000 pieces for printing
-                  </span>
-                </div>
-              </div>
-
-              <button
-                disabled={!product.inStock}
-                className={`w-full py-6 rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-4 transition-all duration-500 shadow-2xl ${
-                  product.inStock
-                    ? "bg-[#D00000] text-white hover:bg-white hover:text-[#D00000] hover:scale-[1.02]"
-                    : "bg-white/5 text-white/20 cursor-not-allowed"
-                }`}
-              >
-                <ShoppingCart size={22} />
-                {product.inStock ? "Add to Cart" : "Out of Stock"}
-              </button>
-            </div>
+            {/* Dynamic Pricing & Quantity Section */}
+            <ProductPricingSection 
+              basePrice={product.price}
+              printingPrice={product.printingPrice}
+              inStock={product.inStock}
+            />
 
             {/* Detailed Description */}
             <div className="space-y-6">
@@ -194,7 +138,7 @@ export default async function SingleProductPage({ params }) {
                 <FileText size={16} />
                 Detailed Report
               </div>
-              <p className="text-slate-400 text-xl font-medium leading-relaxed italic border-l-4 border-[#D00000] pl-6">
+              <p className="text-slate-400 text-lg font-medium leading-relaxed border-l-4 border-[#D00000] pl-6">
                 {product.description ||
                   "Our premium industrial packaging solutions are engineered for durability, aesthetic appeal, and sustainability. Perfect for brands looking to make a lasting impression."}
               </p>
