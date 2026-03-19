@@ -129,28 +129,28 @@ export default async function SingleProductPage({ params }) {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-white/10">
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                    Base Unit Price
+                    Printing Cost per color per side
                   </span>
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-baseline justify-start gap-2">
                     <span className="text-sm font-black text-slate-400">
-                      Rs.
+                      + Rs.
                     </span>
-                    <span className="text-6xl font-black text-white tracking-tighter">
-                      {product.price || "---"}
+                    <span className="text-4xl font-black text-[#D00000] tracking-tighter">
+                      {product.printingPrice || "0"}
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-1 text-right">
                   <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                    Printing Cost
+                    Base Unit Price
                   </span>
                   <div className="flex items-baseline justify-end gap-2">
                     <span className="text-sm font-black text-slate-400">
-                      + Rs.
+                      Rs.
                     </span>
-                    <span className="text-4xl font-black text-[#D00000] tracking-tighter">
-                      {product.printingPrice || "0"}
+                    <span className="text-6xl font-black text-white tracking-tighter">
+                      {product.price || "---"}
                     </span>
                   </div>
                 </div>
@@ -167,6 +167,12 @@ export default async function SingleProductPage({ params }) {
                     Custom Branding Available: Standard 10-day lead time
                   </span>
                 </div>
+                <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
+                  <Info size={18} className="text-[#D00000]" />
+                  <span>
+                    Minimum order quantity is 1000 pieces for printing
+                  </span>
+                </div>
               </div>
 
               <button
@@ -178,7 +184,7 @@ export default async function SingleProductPage({ params }) {
                 }`}
               >
                 <ShoppingCart size={22} />
-                {product.inStock ? "Add to Master Cart" : "Out of Stock"}
+                {product.inStock ? "Add to Cart" : "Out of Stock"}
               </button>
             </div>
 
