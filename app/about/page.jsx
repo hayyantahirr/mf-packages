@@ -21,7 +21,7 @@ export default async function AboutPage() {
   return (
     <main className="min-h-screen text-white bg-[#1D2D44] selection:bg-[#D00000]/30">
       {/* 1. Hero Section: Company Identity & Global Presence */}
-      <section className="relative py-16 px-5 overflow-hidden">
+      <section className="relative pt-32 pb-16 px-5 overflow-hidden">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D00000]/10 border border-[#D00000]/20 text-[#D00000] text-xs font-medium uppercase tracking-wider">

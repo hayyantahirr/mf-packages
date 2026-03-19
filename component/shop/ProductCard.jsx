@@ -1,15 +1,27 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
-  ShoppingCart,
-  Heart,
-  Share2,
-  Star,
   CheckCircle2,
   XCircle,
+  ChevronRight,
 } from "lucide-react";
 
 const ProductCard = ({ product }) => {
+  // Variation state
+  const [selectedVarId, setSelectedVarId] = useState(product.variations[0]?.id);
+  const selectedVariation =
+    product.variations.find((v) => v.id === selectedVarId) ||
+    product.variations[0];
+
+  const hasMultipleVariations = product.variations.length > 1;
+  const priceDisplay =
+    product.minPrice === product.maxPrice
+      ? `Rs. ${product.minPrice}`
+      : `Rs. ${product.minPrice} - ${product.maxPrice}`;
+
   return (
     <div className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-[0_20px_50px_rgba(29,45,68,0.15)] transition-all duration-500 border border-slate-100 hover:border-red-100 flex flex-col h-full hover:-translate-y-3">
       {/* Thumbnail Container */}
@@ -26,7 +38,7 @@ const ProductCard = ({ product }) => {
           <span className="bg-[#1D2D44]/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
             {product.category || "Uncategorized"}
           </span>
-          {product.inStock ? (
+          {selectedVariation?.inStock ? (
             <span className="bg-emerald-500/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg flex items-center gap-1.5 text-nowrap">
               <CheckCircle2 size={10} /> In Stock
             </span>
@@ -37,15 +49,15 @@ const ProductCard = ({ product }) => {
           )}
         </div>
 
-        {/* Floating Actions */}
-        <div className="absolute top-5 right-5 flex flex-col gap-3 translate-x-16 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
-          <button className="p-3 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl text-slate-600 hover:text-red-500 hover:scale-110 transition-all">
-            <Heart size={18} />
-          </button>
-          <button className="p-3 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl text-slate-600 hover:text-[#1D2D44] hover:scale-110 transition-all">
-            <Share2 size={18} />
-          </button>
-        </div>
+        {/* Variation Count Badge */}
+        {hasMultipleVariations && (
+          <div className="absolute bottom-5 right-5 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-slate-100 flex items-center gap-1.5 animate-fade-in translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150">
+            <span className="w-2 h-2 rounded-full bg-[#D00000] animate-pulse"></span>
+            <span className="text-[10px] font-black text-[#1D2D44] uppercase tracking-tighter">
+              {product.variations.length} Sizes Available
+            </span>
+          </div>
+        )}
 
         {/* Gallery Preview Component */}
         {product.extraImages && product.extraImages.length > 0 && (
@@ -73,26 +85,22 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Content Section */}
-      <div className="p-8 flex flex-col flex-grow bg-linear-to-b from-white to-slate-50/30">
-        <div className="flex justify-between items-start mb-4">
-          <div>
-            <h2 className="text-2xl font-black text-[#1D2D44] tracking-tight mb-1 group-hover:text-[#D00000] transition-colors leading-tight">
+      <div className="p-8 flex flex-col grow bg-linear-to-b from-white to-slate-50/30">
+        <div className="flex justify-between items-start mb-6">
+          <div className="space-y-1">
+            <h2 className="text-2xl font-black text-[#1D2D44] tracking-tight group-hover:text-[#D00000] transition-colors leading-tight">
               {product.name}
             </h2>
-            {product.size && (
+            <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Size: {product.size}
+                Explore Variations
               </span>
-            )}
-          </div>
-          <div className="flex items-center bg-amber-50 px-2 py-1 rounded-lg text-amber-600 font-bold text-xs ring-1 ring-amber-100">
-            <Star size={12} fill="currentColor" className="mr-1" />
-            <span>4.9</span>
+            </div>
           </div>
         </div>
 
         {/* Truncated Description */}
-        <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow ">
+        <p className="text-slate-500 text-sm leading-relaxed mb-8 ">
           {product.description?.length > 100
             ? `${product.description.substring(0, 100)}...`
             : product.description ||
@@ -100,30 +108,27 @@ const ProductCard = ({ product }) => {
         </p>
 
         {/* Footer / CTA */}
-        <div className="mt-auto space-y-5">
-          <div className="flex items-end justify-between">
+        <div className="mt-auto space-y-5 pt-6 border-t border-slate-100">
+          <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <span className="text-slate-400 text-[10px] uppercase font-black tracking-widest mb-1">
-                Price Per Unit
+                Full Collection
               </span>
-              <span className="text-3xl font-black text-[#1D2D44] flex items-center">
-                <span className="text-sm font-bold mr-1 opacity-60">Rs.</span>
-                {product.price || "---"}
+              <span className="text-xl font-black text-[#1D2D44]">
+                {product.variations.length} Variants
               </span>
             </div>
+            <Link
+              href={`/shop/${encodeURIComponent(product.name)}`}
+              className="flex items-center gap-2 px-6 py-3 bg-[#1D2D44]/5 hover:bg-[#D00000] text-[#1D2D44] hover:text-white rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 group/btn"
+            >
+              View More
+              <ChevronRight
+                size={14}
+                className="group-hover/btn:translate-x-1 transition-transform"
+              />
+            </Link>
           </div>
-
-          <button
-            disabled={!product.inStock}
-            className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all duration-300 shadow-xl ${
-              product.inStock
-                ? "bg-[#1D2D44] text-white hover:bg-[#D00000] hover:shadow-red-200 hover:scale-[1.02]"
-                : "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
-            }`}
-          >
-            <ShoppingCart size={18} />
-            {product.inStock ? "Add to Cart" : "Restocking Soon"}
-          </button>
         </div>
       </div>
     </div>

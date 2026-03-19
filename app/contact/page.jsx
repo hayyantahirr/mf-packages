@@ -60,7 +60,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-green-50/20 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1D2D44] mb-6">

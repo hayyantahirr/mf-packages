@@ -2,16 +2,12 @@
 
 /* * {
   border: 1px solid red;
+
 } */
-/* Add padding to body to account for fixed navbar */
-body {
-  padding-top: 5rem;
-}
-
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  
 }
 
 /* Custom Scrollbar Styling */

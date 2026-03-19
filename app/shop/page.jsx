@@ -1,7 +1,6 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { db } from "@/config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import {
@@ -11,6 +10,7 @@ import {
   Loader2,
   ChevronRight,
   Filter,
+  Home,
 } from "lucide-react";
 import ProductCard from "@/component/shop/ProductCard";
 
@@ -29,95 +29,175 @@ const categories = [
   { name: "Spout pouches", image: "/categories/spout_pouch.png" },
 ];
 
-const ShopPage = () => {
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Breadcrumbs = ({ activeCategory }) => (
+  <nav className="flex mb-6 animate-fade-in" aria-label="Breadcrumb">
+    <ol className="inline-flex items-center space-x-1 md:space-x-2">
+      <li className="inline-flex items-center">
+        <Link
+          href="/"
+          className="inline-flex items-center text-[10px] uppercase tracking-widest font-black text-slate-400 hover:text-[#D00000] transition-colors gap-2"
+        >
+          <Home size={12} />
+          Home
+        </Link>
+      </li>
+      <li>
+        <div className="flex items-center">
+          <ChevronRight size={12} className="text-slate-300 mx-1" />
+          <Link
+            href="/shop"
+            className={`text-[10px] uppercase tracking-widest font-black transition-colors ${
+              !activeCategory
+                ? "text-[#1D2D44]"
+                : "text-slate-400 hover:text-[#D00000]"
+            }`}
+          >
+            Shop
+          </Link>
+        </div>
+      </li>
+      {activeCategory && (
+        <li aria-current="page">
+          <div className="flex items-center">
+            <ChevronRight size={12} className="text-slate-300 mx-1" />
+            <span className="text-[10px] uppercase tracking-widest font-black text-[#D00000] truncate max-w-[150px] md:max-w-none">
+              {activeCategory}
+            </span>
+          </div>
+        </li>
+      )}
+    </ol>
+  </nav>
+);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        const fetchedProducts = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProducts(fetchedProducts);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-        setError("Failed to load products. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
+export default async function ShopPage({ searchParams }) {
+  const resolvedParams = await searchParams;
+  const activeCategory = resolvedParams.category || null;
 
-    fetchProducts();
-  }, []);
+  let products = [];
+  let error = null;
 
-  const filteredProducts = activeCategory
-    ? products.filter((p) => p.category === activeCategory)
+  try {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    products = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      // Serialize non-plain objects like Firestore Timestamps
+      const serializedData = Object.entries(data).reduce(
+        (acc, [key, value]) => {
+          if (value && typeof value === "object" && "seconds" in value) {
+            // It's likely a Firestore Timestamp
+            acc[key] = new Date(value.seconds * 1000).toISOString();
+          } else {
+            acc[key] = value;
+          }
+          return acc;
+        },
+        {},
+      );
+
+      return {
+        id: doc.id,
+        ...serializedData,
+      };
+    });
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    error = "Unable to connect to inventory. Please refresh the page.";
+  }
+
+  const groupedProducts = products.reduce((acc, product) => {
+    const { name } = product;
+    if (!acc[name]) {
+      acc[name] = {
+        ...product,
+        variations: [],
+        minPrice: product.price,
+        maxPrice: product.price,
+      };
+    }
+    acc[name].variations.push(product);
+    acc[name].minPrice = Math.min(
+      acc[name].minPrice,
+      product.price || Infinity,
+    );
+    acc[name].maxPrice = Math.max(
+      acc[name].maxPrice,
+      product.price || -Infinity,
+    );
+    return acc;
+  }, {});
+
+  const collections = Object.values(groupedProducts);
+
+  const filteredCollections = activeCategory
+    ? collections.filter((c) => c.category === activeCategory)
     : [];
 
+
   return (
-    <div className="min-h-screen bg-linear-to-b from-slate-50 via-white to-slate-50 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[#1D2D44] pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-10">
+          <Breadcrumbs activeCategory={activeCategory} />
+
+        </div>
+
         {/* Conditional Header based on View */}
         {!activeCategory ? (
-          <div className="text-center mb-16 space-y-6 animate-fade-in">
-            <div className="inline-flex items-center gap-3 bg-white px-5 py-2 rounded-full border border-slate-100 shadow-sm mb-4">
-              <ShoppingBag className="w-5 h-5 text-[#D00000]" />
-              <span className="text-[#1D2D44] font-bold text-sm tracking-tight">
+          <div className="text-center mb-20 space-y-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-2xl border border-white/20 shadow-xl group hover:border-[#D00000]/50 transition-all duration-300 mx-auto">
+              <ShoppingBag className="w-5 h-5 text-[#D00000] group-hover:scale-110 transition-transform" />
+              <span className="text-white font-bold tracking-tight">
                 Official Shop
               </span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-[#1D2D44] tracking-tight leading-tight">
-              Premium <span className="text-[#D00000]">Packaging</span>{" "}
-              <br className="hidden md:block" /> Collections
-            </h1>
-            <p className="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl font-medium">
-              Select a category to explore our professional-grade eco-friendly
-              solutions.
-            </p>
+
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-tight">
+                Premium <span className="text-[#D00000]">Packaging</span>{" "}
+                <br className="hidden md:block" /> Collections
+              </h1>
+              <p className="text-slate-300 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+                Discover our professional-grade eco-friendly solutions. Select a
+                category to explore specialized products.
+              </p>
+            </div>
           </div>
         ) : (
-          <div className="mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6 animate-fade-in">
-            <div className="space-y-2">
-              <button
-                onClick={() => setActiveCategory(null)}
-                className="group flex items-center gap-2 text-slate-400 hover:text-[#D00000] font-bold text-xs uppercase tracking-widest transition-all mb-4"
+          <div className="mb-16 animate-fade-in space-y-10">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <Link
+                href="/shop"
+                className="group inline-flex items-center gap-2 text-slate-400 hover:text-white transition-all bg-white/5 hover:bg-white/10 px-5 py-2.5 rounded-xl border border-white/10 shadow-lg w-fit"
               >
                 <ArrowLeft
-                  size={16}
-                  className="transition-transform group-hover:-translate-x-1"
+                  size={18}
+                  className="group-hover:-translate-x-1 transition-transform"
                 />
-                Back to Categories
-              </button>
-              <h2 className="text-3xl md:text-5xl font-black text-[#1D2D44] tracking-tight">
+                <span className="font-bold text-sm uppercase tracking-wider">
+                  Back to Categories
+                </span>
+              </Link>
+
+              <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm px-5 py-2.5 rounded-2xl border border-white/10">
+                <LayoutGrid size={20} className="text-[#D00000]" />
+                <span className="text-slate-200 font-bold">
+                  {filteredCollections.length} Product Collections
+                </span>
+              </div>
+            </div>
+
+            <div className="text-center space-y-4">
+              <div className="inline-flex items-center gap-2 bg-[#D00000]/10 border border-[#D00000]/30 px-5 py-2 rounded-full mx-auto">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#D00000] animate-pulse" />
+                <span className="text-[#D00000] text-sm font-black uppercase tracking-widest">
+                  {activeCategory}
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
                 {activeCategory}
               </h2>
-              <div className="flex items-center gap-2 text-slate-400 font-medium">
-                <LayoutGrid size={16} />
-                <span>{filteredProducts.length} Products Found</span>
-              </div>
             </div>
-
-            <div className="flex items-center gap-3">
-              <div className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-2 text-[#1D2D44] font-bold text-sm cursor-default ring-1 ring-[#D00000]/5">
-                <Filter size={16} className="text-[#D00000]" />
-                Viewing {activeCategory}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* LOADING STATE */}
-        {loading && (
-          <div className="flex flex-col items-center justify-center py-32 space-y-4">
-            <Loader2 className="w-12 h-12 text-[#D00000] animate-spin" />
-            <p className="text-slate-400 font-bold animate-pulse uppercase tracking-widest text-xs">
-              Fetching Inventory...
-            </p>
           </div>
         )}
 
@@ -130,12 +210,12 @@ const ShopPage = () => {
         )}
 
         {/* CATEGORY GALLERY VIEW */}
-        {!loading && !activeCategory && (
+        {!activeCategory && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
             {categories.map((cat, idx) => (
-              <div
+              <Link
                 key={idx}
-                onClick={() => setActiveCategory(cat.name)}
+                href={`/shop?category=${encodeURIComponent(cat.name)}`}
                 className="group relative h-80 rounded-[2.5rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-white"
               >
                 <Image
@@ -161,37 +241,37 @@ const ShopPage = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
 
         {/* FILTERED PRODUCTS VIEW */}
-        {!loading && activeCategory && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 animate-fade-in">
-            {filteredProducts.map((product) => (
+        {activeCategory && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-10 animate-fade-in">
+            {filteredCollections.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
 
             {/* Empty State for Category */}
-            {filteredProducts.length === 0 && (
-              <div className="col-span-full py-32 bg-white rounded-[3rem] border border-dashed border-slate-200 shadow-inner text-center">
-                <div className="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <ShoppingBag size={48} className="text-slate-200" />
+            {filteredCollections.length === 0 && (
+              <div className="col-span-full py-32 bg-white/5 rounded-[3rem] border border-dashed border-white/10 shadow-inner text-center">
+                <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <ShoppingBag size={48} className="text-white/10" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-400 italic tracking-tight mb-2">
+                <h3 className="text-2xl font-bold text-slate-500 italic tracking-tight mb-2">
                   Coming Soon to {activeCategory}
                 </h3>
-                <p className="text-slate-400 max-w-sm mx-auto">
+                <p className="text-slate-500 max-w-sm mx-auto">
                   Our specialized team is currently preparing this collection
                   for release.
                 </p>
-                <button
-                  onClick={() => setActiveCategory(null)}
-                  className="mt-8 px-8 py-3 bg-[#1D2D44] text-white rounded-2xl font-bold text-sm hover:bg-[#D00000] transition-all"
+                <Link
+                  href="/shop"
+                  className="mt-8 inline-block px-8 py-3 bg-[#1D2D44] text-white rounded-2xl font-bold text-sm hover:bg-[#D00000] transition-all"
                 >
                   Browse Other Categories
-                </button>
+                </Link>
               </div>
             )}
           </div>
@@ -199,6 +279,4 @@ const ShopPage = () => {
       </div>
     </div>
   );
-};
-
-export default ShopPage;
+}

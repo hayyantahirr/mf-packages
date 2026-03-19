@@ -29,7 +29,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-linear-to-br ">
       {/* Main Content Container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Text Content */}
           <div className="space-y-8 animate-fade-in">

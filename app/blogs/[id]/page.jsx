@@ -51,7 +51,7 @@ export default async function BlogPage({ params }) {
   const colorClass = getCategoryColor(blog.category);
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white pb-20 -mt-20">
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white pb-20">
       {/* Header Section */}
       <div className="relative h-[70vh] w-full overflow-hidden">
         <Image

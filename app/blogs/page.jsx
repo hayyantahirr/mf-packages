@@ -67,7 +67,7 @@ const BlogsPage = async () => {
   return (
     <div className="min-h-screen bg-linear-to-b ">
       {/* Header Section */}
-      <div className="relative bg-linear-to-r from-[#1D2D44] to-[#1D2D44]/95 py-20 md:py-20 overflow-hidden">
+      <div className="relative bg-linear-to-r from-[#1D2D44] to-[#1D2D44]/95 pt-32 pb-20 md:pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0"
