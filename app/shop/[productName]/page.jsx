@@ -10,6 +10,7 @@ import {
   XCircle,
   Package,
   Info,
+  ChevronRight,
 } from "lucide-react";
 import { notFound } from "next/navigation";
 
@@ -186,16 +187,16 @@ export default async function ProductVariationsPage({ params }) {
                     </div>
                   </div>
 
-                  <button
-                    disabled={!v.inStock}
+                  <Link
+                    href={`/shop/${encodeURIComponent(productName)}/${v.id}`}
                     className={`p-4 rounded-2xl transition-all duration-300 ${
                       v.inStock
                         ? "bg-[#D00000] text-white hover:bg-white hover:text-[#D00000] shadow-lg shadow-[#D00000]/20"
-                        : "bg-white/5 text-white/20 cursor-not-allowed"
+                        : "bg-white/5 text-white/20 cursor-not-allowed pointer-events-none"
                     }`}
                   >
-                    <ShoppingCart size={20} />
-                  </button>
+                    <ChevronRight size={20} />
+                  </Link>
                 </div>
               </div>
             </div>
