@@ -16,6 +16,7 @@ import {
   FileText,
 } from "lucide-react";
 import { notFound } from "next/navigation";
+import ProductImageGallery from "@/component/shop/ProductImageGallery";
 
 export default async function SingleProductPage({ params }) {
   const { productName: rawProductName, productId } = await params;
@@ -80,7 +81,7 @@ export default async function SingleProductPage({ params }) {
     );
   }
 
-  const allImages = [ ...(product.extraImages || [])].filter(
+  const allImages = [product.mainImage, ...(product.extraImages || [])].filter(
     Boolean,
   );
 
@@ -100,47 +101,8 @@ export default async function SingleProductPage({ params }) {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 animate-fade-in">
-          {/* Image Gallery */}
-          <div className="space-y-8">
-            <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-white/5 group">
-              <Image
-                src={
-                  product.mainImage || "/carousel/brown-kraft-flat-bottom.png"
-                }
-                alt={productName}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/40 to-transparent"></div>
-
-              {!product.inStock && (
-                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20">
-                  <span className="text-white font-black text-xs uppercase tracking-widest">
-                    Sold Out
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Thumbnail Grid */}
-            {allImages.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
-                {allImages.map((img, idx) => (
-                  <div
-                    key={idx}
-                    className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 cursor-pointer hover:border-[#D00000] transition-colors bg-white/5"
-                  >
-                    <Image
-                      src={img}
-                      alt={`${productName} view ${idx + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Image Gallery Component */}
+          <ProductImageGallery images={allImages} productName={productName} />
 
           {/* Product Details */}
           <div className="space-y-10">
@@ -153,11 +115,11 @@ export default async function SingleProductPage({ params }) {
                   <ShieldCheck size={12} className="text-[#00FF88]" /> Verified
                   Quality
                 </span>
-              </div> 
+              </div>
               <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-none uppercase">
                 {productName}
                 <span className="block text-2xl md:text-3xl text-white mt-2 font-black ">
-                 Size : {product.size || "Standard Edition"}
+                  Size : {product.size || "Standard Edition"}
                 </span>
               </h1>
             </div>
