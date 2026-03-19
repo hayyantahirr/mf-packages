@@ -102,10 +102,23 @@ export default async function SingleProductPage({ params }) {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 animate-fade-in">
-          {/* Image Gallery Component */}
-          <ProductImageGallery images={allImages} productName={productName} />
+          {/* Left Column: Image Gallery & Detailed Description */}
+          <div className="space-y-12">
+            <ProductImageGallery images={allImages} productName={productName} />
 
-          {/* Product Details */}
+            <div className="space-y-6 pt-10 border-t border-white/10 opacity-80">
+              <div className="flex items-center gap-2 text-[#D00000] font-black text-xs uppercase tracking-[0.2em]">
+                <FileText size={16} />
+                Detailed Report
+              </div>
+              <p className="text-slate-400 text-lg font-medium leading-relaxed border-l-4 border-[#D00000] pl-6">
+                {product.description ||
+                  "Our premium industrial packaging solutions are engineered for durability, aesthetic appeal, and sustainability. Perfect for brands looking to make a lasting impression."}
+              </p>
+            </div>
+          </div>
+
+          {/* Right Column: Product Details & Pricing */}
           <div className="space-y-10">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -126,23 +139,11 @@ export default async function SingleProductPage({ params }) {
             </div>
 
             {/* Dynamic Pricing & Quantity Section */}
-            <ProductPricingSection 
+            <ProductPricingSection
               basePrice={product.price}
               printingPrice={product.printingPrice}
               inStock={product.inStock}
             />
-
-            {/* Detailed Description */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 text-[#D00000] font-black text-xs uppercase tracking-[0.2em]">
-                <FileText size={16} />
-                Detailed Report
-              </div>
-              <p className="text-slate-400 text-lg font-medium leading-relaxed border-l-4 border-[#D00000] pl-6">
-                {product.description ||
-                  "Our premium industrial packaging solutions are engineered for durability, aesthetic appeal, and sustainability. Perfect for brands looking to make a lasting impression."}
-              </p>
-            </div>
 
             {/* Specifications Grid */}
             <div className="grid grid-cols-2 gap-4">
