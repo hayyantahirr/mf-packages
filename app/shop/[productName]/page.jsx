@@ -113,6 +113,11 @@ export default async function ProductVariationsPage({ params }) {
               <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight leading-none uppercase">
                 {productName}
               </h1>
+              {mainProduct.genDescription && (
+                <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed border-l-2 border-[#D00000] pl-4 max-w-2xl">
+                  {mainProduct.genDescription}
+                </p>
+              )}
             </div>
           </div>
         </div>

@@ -106,15 +106,53 @@ export default async function SingleProductPage({ params }) {
           <div className="space-y-12">
             <ProductImageGallery images={allImages} productName={productName} />
 
-            <div className="space-y-6 pt-10 border-t border-white/10 opacity-80">
+            <div className="space-y-8 pt-10 border-t border-white/10">
               <div className="flex items-center gap-2 text-[#D00000] font-black text-xs uppercase tracking-[0.2em]">
                 <FileText size={16} />
-                Detailed Report
+                Technical Specifications
               </div>
-              <p className="text-slate-400 text-lg font-medium leading-relaxed border-l-4 border-[#D00000] pl-6">
-                {product.description ||
-                  "Our premium industrial packaging solutions are engineered for durability, aesthetic appeal, and sustainability. Perfect for brands looking to make a lasting impression."}
-              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {/* Material Structure */}
+                <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
+                  <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                    Material Structure
+                  </div>
+                  <div className="text-white font-bold text-sm leading-relaxed">
+                    {typeof product.materialStructure === "object" ? (
+                      <div className="flex flex-wrap gap-2">
+                        {Object.entries(product.materialStructure).map(([key, value]) => (
+                          <div key={key} className="bg-white/5 px-2 py-1 rounded-lg border border-white/10">
+                            <span className="text-slate-400 text-[10px] uppercase">{key}:</span> {String(value)}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p>{product.materialStructure || "High-barrier multi-layer composite film."}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Capacity & Specs */}
+                <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
+                  <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                    Capacity Specs
+                  </div>
+                  <div className="text-white font-bold text-sm leading-relaxed">
+                    {typeof product.capacitySpecs === "object" ? (
+                      <div className="flex flex-wrap gap-2">
+                        {Object.entries(product.capacitySpecs).map(([key, value]) => (
+                          <div key={key} className="bg-white/5 px-2 py-1 rounded-lg border border-white/10">
+                            <span className="text-slate-400 text-[10px] uppercase">{key}:</span> {String(value)}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p>{product.capacitySpecs || "Industrial grade specifications."}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
