@@ -111,7 +111,7 @@ export default async function SingleProductPage({ params }) {
                 <FileText size={16} />
                 Technical Specifications
               </div>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {/* Material Structure */}
                 <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
@@ -121,14 +121,25 @@ export default async function SingleProductPage({ params }) {
                   <div className="text-white font-bold text-sm leading-relaxed">
                     {typeof product.materialStructure === "object" ? (
                       <div className="flex flex-wrap gap-2">
-                        {Object.entries(product.materialStructure).map(([key, value]) => (
-                          <div key={key} className="bg-white/5 px-2 py-1 rounded-lg border border-white/10">
-                            <span className="text-slate-400 text-[10px] uppercase">{key}:</span> {String(value)}
-                          </div>
-                        ))}
+                        {Object.entries(product.materialStructure).map(
+                          ([key, value]) => (
+                            <div
+                              key={key}
+                              className="bg-white/5 px-2 py-1 rounded-lg border border-white/10"
+                            >
+                              <span className="text-slate-400 text-[10px] uppercase">
+                                {key}:
+                              </span>{" "}
+                              {String(value)}
+                            </div>
+                          ),
+                        )}
                       </div>
                     ) : (
-                      <p>{product.materialStructure || "High-barrier multi-layer composite film."}</p>
+                      <p>
+                        {product.materialStructure ||
+                          "High-barrier multi-layer composite film."}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -136,19 +147,30 @@ export default async function SingleProductPage({ params }) {
                 {/* Capacity & Specs */}
                 <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
                   <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
-                    Capacity Specs
+                    Size Guide
                   </div>
                   <div className="text-white font-bold text-sm leading-relaxed">
                     {typeof product.capacitySpecs === "object" ? (
                       <div className="flex flex-wrap gap-2">
-                        {Object.entries(product.capacitySpecs).map(([key, value]) => (
-                          <div key={key} className="bg-white/5 px-2 py-1 rounded-lg border border-white/10">
-                            <span className="text-slate-400 text-[10px] uppercase">{key}:</span> {String(value)}
-                          </div>
-                        ))}
+                        {Object.entries(product.capacitySpecs).map(
+                          ([key, value]) => (
+                            <div
+                              key={key}
+                              className="bg-white/5 px-2 py-1 rounded-lg border border-white/10"
+                            >
+                              <span className="text-slate-400 text-[10px] uppercase">
+                                {key}:
+                              </span>{" "}
+                              {String(value)}
+                            </div>
+                          ),
+                        )}
                       </div>
                     ) : (
-                      <p>{product.capacitySpecs || "Industrial grade specifications."}</p>
+                      <p>
+                        {product.capacitySpecs ||
+                          "Industrial grade specifications."}
+                      </p>
                     )}
                   </div>
                 </div>
