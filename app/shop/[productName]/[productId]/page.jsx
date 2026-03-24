@@ -178,6 +178,10 @@ export default async function SingleProductPage({ params }) {
 
             {/* Dynamic Pricing & Quantity Section */}
             <ProductPricingSection
+              id={product.id}
+              name={productName}
+              size={product.size}
+              mainImage={product.mainImage}
               basePrice={product.price}
               printingPrice={product.printingPrice}
               inStock={product.inStock}

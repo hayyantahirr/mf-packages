@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "@/src/components/cart/cartSlice";
 import {
   ShoppingCart,
   Truck,
@@ -11,10 +13,15 @@ import {
 } from "lucide-react";
 
 export default function ProductPricingSection({
+  id,
+  name,
+  size,
+  mainImage,
   basePrice,
   printingPrice,
   inStock,
 }) {
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(100);
 
   const getDiscountedPrice = () => {
@@ -25,6 +32,17 @@ export default function ProductPricingSection({
   };
 
   const currentPrice = getDiscountedPrice();
+
+  const handleAddToCart = () => {
+    dispatch(addItem({
+      id,
+      name,
+      size: size || "Standard",
+      quantity,
+      basePrice: currentPrice,
+      mainImage: mainImage || "/placeholder.png"
+    }));
+  };
 
   return (
     <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 space-y-8 backdrop-blur-md shadow-2xl animate-fade-in">
@@ -105,6 +123,7 @@ export default function ProductPricingSection({
       </div>
 
       <button
+        onClick={handleAddToCart}
         disabled={!inStock}
         className={`w-full py-6 rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-4 transition-all duration-500 shadow-2xl ${
           inStock

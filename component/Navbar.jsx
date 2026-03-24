@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ShoppingCart, Menu, X, Leaf } from "lucide-react";
+import CartTrigger from "@/src/components/cart/CartTrigger";
+import CartDropdown from "@/src/components/cart/CartDropdown";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,6 +30,7 @@ const Navbar = () => {
 
   return (
     <>
+      <CartDropdown />
       {/* Animated Background Gradient */}
 
       <nav
@@ -116,25 +119,7 @@ const Navbar = () => {
 
               {/* Cart Button with Advanced Styling */}
               <div className="flex items-center space-x-4">
-                <button className="relative group" aria-label="Shopping Cart">
-                  {/* Glow Effect */}
-                  <div className="absolute inset-0 bg-linear-to-r  rounded-xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                  {/* Button */}
-                  <div className=" relative px-5 py-3 bg-linear-to-r from-[#D00000] to-[#D00000]/90 rounded-xl shadow-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl border border-white/10 cursor-pointer">
-                    <div className="flex items-center space-x-2">
-                      <ShoppingCart className="w-5 h-5 text-[#f1ead6] group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="hidden sm:inline text-[#f1ead6] font-medium">
-                        Cart
-                      </span>
-                    </div>
-
-                    {/* Badge */}
-                    <span className="absolute -top-2 -right-2 bg-linear-to-br from-[#1D2D44] to-[#1D2D44]/80 text-[#f1ead6] text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border-2 border-white/20 shadow-lg">
-                      0
-                    </span>
-                  </div>
-                </button>
+                <CartTrigger />
 
                 {/* Mobile Menu Button */}
                 <button
