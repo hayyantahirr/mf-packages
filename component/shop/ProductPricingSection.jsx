@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/src/components/cart/cartSlice";
+import { calculateTieredPrice } from "@/src/utils/pricing";
 import {
   ShoppingCart,
   Truck,
@@ -24,14 +25,8 @@ export default function ProductPricingSection({
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(100);
 
-  const getDiscountedPrice = () => {
-    const price = parseFloat(basePrice) || 0;
-    if (quantity === 500) return price - 2;
-    if (quantity === 1000) return price - 3;
-    return price;
-  };
-
-  const currentPrice = getDiscountedPrice();
+  const currentPrice = calculateTieredPrice(quantity, basePrice);
+  const isDiscounted = currentPrice < basePrice;
 
   const handleAddToCart = () => {
     dispatch(addItem({
@@ -39,6 +34,7 @@ export default function ProductPricingSection({
       name,
       size: size || "Standard",
       quantity,
+      originalPrice: basePrice, // Pass originalPrice for tiered recalculation in cart
       basePrice: currentPrice,
       mainImage: mainImage || "/placeholder.png"
     }));
@@ -64,11 +60,18 @@ export default function ProductPricingSection({
           <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
             Base Unit Price
           </span>
-          <div className="flex items-baseline justify-end gap-2">
-            <span className="text-sm font-black text-slate-400">Rs.</span>
-            <span className="text-6xl font-black text-white tracking-tighter transition-all duration-300">
-              {currentPrice.toLocaleString()}
-            </span>
+          <div className="flex flex-col items-end gap-1">
+            <div className="flex items-baseline justify-end gap-2">
+              <span className="text-sm font-black text-slate-400">Rs.</span>
+              <span className="text-6xl font-black text-white tracking-tighter transition-all duration-300">
+                {currentPrice.toLocaleString()}
+              </span>
+            </div>
+            {isDiscounted && (
+              <span className="bg-[#D00000]/20 text-[#D00000] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-[#D00000]/30 animate-pulse">
+                Discounted Price
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -78,20 +81,21 @@ export default function ProductPricingSection({
         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">
           Select Order Quantity
         </label>
-        <div className="grid grid-cols-3 gap-3">
-          {[100, 500, 1000].map((qty) => (
-            <button
-              key={qty}
-              onClick={() => setQuantity(qty)}
-              className={`py-4 rounded-2xl font-black text-xs transition-all border ${
-                quantity === qty
-                  ? "bg-[#D00000] border-[#D00000] text-white shadow-lg shadow-[#D00000]/20 scale-95"
-                  : "bg-white/5 border-white/10 text-slate-400 hover:border-white/30"
-              }`}
-            >
-              {qty} PCS
-            </button>
-          ))}
+        <div className="relative group">
+          <select
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+            className="w-full bg-white/5 border border-white/10 text-white py-4 px-6 rounded-2xl font-black text-sm appearance-none cursor-pointer focus:outline-none focus:border-[#D00000] transition-all hover:border-white/20"
+          >
+            {Array.from({ length: 20 }, (_, i) => (i + 1) * 50).map((qty) => (
+              <option key={qty} value={qty} className="bg-[#1D2D44] text-white">
+                {qty} PCS {qty === 50 || qty === 100 ? "(Default)" : ""}
+              </option>
+            ))}
+          </select>
+          <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate-400 group-hover:text-white transition-colors">
+            <ChevronDown size={20} />
+          </div>
         </div>
       </div>
 

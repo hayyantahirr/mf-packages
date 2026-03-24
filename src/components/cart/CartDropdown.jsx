@@ -36,7 +36,7 @@ const CartDropdown = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] flex justify-end animate-fade-in pointer-events-none">
+    <div className="fixed inset-0 z-60 flex justify-end animate-fade-in pointer-events-none">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity pointer-events-auto"
@@ -116,17 +116,27 @@ const CartDropdown = () => {
                   <div className="flex justify-between items-center mt-3">
                     {/* Quantity Controls */}
                     <div className="flex items-center gap-1 bg-white/5 rounded-xl border border-white/10 p-1">
-                      <button 
-                        onClick={() => dispatch(updateQuantity({ id: item.id, size: item.size, quantity: item.quantity - 1 }))}
-                        className="p-1.5 text-slate-400 hover:bg-white/10 hover:text-white rounded-lg transition-all"
-                      >
-                        <Minus size={12} />
-                      </button>
+                      {item.quantity === 50 ? (
+                        <button 
+                          onClick={() => dispatch(removeItem({ id: item.id, size: item.size }))}
+                          className="p-1.5 text-slate-500 hover:bg-red-500/10 hover:text-red-500 rounded-lg transition-all"
+                          title="Remove from cart"
+                        >
+                          <Trash2 size={12} />
+                        </button>
+                      ) : (
+                        <button 
+                          onClick={() => dispatch(updateQuantity({ id: item.id, size: item.size, quantity: Math.max(50, item.quantity - 50) }))}
+                          className="p-1.5 text-slate-400 hover:bg-white/10 hover:text-white rounded-lg transition-all"
+                        >
+                          <Minus size={12} />
+                        </button>
+                      )}
                       <span className="w-8 text-center text-xs font-black text-white">
                         {item.quantity}
                       </span>
                       <button 
-                        onClick={() => dispatch(updateQuantity({ id: item.id, size: item.size, quantity: item.quantity + 1 }))}
+                        onClick={() => dispatch(updateQuantity({ id: item.id, size: item.size, quantity: item.quantity + 50 }))}
                         className="p-1.5 text-slate-400 hover:bg-white/10 hover:text-white rounded-lg transition-all"
                       >
                         <Plus size={12} />

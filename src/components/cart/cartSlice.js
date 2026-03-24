@@ -1,6 +1,7 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
+import { calculateTieredPrice } from "../../utils/pricing";
 
 /**
  * Initial state for the shopping cart.
@@ -24,7 +25,7 @@ const cartSlice = createSlice({
      * payload: { id, name, size, quantity, basePrice, mainImage }
      */
     addItem: (state, action) => {
-      const { id, size, quantity, basePrice } = action.payload;
+      const { id, size, quantity, originalPrice, basePrice, mainImage, name } = action.payload;
       
       // Look for an existing item with the same ID and size variation
       const existingItem = state.items.find(
@@ -32,14 +33,22 @@ const cartSlice = createSlice({
       );
 
       if (existingItem) {
-        // Increment quantity and update total price
+        // Increment quantity and update total price based on NEW tiered base price
         existingItem.quantity += quantity;
+        
+        // Recalculate base price based on new quantity if originalPrice exists
+        if (existingItem.originalPrice) {
+          existingItem.basePrice = calculateTieredPrice(existingItem.quantity, existingItem.originalPrice);
+        }
+        
         existingItem.totalPrice = Number((existingItem.quantity * existingItem.basePrice).toFixed(2));
       } else {
         // Add new item to the array
         state.items.push({
           ...action.payload,
-          totalPrice: Number((quantity * basePrice).toFixed(2)),
+          // Ensure basePrice is calculated if not already
+          basePrice: basePrice || calculateTieredPrice(quantity, originalPrice),
+          totalPrice: Number((quantity * (basePrice || calculateTieredPrice(quantity, originalPrice))).toFixed(2)),
         });
       }
     },
@@ -64,8 +73,15 @@ const cartSlice = createSlice({
         (item) => item.id === id && item.size === size
       );
       if (item) {
-        // Ensure quantity is at least 1
-        item.quantity = Math.max(1, quantity);
+        // Ensure quantity is at least 50 and is a multiple of 50
+        const newQuantity = Math.max(50, quantity);
+        item.quantity = newQuantity;
+        
+        // Recalculate base price based on new quantity using originalPrice
+        if (item.originalPrice) {
+          item.basePrice = calculateTieredPrice(newQuantity, item.originalPrice);
+        }
+        
         item.totalPrice = Number((item.quantity * item.basePrice).toFixed(2));
       }
     },
