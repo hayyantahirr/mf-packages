@@ -29,33 +29,23 @@ export default function ProductPricingSection({
   const isDiscounted = currentPrice < basePrice;
 
   const handleAddToCart = () => {
-    dispatch(addItem({
-      id,
-      name,
-      size: size || "Standard",
-      quantity,
-      originalPrice: basePrice, // Pass originalPrice for tiered recalculation in cart
-      basePrice: currentPrice,
-      mainImage: mainImage || "/placeholder.png"
-    }));
+    dispatch(
+      addItem({
+        id,
+        name,
+        size: size || "Standard",
+        quantity,
+        originalPrice: basePrice, // Pass originalPrice for tiered recalculation in cart
+        basePrice: currentPrice,
+        mainImage: mainImage || "/placeholder.png",
+      }),
+    );
   };
 
   return (
     <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 space-y-8 backdrop-blur-md shadow-2xl animate-fade-in">
       {/* Price Display Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-white/10">
-        <div className="space-y-1">
-          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-            Printing Cost per color per side
-          </span>
-          <div className="flex items-baseline justify-start gap-2">
-            <span className="text-sm font-black text-slate-400">+ Rs.</span>
-            <span className="text-4xl font-black text-[#D00000] tracking-tighter">
-              {printingPrice || "0"}
-            </span>
-          </div>
-        </div>
-
         <div className="space-y-1 text-right">
           <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
             Base Unit Price
@@ -101,27 +91,15 @@ export default function ProductPricingSection({
 
       {/* Key Information & Samples */}
       <div className="space-y-4 pt-4">
-        <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
-          <Truck size={18} className="text-[#D00000]" />
-          <span>Free Shipping on Volume Orders over Rs. 10,000</span>
-        </div>
-        <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
-          <Printer size={18} className="text-[#D00000]" />
-          <span>Custom Branding Available: Standard 10-day lead time</span>
-        </div>
-        <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
-          <Gift size={18} className="text-[#D00000]" />
-          <span className="font-bold text-white tracking-tight uppercase text-xs underline decoration-[#D00000] underline-offset-4">
-            No Cylinder Charges
-          </span>
-        </div>
         <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex flex-col gap-2">
           <div className="flex items-center gap-2 text-[10px] font-black text-[#D00000] uppercase tracking-widest">
             <Info size={14} /> Sample Service
           </div>
           <p className="text-slate-400 text-xs leading-relaxed font-medium">
-            Sample cost is <span className="text-white font-bold">Rs. 50/pc</span> (any size). 
-            Delivery is <span className="text-white font-bold">Rs. 250</span> for overnight shipping.
+            Sample cost is{" "}
+            <span className="text-white font-bold">Rs. 50/pc</span> (any size).
+            Delivery is <span className="text-white font-bold">Rs. 250</span>{" "}
+            for overnight shipping.
           </p>
         </div>
       </div>

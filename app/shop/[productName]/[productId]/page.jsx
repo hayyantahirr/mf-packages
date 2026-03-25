@@ -112,35 +112,78 @@ export default async function SingleProductPage({ params }) {
                 Technical Specifications
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                {/* Material Structure */}
-                <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
-                  <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
-                    Material Structure
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
+                <div className="space-y-8">
+                  {/* Material Structure */}
+                  <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
+                    <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                      Material Structure
+                    </div>
+                    <div className="text-white font-bold text-sm leading-relaxed">
+                      {typeof product.materialStructure === "object" ? (
+                        <div className="flex flex-wrap gap-2">
+                          {Object.entries(product.materialStructure).map(
+                            ([key, value]) => (
+                              <div
+                                key={key}
+                                className="bg-white/5 px-2 py-1 rounded-lg border border-white/10"
+                              >
+                                <span className="text-slate-400 text-[10px] uppercase">
+                                  {key}:
+                                </span>{" "}
+                                {String(value)}
+                              </div>
+                            ),
+                          )}
+                        </div>
+                      ) : (
+                        <p>
+                          {product.materialStructure ||
+                            "High-barrier multi-layer composite film."}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div className="text-white font-bold text-sm leading-relaxed">
-                    {typeof product.materialStructure === "object" ? (
-                      <div className="flex flex-wrap gap-2">
-                        {Object.entries(product.materialStructure).map(
-                          ([key, value]) => (
-                            <div
-                              key={key}
-                              className="bg-white/5 px-2 py-1 rounded-lg border border-white/10"
-                            >
-                              <span className="text-slate-400 text-[10px] uppercase">
-                                {key}:
-                              </span>{" "}
-                              {String(value)}
-                            </div>
-                          ),
-                        )}
+
+                  {/* Printing Specifications */}
+                  <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
+                    <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                      <Printer size={12} className="text-[#D00000]" /> Printing
+                      Specifications
+                    </div>
+                    <div className="text-white font-bold text-sm leading-relaxed">
+                      <div className="flex flex-col gap-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-slate-400 text-[10px] uppercase">
+                            Cost:
+                          </span>
+                          <span className="text-[#D00000]">
+                            Rs. {product.printingPrice || "0"}
+                          </span>
+                          <span className="text-slate-500 text-[8px] uppercase">
+                            per color per side
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-slate-400 text-[10px] uppercase">
+                            Lead Time:
+                          </span>
+                          <span>10 Working Days</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-slate-400 text-[10px] uppercase">
+                            Minimum Order Quantity:
+                          </span>
+                          <span>1000 PCS</span>
+                        </div>
+                        <div className="bg-[#D00000]/10 border border-[#D00000]/20 px-3 py-1.5 rounded-lg inline-flex items-center gap-2 w-fit">
+                          <CheckCircle2 size={12} className="text-[#00FF88]" />
+                          <span className="text-[10px] font-black uppercase text-white">
+                            No Cylinder Charges
+                          </span>
+                        </div>
                       </div>
-                    ) : (
-                      <p>
-                        {product.materialStructure ||
-                          "High-barrier multi-layer composite film."}
-                      </p>
-                    )}
+                    </div>
                   </div>
                 </div>
 
