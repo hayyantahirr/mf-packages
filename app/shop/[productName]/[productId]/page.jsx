@@ -261,6 +261,7 @@ export default async function SingleProductPage({ params }) {
               basePrice={product.price}
               printingPrice={product.printingPrice}
               inStock={product.inStock}
+              technicalSpecs={product.technicalSpecs}
             />
 
             {/* Specifications Grid */}

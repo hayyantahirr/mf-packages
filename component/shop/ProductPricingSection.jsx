@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { addItem } from "@/src/components/cart/cartSlice";
 import { ShoppingCart, Truck, Printer, Info, Gift } from "lucide-react";
 
+import ProductTechnicalSpecs from "./ProductTechnicalSpecs";
+
 export default function ProductPricingSection({
   id,
   name,
@@ -13,6 +15,7 @@ export default function ProductPricingSection({
   basePrice,
   printingPrice,
   inStock,
+  technicalSpecs,
 }) {
   const dispatch = useDispatch();
   const quantities = [50, 100, 500, 1000];
@@ -91,6 +94,9 @@ export default function ProductPricingSection({
           ))}
         </div>
       </div>
+
+      {/* Technical Specifications - Immediately below buttons */}
+      <ProductTechnicalSpecs specs={technicalSpecs} />
 
       {/* Key Information & Samples */}
       <div className="space-y-4 pt-4">
