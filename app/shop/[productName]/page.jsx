@@ -97,8 +97,8 @@ export default async function ProductVariationsPage({ params }) {
             Back to All Collections
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 pb-12 border-b border-white/10">
-            <div className="space-y-6 max-w-3xl">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 pb-12 border-b border-white/10">
+            <div className="space-y-6 max-w-2xl">
               <div className="flex items-center gap-3">
                 <span className="bg-[#D00000]/10 text-[#D00000] border border-[#D00000]/30 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
                   {mainProduct.category}
@@ -114,11 +114,23 @@ export default async function ProductVariationsPage({ params }) {
                 {productName}
               </h1>
               {mainProduct.genDescription && (
-                <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed border-l-2 border-[#D00000] pl-4 max-w-2xl">
+                <p className="text-white text-sm md:text-base font-medium leading-relaxed border-l-2 border-[#D00000] pl-4 max-w-2xl">
                   {mainProduct.genDescription}
                 </p>
               )}
             </div>
+
+            {mainProduct.mainImage && (
+              <div className="relative w-full md:w-72 aspect-square rounded-4xl overflow-hidden border border-white/10 shadow-2xl group/main shrink-0">
+                <Image
+                  src={mainProduct.mainImage}
+                  alt={productName}
+                  fill
+                  className="object-cover transition-transform duration-700 "
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/40 to-transparent"></div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -143,15 +155,6 @@ export default async function ProductVariationsPage({ params }) {
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/80 via-transparent to-transparent opacity-60"></div>
-
-                {/* Variation Badge */}
-                <div className="absolute top-6 left-6">
-                  <div className="bg-[#1D2D44]/90 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
-                    <span className="text-sm font-black text-white tracking-widest uppercase">
-                      {v.size || "Standard"}
-                    </span>
-                  </div>
-                </div>
               </div>
 
               {/* Product Info */}
@@ -173,7 +176,7 @@ export default async function ProductVariationsPage({ params }) {
                     )}
                   </div>
                   <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-[#D00000] transition-colors">
-                    {productName}
+                   {v.size} - {productName}
                   </h3>
                 </div>
 

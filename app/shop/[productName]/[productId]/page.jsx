@@ -248,10 +248,7 @@ export default async function SingleProductPage({ params }) {
                 </span>
               </div>
               <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-none uppercase">
-                {productName}
-                <span className="block text-2xl md:text-3xl text-white mt-2 font-black ">
-                  Size : {product.size || "Standard Edition"}
-                </span>
+                {product.size} - {productName}
               </h1>
             </div>
 
@@ -265,24 +262,6 @@ export default async function SingleProductPage({ params }) {
               printingPrice={product.printingPrice}
               inStock={product.inStock}
             />
-
-            {/* Description sections */}
-            <div className="space-y-6">
-              <p className="text-white text-lg leading-relaxed font-normal">
-                {product.description ||
-                  "Premium quality biodegradable packaging solution."}
-              </p>
-              {product.genDescription && (
-                <div className="p-6 rounded-4xl bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-sm">
-                  <h4 className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-3">
-                    General Description
-                  </h4>
-                  <p className="text-white text-sm leading-relaxed font-normal">
-                    {product.genDescription}
-                  </p>
-                </div>
-              )}
-            </div>
 
             {/* Specifications Grid */}
             <div className="grid grid-cols-2 gap-4">
