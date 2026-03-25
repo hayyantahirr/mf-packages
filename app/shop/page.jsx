@@ -157,7 +157,7 @@ export default async function ShopPage({ searchParams }) {
                 Premium <span className="text-[#D00000]">Packaging</span>{" "}
                 <br className="hidden md:block" /> Collections
               </h1>
-              <p className="text-slate-300 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+              <p className="text-white max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
                 Discover our professional-grade eco-friendly solutions. Select a
                 category to explore specialized products.
               </p>
@@ -235,7 +235,7 @@ export default async function ShopPage({ searchParams }) {
                     <h3 className="text-2xl font-black text-white leading-tight tracking-tight">
                       {cat.name}
                     </h3>
-                    <div className="flex items-center gap-2 text-white/60 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                    <div className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
                       View Collection{" "}
                       <ChevronRight size={14} className="text-[#D00000]" />
                     </div>
@@ -259,10 +259,10 @@ export default async function ShopPage({ searchParams }) {
                 <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
                   <ShoppingBag size={48} className="text-white/10" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-500 italic tracking-tight mb-2">
+                <h3 className="text-2xl font-bold text-white/60 italic tracking-tight mb-2">
                   Coming Soon to {activeCategory}
                 </h3>
-                <p className="text-slate-500 max-w-sm mx-auto">
+                <p className="text-white/40 max-w-sm mx-auto">
                   Our specialized team is currently preparing this collection
                   for release.
                 </p>

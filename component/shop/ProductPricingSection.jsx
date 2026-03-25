@@ -3,15 +3,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/src/components/cart/cartSlice";
-import { calculateTieredPrice } from "@/src/utils/pricing";
-import {
-  ShoppingCart,
-  Truck,
-  Printer,
-  Info,
-  ChevronDown,
-  Gift,
-} from "lucide-react";
+import { ShoppingCart, Truck, Printer, Info, Gift } from "lucide-react";
 
 export default function ProductPricingSection({
   id,
@@ -23,10 +15,17 @@ export default function ProductPricingSection({
   inStock,
 }) {
   const dispatch = useDispatch();
+  const quantities = [50, 100, 500, 1000];
   const [quantity, setQuantity] = useState(100);
 
-  const currentPrice = calculateTieredPrice(quantity, basePrice);
-  const isDiscounted = currentPrice < basePrice;
+  // Fixed Tiered Pricing Logic
+  const calculateFinalPrice = (qty) => {
+    if (qty === 500) return basePrice - 2;
+    if (qty === 1000) return basePrice - 3;
+    return basePrice;
+  };
+
+  const currentPrice = calculateFinalPrice(quantity);
 
   const handleAddToCart = () => {
     dispatch(
@@ -35,7 +34,7 @@ export default function ProductPricingSection({
         name,
         size: size || "Standard",
         quantity,
-        originalPrice: basePrice, // Pass originalPrice for tiered recalculation in cart
+        originalPrice: basePrice,
         basePrice: currentPrice,
         mainImage: mainImage || "/placeholder.png",
       }),
@@ -46,46 +45,50 @@ export default function ProductPricingSection({
     <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 space-y-8 backdrop-blur-md shadow-2xl animate-fade-in">
       {/* Price Display Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-white/10">
-        <div className="space-y-1 text-right">
+        <div className="space-y-1 text-left w-full">
           <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-            Base Unit Price
+            Unit Price
           </span>
-          <div className="flex flex-col items-end gap-1">
-            <div className="flex items-baseline justify-end gap-2">
+          <div className="flex flex-col items-start gap-1">
+            <div className="flex items-baseline justify-start gap-2">
               <span className="text-sm font-black text-slate-400">Rs.</span>
               <span className="text-6xl font-black text-white tracking-tighter transition-all duration-300">
                 {currentPrice.toLocaleString()}
               </span>
             </div>
-            {isDiscounted && (
+            {quantity >= 500 && (
               <span className="bg-[#D00000]/20 text-[#D00000] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-[#D00000]/30 animate-pulse">
-                Discounted Price
+                Tiered Discount Applied
               </span>
             )}
           </div>
         </div>
       </div>
 
-      {/* Quantity Selector */}
+      {/* Quantity Selector (Buttons) */}
       <div className="space-y-4">
         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">
-          Select Order Quantity
+          Select Bundle Size
         </label>
-        <div className="relative group">
-          <select
-            value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-            className="w-full bg-white/5 border border-white/10 text-white py-4 px-6 rounded-2xl font-black text-sm appearance-none cursor-pointer focus:outline-none focus:border-[#D00000] transition-all hover:border-white/20"
-          >
-            {Array.from({ length: 20 }, (_, i) => (i + 1) * 50).map((qty) => (
-              <option key={qty} value={qty} className="bg-[#1D2D44] text-white">
-                {qty} PCS {qty === 50 || qty === 100 ? "(Default)" : ""}
-              </option>
-            ))}
-          </select>
-          <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate-400 group-hover:text-white transition-colors">
-            <ChevronDown size={20} />
-          </div>
+        <div className="grid grid-cols-2 gap-3">
+          {quantities.map((qty) => (
+            <button
+              key={qty}
+              onClick={() => setQuantity(qty)}
+              className={`py-4 px-6 rounded-2xl font-black text-sm transition-all border ${
+                quantity === qty
+                  ? "bg-[#D00000] border-[#D00000] text-white shadow-lg shadow-[#D00000]/20 scale-[1.02]"
+                  : "bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-white"
+              }`}
+            >
+              {qty} PCS
+              {qty >= 500 && (
+                <span className="block text-[8px] opacity-70 mt-0.5">
+                  Save Rs. {qty === 500 ? "2" : "3"}/pc
+                </span>
+              )}
+            </button>
+          ))}
         </div>
       </div>
 

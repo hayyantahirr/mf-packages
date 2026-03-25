@@ -67,7 +67,7 @@ const Footer = () => {
                   <span className="text-xl font-bold text-white block">
                     MF Packages
                   </span>
-                  <span className="text-xs text-white/70">
+                  <span className="text-white text-xs">
                     Eco-Friendly Solutions
                   </span>
                 </div>
@@ -75,7 +75,7 @@ const Footer = () => {
             </div>
 
             {/* Description */}
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed">
               Redefining the future of food packaging in Pakistan with 100%
               biodegradable and sustainable solutions.
             </p>
@@ -104,7 +104,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white/70 hover:text-green-400 transition-colors duration-300 text-sm flex items-center space-x-2 group"
+                    className="text-white hover:text-green-400 transition-colors duration-300 text-sm flex items-center space-x-2 group"
                   >
                     <span className="w-0 h-0.5 bg-green-400 group-hover:w-4 transition-all duration-300"></span>
                     <span>{link.name}</span>
@@ -120,7 +120,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3 text-sm">
                 <MapPin className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
-                <span className="text-white/70">
+                <span className="text-white">
                   Pakistan
                   <br />
                   Eco-Friendly Packaging Solutions
@@ -130,7 +130,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-green-400 shrink-0" />
                 <a
                   href="tel:+92 332 2464729"
-                  className="text-white/70 hover:text-green-400 transition-colors"
+                  className="text-white hover:text-green-400 transition-colors"
                 >
                   +92 332 2464729
                 </a>
@@ -139,7 +139,7 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-green-400 shrink-0" />
                 <a
                   href="mailto:info@mfpackages.com"
-                  className="text-white/70 hover:text-green-400 transition-colors"
+                  className="text-white hover:text-green-400 transition-colors"
                 >
                   info@mfpackages.com
                 </a>
@@ -160,7 +160,7 @@ const Footer = () => {
           {/* Column 4: Newsletter */}
           <div>
             <h3 className="text-white font-bold text-lg mb-6">Stay Updated</h3>
-            <p className="text-white/70 text-sm mb-4">
+            <p className="text-white text-sm mb-4">
               Subscribe to our newsletter for the latest updates on eco-friendly
               packaging solutions.
             </p>
@@ -219,7 +219,7 @@ const Footer = () => {
         <div className="py-6 md:py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
-            <div className="text-white/60 text-sm text-center md:text-left">
+            <div className="text-white text-sm text-center md:text-left">
               © {currentYear} MF Packages. All rights reserved.
             </div>
 

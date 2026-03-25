@@ -116,22 +116,24 @@ export default async function SingleProductPage({ params }) {
                 <div className="space-y-8">
                   {/* Material Structure */}
                   <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
-                    <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-white font-black text-[10px] uppercase tracking-widest">
                       Material Structure
                     </div>
                     <div className="text-white font-bold text-sm leading-relaxed">
                       {typeof product.materialStructure === "object" ? (
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-col gap-2">
                           {Object.entries(product.materialStructure).map(
                             ([key, value]) => (
                               <div
                                 key={key}
-                                className="bg-white/5 px-2 py-1 rounded-lg border border-white/10"
+                                className="flex items-center justify-between py-2 border-b border-white/5 last:border-0"
                               >
-                                <span className="text-slate-400 text-[10px] uppercase">
-                                  {key}:
-                                </span>{" "}
-                                {String(value)}
+                                <span className="text-white text-[10px] uppercase font-bold tracking-wider">
+                                  {key}
+                                </span>
+                                <span className="text-white text-sm font-black">
+                                  {value} Microns
+                                </span>
                               </div>
                             ),
                           )}
@@ -147,34 +149,44 @@ export default async function SingleProductPage({ params }) {
 
                   {/* Printing Specifications */}
                   <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
-                    <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-white font-black text-[10px] uppercase tracking-widest">
                       <Printer size={12} className="text-[#D00000]" /> Printing
                       Specifications
                     </div>
                     <div className="text-white font-bold text-sm leading-relaxed">
                       <div className="flex flex-col gap-3">
+                        <div className="flex items-center justify-between py-2 border-b border-white/5">
+                          <span className="text-white text-[10px] uppercase font-bold tracking-wider">
+                            Material Type
+                          </span>
+                          <span className="text-white text-sm font-black">
+                            {typeof product.materialStructure === "object"
+                              ? "Multi-Layer"
+                              : product.materialStructure}
+                          </span>
+                        </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-slate-400 text-[10px] uppercase">
+                          <span className="text-white text-[10px] uppercase font-bold tracking-wider">
                             Cost:
                           </span>
                           <span className="text-[#D00000]">
                             Rs. {product.printingPrice || "0"}
                           </span>
-                          <span className="text-slate-500 text-[8px] uppercase">
+                          <span className="text-white/40 text-[8px] uppercase">
                             per color per side
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-slate-400 text-[10px] uppercase">
+                          <span className="text-white text-[10px] uppercase font-bold tracking-wider">
                             Lead Time:
                           </span>
-                          <span>10 Working Days</span>
+                          <span className="text-white">10 Working Days</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-slate-400 text-[10px] uppercase">
+                          <span className="text-white text-[10px] uppercase font-bold tracking-wider">
                             Minimum Order Quantity:
                           </span>
-                          <span>1000 PCS</span>
+                          <span className="text-white">1000 PCS</span>
                         </div>
                         <div className="bg-[#D00000]/10 border border-[#D00000]/20 px-3 py-1.5 rounded-lg inline-flex items-center gap-2 w-fit">
                           <CheckCircle2 size={12} className="text-[#00FF88]" />
@@ -189,22 +201,24 @@ export default async function SingleProductPage({ params }) {
 
                 {/* Capacity & Specs */}
                 <div className="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all">
-                  <div className="flex items-center gap-2 text-slate-500 font-black text-[10px] uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-white font-black text-[10px] uppercase tracking-widest">
                     Size Guide
                   </div>
                   <div className="text-white font-bold text-sm leading-relaxed">
                     {typeof product.capacitySpecs === "object" ? (
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-col gap-3">
                         {Object.entries(product.capacitySpecs).map(
                           ([key, value]) => (
                             <div
                               key={key}
-                              className="bg-white/5 px-2 py-1 rounded-lg border border-white/10"
+                              className="flex items-center justify-between py-2 border-b border-white/5 last:border-0"
                             >
-                              <span className="text-slate-400 text-[10px] uppercase">
-                                {key}:
-                              </span>{" "}
-                              {String(value)}
+                              <span className="text-white text-[10px] uppercase font-bold tracking-wider">
+                                {key}
+                              </span>
+                              <span className="text-white text-sm font-black text-right">
+                                {value}
+                              </span>
                             </div>
                           ),
                         )}
@@ -228,7 +242,7 @@ export default async function SingleProductPage({ params }) {
                 <span className="bg-[#D00000]/10 text-[#D00000] border border-[#D00000]/30 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
                   {product.category}
                 </span>
-                <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                <span className="text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
                   <ShieldCheck size={12} className="text-[#00FF88]" /> Verified
                   Quality
                 </span>
@@ -252,10 +266,28 @@ export default async function SingleProductPage({ params }) {
               inStock={product.inStock}
             />
 
+            {/* Description sections */}
+            <div className="space-y-6">
+              <p className="text-white text-lg leading-relaxed font-normal">
+                {product.description ||
+                  "Premium quality biodegradable packaging solution."}
+              </p>
+              {product.genDescription && (
+                <div className="p-6 rounded-4xl bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-sm">
+                  <h4 className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-3">
+                    General Description
+                  </h4>
+                  <p className="text-white text-sm leading-relaxed font-normal">
+                    {product.genDescription}
+                  </p>
+                </div>
+              )}
+            </div>
+
             {/* Specifications Grid */}
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                <span className="block text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">
+                <span className="block text-[8px] font-black text-white/50 uppercase tracking-widest mb-1">
                   Item ID
                 </span>
                 <span className="text-white font-bold text-sm">
@@ -263,7 +295,7 @@ export default async function SingleProductPage({ params }) {
                 </span>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                <span className="block text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">
+                <span className="block text-[8px] font-black text-white/50 uppercase tracking-widest mb-1">
                   Stock Status
                 </span>
                 <span
@@ -303,7 +335,7 @@ export default async function SingleProductPage({ params }) {
               <h3 className="text-white font-black text-lg uppercase tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <p className="text-white/60 text-sm leading-relaxed">
                 {feature.desc}
               </p>
             </div>

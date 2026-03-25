@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
+import { X, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { removeItem, updateQuantity, toggleCart, setCartOpen } from "./cartSlice";
+import { removeItem, toggleCart, setCartOpen } from "./cartSlice";
 
 /**
  * CartDropdown component that displays the list of items in the cart.
@@ -81,7 +81,7 @@ const CartDropdown = () => {
           ) : (
             items.map((item) => (
               <div 
-                key={`${item.id}-${item.size}`}
+                key={item.cartEntryId}
                 className="flex gap-4 p-4 rounded-3xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all duration-300"
               >
                 {/* Product Image */}
@@ -102,45 +102,28 @@ const CartDropdown = () => {
                         {item.name}
                       </h3>
                       <button 
-                        onClick={() => dispatch(removeItem({ id: item.id, size: item.size }))}
+                        onClick={() => dispatch(removeItem({ cartEntryId: item.cartEntryId }))}
                         className="text-slate-500 hover:text-red-500 transition-colors shrink-0"
                       >
                         <Trash2 size={16} />
                       </button>
                     </div>
-                    <p className="text-[10px] font-black text-[#D00000] uppercase tracking-widest mt-1">
-                      Size: {item.size}
-                    </p>
+                    <div className="flex flex-col gap-1 mt-1">
+                      <p className="text-[10px] font-black text-[#D00000] uppercase tracking-widest">
+                        Size: {item.size}
+                      </p>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        Quantity: {item.quantity} PCS
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="flex justify-between items-center mt-3">
-                    {/* Quantity Controls */}
-                    <div className="flex items-center gap-1 bg-white/5 rounded-xl border border-white/10 p-1">
-                      {item.quantity === 50 ? (
-                        <button 
-                          onClick={() => dispatch(removeItem({ id: item.id, size: item.size }))}
-                          className="p-1.5 text-slate-500 hover:bg-red-500/10 hover:text-red-500 rounded-lg transition-all"
-                          title="Remove from cart"
-                        >
-                          <Trash2 size={12} />
-                        </button>
-                      ) : (
-                        <button 
-                          onClick={() => dispatch(updateQuantity({ id: item.id, size: item.size, quantity: Math.max(50, item.quantity - 50) }))}
-                          className="p-1.5 text-slate-400 hover:bg-white/10 hover:text-white rounded-lg transition-all"
-                        >
-                          <Minus size={12} />
-                        </button>
-                      )}
-                      <span className="w-8 text-center text-xs font-black text-white">
-                        {item.quantity}
-                      </span>
-                      <button 
-                        onClick={() => dispatch(updateQuantity({ id: item.id, size: item.size, quantity: item.quantity + 50 }))}
-                        className="p-1.5 text-slate-400 hover:bg-white/10 hover:text-white rounded-lg transition-all"
-                      >
-                        <Plus size={12} />
-                      </button>
+                  <div className="flex justify-between items-end mt-3">
+                    <div className="text-left">
+                      <p className="text-[10px] text-slate-500 uppercase font-black">Unit Price</p>
+                      <p className="text-sm font-bold text-white">
+                        Rs. {item.basePrice.toLocaleString()}
+                      </p>
                     </div>
 
                     <div className="text-right">

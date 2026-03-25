@@ -21,69 +21,32 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     /**
-     * Adds an item to the cart or increments quantity if it already exists.
-     * payload: { id, name, size, quantity, basePrice, mainImage }
+     * Adds an item to the cart as a unique entry.
+     * Every click of "Add to Cart" pushes a new item to the items array.
      */
     addItem: (state, action) => {
-      const { id, size, quantity, originalPrice, basePrice, mainImage, name } = action.payload;
+      const { quantity, originalPrice, basePrice } = action.payload;
       
-      // Look for an existing item with the same ID and size variation
-      const existingItem = state.items.find(
-        (item) => item.id === id && item.size === size
-      );
+      // Calculate final pricing at the time of addition
+      const finalBasePrice = basePrice;
+      const finalTotalPrice = Number((quantity * finalBasePrice).toFixed(2));
 
-      if (existingItem) {
-        // Increment quantity and update total price based on NEW tiered base price
-        existingItem.quantity += quantity;
-        
-        // Recalculate base price based on new quantity if originalPrice exists
-        if (existingItem.originalPrice) {
-          existingItem.basePrice = calculateTieredPrice(existingItem.quantity, existingItem.originalPrice);
-        }
-        
-        existingItem.totalPrice = Number((existingItem.quantity * existingItem.basePrice).toFixed(2));
-      } else {
-        // Add new item to the array
-        state.items.push({
-          ...action.payload,
-          // Ensure basePrice is calculated if not already
-          basePrice: basePrice || calculateTieredPrice(quantity, originalPrice),
-          totalPrice: Number((quantity * (basePrice || calculateTieredPrice(quantity, originalPrice))).toFixed(2)),
-        });
-      }
+      state.items.push({
+        ...action.payload,
+        cartEntryId: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        basePrice: finalBasePrice,
+        totalPrice: finalTotalPrice,
+      });
     },
 
     /**
-     * Removes an item from the cart based on its ID and size.
+     * Removes an item from the cart based on its unique entry ID.
      */
     removeItem: (state, action) => {
-      const { id, size } = action.payload;
+      const { cartEntryId } = action.payload;
       state.items = state.items.filter(
-        (item) => !(item.id === id && item.size === size)
+        (item) => item.cartEntryId !== cartEntryId
       );
-    },
-
-    /**
-     * Updates the quantity of a specific item.
-     * payload: { id, size, quantity }
-     */
-    updateQuantity: (state, action) => {
-      const { id, size, quantity } = action.payload;
-      const item = state.items.find(
-        (item) => item.id === id && item.size === size
-      );
-      if (item) {
-        // Ensure quantity is at least 50 and is a multiple of 50
-        const newQuantity = Math.max(50, quantity);
-        item.quantity = newQuantity;
-        
-        // Recalculate base price based on new quantity using originalPrice
-        if (item.originalPrice) {
-          item.basePrice = calculateTieredPrice(newQuantity, item.originalPrice);
-        }
-        
-        item.totalPrice = Number((item.quantity * item.basePrice).toFixed(2));
-      }
     },
 
     /**

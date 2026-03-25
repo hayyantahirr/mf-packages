@@ -100,7 +100,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Truncated Description */}
-        <p className="text-slate-500 text-sm leading-relaxed mb-8 ">
+        <p className="text-slate-700 text-sm leading-relaxed mb-8 ">
           {product.description?.length > 100
             ? `${product.description.substring(0, 100)}...`
             : product.description ||
