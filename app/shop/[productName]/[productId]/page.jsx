@@ -248,7 +248,7 @@ export default async function SingleProductPage({ params }) {
                 </span>
               </div>
               <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-none uppercase">
-                {product.size} - {productName}
+                {product.size} CM - {productName}
               </h1>
             </div>
 

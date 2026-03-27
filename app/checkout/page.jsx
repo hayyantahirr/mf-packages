@@ -304,7 +304,7 @@ export default function CheckoutPage() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest font-black text-white/40 ml-1">
+                    <label className="text-xs uppercase tracking-widest font-black text-white ml-1">
                       Full Name
                     </label>
                     <input
@@ -313,11 +313,11 @@ export default function CheckoutPage() {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="John Doe"
-                      className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
+                      className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 mt-4"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest font-black text-white/40 ml-1">
+                    <label className="text-xs uppercase tracking-widest font-black text-white ml-1 mt-4">
                       Phone Number
                     </label>
                     <input
@@ -326,13 +326,13 @@ export default function CheckoutPage() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="03XX-XXXXXXX"
-                      className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
+                      className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 mt-4"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest font-black text-white/40 ml-1">
+                  <label className="text-xs uppercase tracking-widest font-black text-white ml-1 mt-4">
                     Email Address
                   </label>
                   <input
@@ -341,12 +341,12 @@ export default function CheckoutPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@example.com"
-                    className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
+                    className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 mt-4"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest font-black text-white/40 ml-1">
+                  <label className="text-xs uppercase tracking-widest font-black text-white ml-1 mt-4">
                     Detailed Shipping Address
                   </label>
                   <textarea
@@ -355,18 +355,18 @@ export default function CheckoutPage() {
                     onChange={handleInputChange}
                     rows="3"
                     placeholder="Street, Area, City, Nearest Landmark..."
-                    className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 resize-none"
+                    className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 resize-none mt-4"
                   ></textarea>
                 </div>
 
                 {/* Payment Method Selection */}
                 <div className="pt-4 space-y-4">
-                  <label className="text-xs uppercase tracking-widest font-black text-white/40 ml-1">
+                  <label className="text-xs uppercase tracking-widest font-black text-white ml-1 mt-4">
                     Payment Method
                   </label>
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="grid grid-cols-1 gap-4 mt-4">
                     <label
-                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "cod" ? "bg-red-500/10 border-red-500" : "bg-[#1D2D44] border-white/10 hover:border-white/30"}`}
+                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "cod" ? "bg-red-500/10 border-red-500" : "bg-[#1D2D44] border-white/10 hover:border-white/30 "}`}
                     >
                       <input
                         type="radio"
@@ -374,7 +374,7 @@ export default function CheckoutPage() {
                         value="cod"
                         checked={paymentMethod === "cod"}
                         onChange={() => setPaymentMethod("cod")}
-                        className="w-5 h-5 accent-red-500"
+                        className="w-5 h-5 accent-red-500 "
                       />
                       <div className="grow">
                         <p className="font-bold">Cash on Delivery (COD)</p>
@@ -469,7 +469,7 @@ export default function CheckoutPage() {
                   </button>
 
                   {!isFormValid && items.length > 0 && (
-                    <p className="text-[10px] text-center text-red-500/60 mt-4 flex items-center justify-center gap-1">
+                    <p className="text-xs text-center text-red-500/60 mt-4 flex items-center justify-center gap-1 font-semibold">
                       <AlertCircle className="w-3 h-3" />
                       Please fill in all mandatory fields to continue
                     </p>

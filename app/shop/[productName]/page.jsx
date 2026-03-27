@@ -176,7 +176,7 @@ export default async function ProductVariationsPage({ params }) {
                     )}
                   </div>
                   <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-[#D00000] transition-colors">
-                   {v.size} - {productName}
+                    {v.size} CM - {productName}
                   </h3>
                 </div>
 
