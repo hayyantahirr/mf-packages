@@ -14,7 +14,7 @@ const CartTrigger = () => {
   
   // Calculate total items in the cart
   const items = useSelector((state) => state.cart.items);
-  const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+  const totalItems = items.length;
 
   return (
     <button 

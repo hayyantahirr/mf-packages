@@ -154,10 +154,10 @@ const CartDropdown = () => {
               </div>
             </div>
 
-            <button className="w-full py-6 bg-[#D00000] text-white rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 hover:bg-white hover:text-[#D00000] transition-all duration-500 shadow-2xl shadow-[#D00000]/20">
+            <Link href="/checkout" className="w-full py-6 bg-[#D00000] text-white rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 hover:bg-white hover:text-[#D00000] transition-all duration-500 shadow-2xl shadow-[#D00000]/20">
               Proceed to Checkout
               <ArrowRight size={18} />
-            </button>
+            </Link>
           </div>
         )}
       </div>
