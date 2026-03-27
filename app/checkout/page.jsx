@@ -38,6 +38,7 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [orderIdRef, setOrderIdRef] = useState("");
+  const [isSummaryExpanded, setIsSummaryExpanded] = useState(false);
 
   /**
    * FORM VALIDATION LOGIC
@@ -54,7 +55,7 @@ export default function CheckoutPage() {
 
   // Calculations
   const subtotal = items.reduce((acc, item) => acc + item.totalPrice, 0);
-  const shippingFee = 0; // "Calculated at next step" or 0 for now
+  const shippingFee = 1500; // "Calculated at next step" or 0 for now
   const grandTotal = subtotal + shippingFee;
 
   // Handle Input Changes
@@ -135,8 +136,8 @@ export default function CheckoutPage() {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-[#111] border border-white/10 rounded-2xl p-8 text-center animate-fade-in">
+      <div className="min-h-screen bg-[#1D2D44] flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-[#16253b] border border-white/10 rounded-2xl p-8 text-center animate-fade-in">
           <div className="flex justify-center mb-6">
             <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center">
               <CheckCircle2 className="w-12 h-12 text-green-500" />
@@ -167,97 +168,124 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-red-500/30">
-      {/* Header */}
+    <div className="min-h-screen bg-[#1D2D44] text-white selection:bg-red-500/30">
+      {/* Spacer for Fixed Navbar */}
+      <div className="h-28 md:h-36"></div>
 
-      <main className="max-w-7xl mx-auto px-6 md:px-12 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <main className="max-w-7xl mx-auto px-6 md:px-12 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-16">
           {/* Left Side: Order Summary */}
           <div
-            className="space-y-8 animate-fade-in"
+            className="space-y-6 animate-fade-in"
             style={{ animationDelay: "100ms" }}
           >
-            <div>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Package className="w-6 h-6 text-red-500" />
-                Order Summary
-              </h2>
+            {/* Mobile Toggle Handle */}
+            <button
+              onClick={() => setIsSummaryExpanded(!isSummaryExpanded)}
+              className="lg:hidden w-full flex items-center justify-between p-6 bg-[#16253b] border border-white/10 rounded-2xl group transition-all"
+            >
+              <div className="flex items-center gap-3 mt-0 font-bold text-red-500 text-xl">
+                <Package className="w-5 h-5" />
+                <span className="text-white font-bold text-xl">
+                  {isSummaryExpanded ? "Order Summary" : "Order Summary"}
+                </span>
+              </div>
+              <div className="flex items-center gap-4">
+                <ChevronLeft
+                  className={`w-5 h-5 text-white transition-transform duration-300 ${isSummaryExpanded ? "rotate-90" : "-rotate-90"}`}
+                />
+              </div>
+            </button>
 
-              <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 no-scrollbar">
-                {items.map((item) => (
-                  <div
-                    key={item.cartEntryId}
-                    className="flex gap-4 p-4 bg-[#111] border border-white/5 rounded-2xl group hover:border-white/20 transition-all"
-                  >
-                    <div className="w-24 h-24 bg-[#1a1a1a] rounded-xl overflow-hidden shrink-0 relative border border-white/5">
-                      {item.mainImage ? (
-                        <Image
-                          src={item.mainImage}
-                          alt={item.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-white/20">
-                          <Package className="w-8 h-8" />
+            <div
+              className={`${isSummaryExpanded ? "block" : "hidden"} lg:block space-y-8 `}
+            >
+              <div>
+                <h2 className="text-2xl font-bold mb-6 hidden lg:flex items-center gap-3">
+                  <Package className="w-6 h-6 text-red-500" />
+                  Order Summary
+                </h2>
+
+                <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 no-scrollbar">
+                  {items.map((item) => (
+                    <div
+                      key={item.cartEntryId}
+                      className="flex gap-4 p-4 bg-[#16253b] border border-white/5 rounded-2xl group hover:border-white/10 transition-all"
+                    >
+                      <div className="w-24 h-24 bg-[#0a0a0a]/20 rounded-xl overflow-hidden shrink-0 relative border border-white/5">
+                        {item.mainImage ? (
+                          <Image
+                            src={item.mainImage}
+                            alt={item.name}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-white/20">
+                            <Package className="w-8 h-8" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="grow py-1 flex flex-col justify-between">
+                        <div>
+                          <h3 className="font-bold text-lg leading-tight mb-1">
+                            {item.name}
+                          </h3>
+                          <p className="text-white text-sm">
+                            Size:{" "}
+                            <span className="text-white font-bold">
+                              {item.size || "Custom"}
+                            </span>
+                          </p>
+                          <p className="text-white text-sm">
+                            Quantity:{" "}
+                            <span className="text-white font-bold">
+                              {item.quantity}
+                            </span>
+                          </p>
                         </div>
-                      )}
-                    </div>
-                    <div className="grow py-1 flex flex-col justify-between">
-                      <div>
-                        <h3 className="font-bold text-lg leading-tight mb-1">
-                          {item.name}
-                        </h3>
-                        <p className="text-white/60 text-sm">
-                          Size:{" "}
-                          <span className="text-white">
-                            {item.size || "Custom"}
+                        <div className="flex justify-between items-end mt-2">
+                          <span className="text-white text-xs">
+                            Rs. {item.basePrice} / unit
                           </span>
-                        </p>
-                        <p className="text-white/60 text-sm">
-                          Quantity:{" "}
-                          <span className="text-white">{item.quantity}</span>
-                        </p>
-                      </div>
-                      <div className="flex justify-between items-end mt-2">
-                        <span className="text-white/40 text-xs">
-                          Rs. {item.basePrice} / unit
-                        </span>
-                        <span className="font-bold text-red-500">
-                          Rs. {item.totalPrice.toLocaleString()}
-                        </span>
+                          <span className="font-bold text-white">
+                            Rs. {item.totalPrice.toLocaleString()}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
 
-                {items.length === 0 && (
-                  <div className="py-12 text-center bg-[#111] rounded-2xl border border-dashed border-white/10">
-                    <p className="text-white/40">Your cart is empty.</p>
-                  </div>
-                )}
+                  {items.length === 0 && (
+                    <div className="py-12 text-center bg-[#16253b] rounded-2xl border border-dashed border-white/10">
+                      <p className="text-white/40">Your cart is empty.</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
 
-            {/* Financial Breakdown */}
-            <div className="bg-[#111] p-8 rounded-2xl border border-white/10 space-y-4">
-              <div className="flex justify-between text-lg">
-                <span className="text-white/60">Subtotal</span>
-                <span className="font-medium">
-                  Rs. {subtotal.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex justify-between text-lg border-b border-white/5 pb-4">
-                <span className="text-white/60">Shipping</span>
-                <span className="text-green-500 text-sm font-medium">
-                  Calculated at next step
-                </span>
-              </div>
-              <div className="flex justify-between items-center pt-2">
-                <span className="text-xl font-bold">Grand Total</span>
-                <span className="text-3xl font-black text-white">
-                  Rs. {grandTotal.toLocaleString()}
-                </span>
+              {/* Financial Breakdown */}
+              <div className="bg-[#16253b] p-8 rounded-2xl border border-white/10 space-y-4">
+                <div className="flex justify-between text-lg">
+                  <span className="text-red-500">Subtotal</span>
+                  <span className="font-medium">
+                    Rs. {subtotal.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between text-lg border-b border-white/5 pb-4">
+                  <span className="text-red-500">Shipping</span>
+                  <span className="text-white text-sm font-medium">
+                    Rs. {shippingFee.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center pt-2">
+                  <span className="text-xl font-bold text-red-500">
+                    Grand Total
+                  </span>
+                  <span className="text-3xl font-black text-white">
+                    Rs. {grandTotal.toLocaleString()}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -267,7 +295,7 @@ export default function CheckoutPage() {
             className="space-y-8 animate-fade-in"
             style={{ animationDelay: "200ms" }}
           >
-            <div className="bg-[#111] p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl">
+            <div className="bg-[#16253b] p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl ">
               <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 <Truck className="w-6 h-6 text-red-500" />
                 Shipping Details
@@ -285,7 +313,7 @@ export default function CheckoutPage() {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="John Doe"
-                      className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
+                      className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
                     />
                   </div>
                   <div className="space-y-2">
@@ -298,7 +326,7 @@ export default function CheckoutPage() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="03XX-XXXXXXX"
-                      className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
+                      className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
                     />
                   </div>
                 </div>
@@ -313,7 +341,7 @@ export default function CheckoutPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@example.com"
-                    className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
+                    className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20"
                   />
                 </div>
 
@@ -327,7 +355,7 @@ export default function CheckoutPage() {
                     onChange={handleInputChange}
                     rows="3"
                     placeholder="Street, Area, City, Nearest Landmark..."
-                    className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 resize-none"
+                    className="w-full bg-[#1D2D44] border border-white/10 rounded-xl px-4 py-4 focus:border-red-500 focus:outline-none transition-all placeholder:text-white/20 resize-none"
                   ></textarea>
                 </div>
 
@@ -338,7 +366,7 @@ export default function CheckoutPage() {
                   </label>
                   <div className="grid grid-cols-1 gap-4">
                     <label
-                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "cod" ? "bg-red-500/10 border-red-500" : "bg-[#0a0a0a] border-white/10 hover:border-white/30"}`}
+                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "cod" ? "bg-red-500/10 border-red-500" : "bg-[#1D2D44] border-white/10 hover:border-white/30"}`}
                     >
                       <input
                         type="radio"
@@ -357,7 +385,7 @@ export default function CheckoutPage() {
                     </label>
 
                     <label
-                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "bank" ? "bg-red-500/10 border-red-500" : "bg-[#0a0a0a] border-white/10 hover:border-white/30"}`}
+                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "bank" ? "bg-red-500/10 border-red-500" : "bg-[#1D2D44] border-white/10 hover:border-white/30"}`}
                     >
                       <input
                         type="radio"
@@ -381,7 +409,7 @@ export default function CheckoutPage() {
 
                   {/* Revealed Bank Details */}
                   {paymentMethod === "bank" && (
-                    <div className="mt-4 p-6 bg-[#0a0a0a] border border-white/10 rounded-2xl animate-fade-in animate-duration-300">
+                    <div className="mt-4 p-6 bg-[#0a0a0a]/20 border border-white/10 rounded-2xl animate-fade-in animate-duration-300">
                       <h4 className="text-sm font-bold text-red-500 mb-3 uppercase tracking-wider">
                         Bank Account Details
                       </h4>
