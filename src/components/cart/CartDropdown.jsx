@@ -6,6 +6,8 @@ import { X, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { removeItem, toggleCart, setCartOpen } from "./cartSlice";
+import { convertPrice, formatPrice } from "@/src/utils/currencyUtils";
+import { AlertCircle } from "lucide-react";
 
 /**
  * CartDropdown component that displays the list of items in the cart.
@@ -13,7 +15,8 @@ import { removeItem, toggleCart, setCartOpen } from "./cartSlice";
  */
 const CartDropdown = () => {
   const dispatch = useDispatch();
-  const { items, isOpen } = useSelector((state) => state.cart);
+  const { items, isOpen, cartCurrency } = useSelector((state) => state.cart);
+  const { selectedCurrency, exchangeRates } = useSelector((state) => state.currency);
   const dropdownRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -31,7 +34,13 @@ const CartDropdown = () => {
   }, [isOpen, dispatch]);
 
   // Calculate Grand Total
-  const grandTotal = items.reduce((total, item) => total + item.totalPrice, 0);
+  // Calculate Totals dynamically based on selected currency
+  const grandTotal = items.reduce((total, item) => {
+    const itemTotalConverted = convertPrice(item.totalPricePKR, selectedCurrency, exchangeRates);
+    return total + itemTotalConverted;
+  }, 0);
+
+  const isCurrencyMismatch = cartCurrency && selectedCurrency !== cartCurrency;
 
   if (!isOpen) return null;
 
@@ -61,6 +70,16 @@ const CartDropdown = () => {
             <X size={24} />
           </button>
         </div>
+
+        {/* Currency Mismatch Warning */}
+        {isCurrencyMismatch && (
+          <div className="bg-[#D00000]/10 border-b border-[#D00000]/20 p-4 flex items-center gap-3 animate-pulse">
+            <AlertCircle className="text-[#D00000] shrink-0" size={18} />
+            <p className="text-[10px] font-bold text-[#D00000] uppercase tracking-wider leading-relaxed">
+              Currency mismatch. This cart was locked to <span className="underline">{cartCurrency}</span>. Please switch back to checkout.
+            </p>
+          </div>
+        )}
 
         {/* Items List */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar">
@@ -122,14 +141,14 @@ const CartDropdown = () => {
                     <div className="text-left">
                       <p className="text-[10px] text-slate-500 uppercase font-black">Unit Price</p>
                       <p className="text-sm font-bold text-white">
-                        Rs. {item.basePrice.toLocaleString()}
+                        {formatPrice(convertPrice(item.basePricePKR, selectedCurrency, exchangeRates), selectedCurrency)}
                       </p>
                     </div>
 
                     <div className="text-right">
                       <p className="text-[10px] text-slate-500 uppercase font-black">Subtotal</p>
                       <p className="text-lg font-black text-white tracking-tighter">
-                        Rs. {item.totalPrice.toLocaleString()}
+                        {formatPrice(convertPrice(item.totalPricePKR, selectedCurrency, exchangeRates), selectedCurrency)}
                       </p>
                     </div>
                   </div>
@@ -146,7 +165,7 @@ const CartDropdown = () => {
               <div className="space-y-1">
                 <p className="text-xs font-black text-slate-500 uppercase tracking-widest">Grand Total</p>
                 <p className="text-4xl font-black text-white tracking-tighter">
-                  Rs. {grandTotal.toLocaleString()}
+                  {formatPrice(grandTotal, selectedCurrency)}
                 </p>
               </div>
               <div className="text-right text-xs text-slate-500 font-medium">
@@ -154,7 +173,22 @@ const CartDropdown = () => {
               </div>
             </div>
 
-            <Link href="/checkout" className="w-full py-6 bg-[#D00000] text-white rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 hover:bg-white hover:text-[#D00000] transition-all duration-500 shadow-2xl shadow-[#D00000]/20">
+            <Link 
+              href={isCurrencyMismatch ? "#" : "/checkout"} 
+              onClick={(e) => {
+                if (isCurrencyMismatch) {
+                  e.preventDefault();
+                  alert(`Please switch your currency back to ${cartCurrency} to proceed to checkout.`);
+                } else {
+                  dispatch(setCartOpen(false));
+                }
+              }}
+              className={`w-full py-6 rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 transition-all duration-500 shadow-2xl ${
+                isCurrencyMismatch 
+                  ? "bg-slate-700 text-slate-400 cursor-not-allowed" 
+                  : "bg-[#D00000] text-white hover:bg-white hover:text-[#D00000] shadow-[#D00000]/20"
+              }`}
+            >
               Proceed to Checkout
               <ArrowRight size={18} />
             </Link>

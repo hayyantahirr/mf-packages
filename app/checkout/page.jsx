@@ -15,6 +15,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Image from "next/image";
+import { convertPrice, formatPrice } from "@/src/utils/currencyUtils";
 
 /**
  * MF-Packages Checkout Page
@@ -23,7 +24,8 @@ import Image from "next/image";
 export default function CheckoutPage() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.cart);
+  const { items, cartCurrency } = useSelector((state) => state.cart);
+  const { selectedCurrency, exchangeRates } = useSelector((state) => state.currency);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -54,8 +56,13 @@ export default function CheckoutPage() {
     paymentMethod !== "";
 
   // Calculations
-  const subtotal = items.reduce((acc, item) => acc + item.totalPrice, 0);
-  const shippingFee = 1500; // "Calculated at next step" or 0 for now
+  // Calculations (Dynamic based on PKR base)
+  const subtotalPKR = items.reduce((acc, item) => acc + item.totalPricePKR, 0);
+  const shippingFeePKR = 1500;
+  const grandTotalPKR = subtotalPKR + shippingFeePKR;
+
+  const subtotal = convertPrice(subtotalPKR, selectedCurrency, exchangeRates);
+  const shippingFee = convertPrice(shippingFeePKR, selectedCurrency, exchangeRates);
   const grandTotal = subtotal + shippingFee;
 
   // Handle Input Changes
@@ -101,14 +108,17 @@ export default function CheckoutPage() {
           name: item.name,
           size: item.size || "Standard",
           quantity: item.quantity,
-          totalPrice: item.totalPrice,
-          basePrice: item.basePrice,
+          totalPriceConverted: convertPrice(item.totalPricePKR, selectedCurrency, exchangeRates),
+          basePricePKR: item.basePricePKR,
           mainImage: item.mainImage || null,
         })),
-        paymentMethod, // 'cod' or 'bank'
-        status: "Pending", // Default order status
-        totalAmount: grandTotal,
-        createdAt: serverTimestamp(), // Firebase server-side timestamp
+        paymentMethod,
+        status: "Pending",
+        totalAmountConverted: grandTotal, // The amount in the used currency
+        totalAmountPKR: grandTotalPKR,    // Original PKR for reference
+        currencyUsed: selectedCurrency,
+        exchangeRateAtTimeOfPurchase: exchangeRates[selectedCurrency] || 1,
+        createdAt: serverTimestamp(),
       };
 
       // Writing to Firestore 'orders' collection
@@ -149,7 +159,7 @@ export default function CheckoutPage() {
           <p className="text-white mb-6">
             Your order{" "}
             <span className="text-green-500 font-mono">{orderIdRef}</span> has
-            been placed successfully.
+            been placed successfully for <span className="font-bold">{formatPrice(grandTotal, selectedCurrency)}</span>.
           </p>
           <div className="space-y-4">
             <p className="text-white/60 text-sm">
@@ -246,10 +256,10 @@ export default function CheckoutPage() {
                         </div>
                         <div className="flex justify-between items-end mt-2">
                           <span className="text-white text-xs">
-                            Rs. {item.basePrice} / unit
+                            {formatPrice(convertPrice(item.basePricePKR, selectedCurrency, exchangeRates), selectedCurrency)} / unit
                           </span>
                           <span className="font-bold text-white">
-                            Rs. {item.totalPrice.toLocaleString()}
+                            {formatPrice(convertPrice(item.totalPricePKR, selectedCurrency, exchangeRates), selectedCurrency)}
                           </span>
                         </div>
                       </div>
@@ -269,13 +279,13 @@ export default function CheckoutPage() {
                 <div className="flex justify-between text-lg">
                   <span className="text-red-500">Subtotal</span>
                   <span className="font-medium">
-                    Rs. {subtotal.toLocaleString()}
+                    {formatPrice(subtotal, selectedCurrency)}
                   </span>
                 </div>
                 <div className="flex justify-between text-lg border-b border-white/5 pb-4">
                   <span className="text-red-500">Shipping</span>
                   <span className="text-white text-sm font-medium">
-                    Rs. {shippingFee.toLocaleString()}
+                    {formatPrice(shippingFee, selectedCurrency)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center pt-2">
@@ -283,7 +293,7 @@ export default function CheckoutPage() {
                     Grand Total
                   </span>
                   <span className="text-3xl font-black text-white">
-                    Rs. {grandTotal.toLocaleString()}
+                    {formatPrice(grandTotal, selectedCurrency)}
                   </span>
                 </div>
               </div>

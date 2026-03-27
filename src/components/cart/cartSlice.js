@@ -10,6 +10,7 @@ import { calculateTieredPrice } from "../../utils/pricing";
  */
 const initialState = {
   items: [],
+  cartCurrency: null, // Locked currency for the current cart session
   isOpen: false,
 };
 
@@ -25,17 +26,19 @@ const cartSlice = createSlice({
      * Every click of "Add to Cart" pushes a new item to the items array.
      */
     addItem: (state, action) => {
-      const { quantity, originalPrice, basePrice } = action.payload;
+      const { quantity, basePricePKR, currency } = action.payload;
       
-      // Calculate final pricing at the time of addition
-      const finalBasePrice = basePrice;
-      const finalTotalPrice = Number((quantity * finalBasePrice).toFixed(2));
+      // If cart is empty, lock the currency to the first item added
+      if (state.items.length === 0) {
+        state.cartCurrency = currency;
+      }
 
       state.items.push({
         ...action.payload,
         cartEntryId: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-        basePrice: finalBasePrice,
-        totalPrice: finalTotalPrice,
+        basePricePKR, // Store original PKR price
+        totalPricePKR: Number((quantity * basePricePKR).toFixed(2)),
+        currencyAddedUnder: currency, // The currency selected when this was added
       });
     },
 
@@ -47,6 +50,11 @@ const cartSlice = createSlice({
       state.items = state.items.filter(
         (item) => item.cartEntryId !== cartEntryId
       );
+
+      // If cart becomes empty, unlock the currency
+      if (state.items.length === 0) {
+        state.cartCurrency = null;
+      }
     },
 
     /**
@@ -68,6 +76,7 @@ const cartSlice = createSlice({
      */
     clearCart: (state) => {
       state.items = [];
+      state.cartCurrency = null;
     },
   },
 });

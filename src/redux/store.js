@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import cartReducer from "../components/cart/cartSlice";
+import currencyReducer from "./currencySlice";
 
 /**
  * Persist configuration for Redux Persist.
@@ -20,11 +21,12 @@ const persistConfig = {
   key: "mf-packages-cart",
   version: 1,
   storage,
-  whitelist: ["cart"], // Only persist the cart slice
+  whitelist: ["cart", "currency"], // Persist cart and currency
 };
 
 const rootReducer = combineReducers({
   cart: cartReducer,
+  currency: currencyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

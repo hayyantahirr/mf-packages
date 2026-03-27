@@ -8,6 +8,8 @@ import {
   XCircle,
   ChevronRight,
 } from "lucide-react";
+import { useSelector } from "react-redux";
+import { convertPrice, formatPrice } from "@/src/utils/currencyUtils";
 
 const ProductCard = ({ product }) => {
   // Variation state
@@ -17,10 +19,15 @@ const ProductCard = ({ product }) => {
     product.variations[0];
 
   const hasMultipleVariations = product.variations.length > 1;
-  const priceDisplay =
-    product.minPrice === product.maxPrice
-      ? `Rs. ${product.minPrice}`
-      : `Rs. ${product.minPrice} - ${product.maxPrice}`;
+  const { selectedCurrency, exchangeRates } = useSelector((state) => state.currency);
+
+  const formatMinMax = () => {
+    const minConverted = convertPrice(product.minPrice, selectedCurrency, exchangeRates);
+    const maxConverted = convertPrice(product.maxPrice, selectedCurrency, exchangeRates);
+    
+    if (minConverted === maxConverted) return formatPrice(minConverted, selectedCurrency);
+    return `${formatPrice(minConverted, selectedCurrency)} - ${formatPrice(maxConverted, selectedCurrency)}`;
+  };
 
   return (
     <div className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-[0_20px_50px_rgba(29,45,68,0.15)] transition-all duration-500 border border-slate-100 hover:border-red-100 flex flex-col h-full hover:-translate-y-3">
@@ -93,7 +100,7 @@ const ProductCard = ({ product }) => {
             </h2>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Explore Variations
+                Starting from <span className="text-[#D00000] font-black">{formatMinMax()}</span>
               </span>
             </div>
           </div>

@@ -3,14 +3,26 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, Menu, X, Leaf } from "lucide-react";
+import { ShoppingCart, Menu, X, Leaf, ChevronDown } from "lucide-react";
 import CartTrigger from "@/src/components/cart/CartTrigger";
 import CartDropdown from "@/src/components/cart/CartDropdown";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchExchangeRates, setCurrency } from "@/src/redux/currencySlice";
+import { currencies } from "@/src/utils/currencyUtils";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const pathname = usePathname();
+  const dispatch = useDispatch();
+  const { selectedCurrency } = useSelector((state) => state.currency);
+  const { cartCurrency } = useSelector((state) => state.cart);
+  const isCheckout = pathname === "/checkout";
+
+  useEffect(() => {
+    dispatch(fetchExchangeRates());
+  }, [dispatch]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,8 +129,44 @@ const Navbar = () => {
                 ))}
               </div>
 
-              {/* Cart Button with Advanced Styling */}
-              <div className="flex items-center space-x-4">
+              {/* Cart & Currency Section */}
+              <div className="flex items-center space-x-2 md:space-x-4">
+                {/* Currency Switcher */}
+                <div className="relative">
+                  <button
+                    disabled={isCheckout}
+                    onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all duration-300 backdrop-blur-sm ${
+                      isCheckout ? "opacity-50 cursor-not-allowed border-white/5" : "border-white/10 hover:bg-white/10"
+                    } text-[#f1ead6]`}
+                  >
+                    <span className="text-sm font-bold">
+                      {currencies.find(c => c.code === selectedCurrency)?.flag} {selectedCurrency}
+                    </span>
+                    {!isCheckout && <ChevronDown className={`w-4 h-4 transition-transform ${isCurrencyOpen ? "rotate-180" : ""}`} />}
+                  </button>
+
+                  {isCurrencyOpen && !isCheckout && (
+                    <div className="absolute top-full right-0 mt-2 w-32 bg-[#1D2D44] border border-white/10 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
+                      {currencies.map((curr) => (
+                        <button
+                          key={curr.code}
+                          onClick={() => {
+                            dispatch(setCurrency(curr.code));
+                            setIsCurrencyOpen(false);
+                          }}
+                          className={`w-full flex items-center space-x-3 px-4 py-2 text-sm text-[#f1ead6] hover:bg-white/10 transition-colors ${
+                            selectedCurrency === curr.code ? "bg-white/5 font-bold" : ""
+                          }`}
+                        >
+                          <span>{curr.flag}</span>
+                          <span>{curr.code}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
                 <CartTrigger />
 
                 {/* Mobile Menu Button */}
