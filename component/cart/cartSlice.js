@@ -1,7 +1,7 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { calculateTieredPrice } from "../../utils/pricing";
+import { calculateTieredPrice } from "@/config/utils/pricing";
 
 /**
  * Initial state for the shopping cart.

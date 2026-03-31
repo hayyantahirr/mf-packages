@@ -3,13 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  CheckCircle2,
-  XCircle,
-  ChevronRight,
-} from "lucide-react";
+import { CheckCircle2, XCircle, ChevronRight } from "lucide-react";
 import { useSelector } from "react-redux";
-import { convertPrice, formatPrice } from "@/src/utils/currencyUtils";
+import { convertPrice, formatPrice } from "@/config/utils/currencyUtils";
 
 const ProductCard = ({ product }) => {
   // Variation state
@@ -19,13 +15,24 @@ const ProductCard = ({ product }) => {
     product.variations[0];
 
   const hasMultipleVariations = product.variations.length > 1;
-  const { selectedCurrency, exchangeRates } = useSelector((state) => state.currency);
+  const { selectedCurrency, exchangeRates } = useSelector(
+    (state) => state.currency,
+  );
 
   const formatMinMax = () => {
-    const minConverted = convertPrice(product.minPrice, selectedCurrency, exchangeRates);
-    const maxConverted = convertPrice(product.maxPrice, selectedCurrency, exchangeRates);
-    
-    if (minConverted === maxConverted) return formatPrice(minConverted, selectedCurrency);
+    const minConverted = convertPrice(
+      product.minPrice,
+      selectedCurrency,
+      exchangeRates,
+    );
+    const maxConverted = convertPrice(
+      product.maxPrice,
+      selectedCurrency,
+      exchangeRates,
+    );
+
+    if (minConverted === maxConverted)
+      return formatPrice(minConverted, selectedCurrency);
     return `${formatPrice(minConverted, selectedCurrency)} - ${formatPrice(maxConverted, selectedCurrency)}`;
   };
 
@@ -100,7 +107,10 @@ const ProductCard = ({ product }) => {
             </h2>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Starting from <span className="text-[#D00000] font-black">{formatMinMax()}</span>
+                Starting from{" "}
+                <span className="text-[#D00000] font-black">
+                  {formatMinMax()}
+                </span>
               </span>
             </div>
           </div>

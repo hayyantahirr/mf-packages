@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/config/firebase";
-import { clearCart } from "@/src/components/cart/cartSlice";
+import { clearCart } from "@/component/cart/cartSlice";
 import {
   ChevronLeft,
   CreditCard,
@@ -15,7 +15,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Image from "next/image";
-import { convertPrice, formatPrice } from "@/src/utils/currencyUtils";
+import { convertPrice, formatPrice } from "@/config/utils/currencyUtils";
 
 /**
  * MF-Packages Checkout Page

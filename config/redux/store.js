@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import cartReducer from "../components/cart/cartSlice";
+import cartReducer from "../../component/cart/cartSlice";
 import currencyReducer from "./currencySlice";
 
 /**

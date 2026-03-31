@@ -6,7 +6,7 @@ import { X, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { removeItem, toggleCart, setCartOpen } from "./cartSlice";
-import { convertPrice, formatPrice } from "@/src/utils/currencyUtils";
+import { convertPrice, formatPrice } from "@/config/utils/currencyUtils";
 import { AlertCircle } from "lucide-react";
 
 /**

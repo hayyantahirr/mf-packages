@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ShoppingCart, Menu, X, Leaf, ChevronDown } from "lucide-react";
-import CartTrigger from "@/src/components/cart/CartTrigger";
-import CartDropdown from "@/src/components/cart/CartDropdown";
+import CartTrigger from "@/component/cart/CartTrigger";
+import CartDropdown from "@/component/cart/CartDropdown";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchExchangeRates, setCurrency } from "@/src/redux/currencySlice";
-import { currencies } from "@/src/utils/currencyUtils";
+import { fetchExchangeRates, setCurrency } from "@/config/redux/currencySlice";
+import { currencies } from "@/config/utils/currencyUtils";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -137,13 +137,23 @@ const Navbar = () => {
                     disabled={isCheckout}
                     onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
                     className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all duration-300 backdrop-blur-sm ${
-                      isCheckout ? "opacity-50 cursor-not-allowed border-white/5" : "border-white/10 hover:bg-white/10"
+                      isCheckout
+                        ? "opacity-50 cursor-not-allowed border-white/5"
+                        : "border-white/10 hover:bg-white/10"
                     } text-[#f1ead6]`}
                   >
                     <span className="text-sm font-bold">
-                      {currencies.find(c => c.code === selectedCurrency)?.flag} {selectedCurrency}
+                      {
+                        currencies.find((c) => c.code === selectedCurrency)
+                          ?.flag
+                      }{" "}
+                      {selectedCurrency}
                     </span>
-                    {!isCheckout && <ChevronDown className={`w-4 h-4 transition-transform ${isCurrencyOpen ? "rotate-180" : ""}`} />}
+                    {!isCheckout && (
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${isCurrencyOpen ? "rotate-180" : ""}`}
+                      />
+                    )}
                   </button>
 
                   {isCurrencyOpen && !isCheckout && (
@@ -156,7 +166,9 @@ const Navbar = () => {
                             setIsCurrencyOpen(false);
                           }}
                           className={`w-full flex items-center space-x-3 px-4 py-2 text-sm text-[#f1ead6] hover:bg-white/10 transition-colors ${
-                            selectedCurrency === curr.code ? "bg-white/5 font-bold" : ""
+                            selectedCurrency === curr.code
+                              ? "bg-white/5 font-bold"
+                              : ""
                           }`}
                         >
                           <span>{curr.flag}</span>

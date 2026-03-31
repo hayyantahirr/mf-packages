@@ -66,7 +66,7 @@ const BlogGrid = ({ blogs }) => {
               </div>
 
               {/* Content */}
-              <div className="p-6 space-y-4 flex flex-col flex-grow">
+              <div className="p-6 space-y-4 flex flex-col grow">
                 {/* Meta Info */}
                 <div className="flex items-center space-x-4 text-sm text-gray-600">
                   <div className="flex items-center space-x-1">
@@ -85,7 +85,7 @@ const BlogGrid = ({ blogs }) => {
                 </h2>
 
                 {/* Excerpt */}
-                <p className="text-gray-600 line-clamp-3 text-sm flex-grow">
+                <p className="text-gray-600 line-clamp-3 text-sm grow">
                   {blog.excerpt}
                 </p>
 

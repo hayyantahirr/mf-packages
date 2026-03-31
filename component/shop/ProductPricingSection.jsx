@@ -1,10 +1,10 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "@/src/components/cart/cartSlice";
-import { setCurrency } from "@/src/redux/currencySlice";
+import { addItem } from "@/component/cart/cartSlice";
+import { setCurrency } from "@/config/redux/currencySlice";
 import { ShoppingCart, Truck, Printer, Info, Gift, ChevronDown, AlertCircle } from "lucide-react";
-import { convertPrice, formatPrice, currencies } from "@/src/utils/currencyUtils";
+import { convertPrice, formatPrice, currencies } from "@/config/utils/currencyUtils";
 import { useState } from "react";
 import ProductTechnicalSpecs from "./ProductTechnicalSpecs";
 
