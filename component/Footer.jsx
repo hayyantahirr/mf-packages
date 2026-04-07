@@ -30,11 +30,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#1D2D44] text-white overflow-hidden">
+    <footer className="relative bg-brand-header text-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#D00000]/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-success/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-cta/5 rounded-full blur-3xl"></div>
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -81,9 +81,9 @@ const Footer = () => {
             </p>
 
             {/* Eco badge */}
-            <div className="inline-flex items-center space-x-2 bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30">
-              <Leaf className="w-4 h-4 text-green-400" />
-              <span className="text-green-400 text-sm font-semibold">
+            <div className="inline-flex items-center space-x-2 bg-brand-success/20 px-4 py-2 rounded-full border border-brand-success/30">
+              <Leaf className="w-4 h-4 text-brand-success" />
+              <span className="text-brand-success text-sm font-semibold">
                 100% Eco-Friendly
               </span>
             </div>
@@ -119,7 +119,7 @@ const Footer = () => {
             <h3 className="text-white font-bold text-lg mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3 text-sm">
-                <MapPin className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-brand-success shrink-0 mt-0.5" />
                 <span className="text-white">
                   Pakistan
                   <br />
@@ -127,7 +127,7 @@ const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center space-x-3 text-sm">
-                <Phone className="w-5 h-5 text-green-400 shrink-0" />
+                <Phone className="w-5 h-5 text-brand-success shrink-0" />
                 <a
                   href="tel:+92 332 2464729"
                   className="text-white hover:text-green-400 transition-colors"
@@ -136,7 +136,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center space-x-3 text-sm">
-                <Mail className="w-5 h-5 text-green-400 shrink-0" />
+                <Mail className="w-5 h-5 text-brand-success shrink-0" />
                 <a
                   href="mailto:info@mfpackages.com"
                   className="text-white hover:text-green-400 transition-colors"
@@ -174,7 +174,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-linear-to-r from-green-500 to-green-600 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+                className="w-full bg-brand-cta text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
               >
                 Subscribe
               </button>
@@ -229,7 +229,7 @@ const Footer = () => {
                 Powered by{" "}
                 <a
                   href="https://hayyantahirr.vercel.app/"
-                  className="underline text-[#d00000]"
+                  className="underline text-brand-cta"
                 >
                   hayyantahirr
                 </a>

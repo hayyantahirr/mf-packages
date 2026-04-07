@@ -31,7 +31,7 @@ const Sec4 = () => {
   return (
     <section
       id="team"
-      className="relative py-8 md:py-15 overflow-hidden bg-linear-to-b from-white via-green-50/20 to-white"
+      className="relative py-8 md:py-15 overflow-hidden bg-brand-bg"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ============================================
@@ -39,22 +39,22 @@ const Sec4 = () => {
             ============================================ */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           {/* 24/7 Availability Badge */}
-          <div className="inline-flex items-center space-x-3 bg-linear-to-r from-green-100 to-emerald-100 px-6 py-3 rounded-full border border-green-200 shadow-lg mb-8 animate-pulse">
-            <Clock className="w-5 h-5 text-green-600" />
-            <span className="text-green-700 font-bold">24/7 Available</span>
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+          <div className="inline-flex items-center space-x-3 bg-brand-section px-6 py-3 rounded-full border border-brand-header/10 shadow-lg mb-8 animate-pulse">
+            <Clock className="w-5 h-5 text-brand-success" />
+            <span className="text-brand-header font-bold">24/7 Available</span>
+            <div className="w-2 h-2 bg-brand-success rounded-full animate-ping"></div>
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1D2D44] mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6 leading-tight">
             Meet Our{" "}
-            <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            <span className="text-brand-success">
               Expert Team
             </span>
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+          <p className="text-lg md:text-xl text-brand-text/80 leading-relaxed">
             Our dedicated team is here to serve you around the clock. Reach out
             anytime via phone, email, or WhatsApp for instant support and expert
             guidance.
@@ -64,20 +64,20 @@ const Sec4 = () => {
             BOTTOM CTA - GENERAL CONTACT
             ============================================ */}
         <div className="">
-          <div className="bg-linear-to-r from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 border border-green-200 shadow-xl">
+          <div className="bg-brand-section rounded-3xl p-8 md:p-12 border border-brand-header/10 shadow-xl">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Left side - Text */}
               <div className="space-y-4">
-                <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-green-200 shadow-sm">
-                  <MapPin className="w-4 h-4 text-green-600" />
-                  <span className="text-green-700 font-semibold text-sm">
+                <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-brand-header/10 shadow-sm">
+                  <MapPin className="w-4 h-4 text-brand-success" />
+                  <span className="text-brand-header font-semibold text-sm">
                     Pakistan
                   </span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#1D2D44]">
+                <h3 className="text-3xl md:text-4xl font-bold text-brand-text">
                   Need Help? We're Here 24/7
                 </h3>
-                <p className="text-gray-700 text-lg">
+                <p className="text-brand-text/80 text-lg">
                   Our team is always ready to assist you with any questions
                   about our eco-friendly packaging solutions. Contact us
                   anytime, anywhere.
@@ -86,22 +86,22 @@ const Sec4 = () => {
                 {/* Contact stats */}
                 <div className="grid grid-cols-3 gap-4 pt-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-[#D00000]">
+                    <div className="text-2xl font-bold text-brand-cta">
                       24/7
                     </div>
-                    <div className="text-sm text-gray-600">Available</div>
+                    <div className="text-sm text-brand-text/60">Available</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-2xl font-bold text-brand-success">
                       &lt;5min
                     </div>
-                    <div className="text-sm text-gray-600">Response</div>
+                    <div className="text-sm text-brand-text/60">Response</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-[#1D2D44]">
+                    <div className="text-2xl font-bold text-brand-header">
                       100%
                     </div>
-                    <div className="text-sm text-gray-600">Support</div>
+                    <div className="text-sm text-brand-text/60">Support</div>
                   </div>
                 </div>
               </div>
@@ -111,7 +111,7 @@ const Sec4 = () => {
                 {/* General WhatsApp */}
                 <Link
                   href="https://wa.me/+923322464729"
-                  className="w-full flex items-center justify-between bg-linear-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer"
+                  className="w-full flex items-center justify-between bg-brand-success text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer"
                 >
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-white/20 rounded-lg">
@@ -149,7 +149,7 @@ const Sec4 = () => {
                 </Link>
 
                 {/* General Phone */}
-                <button className="w-full flex items-center justify-between bg-linear-to-r from-[#1D2D44] to-[#1D2D44]/90 text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                <button className="w-full flex items-center justify-between bg-brand-header text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-white/20 rounded-lg">
                       <Phone className="w-6 h-6" />
@@ -177,14 +177,14 @@ const Sec4 = () => {
                 </button>
 
                 {/* Email */}
-                <button className="w-full flex items-center justify-between bg-white text-[#1D2D44] px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-green-300 group">
+                <button className="w-full flex items-center justify-between bg-white text-brand-header px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-section hover:border-brand-success/30 group">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-gray-100 rounded-lg">
-                      <Mail className="w-6 h-6 text-[#D00000]" />
+                    <div className="p-2 bg-brand-section rounded-lg">
+                      <Mail className="w-6 h-6 text-brand-cta" />
                     </div>
                     <div className="text-left">
                       <div className="font-bold">Send Email</div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-brand-text/60">
                         info@mfpackages.com
                       </div>
                     </div>
@@ -214,10 +214,10 @@ const Sec4 = () => {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="group relative bg-[#1D2D44] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-green-200 hover:-translate-y-2"
+              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-brand-section hover:border-brand-success/20 hover:-translate-y-2"
             >
               {/* Image container */}
-              <div className="relative aspect-square bg-[#1D2D44] overflow-hidden">
+              <div className="relative aspect-square bg-brand-section overflow-hidden">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -228,7 +228,7 @@ const Sec4 = () => {
 
               {/* Name */}
               <div className="p-4 text-center">
-                <h3 className="text-lg md:text-xl font-bold text-white">
+                <h3 className="text-lg md:text-xl font-bold text-brand-header">
                   {member.name}
                 </h3>
               </div>

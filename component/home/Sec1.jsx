@@ -74,19 +74,19 @@ const Sec1 = () => {
   ];
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden bg-linear-to-b from-[#00416b] via-green-50/30 to-[#00416b]">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-brand-section">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center space-x-2 bg-linear-to-r from-green-100 to-emerald-100 px-5 py-2 rounded-full border border-green-200 shadow-lg mb-6">
-            <Leaf className="w-5 h-5 text-green-600" />
-            <span className="text-green-700 font-semibold">Our Mission</span>
+          <div className="inline-flex items-center space-x-2 bg-white px-5 py-2 rounded-full border border-brand-header/10 shadow-lg mb-6">
+            <Leaf className="w-5 h-5 text-brand-success" />
+            <span className="text-brand-text font-semibold">Our Mission</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#f1ead6] mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6 leading-tight">
             Building a{" "}
             <span className="relative inline-block">
-              <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              <span className="text-brand-success">
                 Greener Future
               </span>
               <svg
@@ -107,7 +107,7 @@ const Sec1 = () => {
            
           </h2>
 
-          <p className="text-lg md:text-xl text-[#ffffff] opacity-35 ">
+          <p className="text-lg md:text-xl text-brand-text/80 leading-relaxed max-w-2xl mx-auto">
             At MF Packages, we're committed to revolutionizing Pakistan's
             packaging industry through sustainable innovation. Our goal is to
             protect the environment while empowering businesses with
@@ -120,7 +120,7 @@ const Sec1 = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="cursor-pointer group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-green-200 hover:-translate-y-2"
+              className="cursor-pointer group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-brand-header/5 hover:border-brand-success/20 hover:-translate-y-2"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
@@ -140,7 +140,7 @@ const Sec1 = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-[#1D2D44] mb-4 group-hover:text-green-700 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-brand-header mb-4 group-hover:text-brand-success transition-colors duration-300">
                 {feature.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">
@@ -157,7 +157,7 @@ const Sec1 = () => {
 
         {/* Stats Section */}
         <div className="relative">
-          <div className="bg-linear-to-r from-[#1D2D44] via-[#1D2D44]/95 to-[#1D2D44] rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10 overflow-hidden cursor-pointer">
+          <div className="bg-brand-header rounded-3xl p-8 md:p-12 shadow-2xl border border-white/5 overflow-hidden cursor-pointer">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div
@@ -199,7 +199,7 @@ const Sec1 = () => {
                     <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-green-400 font-semibold mb-1">
+                    <div className="text-brand-success font-semibold mb-1">
                       {stat.label}
                     </div>
                     <div className="text-white/60 text-sm">

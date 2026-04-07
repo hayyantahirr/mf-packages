@@ -55,8 +55,8 @@ const Navbar = () => {
           <div
             className={`relative rounded-2xl transition-all duration-500 ${
               isScrolled
-                ? "bg-linear-to-r from-[#1D2D44]/95 via-[#1D2D44]/90 to-[#1D2D44]/95 shadow-2xl"
-                : "bg-linear-to-r from-[#1D2D44]/80 via-[#1D2D44]/70 to-[#1D2D44]/80 shadow-xl"
+                ? "bg-brand-header/95 shadow-2xl"
+                : "bg-brand-header/80 shadow-xl"
             }`}
             style={{
               backdropFilter: "blur(5px)",
@@ -87,10 +87,10 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="hidden sm:block">
-                  <span className="text-2xl font-bold text-[#f1ead6] tracking-tight">
+                  <span className="text-2xl font-bold text-white tracking-tight">
                     MF Packages
                   </span>
-                  <p className="text-xs text-[#f1ead6]/70 ">
+                  <p className="text-xs text-white/70 ">
                     Eco-Friendly Solutions
                   </p>
                 </div>
@@ -112,16 +112,16 @@ const Navbar = () => {
 
                     {/* Active State */}
                     {pathname === link.href && (
-                      <span className="absolute inset-0 bg-[#D00000]/30 rounded-xl border border-[#D00000]/50"></span>
+                      <span className="absolute inset-0 bg-brand-cta/30 rounded-xl border border-brand-cta/50"></span>
                     )}
 
                     {/* Text */}
-                    <span className="relative z-10 group-hover:text-[#f1ead6] transition-colors duration-300">
+                    <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                       {link.name}
                     </span>
 
                     {/* Animated Underline */}
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-transparent via-[#D00000] to-transparent group-hover:w-4/5 transition-all duration-500 shadow-lg shadow-[#D00000]/50"></span>
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-transparent via-brand-cta to-transparent group-hover:w-4/5 transition-all duration-500 shadow-lg shadow-brand-cta/50"></span>
 
                     {/* Glow Effect */}
                     <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg shadow-[#D00000]/20"></span>
@@ -140,7 +140,7 @@ const Navbar = () => {
                       isCheckout
                         ? "opacity-50 cursor-not-allowed border-white/5"
                         : "border-white/10 hover:bg-white/10"
-                    } text-[#f1ead6]`}
+                    } text-white`}
                   >
                     <span className="text-sm font-bold">
                       {
@@ -157,7 +157,7 @@ const Navbar = () => {
                   </button>
 
                   {isCurrencyOpen && !isCheckout && (
-                    <div className="absolute top-full right-0 mt-2 w-32 bg-[#1D2D44] border border-white/10 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
+                    <div className="absolute top-full right-0 mt-2 w-32 bg-brand-header border border-white/10 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
                       {currencies.map((curr) => (
                         <button
                           key={curr.code}
@@ -165,7 +165,7 @@ const Navbar = () => {
                             dispatch(setCurrency(curr.code));
                             setIsCurrencyOpen(false);
                           }}
-                          className={`w-full flex items-center space-x-3 px-4 py-2 text-sm text-[#f1ead6] hover:bg-white/10 transition-colors ${
+                          className={`w-full flex items-center space-x-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors ${
                             selectedCurrency === curr.code
                               ? "bg-white/5 font-bold"
                               : ""
@@ -183,7 +183,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden p-3 text-[#f1ead6] hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/10"
+                  className="md:hidden p-3 text-white hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/10"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   aria-label="Toggle Menu"
                 >
@@ -207,7 +207,7 @@ const Navbar = () => {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl bg-linear-to-br from-[#1D2D44]/95 to-[#1D2D44]/90 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
+            <div className="rounded-2xl bg-brand-header/95 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
               <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link, index) => (
                   <Link
@@ -216,9 +216,9 @@ const Navbar = () => {
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`block px-5 py-3 text-[#f1ead6] font-medium rounded-xl transition-all duration-300 ${
+                    className={`block px-5 py-3 text-white font-medium rounded-xl transition-all duration-300 ${
                       pathname === link.href
-                        ? "bg-[#D00000]/30 border border-[#D00000]/50"
+                        ? "bg-brand-cta/30 border border-brand-cta/50"
                         : "hover:bg-white/10 border border-transparent"
                     }`}
                     style={{

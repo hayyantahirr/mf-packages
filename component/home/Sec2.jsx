@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Sec2 = () => {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden bg-linear-to-b from-white via-slate-50/50 to-white">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-brand-bg">
       {/* ============================================
           BACKGROUND DECORATIVE ELEMENTS
           Subtle industrial-themed background patterns
@@ -13,12 +13,12 @@ const Sec2 = () => {
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `linear-gradient(#1D2D44 1px, transparent 1px), linear-gradient(90deg, #1D2D44 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(#2C3E50 1px, transparent 1px), linear-gradient(90deg, #2C3E50 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         ></div>
         {/* Gradient orbs for depth */}
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-linear-to-br from-[#1D2D44]/5 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-linear-to-br from-brand-header/5 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-linear-to-tr from-green-500/5 to-transparent rounded-full blur-3xl"></div>
       </div>
 
@@ -29,7 +29,7 @@ const Sec2 = () => {
             ============================================ */}
         <div className="text-center max-w-4xl mx-auto mb-20">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-3 bg-linear-to-r from-slate-100 to-gray-100 px-6 py-3 rounded-full border border-slate-200 shadow-lg mb-8">
+          <div className="inline-flex items-center space-x-3 bg-brand-section px-6 py-3 rounded-full border border-brand-header/10 shadow-lg mb-8">
             <svg
               className="w-5 h-5 text-[#1D2D44]"
               fill="none"
@@ -43,13 +43,13 @@ const Sec2 = () => {
                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
             </svg>
-            <span className="text-[#1D2D44] font-semibold">
+            <span className="text-brand-header font-semibold">
               Our Manufacturing Process
             </span>
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1D2D44] mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6 leading-tight">
             Global Production,{" "}
             <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               Local Excellence
@@ -69,7 +69,7 @@ const Sec2 = () => {
             Visual connection showing China → Pakistan flow
             ============================================ */}
         <div className="flex items-center justify-center mb-16">
-          <div className="flex items-center space-x-4 md:space-x-8 bg-white rounded-2xl px-6 md:px-10 py-5 shadow-xl border border-gray-100">
+          <div className="flex items-center space-x-4 md:space-x-8 bg-brand-section rounded-2xl px-6 md:px-10 py-5 shadow-xl border border-brand-header/5">
             {/* China Flag */}
             <div className="flex items-center space-x-3">
               <div className="relative w-12 h-8 md:w-16 md:h-10 rounded-lg overflow-hidden shadow-md border border-gray-200">
@@ -87,7 +87,7 @@ const Sec2 = () => {
 
             {/* Arrow Flow */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 md:w-16 h-0.5 bg-linear-to-r from-[#D00000] to-green-500"></div>
+              <div className="w-8 md:w-16 h-0.5 bg-linear-to-r from-brand-cta to-brand-success"></div>
               <svg
                 className="w-6 h-6 text-green-600"
                 fill="currentColor"
@@ -130,10 +130,10 @@ const Sec2 = () => {
               />
             </div>
             <div>
-              <span className="text-sm font-semibold text-[#D00000] uppercase tracking-wider">
+              <span className="text-sm font-semibold text-brand-cta uppercase tracking-wider">
                 Stage 01
               </span>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#1D2D44]">
+              <h3 className="text-3xl md:text-4xl font-bold text-brand-text">
                 Manufacturing in China
               </h3>
             </div>
@@ -151,7 +151,7 @@ const Sec2 = () => {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-header/80 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-center space-x-2 mb-3">
@@ -181,7 +181,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-header/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Material Processing
@@ -197,7 +197,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-header/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Quality Assurance
@@ -217,7 +217,7 @@ const Sec2 = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-3 bg-white rounded-xl px-4 py-3 shadow-md border border-gray-100"
+                className="flex items-center space-x-3 bg-brand-section rounded-xl px-4 py-3 shadow-md border border-brand-header/5"
               >
                 <span className="text-2xl">{feature.icon}</span>
                 <span className="text-[#1D2D44] font-medium text-sm">
@@ -244,10 +244,10 @@ const Sec2 = () => {
               />
             </div>
             <div>
-              <span className="text-sm font-semibold text-green-600 uppercase tracking-wider">
+              <span className="text-sm font-semibold text-brand-success uppercase tracking-wider">
                 Stage 02
               </span>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#1D2D44]">
+              <h3 className="text-3xl md:text-4xl font-bold text-brand-text">
                 Printing & Distribution in Pakistan
               </h3>
             </div>
@@ -265,7 +265,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-header/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Custom Branding
@@ -281,7 +281,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-header/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Ready for Distribution
@@ -300,7 +300,7 @@ const Sec2 = () => {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-header/80 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-center space-x-2 mb-3">
@@ -331,7 +331,7 @@ const Sec2 = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-3 bg-white rounded-xl px-4 py-3 shadow-md border border-gray-100"
+                className="flex items-center space-x-3 bg-brand-section rounded-xl px-4 py-3 shadow-md border border-brand-header/5"
               >
                 <span className="text-2xl">{feature.icon}</span>
                 <span className="text-[#1D2D44] font-medium text-sm">
@@ -347,7 +347,7 @@ const Sec2 = () => {
             Key manufacturing strengths and value props
             ============================================ */}
         <div className="relative">
-          <div className="bg-linear-to-r from-[#1D2D44] via-[#1D2D44]/98 to-[#1D2D44] rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
+          <div className="bg-brand-header rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div
@@ -361,7 +361,7 @@ const Sec2 = () => {
 
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#D00000]/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-brand-cta/10 rounded-full blur-3xl"></div>
 
             <div className="relative">
               {/* Header */}

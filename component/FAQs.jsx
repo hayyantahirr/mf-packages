@@ -46,19 +46,19 @@ const FAQs = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-[#1D2D44] relative overflow-hidden">
+    <section className="py-24 px-6 bg-brand-section relative overflow-hidden">
       {/* Decorative Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-[#D00000]/5 blur-[100px] pointer-events-none rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-brand-cta/5 blur-[100px] pointer-events-none rounded-full" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-brand-header tracking-tight">
             Frequently Asked{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#D00000] to-red-500">
+            <span className="text-brand-cta">
               Questions
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-brand-text/60 max-w-2xl mx-auto">
             Find answers to common questions about our shipping, timeline, and
             custom packaging orders.
           </p>
@@ -70,10 +70,10 @@ const FAQs = () => {
             return (
               <div
                 key={index}
-                className={`border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 ${
+                className={`border border-brand-header/5 rounded-2xl overflow-hidden transition-all duration-300 ${
                   isOpen
-                    ? "bg-white/5 border-[#D00000]/30 shadow-[0_0_30px_rgba(208,0,0,0.1)]"
-                    : "bg-transparent hover:bg-white/2"
+                    ? "bg-white border-brand-cta/30 shadow-[0_0_30px_rgba(233,62,36,0.1)]"
+                    : "bg-white/50 hover:bg-white"
                 }`}
               >
                 <button
@@ -81,12 +81,12 @@ const FAQs = () => {
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
                   <span
-                    className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? "text-[#D00000]" : "text-slate-200"}`}
+                    className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? "text-brand-cta" : "text-brand-header"}`}
                   >
                     {faq.question}
                   </span>
                   <div
-                    className={`p-2 rounded-full transition-transform duration-300 ${isOpen ? "bg-[#D00000] text-white rotate-180" : "bg-white/5 text-slate-400"}`}
+                    className={`p-2 rounded-full transition-transform duration-300 ${isOpen ? "bg-brand-cta text-white rotate-180" : "bg-brand-header/5 text-brand-header/40"}`}
                   >
                     <ChevronDown className="w-5 h-5" />
                   </div>
@@ -100,7 +100,7 @@ const FAQs = () => {
                   }`}
                 >
                   <div className="overflow-hidden px-6">
-                    <div className="text-slate-400 leading-relaxed space-y-2">
+                    <div className="text-brand-text/70 leading-relaxed space-y-2">
                       {faq.answer.split("\n").map((line, i) => (
                         <p key={i}>{line}</p>
                       ))}

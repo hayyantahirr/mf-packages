@@ -27,31 +27,31 @@ const Hero = () => {
     },
   ];
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-linear-to-br ">
+    <section className="relative min-h-screen w-full overflow-hidden bg-brand-bg">
       {/* Main Content Container */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Text Content */}
           <div className="space-y-8 animate-fade-in">
             {/* Eco Badge */}
-            <div className="inline-flex items-center space-x-1 bg-linear-to-r from-green-100 to-emerald-100 px-4 py-2 rounded-full border border-green-200 shadow-lg">
-              <Sparkles className="w-4 h-4 text-green-600" />
-              <span className="text-green-700 font-semibold text-sm">
+            <div className="inline-flex items-center space-x-1 bg-brand-section px-4 py-2 rounded-full border border-brand-header/10 shadow-lg">
+              <Sparkles className="w-4 h-4 text-brand-success" />
+              <span className="text-brand-text font-semibold text-sm">
                 100% Eco-Friendly Solutions
               </span>
-              <Leaf className="w-4 h-4 text-green-600 animate-pulse" />
+              <Leaf className="w-4 h-4 text-brand-success animate-pulse" />
             </div>
 
             {/* Main Heading */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-[4rem]  font-bold">
-                <span className="text-[#cdeaf9] block">MF Packages</span>
-                <span className="text-[#D00000] font-extrabold mt-2">
+              <h1 className="text-5xl md:text-[4rem] font-bold text-brand-text">
+                <span className="block italic font-light text-brand-header/70">MF Packages</span>
+                <span className="text-brand-cta font-extrabold mt-2">
                   Redefining
                 </span>
-                <span className="text-[#cdeaf9] block">the Future of</span>
+                <span className="block">the Future of</span>
                 <span className="relative inline-block">
-                  <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                  <span className="text-brand-success">
                     Food Packaging
                   </span>
                   <svg
@@ -62,7 +62,7 @@ const Hero = () => {
                   >
                     <path
                       d="M2 10C50 5 100 2 150 5C200 8 250 10 298 7"
-                      stroke="#D00000"
+                      stroke="#E93E24"
                       strokeWidth="3"
                       strokeLinecap="round"
                       className="animate-draw-line"
@@ -70,20 +70,20 @@ const Hero = () => {
                   </svg>
                 </span>
 
-                <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent block">
-                  <span className="text-[#cdeaf9]">in</span> Pakistan.
+                <span className="text-brand-success block">
+                  <span className="text-brand-text">in</span> Pakistan.
                 </span>
               </h1>
             </div>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-[#f1ead6] leading-relaxed max-w-xl">
+            <p className="text-lg md:text-xl text-brand-text/80 leading-relaxed max-w-xl">
               Transforming Pakistan's packaging industry with{" "}
-              <span className="font-semibold text-green-600">
+              <span className="font-semibold text-brand-success">
                 biodegradable
               </span>{" "}
               and{" "}
-              <span className="font-semibold text-[#cdeaf9]">
+              <span className="font-semibold text-brand-header">
                 sustainable solutions
               </span>{" "}
               that protect both your food and our planet.
@@ -93,15 +93,15 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 pt-4">
               <Link
                 href={"/shop"}
-                className="group relative px-8 py-4 bg-linear-to-r from-[#D00000] to-[#D00000]/90 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden"
+                className="group relative px-8 py-4 bg-brand-cta text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden"
               >
                 <span className="relative z-10">Explore Products</span>
-                <div className="absolute inset-0 bg-linear-to-r from-[#D00000]/90 to-[#D00000] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-brand-cta/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
 
               <Link
                 href={"/about"}
-                className="group relative px-8 py-4 bg-white/80 backdrop-blur-sm text-[#1D2D44] font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-[#1D2D44]/20 hover:border-[#1D2D44]/40"
+                className="group relative px-8 py-4 bg-brand-header text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-header/10"
               >
                 <span className="relative z-10">Learn More</span>
               </Link>
