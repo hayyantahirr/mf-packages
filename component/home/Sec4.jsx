@@ -48,13 +48,13 @@ const Sec4 = () => {
           {/* Main Heading */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6 leading-tight">
             Meet Our{" "}
-            <span className="text-brand-success">
+            <span className="text-brand-orange">
               Expert Team
             </span>
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-brand-text/80 leading-relaxed">
+          <p className="text-lg md:text-xl text-brand-text leading-relaxed">
             Our dedicated team is here to serve you around the clock. Reach out
             anytime via phone, email, or WhatsApp for instant support and expert
             guidance.
@@ -149,7 +149,7 @@ const Sec4 = () => {
                 </Link>
 
                 {/* General Phone */}
-                <button className="w-full flex items-center justify-between bg-brand-dark text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                <button className="w-full flex items-center justify-between bg-[#ef6d59] text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-white/20 rounded-lg">
                       <Phone className="w-6 h-6" />

@@ -117,7 +117,6 @@ const Sec3 = () => {
                   <div className="relative aspect-3/4 overflow-hidden">
                     <Image
                       src={cert.image}
-                      
                       alt={cert.title}
                       fill
                       className="object-contain transition-transform duration-700"
@@ -137,7 +136,6 @@ const Sec3 = () => {
           justify-content: center !important;
           gap: 12px !important;
           bottom: 5px !important;
-          
         }
         .custom-bullet {
           width: 10px !important;
@@ -148,10 +146,9 @@ const Sec3 = () => {
           cursor: pointer !important;
           transition: all 0.3s ease !important;
           border: 2px solid transparent !important;
-          
         }
         .custom-bullet-active {
-          background: #10B981 !important;
+          background: #10b981 !important;
           transform: scale(1.3) !important;
           box-shadow: 0 0 10px rgba(16, 185, 129, 0.3) !important;
         }
