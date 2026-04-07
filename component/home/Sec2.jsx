@@ -13,12 +13,12 @@ const Sec2 = () => {
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `linear-gradient(#1A1A1B 1px, transparent 1px), linear-gradient(90deg, #1A1A1B 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(#E93E24 1px, transparent 1px), linear-gradient(90deg, #E93E24 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         ></div>
         {/* Gradient orbs for depth */}
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-linear-to-br from-brand-dark/5 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-linear-to-br from-brand-orange/5 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-linear-to-tr from-green-500/5 to-transparent rounded-full blur-3xl"></div>
       </div>
 
@@ -29,9 +29,9 @@ const Sec2 = () => {
             ============================================ */}
         <div className="text-center max-w-4xl mx-auto mb-20">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-3 bg-brand-section px-6 py-3 rounded-full border border-brand-dark/10 shadow-lg mb-8">
+          <div className="inline-flex items-center space-x-3 bg-brand-section px-6 py-3 rounded-full border border-brand-orange/10 shadow-lg mb-8">
             <svg
-              className="w-5 h-5 text-brand-dark"
+              className="w-5 h-5 text-brand-orange"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -69,7 +69,7 @@ const Sec2 = () => {
             Visual connection showing China → Pakistan flow
             ============================================ */}
         <div className="flex items-center justify-center mb-16">
-          <div className="flex items-center space-x-4 md:space-x-8 bg-brand-section rounded-2xl px-6 md:px-10 py-5 shadow-xl border border-brand-dark/5">
+          <div className="flex items-center space-x-4 md:space-x-8 bg-brand-section rounded-2xl px-6 md:px-10 py-5 shadow-xl border border-brand-orange/5">
             {/* China Flag */}
             <div className="flex items-center space-x-3">
               <div className="relative w-12 h-8 md:w-16 md:h-10 rounded-lg overflow-hidden shadow-md border border-gray-200">
@@ -130,7 +130,7 @@ const Sec2 = () => {
               />
             </div>
             <div>
-              <span className="text-sm font-semibold text-brand-orange uppercase tracking-wider">
+              <span className="text-sm font-semibold text-[#ef6d59] uppercase tracking-wider">
                 Stage 01
               </span>
               <h3 className="text-3xl md:text-4xl font-bold text-brand-text">
@@ -151,7 +151,7 @@ const Sec2 = () => {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#ef6d59]/80 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-center space-x-2 mb-3">
@@ -181,7 +181,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#ef6d59]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Material Processing
@@ -197,7 +197,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#ef6d59]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Quality Assurance
@@ -217,7 +217,7 @@ const Sec2 = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-3 bg-brand-section rounded-xl px-4 py-3 shadow-md border border-brand-dark/5"
+                className="flex items-center space-x-3 bg-brand-section rounded-xl px-4 py-3 shadow-md border border-[#ef6d59]/5"
               >
                 <span className="text-2xl">{feature.icon}</span>
                 <span className="text-brand-dark font-medium text-sm">
@@ -265,7 +265,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#ef6d59]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Custom Branding
@@ -281,7 +281,7 @@ const Sec2 = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#ef6d59]/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white font-semibold">
                     Ready for Distribution
@@ -300,7 +300,7 @@ const Sec2 = () => {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#ef6d59]/80 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-center space-x-2 mb-3">
@@ -331,7 +331,7 @@ const Sec2 = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-3 bg-brand-section rounded-xl px-4 py-3 shadow-md border border-brand-dark/5"
+                className="flex items-center space-x-3 bg-brand-section rounded-xl px-4 py-3 shadow-md border border-brand-orange/5"
               >
                 <span className="text-2xl">{feature.icon}</span>
                 <span className="text-brand-dark font-medium text-sm">
@@ -347,7 +347,7 @@ const Sec2 = () => {
             Key manufacturing strengths and value props
             ============================================ */}
         <div className="relative">
-          <div className="bg-brand-dark rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
+          <div className="bg-brand-orange rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div
@@ -361,7 +361,7 @@ const Sec2 = () => {
 
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-brand-orange/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
 
             <div className="relative">
               {/* Header */}
@@ -401,7 +401,7 @@ const Sec2 = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="group text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
+                    className="group text-center p-6 rounded-2xl bg-[#ef6d59] backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
                   >
                     <span className="text-4xl mb-4 block group-hover:scale-110 transition-transform duration-300">
                       {item.icon}

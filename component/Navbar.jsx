@@ -53,16 +53,11 @@ const Navbar = () => {
         {/* Main Navbar Container with Advanced Glassmorphism */}
         <div className="max-w-7xl mx-auto md:px-4 px-1">
           <div
-            className={`relative rounded-2xl transition-all duration-500 border border-brand-section ${
+            className={`relative rounded-2xl transition-all duration-500 border border-white/20 backdrop-blur-xl ${
               isScrolled
-                ? "bg-white/95 shadow-2xl"
-                : "bg-white/80 shadow-xl"
+                ? "bg-[#fdf2f0]/30 shadow-2xl"
+                : "bg-[#fdf2f0] shadow-xl"
             }`}
-            style={{
-              backdropFilter: "blur(5px)",
-              WebkitBackdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.18)",
-            }}
           >
             {/* Animated Border Glow */}
             {/* <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#D00000]/20 via-transparent to-[#D00000]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
@@ -72,7 +67,13 @@ const Navbar = () => {
               <Link href="/" className="flex items-center space-x-3 group">
                 <div className="relative">
                   <div className="absolute inset-0  rounded-full   transition-all duration-500"></div>
-                  <div className="relative w-14 h-14 bg-white rounded-full p-2 backdrop-blur-sm border border-brand-section transition-all duration-300 group-hover:scale-110 group-hover:rotate-2">
+                  <div
+                    className={`relative w-14 h-14  rounded-full p-2 backdrop-blur-md border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2 ${
+                      isScrolled
+                        ? "bg-[#fdf2f0]/20 shadow-2xl"
+                        : "bg-[#fdf2f0] shadow-xl"
+                    }`}
+                  >
                     <Image
                       src="/logo.png"
                       alt="MF Packages Logo"
@@ -136,10 +137,10 @@ const Navbar = () => {
                   <button
                     disabled={isCheckout}
                     onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all duration-300 backdrop-blur-sm ${
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all duration-300 backdrop-blur-md ${
                       isCheckout
-                        ? "opacity-50 cursor-not-allowed border-brand-section"
-                        : "border-brand-section hover:bg-brand-section"
+                        ? "opacity-50 cursor-not-allowed border-white/10"
+                        : "border-white/10 hover:bg-white/10"
                     } text-brand-dark`}
                   >
                     <span className="text-sm font-bold">
@@ -157,7 +158,7 @@ const Navbar = () => {
                   </button>
 
                   {isCurrencyOpen && !isCheckout && (
-                    <div className="absolute top-full right-0 mt-2 w-32 bg-white border border-brand-section rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
+                    <div className="absolute top-full right-0 mt-2 w-32 bg-white/80 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
                       {currencies.map((curr) => (
                         <button
                           key={curr.code}
@@ -183,7 +184,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden p-3 text-brand-dark hover:bg-brand-section rounded-xl transition-all duration-300 backdrop-blur-sm border border-brand-section"
+                  className="md:hidden p-3 text-brand-dark hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-md border border-white/10"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   aria-label="Toggle Menu"
                 >
@@ -207,7 +208,7 @@ const Navbar = () => {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl bg-white backdrop-blur-xl border border-brand-section shadow-2xl overflow-hidden">
+            <div className="rounded-2xl bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden">
               <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link, index) => (
                   <Link

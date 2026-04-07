@@ -55,12 +55,12 @@ const CartDropdown = () => {
       {/* Dropdown Panel */}
       <div 
         ref={dropdownRef}
-        className="relative w-full max-w-lg bg-[#1D2D44] h-screen shadow-2xl border-l border-white/10 flex flex-col pointer-events-auto transform transition-transform duration-500 ease-out"
+        className="relative w-full max-w-lg bg-brand-dark/95 backdrop-blur-2xl h-screen shadow-2xl border-l border-white/10 flex flex-col pointer-events-auto transform transition-transform duration-500 ease-out"
       >
         {/* Header */}
         <div className="p-8 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <ShoppingBag className="text-[#D00000]" size={24} />
+            <ShoppingBag className="text-brand-orange" size={24} />
             <h2 className="text-2xl font-black text-white uppercase tracking-tight">Your Cart</h2>
           </div>
           <button 
@@ -73,9 +73,9 @@ const CartDropdown = () => {
 
         {/* Currency Mismatch Warning */}
         {isCurrencyMismatch && (
-          <div className="bg-[#D00000]/10 border-b border-[#D00000]/20 p-4 flex items-center gap-3 animate-pulse">
-            <AlertCircle className="text-[#D00000] shrink-0" size={18} />
-            <p className="text-[10px] font-bold text-[#D00000] uppercase tracking-wider leading-relaxed">
+          <div className="bg-brand-orange/10 border-b border-brand-orange/20 p-4 flex items-center gap-3 animate-pulse">
+            <AlertCircle className="text-brand-orange shrink-0" size={18} />
+            <p className="text-[10px] font-bold text-brand-orange uppercase tracking-wider leading-relaxed">
               Currency mismatch. This cart was locked to <span className="underline">{cartCurrency}</span>. Please switch back to checkout.
             </p>
           </div>
@@ -101,7 +101,7 @@ const CartDropdown = () => {
             items.map((item) => (
               <div 
                 key={item.cartEntryId}
-                className="flex gap-4 p-4 rounded-3xl bg-white/5 border border-white/10 group hover:border-[#D00000]/30 transition-all duration-300"
+                className="flex gap-4 p-4 rounded-3xl bg-white/5 border border-white/10 group hover:border-brand-orange/30 transition-all duration-300"
               >
                 {/* Product Image */}
                 <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
@@ -128,7 +128,7 @@ const CartDropdown = () => {
                       </button>
                     </div>
                     <div className="flex flex-col gap-1 mt-1">
-                      <p className="text-[10px] font-black text-[#D00000] uppercase tracking-widest">
+                      <p className="text-[10px] font-black text-brand-orange uppercase tracking-widest">
                         Size: {item.size}
                       </p>
                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
@@ -186,7 +186,7 @@ const CartDropdown = () => {
               className={`w-full py-6 rounded-3xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 transition-all duration-500 shadow-2xl ${
                 isCurrencyMismatch 
                   ? "bg-slate-700 text-slate-400 cursor-not-allowed" 
-                  : "bg-[#D00000] text-white hover:bg-white hover:text-[#D00000] shadow-[#D00000]/20"
+                  : "bg-brand-orange text-white hover:bg-white hover:text-brand-orange shadow-brand-orange/20"
               }`}
             >
               Proceed to Checkout
