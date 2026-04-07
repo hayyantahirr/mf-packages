@@ -9,11 +9,12 @@
   --color-brand-section: #F4F4F7;
   --color-brand-header: #FFFFFF;
 }
-/* * {
+/* *{
   border: 1px solid red;
-
 } */
-/* Smooth scrolling */
+
+
+
 html {
   scroll-behavior: smooth;
   
