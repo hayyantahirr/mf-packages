@@ -65,7 +65,7 @@ const ContactPage = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6">
             Get In{" "}
-            <span className="text-brand-cta">
+            <span className="text-brand-orange">
               Touch
             </span>
           </h1>
@@ -77,8 +77,8 @@ const ContactPage = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Side - Contact Form */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-brand-header/5">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-header mb-6">
+          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-brand-dark/5">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-6">
               Get A Quote
             </h2>
 
@@ -93,7 +93,7 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-brand-orange transition-colors"
                   placeholder="John Doe"
                 />
               </div>
@@ -108,7 +108,7 @@ const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-brand-orange transition-colors"
                   placeholder="john@example.com"
                 />
               </div>
@@ -122,7 +122,7 @@ const ContactPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-brand-orange transition-colors"
                   placeholder="+92 300 1234567"
                 />
               </div>
@@ -137,7 +137,7 @@ const ContactPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-brand-orange transition-colors"
                   placeholder="How can we help?"
                 />
               </div>
@@ -152,7 +152,7 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 border border-brand-header/10 rounded-xl focus:outline-none focus:border-brand-cta transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-brand-dark/10 rounded-xl focus:outline-none focus:border-brand-orange transition-colors resize-none"
                   placeholder="Tell us about your packaging needs..."
                 ></textarea>
               </div>
@@ -163,7 +163,7 @@ const ContactPage = () => {
                 className={`w-full flex items-center justify-center space-x-2 px-6 py-4 rounded-xl font-semibold shadow-lg transition-all duration-300 hover:scale-105 ${
                   status === "submitting"
                     ? "bg-brand-text/20 cursor-not-allowed"
-                    : "bg-brand-cta text-white hover:shadow-xl hover:bg-brand-cta/90"
+                    : "bg-brand-orange text-white hover:shadow-xl hover:bg-brand-orange/90"
                 }`}
               >
                 {status === "submitting" ? (
@@ -189,7 +189,7 @@ const ContactPage = () => {
               )}
 
               {status === "error" && (
-                <div className="flex items-center space-x-2 text-brand-cta bg-brand-cta/10 p-4 rounded-xl border border-brand-cta/20">
+                <div className="flex items-center space-x-2 text-brand-orange bg-brand-orange/10 p-4 rounded-xl border border-brand-orange/20">
                   <AlertCircle className="w-5 h-5" />
                   <span className="font-medium">{errorMsg}</span>
                 </div>
@@ -204,16 +204,16 @@ const ContactPage = () => {
               {/* Phone */}
               <a
                 href="tel:+92 332 2464729"
-                className="flex items-center space-x-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-brand-header/5 group"
+                className="flex items-center space-x-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-brand-dark/5 group"
               >
-                <div className="p-3 bg-brand-cta rounded-xl">
+                <div className="p-3 bg-brand-orange rounded-xl">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <div className="text-sm text-brand-text/50 font-semibold">
                     Call Us
                   </div>
-                  <div className="text-brand-header font-bold group-hover:text-brand-cta transition-colors">
+                  <div className="text-brand-dark font-bold group-hover:text-brand-orange transition-colors">
                     +92 332 2464729
                   </div>
                 </div>
@@ -222,16 +222,16 @@ const ContactPage = () => {
               {/* Email */}
               <a
                 href="mailto:info@mfpackages.com"
-                className="flex items-center space-x-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-brand-header/5 group"
+                className="flex items-center space-x-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-brand-dark/5 group"
               >
-                <div className="p-3 bg-brand-cta rounded-xl">
+                <div className="p-3 bg-brand-orange rounded-xl">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <div className="text-sm text-brand-text/50 font-semibold">
                     Email Us
                   </div>
-                  <div className="text-brand-header font-bold group-hover:text-brand-cta transition-colors">
+                  <div className="text-brand-dark font-bold group-hover:text-brand-orange transition-colors">
                     info@mfpackages.com
                   </div>
                 </div>
@@ -239,8 +239,8 @@ const ContactPage = () => {
             </div>
 
             {/* Social Media */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-brand-header/10">
-              <h3 className="text-lg font-bold text-brand-header mb-4">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-brand-dark/10">
+              <h3 className="text-lg font-bold text-brand-dark mb-4">
                 Connect With Us
               </h3>
               <div className="grid grid-cols-3 gap-4">
@@ -269,9 +269,9 @@ const ContactPage = () => {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center space-y-2 p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all duration-300 hover:scale-105 group"
+                  className="flex flex-col items-center space-y-2 p-4 bg-brand-section hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105 group"
                 >
-                  <Facebook className="w-8 h-8 text-blue-600 group-hover:scale-110 transition-transform" />
+                  <Facebook className="w-8 h-8 text-brand-dark group-hover:text-brand-orange group-hover:scale-110 transition-all" />
                   <span className="text-xs font-semibold text-brand-text/70">
                     Facebook
                   </span>
@@ -281,9 +281,9 @@ const ContactPage = () => {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center space-y-2 p-4 bg-pink-50 hover:bg-pink-100 rounded-xl transition-all duration-300 hover:scale-105 group"
+                  className="flex flex-col items-center space-y-2 p-4 bg-brand-section hover:bg-brand-orange/10 rounded-xl transition-all duration-300 hover:scale-105 group"
                 >
-                  <Instagram className="w-8 h-8 text-pink-600 group-hover:scale-110 transition-transform" />
+                  <Instagram className="w-8 h-8 text-brand-dark group-hover:text-brand-orange group-hover:scale-110 transition-all" />
                   <span className="text-xs font-semibold text-brand-text/70">
                     Instagram
                   </span>
@@ -292,7 +292,7 @@ const ContactPage = () => {
             </div>
 
             {/* Map */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-brand-header/10">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-brand-dark/10">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.2076489476844!2d67.02812631500238!3d24.85384598408234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sSaddar%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
                 width="100%"
@@ -308,7 +308,7 @@ const ContactPage = () => {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-16 bg-brand-header rounded-3xl p-8 md:p-12 text-center shadow-2xl">
+        <div className="mt-16 bg-brand-dark rounded-3xl p-8 md:p-12 text-center shadow-2xl">
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Available 24/7 for Your Convenience
           </h3>

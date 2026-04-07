@@ -34,7 +34,7 @@ const Hero = () => {
           {/* Left Side - Text Content */}
           <div className="space-y-8 animate-fade-in">
             {/* Eco Badge */}
-            <div className="inline-flex items-center space-x-1 bg-brand-section px-4 py-2 rounded-full border border-brand-header/10 shadow-lg">
+            <div className="inline-flex items-center space-x-1 bg-brand-section px-4 py-2 rounded-full border border-brand-dark/10 shadow-lg">
               <Sparkles className="w-4 h-4 text-brand-success" />
               <span className="text-brand-text font-semibold text-sm">
                 100% Eco-Friendly Solutions
@@ -45,8 +45,8 @@ const Hero = () => {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-[4rem] font-bold text-brand-text">
-                <span className="block italic font-light text-brand-header/70">MF Packages</span>
-                <span className="text-brand-cta font-extrabold mt-2">
+                <span className="block italic font-light text-brand-dark/70">MF Packages</span>
+                <span className="text-brand-orange font-extrabold mt-2">
                   Redefining
                 </span>
                 <span className="block">the Future of</span>
@@ -83,7 +83,7 @@ const Hero = () => {
                 biodegradable
               </span>{" "}
               and{" "}
-              <span className="font-semibold text-brand-header">
+              <span className="font-semibold text-brand-dark">
                 sustainable solutions
               </span>{" "}
               that protect both your food and our planet.
@@ -93,15 +93,15 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 pt-4">
               <Link
                 href={"/shop"}
-                className="group relative px-8 py-4 bg-brand-cta text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden"
+                className="group relative px-8 py-4 bg-brand-orange text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden"
               >
                 <span className="relative z-10">Explore Products</span>
-                <div className="absolute inset-0 bg-brand-cta/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-brand-orange/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
 
               <Link
                 href={"/about"}
-                className="group relative px-8 py-4 bg-brand-header text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-header/10"
+                className="group relative px-8 py-4 bg-brand-dark text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-dark/10"
               >
                 <span className="relative z-10">Learn More</span>
               </Link>

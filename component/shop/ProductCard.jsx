@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-[0_20px_50px_rgba(44,62,80,0.1)] transition-all duration-500 border border-brand-section hover:border-brand-cta/20 flex flex-col h-full hover:-translate-y-3">
+    <div className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-[0_20px_50px_rgba(26,26,27,0.1)] transition-all duration-500 border border-brand-section hover:border-brand-orange/20 flex flex-col h-full hover:-translate-y-3">
       {/* Thumbnail Container */}
       <div className="relative h-72 w-full overflow-hidden bg-brand-section">
         <Image
@@ -49,7 +49,7 @@ const ProductCard = ({ product }) => {
 
         {/* Badges Overlay */}
         <div className="absolute top-5 left-5 flex flex-col gap-2">
-          <span className="bg-brand-header/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+          <span className="bg-brand-dark/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
             {product.category || "Uncategorized"}
           </span>
           {selectedVariation?.inStock ? (
@@ -57,7 +57,7 @@ const ProductCard = ({ product }) => {
               <CheckCircle2 size={10} /> In Stock
             </span>
           ) : (
-            <span className="bg-brand-cta/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg flex items-center gap-1.5 text-nowrap">
+            <span className="bg-brand-orange/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg flex items-center gap-1.5 text-nowrap">
               <XCircle size={10} /> Out of Stock
             </span>
           )}
@@ -66,8 +66,8 @@ const ProductCard = ({ product }) => {
         {/* Variation Count Badge */}
         {hasMultipleVariations && (
           <div className="absolute bottom-5 right-5 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-brand-section flex items-center gap-1.5 animate-fade-in translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150">
-            <span className="w-2 h-2 rounded-full bg-brand-cta animate-pulse"></span>
-            <span className="text-[10px] font-black text-brand-header uppercase tracking-tighter">
+            <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+            <span className="text-[10px] font-black text-brand-dark uppercase tracking-tighter">
               {product.variations.length} Sizes Available
             </span>
           </div>
@@ -79,7 +79,7 @@ const ProductCard = ({ product }) => {
             {product.extraImages.slice(0, 3).map((img, idx) => (
               <div
                 key={idx}
-                className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-xl ring-2 ring-brand-header/10"
+                className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-xl ring-2 ring-brand-dark/10"
               >
                 <Image
                   src={img}
@@ -90,7 +90,7 @@ const ProductCard = ({ product }) => {
               </div>
             ))}
             {product.extraImages.length > 3 && (
-              <div className="w-10 h-10 rounded-full bg-brand-header/90 backdrop-blur-md border-2 border-white flex items-center justify-center text-[10px] font-bold text-white shadow-xl">
+              <div className="w-10 h-10 rounded-full bg-brand-dark/90 backdrop-blur-md border-2 border-white flex items-center justify-center text-[10px] font-bold text-white shadow-xl">
                 +{product.extraImages.length - 3}
               </div>
             )}
@@ -102,13 +102,13 @@ const ProductCard = ({ product }) => {
       <div className="p-8 flex flex-col grow bg-linear-to-b from-white to-brand-section/30">
         <div className="flex justify-between items-start mb-6">
           <div className="space-y-1">
-            <h2 className="text-2xl font-black text-brand-text tracking-tight group-hover:text-brand-cta transition-colors leading-tight">
+            <h2 className="text-2xl font-black text-brand-text tracking-tight group-hover:text-brand-orange transition-colors leading-tight">
               {product.name}
             </h2>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold text-brand-text/50 uppercase tracking-widest">
                 Starting from{" "}
-                <span className="text-brand-cta font-black">
+                <span className="text-brand-orange font-black">
                   {formatMinMax()}
                 </span>
               </span>
@@ -137,7 +137,7 @@ const ProductCard = ({ product }) => {
             </div>
             <Link
               href={`/shop/${encodeURIComponent(product.name)}`}
-              className="flex items-center gap-2 px-6 py-3 bg-brand-header text-white hover:bg-brand-cta rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 group/btn"
+              className="flex items-center gap-2 px-6 py-3 bg-brand-dark text-white hover:bg-brand-orange rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 group/btn"
             >
               View More
               <ChevronRight

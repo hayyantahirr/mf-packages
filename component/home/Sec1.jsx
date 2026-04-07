@@ -17,8 +17,8 @@ const Sec1 = () => {
       title: "Protecting Our Planet",
       description:
         "Reducing plastic waste by providing 100% biodegradable packaging solutions that naturally decompose without harming the environment.",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50",
+      color: "from-brand-orange to-orange-500",
+      bgColor: "bg-brand-orange/5",
     },
     {
       icon: Leaf,
@@ -33,8 +33,8 @@ const Sec1 = () => {
       title: "Economic Growth",
       description:
         "Driving Pakistan's green economy forward by creating jobs and establishing a sustainable packaging industry that benefits everyone.",
-      color: "from-[#D00000] to-red-500",
-      bgColor: "bg-red-50",
+      color: "from-brand-orange to-orange-400",
+      bgColor: "bg-brand-orange/5",
     },
     {
       icon: Recycle,
@@ -78,7 +78,7 @@ const Sec1 = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center space-x-2 bg-white px-5 py-2 rounded-full border border-brand-header/10 shadow-lg mb-6">
+          <div className="inline-flex items-center space-x-2 bg-white px-5 py-2 rounded-full border border-brand-dark/10 shadow-lg mb-6">
             <Leaf className="w-5 h-5 text-brand-success" />
             <span className="text-brand-text font-semibold">Our Mission</span>
           </div>
@@ -120,7 +120,7 @@ const Sec1 = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="cursor-pointer group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-brand-header/5 hover:border-brand-success/20 hover:-translate-y-2"
+              className="cursor-pointer group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-brand-dark/5 hover:border-brand-success/20 hover:-translate-y-2"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
@@ -140,7 +140,7 @@ const Sec1 = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-brand-header mb-4 group-hover:text-brand-success transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-brand-dark mb-4 group-hover:text-brand-success transition-colors duration-300">
                 {feature.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">
@@ -157,7 +157,7 @@ const Sec1 = () => {
 
         {/* Stats Section */}
         <div className="relative">
-          <div className="bg-brand-header rounded-3xl p-8 md:p-12 shadow-2xl border border-white/5 overflow-hidden cursor-pointer">
+          <div className="bg-brand-dark rounded-3xl p-8 md:p-12 shadow-2xl border border-white/5 overflow-hidden cursor-pointer">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div
@@ -172,7 +172,7 @@ const Sec1 = () => {
 
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#D00000]/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-brand-orange/10 rounded-full blur-3xl"></div>
 
             <div className="relative">
               {/* Stats Header */}

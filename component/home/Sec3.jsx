@@ -94,7 +94,7 @@ const Sec3 = () => {
             ============================================ */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-3 bg-white px-6 py-3 rounded-full border border-brand-header/10 shadow-lg mb-8">
+          <div className="inline-flex items-center space-x-3 bg-white px-6 py-3 rounded-full border border-brand-dark/10 shadow-lg mb-8">
             <svg
               className="w-5 h-5 text-brand-success"
               fill="none"
@@ -108,7 +108,7 @@ const Sec3 = () => {
                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
               />
             </svg>
-            <span className="text-brand-header font-semibold">Certified Quality</span>
+            <span className="text-brand-dark font-semibold">Certified Quality</span>
           </div>
 
           {/* Main Heading */}
@@ -137,10 +137,10 @@ const Sec3 = () => {
             {/* Previous Button - Left Side */}
             <button
               onClick={handlePrev}
-              className="shrink-0 p-3 md:p-4 bg-white hover:bg-brand-section rounded-full border border-brand-header/10 transition-all duration-300 hover:scale-110 shadow-xl group"
+              className="shrink-0 p-3 md:p-4 bg-white hover:bg-brand-section rounded-full border border-brand-dark/10 transition-all duration-300 hover:scale-110 shadow-xl group"
               aria-label="Previous Certificates"
             >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-brand-header group-hover:text-brand-success transition-colors" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-brand-dark group-hover:text-brand-success transition-colors" />
             </button>
 
             {/* Carousel Container */}
@@ -166,7 +166,7 @@ const Sec3 = () => {
                           className="transition-transform duration-700 group-hover:scale-110"
                         />
                         {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-linear-to-t from-brand-header/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                           <div className="absolute bottom-4 left-4 right-4">
                             <div className="flex items-center space-x-2 text-white">
                               <svg
@@ -196,10 +196,10 @@ const Sec3 = () => {
             {/* Next Button - Right Side */}
             <button
               onClick={handleNext}
-              className="shrink-0 p-3 md:p-4 bg-white hover:bg-brand-section rounded-full border border-brand-header/10 transition-all duration-300 hover:scale-110 shadow-xl group"
+              className="shrink-0 p-3 md:p-4 bg-white hover:bg-brand-section rounded-full border border-brand-dark/10 transition-all duration-300 hover:scale-110 shadow-xl group"
               aria-label="Next Certificates"
             >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-brand-header group-hover:text-brand-success transition-colors" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-brand-dark group-hover:text-brand-success transition-colors" />
             </button>
           </div>
 
@@ -212,7 +212,7 @@ const Sec3 = () => {
                 className={`transition-all duration-300 rounded-full ${
                   currentIndex % certificates.length === index
                     ? "w-8 h-2 bg-brand-success"
-                    : "w-2 h-2 bg-brand-header/20 hover:bg-brand-header/40 cursor-pointer"
+                    : "w-2 h-2 bg-brand-dark/20 hover:bg-brand-dark/40 cursor-pointer"
                 }`}
                 aria-label={`Go to certificate ${index + 1}`}
               />

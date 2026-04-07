@@ -53,10 +53,10 @@ const Navbar = () => {
         {/* Main Navbar Container with Advanced Glassmorphism */}
         <div className="max-w-7xl mx-auto md:px-4 px-1">
           <div
-            className={`relative rounded-2xl transition-all duration-500 ${
+            className={`relative rounded-2xl transition-all duration-500 border border-brand-section ${
               isScrolled
-                ? "bg-brand-header/95 shadow-2xl"
-                : "bg-brand-header/80 shadow-xl"
+                ? "bg-white/95 shadow-2xl"
+                : "bg-white/80 shadow-xl"
             }`}
             style={{
               backdropFilter: "blur(5px)",
@@ -72,7 +72,7 @@ const Navbar = () => {
               <Link href="/" className="flex items-center space-x-3 group">
                 <div className="relative">
                   <div className="absolute inset-0  rounded-full   transition-all duration-500"></div>
-                  <div className="relative w-14 h-14 bg-white/10 rounded-full p-2 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2">
+                  <div className="relative w-14 h-14 bg-white rounded-full p-2 backdrop-blur-sm border border-brand-section transition-all duration-300 group-hover:scale-110 group-hover:rotate-2">
                     <Image
                       src="/logo.png"
                       alt="MF Packages Logo"
@@ -87,10 +87,10 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="hidden sm:block">
-                  <span className="text-2xl font-bold text-white tracking-tight">
+                  <span className="text-2xl font-bold text-brand-dark tracking-tight">
                     MF Packages
                   </span>
-                  <p className="text-xs text-white/70 ">
+                  <p className="text-xs text-brand-dark/70 ">
                     Eco-Friendly Solutions
                   </p>
                 </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="relative px-5 py-2.5 text-[#f1ead6] font-medium transition-all duration-300 group"
+                    className="relative px-5 py-2.5 text-brand-dark font-medium transition-all duration-300 group"
                     style={{
                       animationDelay: `${index * 50}ms`,
                     }}
@@ -112,19 +112,19 @@ const Navbar = () => {
 
                     {/* Active State */}
                     {pathname === link.href && (
-                      <span className="absolute inset-0 bg-brand-cta/30 rounded-xl border border-brand-cta/50"></span>
+                      <span className="absolute inset-0 bg-brand-orange/10 rounded-xl border border-brand-orange/50"></span>
                     )}
 
                     {/* Text */}
-                    <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                    <span className="relative z-10 group-hover:text-brand-orange transition-colors duration-300">
                       {link.name}
                     </span>
 
                     {/* Animated Underline */}
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-transparent via-brand-cta to-transparent group-hover:w-4/5 transition-all duration-500 shadow-lg shadow-brand-cta/50"></span>
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-transparent via-brand-orange to-transparent group-hover:w-4/5 transition-all duration-500 shadow-lg shadow-brand-orange/50"></span>
 
                     {/* Glow Effect */}
-                    <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg shadow-[#D00000]/20"></span>
+                    <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg shadow-brand-orange/20"></span>
                   </Link>
                 ))}
               </div>
@@ -138,9 +138,9 @@ const Navbar = () => {
                     onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
                     className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all duration-300 backdrop-blur-sm ${
                       isCheckout
-                        ? "opacity-50 cursor-not-allowed border-white/5"
-                        : "border-white/10 hover:bg-white/10"
-                    } text-white`}
+                        ? "opacity-50 cursor-not-allowed border-brand-section"
+                        : "border-brand-section hover:bg-brand-section"
+                    } text-brand-dark`}
                   >
                     <span className="text-sm font-bold">
                       {
@@ -157,7 +157,7 @@ const Navbar = () => {
                   </button>
 
                   {isCurrencyOpen && !isCheckout && (
-                    <div className="absolute top-full right-0 mt-2 w-32 bg-brand-header border border-white/10 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
+                    <div className="absolute top-full right-0 mt-2 w-32 bg-white border border-brand-section rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
                       {currencies.map((curr) => (
                         <button
                           key={curr.code}
@@ -165,9 +165,9 @@ const Navbar = () => {
                             dispatch(setCurrency(curr.code));
                             setIsCurrencyOpen(false);
                           }}
-                          className={`w-full flex items-center space-x-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors ${
+                          className={`w-full flex items-center space-x-3 px-4 py-2 text-sm text-brand-dark hover:bg-brand-section transition-colors ${
                             selectedCurrency === curr.code
-                              ? "bg-white/5 font-bold"
+                              ? "bg-brand-section font-bold"
                               : ""
                           }`}
                         >
@@ -183,7 +183,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden p-3 text-white hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/10"
+                  className="md:hidden p-3 text-brand-dark hover:bg-brand-section rounded-xl transition-all duration-300 backdrop-blur-sm border border-brand-section"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   aria-label="Toggle Menu"
                 >
@@ -207,7 +207,7 @@ const Navbar = () => {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl bg-brand-header/95 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
+            <div className="rounded-2xl bg-white backdrop-blur-xl border border-brand-section shadow-2xl overflow-hidden">
               <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link, index) => (
                   <Link
@@ -216,10 +216,10 @@ const Navbar = () => {
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`block px-5 py-3 text-white font-medium rounded-xl transition-all duration-300 ${
+                    className={`block px-5 py-3 text-brand-dark font-medium rounded-xl transition-all duration-300 ${
                       pathname === link.href
-                        ? "bg-brand-cta/30 border border-brand-cta/50"
-                        : "hover:bg-white/10 border border-transparent"
+                        ? "bg-brand-orange/10 border border-brand-orange/50"
+                        : "hover:bg-brand-section border border-transparent"
                     }`}
                     style={{
                       animationDelay: `${index * 50}ms`,

@@ -3,10 +3,11 @@
 @theme {
   --color-brand-bg: #FFFFFF;
   --color-brand-text: #1A1A1B;
-  --color-brand-cta: #E93E24;
+  --color-brand-orange: #E93E24;
+  --color-brand-dark: #1A1A1B;
   --color-brand-success: #10B981;
   --color-brand-section: #F4F4F7;
-  --color-brand-header: #2C3E50;
+  --color-brand-header: #FFFFFF;
 }
 /* * {
   border: 1px solid red;
@@ -30,7 +31,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2C3E50;
+  background: #1A1A1B;
   border-radius: 10px;
   border: 2px solid #F4F4F7;
 }
@@ -46,7 +47,7 @@ html {
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #2C3E50 #F4F4F7;
+  scrollbar-color: #1A1A1B #F4F4F7;
 }
 
 /* Custom Animations */

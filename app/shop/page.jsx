@@ -35,7 +35,7 @@ const Breadcrumbs = ({ activeCategory }) => (
       <li className="inline-flex items-center">
         <Link
           href="/"
-          className="inline-flex items-center text-[10px] uppercase tracking-widest font-black text-brand-text/40 hover:text-brand-cta transition-colors gap-2"
+          className="inline-flex items-center text-[10px] uppercase tracking-widest font-black text-brand-text/40 hover:text-brand-orange transition-colors gap-2"
         >
           <Home size={12} />
           Home
@@ -48,8 +48,8 @@ const Breadcrumbs = ({ activeCategory }) => (
             href="/shop"
             className={`text-[10px] uppercase tracking-widest font-black transition-colors ${
               !activeCategory
-                ? "text-brand-header"
-                : "text-brand-text/40 hover:text-brand-cta"
+                ? "text-brand-dark"
+                : "text-brand-text/40 hover:text-brand-orange"
             }`}
           >
             Shop
@@ -60,7 +60,7 @@ const Breadcrumbs = ({ activeCategory }) => (
         <li aria-current="page">
           <div className="flex items-center">
             <ChevronRight size={12} className="text-brand-text/10 mx-1" />
-            <span className="text-[10px] uppercase tracking-widest font-black text-brand-cta truncate max-w-[150px] md:max-w-none">
+            <span className="text-[10px] uppercase tracking-widest font-black text-brand-orange truncate max-w-[150px] md:max-w-none">
               {activeCategory}
             </span>
           </div>
@@ -145,16 +145,16 @@ export default async function ShopPage({ searchParams }) {
         {/* Conditional Header based on View */}
         {!activeCategory ? (
           <div className="text-center mb-20 space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-brand-section px-5 py-2 rounded-2xl border border-brand-header/10 shadow-xl group hover:border-brand-cta/50 transition-all duration-300 mx-auto">
-              <ShoppingBag className="w-5 h-5 text-brand-cta group-hover:scale-110 transition-transform" />
-              <span className="text-brand-header font-bold tracking-tight">
+            <div className="inline-flex items-center gap-2 bg-brand-section px-5 py-2 rounded-2xl border border-brand-dark/10 shadow-xl group hover:border-brand-orange/50 transition-all duration-300 mx-auto">
+              <ShoppingBag className="w-5 h-5 text-brand-orange group-hover:scale-110 transition-transform" />
+              <span className="text-brand-dark font-bold tracking-tight">
                 Official Shop
               </span>
             </div>
 
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-black text-brand-text tracking-tight leading-tight">
-                Premium <span className="text-brand-cta">Packaging</span>{" "}
+                Premium <span className="text-brand-orange">Packaging</span>{" "}
                 <br className="hidden md:block" /> Collections
               </h1>
               <p className="text-brand-text/80 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
@@ -168,7 +168,7 @@ export default async function ShopPage({ searchParams }) {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-2 text-brand-text/50 hover:text-brand-header transition-all bg-brand-section hover:bg-brand-section/80 px-5 py-2.5 rounded-xl border border-brand-header/10 shadow-lg w-fit"
+                className="group inline-flex items-center gap-2 text-brand-text/50 hover:text-brand-dark transition-all bg-brand-section hover:bg-brand-section/80 px-5 py-2.5 rounded-xl border border-brand-dark/10 shadow-lg w-fit"
               >
                 <ArrowLeft
                   size={18}
@@ -179,18 +179,18 @@ export default async function ShopPage({ searchParams }) {
                 </span>
               </Link>
 
-              <div className="flex items-center gap-3 bg-brand-section px-5 py-2.5 rounded-2xl border border-brand-header/10">
-                <LayoutGrid size={20} className="text-brand-cta" />
-                <span className="text-brand-header font-bold">
+              <div className="flex items-center gap-3 bg-brand-section px-5 py-2.5 rounded-2xl border border-brand-dark/10">
+                <LayoutGrid size={20} className="text-brand-orange" />
+                <span className="text-brand-dark font-bold">
                   {filteredCollections.length} Product Collections
                 </span>
               </div>
             </div>
 
             <div className="text-center space-y-4">
-              <div className="inline-flex items-center gap-2 bg-brand-cta/10 border border-brand-cta/30 px-5 py-2 rounded-full mx-auto">
-                <div className="w-2.5 h-2.5 rounded-full bg-brand-cta animate-pulse" />
-                <span className="text-brand-cta text-sm font-black uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/30 px-5 py-2 rounded-full mx-auto">
+                <div className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse" />
+                <span className="text-brand-orange text-sm font-black uppercase tracking-widest">
                   {activeCategory}
                 </span>
               </div>
@@ -226,18 +226,18 @@ export default async function ShopPage({ searchParams }) {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-brand-header/90 via-brand-header/20 to-transparent transition-opacity duration-500 group-hover:opacity-80"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-brand-dark/20 to-transparent transition-opacity duration-500 group-hover:opacity-80"></div>
 
                 {/* Content */}
                 <div className="absolute inset-0 p-10 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="space-y-3">
-                    <div className="w-10 h-1 bg-brand-cta rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+                    <div className="w-10 h-1 bg-brand-orange rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
                     <h3 className="text-2xl font-black text-white leading-tight tracking-tight">
                       {cat.name}
                     </h3>
                     <div className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
                       View Collection{" "}
-                      <ChevronRight size={14} className="text-brand-cta" />
+                      <ChevronRight size={14} className="text-brand-orange" />
                     </div>
                   </div>
                 </div>
@@ -255,9 +255,9 @@ export default async function ShopPage({ searchParams }) {
 
             {/* Empty State for Category */}
             {filteredCollections.length === 0 && (
-              <div className="col-span-full py-32 bg-brand-section rounded-[3rem] border border-dashed border-brand-header/10 shadow-inner text-center">
-                <div className="w-24 h-24 bg-brand-header/5 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <ShoppingBag size={48} className="text-brand-header/10" />
+              <div className="col-span-full py-32 bg-brand-section rounded-[3rem] border border-dashed border-brand-dark/10 shadow-inner text-center">
+                <div className="w-24 h-24 bg-brand-dark/5 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <ShoppingBag size={48} className="text-brand-dark/10" />
                 </div>
                 <h3 className="text-2xl font-bold text-brand-text/40 italic tracking-tight mb-2">
                   Coming Soon to {activeCategory}
@@ -268,7 +268,7 @@ export default async function ShopPage({ searchParams }) {
                 </p>
                 <Link
                   href="/shop"
-                  className="mt-8 inline-block px-8 py-3 bg-brand-header text-white rounded-2xl font-bold text-sm hover:bg-brand-cta transition-all"
+                  className="mt-8 inline-block px-8 py-3 bg-brand-dark text-white rounded-2xl font-bold text-sm hover:bg-brand-orange transition-all"
                 >
                   Browse Other Categories
                 </Link>

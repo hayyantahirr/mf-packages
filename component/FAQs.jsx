@@ -48,13 +48,13 @@ const FAQs = () => {
   return (
     <section className="py-24 px-6 bg-brand-section relative overflow-hidden">
       {/* Decorative Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-brand-cta/5 blur-[100px] pointer-events-none rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-brand-orange/5 blur-[100px] pointer-events-none rounded-full" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-brand-header tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight">
             Frequently Asked{" "}
-            <span className="text-brand-cta">
+            <span className="text-brand-orange">
               Questions
             </span>
           </h2>
@@ -70,9 +70,9 @@ const FAQs = () => {
             return (
               <div
                 key={index}
-                className={`border border-brand-header/5 rounded-2xl overflow-hidden transition-all duration-300 ${
+                className={`border border-brand-dark/5 rounded-2xl overflow-hidden transition-all duration-300 ${
                   isOpen
-                    ? "bg-white border-brand-cta/30 shadow-[0_0_30px_rgba(233,62,36,0.1)]"
+                    ? "bg-white border-brand-orange/30 shadow-[0_0_30px_rgba(233,62,36,0.1)]"
                     : "bg-white/50 hover:bg-white"
                 }`}
               >
@@ -81,12 +81,12 @@ const FAQs = () => {
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
                   <span
-                    className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? "text-brand-cta" : "text-brand-header"}`}
+                    className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? "text-brand-orange" : "text-brand-dark"}`}
                   >
                     {faq.question}
                   </span>
                   <div
-                    className={`p-2 rounded-full transition-transform duration-300 ${isOpen ? "bg-brand-cta text-white rotate-180" : "bg-brand-header/5 text-brand-header/40"}`}
+                    className={`p-2 rounded-full transition-transform duration-300 ${isOpen ? "bg-brand-orange text-white rotate-180" : "bg-brand-dark/5 text-brand-dark/40"}`}
                   >
                     <ChevronDown className="w-5 h-5" />
                   </div>

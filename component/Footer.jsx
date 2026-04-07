@@ -30,11 +30,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-brand-header text-white overflow-hidden">
+    <footer className="relative bg-brand-dark text-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-brand-success/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-cta/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl"></div>
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -55,7 +55,7 @@ const Footer = () => {
                 href="/"
                 className="inline-flex items-center space-x-3 group"
               >
-                <div className="relative w-12 h-12 bg-white/10 rounded-full p-2 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:scale-110">
+                <div className="relative w-12 h-12 bg-white/5 rounded-full p-2 backdrop-blur-sm border border-white/10 transition-all duration-300 group-hover:scale-110">
                   <Image
                     src="/logo.png"
                     alt="MF Packages Logo"
@@ -104,9 +104,9 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white hover:text-green-400 transition-colors duration-300 text-sm flex items-center space-x-2 group"
+                    className="text-white hover:text-brand-orange transition-colors duration-300 text-sm flex items-center space-x-2 group"
                   >
-                    <span className="w-0 h-0.5 bg-green-400 group-hover:w-4 transition-all duration-300"></span>
+                    <span className="w-0 h-0.5 bg-brand-orange group-hover:w-4 transition-all duration-300"></span>
                     <span>{link.name}</span>
                   </Link>
                 </li>
@@ -130,7 +130,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-brand-success shrink-0" />
                 <a
                   href="tel:+92 332 2464729"
-                  className="text-white hover:text-green-400 transition-colors"
+                  className="text-white hover:text-brand-orange transition-colors"
                 >
                   +92 332 2464729
                 </a>
@@ -139,7 +139,7 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-brand-success shrink-0" />
                 <a
                   href="mailto:info@mfpackages.com"
-                  className="text-white hover:text-green-400 transition-colors"
+                  className="text-white hover:text-brand-orange transition-colors"
                 >
                   info@mfpackages.com
                 </a>
@@ -174,7 +174,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-brand-cta text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+                className="w-full bg-brand-orange text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
               >
                 Subscribe
               </button>
@@ -229,7 +229,7 @@ const Footer = () => {
                 Powered by{" "}
                 <a
                   href="https://hayyantahirr.vercel.app/"
-                  className="underline text-brand-cta"
+                  className="underline text-brand-orange"
                 >
                   hayyantahirr
                 </a>

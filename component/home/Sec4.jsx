@@ -39,9 +39,9 @@ const Sec4 = () => {
             ============================================ */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           {/* 24/7 Availability Badge */}
-          <div className="inline-flex items-center space-x-3 bg-brand-section px-6 py-3 rounded-full border border-brand-header/10 shadow-lg mb-8 animate-pulse">
+          <div className="inline-flex items-center space-x-3 bg-brand-section px-6 py-3 rounded-full border border-brand-dark/10 shadow-lg mb-8 animate-pulse">
             <Clock className="w-5 h-5 text-brand-success" />
-            <span className="text-brand-header font-bold">24/7 Available</span>
+            <span className="text-brand-dark font-bold">24/7 Available</span>
             <div className="w-2 h-2 bg-brand-success rounded-full animate-ping"></div>
           </div>
 
@@ -64,13 +64,13 @@ const Sec4 = () => {
             BOTTOM CTA - GENERAL CONTACT
             ============================================ */}
         <div className="">
-          <div className="bg-brand-section rounded-3xl p-8 md:p-12 border border-brand-header/10 shadow-xl">
+          <div className="bg-brand-section rounded-3xl p-8 md:p-12 border border-brand-dark/10 shadow-xl">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Left side - Text */}
               <div className="space-y-4">
-                <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-brand-header/10 shadow-sm">
+                <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-brand-dark/10 shadow-sm">
                   <MapPin className="w-4 h-4 text-brand-success" />
-                  <span className="text-brand-header font-semibold text-sm">
+                  <span className="text-brand-dark font-semibold text-sm">
                     Pakistan
                   </span>
                 </div>
@@ -86,7 +86,7 @@ const Sec4 = () => {
                 {/* Contact stats */}
                 <div className="grid grid-cols-3 gap-4 pt-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-brand-cta">
+                    <div className="text-2xl font-bold text-brand-orange">
                       24/7
                     </div>
                     <div className="text-sm text-brand-text/60">Available</div>
@@ -98,7 +98,7 @@ const Sec4 = () => {
                     <div className="text-sm text-brand-text/60">Response</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-brand-header">
+                    <div className="text-2xl font-bold text-brand-dark">
                       100%
                     </div>
                     <div className="text-sm text-brand-text/60">Support</div>
@@ -149,7 +149,7 @@ const Sec4 = () => {
                 </Link>
 
                 {/* General Phone */}
-                <button className="w-full flex items-center justify-between bg-brand-header text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                <button className="w-full flex items-center justify-between bg-brand-dark text-white px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-white/20 rounded-lg">
                       <Phone className="w-6 h-6" />
@@ -177,10 +177,10 @@ const Sec4 = () => {
                 </button>
 
                 {/* Email */}
-                <button className="w-full flex items-center justify-between bg-white text-brand-header px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-section hover:border-brand-success/30 group">
+                <button className="w-full flex items-center justify-between bg-white text-brand-dark px-6 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-section hover:border-brand-success/30 group">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-brand-section rounded-lg">
-                      <Mail className="w-6 h-6 text-brand-cta" />
+                      <Mail className="w-6 h-6 text-brand-orange" />
                     </div>
                     <div className="text-left">
                       <div className="font-bold">Send Email</div>
@@ -228,7 +228,7 @@ const Sec4 = () => {
 
               {/* Name */}
               <div className="p-4 text-center">
-                <h3 className="text-lg md:text-xl font-bold text-brand-header">
+                <h3 className="text-lg md:text-xl font-bold text-brand-dark">
                   {member.name}
                 </h3>
               </div>

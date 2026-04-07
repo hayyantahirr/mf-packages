@@ -19,18 +19,18 @@ import FAQs from "@/component/FAQs";
  */
 export default async function AboutPage() {
   return (
-    <main className="min-h-screen text-brand-text bg-brand-bg selection:bg-brand-cta/30">
+    <main className="min-h-screen text-brand-text bg-brand-bg selection:bg-brand-orange/30">
       {/* 1. Hero Section: Company Identity & Global Presence */}
       <section className="relative pt-32 pb-16 px-5 overflow-hidden">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cta/10 border border-brand-cta/20 text-brand-cta text-xs font-medium uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-medium uppercase tracking-wider">
               <Globe2 className="w-3.5 h-3.5" />
               <span>Est. 2018 | USA · China · Pakistan</span>
             </div>
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-brand-text">
               Crafting Excellence, <br />
-              <span className="text-brand-cta">
+              <span className="text-brand-orange">
                 Defining the Future.
               </span>
             </h1>
@@ -42,7 +42,7 @@ export default async function AboutPage() {
             </p>
           </div>
 
-          <div className="relative group overflow-hidden rounded-2xl border border-brand-header/10 shadow-xl max-w-md mx-auto lg:ml-auto lg:mr-0">
+          <div className="relative group overflow-hidden rounded-2xl border border-brand-dark/10 shadow-xl max-w-md mx-auto lg:ml-auto lg:mr-0">
             <Image
               src={"/about/factory.png"}
               alt="MF Packages Printing Facility"
@@ -51,7 +51,7 @@ export default async function AboutPage() {
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               priority
             />
-            <div className="absolute inset-0 bg-linear-to-t from-brand-header via-transparent to-transparent opacity-30" />
+            <div className="absolute inset-0 bg-linear-to-t from-brand-dark via-transparent to-transparent opacity-30" />
           </div>
         </div>
       </section>
@@ -91,19 +91,19 @@ export default async function AboutPage() {
             ].map((stat, i) => (
               <div
                 key={i}
-                className="group relative p-8 rounded-3xl bg-white border border-brand-header/5 hover:border-brand-cta/20 transition-all duration-500 hover:-translate-y-2 shadow-sm"
+                className="group relative p-8 rounded-3xl bg-white border border-brand-dark/5 hover:border-brand-orange/20 transition-all duration-500 hover:-translate-y-2 shadow-sm"
               >
                 {/* Accent line on hover */}
 
                 <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="p-3 rounded-2xl bg-brand-cta/5 text-brand-cta group-hover:bg-brand-cta group-hover:text-white transition-all duration-500">
+                  <div className="p-3 rounded-2xl bg-brand-orange/5 text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-all duration-500">
                     <stat.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-black text-brand-header">
+                    <h3 className="text-3xl font-black text-brand-dark">
                       {stat.val}
                     </h3>
-                    <p className="text-xs font-bold text-brand-cta uppercase tracking-tighter mt-1">
+                    <p className="text-xs font-bold text-brand-orange uppercase tracking-tighter mt-1">
                       {stat.label}
                     </p>
                   </div>
@@ -121,7 +121,7 @@ export default async function AboutPage() {
       <section className="py-18 px-6">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-header">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark">
               Advanced Manufacturing Fleet
             </h2>
             <p className="text-brand-text/60">
@@ -131,9 +131,9 @@ export default async function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-brand-section border border-brand-header/5 hover:border-brand-cta/30 transition-all group">
-              <Cpu className="w-10 h-10 text-brand-cta mb-6 group-hover:animate-pulse" />
-              <h3 className="text-xl font-semibold mb-4 text-brand-header">
+            <div className="p-8 rounded-3xl bg-brand-section border border-brand-dark/5 hover:border-brand-orange/30 transition-all group">
+              <Cpu className="w-10 h-10 text-brand-orange mb-6 group-hover:animate-pulse" />
+              <h3 className="text-xl font-semibold mb-4 text-brand-dark">
                 Digital Precision
               </h3>
               <p className="text-brand-text/60 text-sm leading-relaxed">
@@ -143,23 +143,23 @@ export default async function AboutPage() {
                 plates—ideal for modern speed and versatility.
               </p>
             </div>
-            <div className="p-8 rounded-3xl bg-slate-800/50 border border-white/10 hover:border-emerald-500/30 transition-all group">
-              <Building2 className="w-10 h-10 text-blue-400 mb-6 group-hover:animate-pulse" />
+            <div className="p-8 rounded-3xl bg-brand-dark/95 border border-white/10 hover:border-brand-orange/30 transition-all group">
+              <Building2 className="w-10 h-10 text-brand-orange mb-6 group-hover:animate-pulse" />
               <h3 className="text-xl font-semibold mb-4 text-white">
                 Offset Excellence
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-white/60 text-sm leading-relaxed">
                 Utilizing <strong>Heidelberg 7 color + 1 UV offset</strong> and
                 Roland systems, backed by CTP pre-press, we guarantee impeccable
                 color accuracy and texture for large-scale production.
               </p>
             </div>
-            <div className="p-8 rounded-3xl bg-slate-800/50 border border-white/10 hover:border-emerald-500/30 transition-all group">
-              <ShieldCheck className="w-10 h-10 text-teal-400 mb-6 group-hover:animate-pulse" />
+            <div className="p-8 rounded-3xl bg-brand-dark/95 border border-white/10 hover:border-brand-orange/30 transition-all group">
+              <ShieldCheck className="w-10 h-10 text-brand-orange mb-6 group-hover:animate-pulse" />
               <h3 className="text-xl font-semibold mb-4 text-white">
                 Post-Press Power
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-white/60 text-sm leading-relaxed">
                 A full suite of automated finishing: saddle stitching, perfect
                 binding, case binding, box gluing, UV coating, and lamination
                 for a professional end-to-end result.
@@ -201,11 +201,11 @@ export default async function AboutPage() {
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="flex gap-4">
-                <div className="shrink-0 w-12 h-12 rounded-xl bg-brand-cta/10 flex items-center justify-center">
-                  <Leaf className="w-6 h-6 text-brand-cta" />
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
+                  <Leaf className="w-6 h-6 text-brand-orange" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-brand-header">Eco-First</h4>
+                  <h4 className="font-semibold text-brand-dark">Eco-First</h4>
                   <p className="text-xs text-brand-text/50 mt-1">
                     FDA & FSC certified food-safe Kraft materials.
                   </p>
@@ -216,7 +216,7 @@ export default async function AboutPage() {
                   <Award className="w-6 h-6 text-brand-success" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-brand-header">Low MOQ</h4>
+                  <h4 className="font-semibold text-brand-dark">Low MOQ</h4>
                   <p className="text-xs text-brand-text/50 mt-1">
                     Starting from just 50 pieces for in-stock items.
                   </p>
@@ -224,7 +224,7 @@ export default async function AboutPage() {
               </div>
             </div>
 
-            <blockquote className="border-l-4 border-brand-cta pl-6 italic text-lg text-brand-header/80">
+            <blockquote className="border-l-4 border-brand-orange pl-6 italic text-lg text-brand-dark/80">
               "Our targets are high-quality products, reasonable prices, and
               professional service—providing the most natural and cost-efficient
               packaging globally."
@@ -243,14 +243,14 @@ export default async function AboutPage() {
             {/* Left Content Area */}
             <div className="space-y-10">
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-section border border-brand-header/10 text-brand-header text-sm font-medium">
-                  <Globe2 className="w-4 h-4 text-brand-cta" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-section border border-brand-dark/10 text-brand-dark font-medium">
+                  <Globe2 className="w-4 h-4 text-brand-orange" />
                   <span>Ships Worldwide via Express</span>
                 </div>
 
                 <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-brand-text">
                   Global Reach, <br />
-                  <span className="text-brand-cta">
+                  <span className="text-brand-orange">
                     Local Support.
                   </span>
                 </h2>
@@ -268,11 +268,11 @@ export default async function AboutPage() {
 
               {/* Feature Cards Grid */}
               <div className="grid sm:grid-cols-2 gap-5">
-                <div className="p-6 rounded-2xl bg-white border border-brand-header/10 hover:border-brand-cta/30 hover:bg-brand-cta/5 transition-all group shadow-sm">
-                  <div className="w-12 h-12 rounded-xl bg-brand-section flex items-center justify-center mb-4 group-hover:bg-brand-cta transition-colors">
-                    <Truck className="w-6 h-6 text-brand-header group-hover:text-white" />
+                <div className="p-6 rounded-2xl bg-white border border-brand-dark/10 hover:border-brand-orange/30 hover:bg-brand-orange/5 transition-all group shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-brand-section flex items-center justify-center mb-4 group-hover:bg-brand-orange transition-colors">
+                    <Truck className="w-6 h-6 text-brand-dark group-hover:text-white" />
                   </div>
-                  <h4 className="font-bold text-brand-header mb-1 tracking-wide">
+                  <h4 className="font-bold text-brand-dark mb-1 tracking-wide">
                     Fast Delivery
                   </h4>
                   <p className="text-sm text-brand-text/50">
@@ -280,11 +280,11 @@ export default async function AboutPage() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-white border border-brand-header/10 hover:border-brand-success/30 hover:bg-brand-success/5 transition-all group shadow-sm">
+                <div className="p-6 rounded-2xl bg-white border border-brand-dark/10 hover:border-brand-success/30 hover:bg-brand-success/5 transition-all group shadow-sm">
                   <div className="w-12 h-12 rounded-xl bg-brand-section flex items-center justify-center mb-4 group-hover:bg-brand-success transition-colors">
-                    <ShieldCheck className="w-6 h-6 text-brand-header group-hover:text-white" />
+                    <ShieldCheck className="w-6 h-6 text-brand-dark group-hover:text-white" />
                   </div>
-                  <h4 className="font-bold text-brand-header mb-1 tracking-wide">
+                  <h4 className="font-bold text-brand-dark mb-1 tracking-wide">
                     FDA & FSC Safe
                   </h4>
                   <p className="text-sm text-brand-text/50">
@@ -327,7 +327,7 @@ export default async function AboutPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contact">
-              <button className="px-8 py-3 bg-brand-cta hover:bg-brand-cta/90 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-brand-cta/20">
+              <button className="px-8 py-3 bg-brand-orange hover:bg-brand-orange/90 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-brand-orange/20">
                 Reach us Now !
               </button>
             </Link>
