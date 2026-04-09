@@ -97,7 +97,7 @@ export default async function ProductVariationsPage({ params }) {
             Back to All Collections
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 pb-12 border-b border-gray-200">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-12 pb-12 border-b border-gray-200">
             <div className="space-y-6 max-w-2xl">
               <div className="flex items-center gap-3">
                 <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
@@ -120,15 +120,16 @@ export default async function ProductVariationsPage({ params }) {
               )}
             </div>
 
-            {mainProduct.mainImage && (
-              <div className="relative w-full md:w-80 aspect-square rounded-4xl overflow-hidden border border-gray-100 shadow-2xl group/main shrink-0 bg-white">
+            {mainProduct.genImage && (
+              <div className="relative w-full md:w-80 h-fit rounded-4xl overflow-hidden border border-gray-100 shadow-2xl group/main shrink-0 bg-white">
                 <Image
-                  src={mainProduct.mainImage}
+                  src={mainProduct.genImage}
                   alt={productName}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={320}
+                  height={320}
+                  className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/10 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/10 to-transparent pointer-events-none"></div>
               </div>
             )}
           </div>
