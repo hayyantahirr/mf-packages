@@ -82,9 +82,11 @@ export default async function SingleProductPage({ params }) {
     );
   }
 
-  const allImages = [product.mainImage, ...(product.extraImages || [])].filter(
-    Boolean,
-  );
+  const allImages = [
+    product.mainImage,
+    product.genImage,
+    ...(product.extraImages || []),
+  ].filter(Boolean);
 
   return (
     <div className="min-h-screen bg-brand-bg py-16 px-4 sm:px-6 lg:px-8 pt-32">

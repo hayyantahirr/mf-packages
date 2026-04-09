@@ -146,7 +146,9 @@ export default async function ProductVariationsPage({ params }) {
                 key={v.id}
                 href={v.inStock ? productLink : undefined}
                 className={`group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 hover:border-brand-orange/30 shadow-sm hover:shadow-2xl transition-all duration-500 ${
-                  v.inStock ? "hover:-translate-y-2 cursor-pointer" : "opacity-75"
+                  v.inStock
+                    ? "hover:-translate-y-2 cursor-pointer"
+                    : "opacity-75"
                 } animate-fade-in`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >

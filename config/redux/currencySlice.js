@@ -1,9 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// FREE API KEY (Ideally this should be in an env file)
-// Enter your API Key from https://www.exchangerate-api.com/ here
-const API_KEY = "50c85d53bea3a30019d6f436"; 
+// Environmental API Key configuration
+const API_KEY = process.env.NEXT_PUBLIC_CURRENCY_API_KEY;
+
+if (!API_KEY) {
+  console.error("Missing NEXT_PUBLIC_CURRENCY_API_KEY Environment Variable");
+}
+
 const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/PKR`;
 
 export const fetchExchangeRates = createAsyncThunk(
