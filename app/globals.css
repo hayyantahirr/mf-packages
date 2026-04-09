@@ -29,23 +29,23 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1A1A1B;
+  background: #10B981;
   border-radius: 10px;
   border: 2px solid #F4F4F7;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1A1A1B;
+  background: #059669;
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: #E93E24;
+  background: #10B981;
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #1A1A1B #F4F4F7;
+  scrollbar-color: #10B981 #F4F4F7;
 }
 
 /* Custom Animations */
