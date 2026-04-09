@@ -64,10 +64,7 @@ const ContactPage = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6">
-            Get In{" "}
-            <span className="text-brand-orange">
-              Touch
-            </span>
+            Get In <span className="text-brand-orange">Touch</span>
           </h1>
           <p className="text-lg md:text-xl text-brand-text/70 max-w-2xl mx-auto">
             Have questions about our eco-friendly packaging? We're here to help
@@ -294,14 +291,13 @@ const ContactPage = () => {
             {/* Map */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-brand-dark/10">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.2076489476844!2d67.02812631500238!3d24.85384598408234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sSaddar%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
-                width="100%"
-                height="400"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.190307190989!2d67.01349307482648!3d24.85734904538311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33dc112238b31%3A0xc8fad6791a9fde81!2sBrown%20Kraft%20paper%20Stand%20up%20Pouch%20for%20packaging%20of%20Spices%2C%20Salt%2C%20Dates%20and%20Dryfruits%20M.F%20Packages!5e0!3m2!1sen!2s!4v1775773073945!5m2!1sen!2s"
+                width="600"
+                height="450"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="w-full"
               ></iframe>
             </div>
           </div>
