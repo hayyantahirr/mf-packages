@@ -46,7 +46,7 @@ export default function ProductImageGallery({ images, productName }) {
           {/* Top Arrow (Desktop Only) */}
           <button
             onClick={() => scrollThumbnails("up")}
-            className="hidden md:flex items-center justify-center p-2 text-slate-500 hover:text-white transition-colors bg-white/5 rounded-xl border border-white/10 hover:border-[#D00000] w-full"
+            className="hidden md:flex items-center justify-center p-2 text-brand-dark hover:text-brand-orange transition-colors bg-white rounded-xl border border-gray-100 hover:border-brand-orange w-full"
           >
             <ChevronUp size={20} />
           </button>
@@ -59,10 +59,10 @@ export default function ProductImageGallery({ images, productName }) {
               <button
                 key={idx}
                 onClick={() => setActiveImage(img)}
-                className={`relative aspect-square w-20 md:w-full rounded-2xl overflow-hidden border-2 transition-all bg-white/5 shrink-0 snap-center ${
+                className={`relative aspect-square w-20 md:w-full rounded-2xl overflow-hidden border-2 transition-all bg-white shrink-0 snap-center ${
                   activeImage === img
-                    ? "border-[#D00000] scale-95 shadow-lg shadow-[#D00000]/20"
-                    : "border-white/10 hover:border-white/30"
+                    ? "border-brand-orange scale-95 shadow-lg shadow-brand-orange/20"
+                    : "border-gray-100 hover:border-gray-200"
                 }`}
               >
                 <Image
@@ -78,7 +78,7 @@ export default function ProductImageGallery({ images, productName }) {
           {/* Bottom Arrow (Desktop Only) */}
           <button
             onClick={() => scrollThumbnails("down")}
-            className="hidden md:flex items-center justify-center p-2 text-slate-500 hover:text-white transition-colors bg-white/5 rounded-xl border border-white/10 hover:border-[#D00000] w-full"
+            className="hidden md:flex items-center justify-center p-2 text-brand-dark hover:text-brand-orange transition-colors bg-white rounded-xl border border-gray-100 hover:border-brand-orange w-full"
           >
             <ChevronDown size={20} />
           </button>
@@ -89,7 +89,7 @@ export default function ProductImageGallery({ images, productName }) {
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative flex-1 w-full aspect-square rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/5 cursor-zoom-in group"
+        className="relative flex-1 w-full aspect-square rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-2xl bg-white cursor-zoom-in group"
       >
         <Image
           src={activeImage || "/carousel/brown-kraft-flat-bottom.png"}
@@ -100,7 +100,7 @@ export default function ProductImageGallery({ images, productName }) {
 
         {/* Zoomed Overlay */}
         <div
-          className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 bg-[#1D2D44]"
+          className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 bg-white"
           style={{
             ...zoomStyle,
             backgroundImage: `url(${activeImage})`,
@@ -111,7 +111,7 @@ export default function ProductImageGallery({ images, productName }) {
           }}
         />
 
-        <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/20 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-gray-900/5 to-transparent pointer-events-none"></div>
       </div>
     </div>
   );

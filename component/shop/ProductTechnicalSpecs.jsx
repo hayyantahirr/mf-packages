@@ -77,15 +77,15 @@ const ProductTechnicalSpecs = ({ specs }) => {
   if (filteredSpecs.length === 0) return null;
 
   return (
-    <div className="space-y-4 pt-6 mt-6 border-t border-white/10">
-      <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+    <div className="space-y-4 pt-6 mt-6 border-t border-gray-100">
+      <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
         Technical Specifications
       </h4>
       <div className="grid grid-cols-1 gap-3">
         {filteredSpecs.map((spec, index) => (
           <div key={index} className="flex items-center gap-3">
-            <spec.icon size={16} className="text-[#D00000] shrink-0" />
-            <span className="text-white text-sm font-bold uppercase tracking-wide">
+            <spec.icon size={16} className="text-brand-orange shrink-0" />
+            <span className="text-brand-dark text-sm font-black uppercase tracking-wide">
               {spec.customText || `${spec.label}: ${spec.value}`}
             </span>
           </div>

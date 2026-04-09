@@ -82,13 +82,13 @@ export default async function ProductVariationsPage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#1D2D44] py-16 px-4 sm:px-6 lg:px-8 pt-32">
+    <div className="min-h-screen bg-brand-bg py-16 px-4 sm:px-6 lg:px-8 pt-32">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Navigation & Header Section */}
         <div className="space-y-10 animate-fade-in">
           <Link
             href="/shop"
-            className="group inline-flex items-center gap-3 text-slate-400 hover:text-white transition-all font-bold text-xs uppercase tracking-widest bg-white/5 hover:bg-white/10 px-5 py-2.5 rounded-xl border border-white/10"
+            className="group inline-flex items-center gap-3 text-brand-dark hover:text-brand-orange transition-all font-bold text-xs uppercase tracking-widest bg-white px-5 py-2.5 rounded-xl border border-gray-100 shadow-sm"
           >
             <ArrowLeft
               size={16}
@@ -97,38 +97,38 @@ export default async function ProductVariationsPage({ params }) {
             Back to All Collections
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 pb-12 border-b border-white/10">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 pb-12 border-b border-gray-200">
             <div className="space-y-6 max-w-2xl">
               <div className="flex items-center gap-3">
-                <span className="bg-[#D00000]/10 text-[#D00000] border border-[#D00000]/30 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
+                <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
                   {mainProduct.category}
                 </span>
-                <div className="flex items-center gap-2 bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
-                  <Package size={14} className="text-[#D00000]" />
-                  <span className="text-slate-300 text-[10px] font-black uppercase tracking-widest">
+                <div className="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-gray-100 shadow-sm">
+                  <Package size={14} className="text-brand-orange" />
+                  <span className="text-brand-dark/60 text-[10px] font-black uppercase tracking-widest">
                     {variations.length} Variations
                   </span>
                 </div>
               </div>
-              <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight leading-none uppercase">
+              <h1 className="text-3xl md:text-5xl font-black text-brand-dark tracking-tight leading-tight uppercase">
                 {productName}
               </h1>
               {mainProduct.genDescription && (
-                <p className="text-white text-sm md:text-base font-medium leading-relaxed border-l-2 border-[#D00000] pl-4 max-w-2xl">
+                <p className="text-brand-dark/80 text-base font-medium leading-relaxed border-l-4 border-brand-orange pl-6 max-w-2xl italic">
                   {mainProduct.genDescription}
                 </p>
               )}
             </div>
 
             {mainProduct.mainImage && (
-              <div className="relative w-full md:w-72 aspect-square rounded-4xl overflow-hidden border border-white/10 shadow-2xl group/main shrink-0">
+              <div className="relative w-full md:w-80 aspect-square rounded-4xl overflow-hidden border border-gray-100 shadow-2xl group/main shrink-0 bg-white">
                 <Image
                   src={mainProduct.mainImage}
                   alt={productName}
                   fill
-                  className="object-cover transition-transform duration-700 "
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/10 to-transparent"></div>
               </div>
             )}
           </div>
@@ -136,96 +136,103 @@ export default async function ProductVariationsPage({ params }) {
 
         {/* Variations Listing - Vertical Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {variations.map((v, idx) => (
-            <div
-              key={v.id}
-              className="group flex flex-col bg-white/5 rounded-[2.5rem] overflow-hidden border border-white/10 hover:border-[#D00000]/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in"
-              style={{ animationDelay: `${idx * 100}ms` }}
-            >
-              {/* Product Visual */}
-              <div className="relative aspect-square overflow-hidden bg-white/5">
-                <Image
-                  src={
-                    v.mainImage ||
-                    mainProduct.mainImage ||
-                    "/carousel/brown-kraft-flat-bottom.png"
-                  }
-                  alt={`${productName} - ${v.size}`}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1D2D44]/80 via-transparent to-transparent opacity-60"></div>
-              </div>
+          {variations.map((v, idx) => {
+            const productLink = `/shop/${encodeURIComponent(productName)}/${v.id}`;
+            const CardWrapper = v.inStock ? Link : "div";
 
-              {/* Product Info */}
-              <div className="p-8 flex flex-col grow space-y-6">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-[#D00000] font-black text-[10px] uppercase tracking-[0.2em]">
-                      <Package size={12} />
-                      {v.category}
-                    </div>
-                    {v.inStock ? (
-                      <span className="text-[#00FF88] text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
-                        <CheckCircle2 size={12} /> In Stock
-                      </span>
-                    ) : (
-                      <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
-                        <XCircle size={12} /> Out of Stock
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-[#D00000] transition-colors">
-                    {v.size} CM - {productName}
-                  </h3>
+            return (
+              <CardWrapper
+                key={v.id}
+                href={v.inStock ? productLink : undefined}
+                className={`group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 hover:border-brand-orange/30 shadow-sm hover:shadow-2xl transition-all duration-500 ${
+                  v.inStock ? "hover:-translate-y-2 cursor-pointer" : "opacity-75"
+                } animate-fade-in`}
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                {/* Product Visual */}
+                <div className="relative aspect-square overflow-hidden bg-brand-section">
+                  <Image
+                    src={
+                      v.mainImage ||
+                      mainProduct.mainImage ||
+                      "/carousel/brown-kraft-flat-bottom.png"
+                    }
+                    alt={`${productName} - ${v.size}`}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-brand-dark/20 to-transparent"></div>
                 </div>
 
-                <div className="pt-6 border-t border-white/5 flex items-center justify-between mt-auto">
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                      Price / Unit
-                    </span>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-sm font-black text-slate-400">
-                        Rs.
-                      </span>
-                      <span className="text-3xl font-black text-white tracking-tighter">
-                        {v.price || "---"}
-                      </span>
+                {/* Product Info */}
+                <div className="p-8 flex flex-col grow space-y-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-brand-orange font-black text-[10px] uppercase tracking-[0.2em]">
+                        <Package size={12} />
+                        {v.category}
+                      </div>
+                      {v.inStock ? (
+                        <span className="text-brand-success text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                          <CheckCircle2 size={12} /> In Stock
+                        </span>
+                      ) : (
+                        <span className="text-gray-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                          <XCircle size={12} /> Out of Stock
+                        </span>
+                      )}
                     </div>
+                    <h3 className="text-2xl font-black text-brand-dark tracking-tight group-hover:text-brand-orange transition-colors uppercase">
+                      {v.size} CM - {productName}
+                    </h3>
                   </div>
 
-                  <Link
-                    href={`/shop/${encodeURIComponent(productName)}/${v.id}`}
-                    className={`p-4 rounded-2xl transition-all duration-300 ${
-                      v.inStock
-                        ? "bg-[#D00000] text-white hover:bg-white hover:text-[#D00000] shadow-lg shadow-[#D00000]/20"
-                        : "bg-white/5 text-white/20 cursor-not-allowed pointer-events-none"
-                    }`}
-                  >
-                    <ChevronRight size={20} />
-                  </Link>
+                  <div className="pt-6 border-t border-gray-50 flex items-center justify-between mt-auto">
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                        Price / Unit
+                      </span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-xs font-black text-gray-400">
+                          Rs.
+                        </span>
+                        <span className="text-3xl font-black text-brand-dark tracking-tighter">
+                          {v.price || "---"}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`p-4 rounded-2xl transition-all duration-300 ${
+                        v.inStock
+                          ? "bg-brand-orange text-white group-hover:bg-[#ef6d59] shadow-lg shadow-brand-orange/20"
+                          : "bg-gray-100 text-gray-300"
+                      }`}
+                    >
+                      <ChevronRight size={20} />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </CardWrapper>
+            );
+          })}
         </div>
 
         {/* Bottom Banner */}
-        <div className="bg-[#D00000] rounded-[3rem] p-12 md:p-20 text-center space-y-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]"></div>
+        <div className="bg-brand-dark rounded-[3rem] p-12 md:p-20 text-center space-y-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]"></div>
           <div className="relative z-10 space-y-6">
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight uppercase leading-none">
-              Custom <span className="text-[#1D2D44]">Manufacturing?</span>
+              Custom <span className="text-brand-orange">Manufacturing?</span>
             </h2>
-            <p className="text-white/80 max-w-2xl mx-auto font-medium text-lg leading-relaxed">
+            <p className="text-white/70 max-w-2xl mx-auto font-medium text-lg leading-relaxed">
               We offer bespoke solutions with custom dimensions and premium
               branding for high-volume orders.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
               <Link
                 href="/contact"
-                className="px-10 py-5 bg-[#1D2D44] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-[#1D2D44] transition-all duration-500 shadow-2xl"
+                className="px-10 py-5 bg-brand-orange text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-brand-dark transition-all duration-500 shadow-2xl"
               >
                 Request Custom Quote
               </Link>
