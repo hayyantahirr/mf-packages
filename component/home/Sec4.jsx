@@ -47,10 +47,7 @@ const Sec4 = () => {
 
           {/* Main Heading */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6 leading-tight">
-            Meet Our{" "}
-            <span className="text-brand-orange">
-              Expert Team
-            </span>
+            Meet Our <span className="text-brand-orange">Expert Team</span>
           </h2>
 
           {/* Description */}
