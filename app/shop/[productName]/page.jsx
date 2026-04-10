@@ -56,7 +56,14 @@ export default async function ProductVariationsPage({ params }) {
     notFound();
   }
 
-  const mainProduct = variations[0] || {};
+  // Find the most suitable "main" product data from available variations
+  // Prioritize variations that have both general image and description populated
+  const mainProduct =
+    variations.find((v) => v.genImage && v.genDescription) ||
+    variations.find((v) => v.genImage) ||
+    variations.find((v) => v.genDescription) ||
+    variations[0] ||
+    {};
 
   if (error) {
     return (

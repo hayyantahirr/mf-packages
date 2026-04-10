@@ -19,6 +19,19 @@ const ProductCard = ({ product }) => {
     (state) => state.currency,
   );
 
+  // Data fallback logic to ensure cards are always populated
+  const displayDescription =
+    product.genDescription ||
+    product.variations.find((v) => v.genDescription)?.genDescription ||
+    product.description ||
+    "Premium quality biodegradable packaging solution.";
+
+  const displayImage =
+    product.genImage ||
+    product.variations.find((v) => v.genImage)?.genImage ||
+    product.mainImage ||
+    "/carousel/brown-kraft-flat-bottom.png";
+
   const formatMinMax = () => {
     const minConverted = convertPrice(
       product.minPrice,
@@ -41,7 +54,7 @@ const ProductCard = ({ product }) => {
       {/* Thumbnail Container */}
       <div className="relative h-72 w-full overflow-hidden bg-brand-section">
         <Image
-          src={product.mainImage || "/carousel/brown-kraft-flat-bottom.png"}
+          src={displayImage}
           alt={product.name}
           fill
           className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -118,10 +131,9 @@ const ProductCard = ({ product }) => {
 
         {/* Truncated Description */}
         <p className="text-brand-text/80 text-sm leading-relaxed mb-8 ">
-          {product.description?.length > 100
-            ? `${product.description.substring(0, 100)}...`
-            : product.description ||
-              "Premium quality biodegradable packaging solution."}
+          {displayDescription.length > 100
+            ? `${displayDescription.substring(0, 100)}...`
+            : displayDescription}
         </p>
 
         {/* Footer / CTA */}
