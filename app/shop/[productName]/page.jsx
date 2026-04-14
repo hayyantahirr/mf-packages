@@ -52,17 +52,42 @@ export default async function ProductVariationsPage({ params }) {
     error = "Unable to load product variations. Please try again later.";
   }
 
-  if (variations.length === 0 && !error) {
+  // Robust sorting logic to display variations from smallest to largest
+  const sortedVariations = [...variations].sort((a, b) => {
+    const parseSize = (s) => {
+      if (!s) return 0;
+      const cleanS = s.toString().toLowerCase();
+
+      // Case 1: Dimensions (e.g., "10x15" or "10 x 15")
+      const dimMatch = cleanS.match(/(\d+)\s*x\s*(\d+)/);
+      if (dimMatch) {
+        // Sort primarily by area (WxH) for a predictable geometric progression
+        return parseInt(dimMatch[1]) * parseInt(dimMatch[2]);
+      }
+
+      // Case 2: Single measurement (e.g., "250ml", "10cm", "50pcs")
+      const singleMatch = cleanS.match(/(\d+)/);
+      if (singleMatch) {
+        return parseInt(singleMatch[1]);
+      }
+
+      return 0; // Fallback for pure strings
+    };
+
+    return parseSize(a.size) - parseSize(b.size);
+  });
+
+  if (sortedVariations.length === 0 && !error) {
     notFound();
   }
 
   // Find the most suitable "main" product data from available variations
   // Prioritize variations that have both general image and description populated
   const mainProduct =
-    variations.find((v) => v.genImage && v.genDescription) ||
-    variations.find((v) => v.genImage) ||
-    variations.find((v) => v.genDescription) ||
-    variations[0] ||
+    sortedVariations.find((v) => v.genImage && v.genDescription) ||
+    sortedVariations.find((v) => v.genImage) ||
+    sortedVariations.find((v) => v.genDescription) ||
+    sortedVariations[0] ||
     {};
 
   if (error) {
@@ -113,7 +138,7 @@ export default async function ProductVariationsPage({ params }) {
                 <div className="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-gray-100 shadow-sm">
                   <Package size={14} className="text-brand-orange" />
                   <span className="text-brand-dark/60 text-[10px] font-black uppercase tracking-widest">
-                    {variations.length} Variations
+                    {sortedVariations.length} Variations
                   </span>
                 </div>
               </div>
@@ -144,7 +169,7 @@ export default async function ProductVariationsPage({ params }) {
 
         {/* Variations Listing - Vertical Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {variations.map((v, idx) => {
+          {sortedVariations.map((v, idx) => {
             const productLink = `/shop/${encodeURIComponent(productName)}/${v.id}`;
             const CardWrapper = v.inStock ? Link : "div";
 
@@ -200,14 +225,14 @@ export default async function ProductVariationsPage({ params }) {
                   <div className="pt-6 border-t border-gray-50 flex items-center justify-between mt-auto">
                     <div className="flex flex-col">
                       <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                        Price / Unit
+                        Price / Piece
                       </span>
                       <div className="flex items-baseline gap-1">
                         <span className="text-xs font-black text-gray-400">
                           Rs.
                         </span>
                         <span className="text-3xl font-black text-brand-dark tracking-tighter">
-                          {v.price || "---"}
+                          {v.price -3 || "---"}
                         </span>
                       </div>
                     </div>

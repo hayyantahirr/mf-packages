@@ -162,9 +162,6 @@ export default function CheckoutPage() {
             been placed successfully for <span className="font-extrabold text-brand-dark">{formatPrice(grandTotal, selectedCurrency)}</span>.
           </p>
           <div className="space-y-6">
-            <div className="p-4 bg-brand-section rounded-2xl border border-gray-100 italic text-sm text-gray-500">
-              We've sent a confirmation email to {formData.email}
-            </div>
             <button
               onClick={() => router.push("/shop")}
               className="w-full bg-brand-dark text-white font-black py-5 rounded-2xl hover:bg-brand-orange transition-all cursor-pointer shadow-lg shadow-brand-dark/10 tracking-widest uppercase text-xs"

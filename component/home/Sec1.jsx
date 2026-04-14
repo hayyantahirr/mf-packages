@@ -13,14 +13,14 @@ const clients = [
   { name: "Darbare Sheeren", src: "/top_clients/darbaresheeren.webp" },
   { name: "Diamond Super Mart", src: "/top_clients/diamond_super_mart.png" },
   { name: "Fresh Basket", src: "/top_clients/fresh_basket.avif" },
-  { name: "Gold Dry Fruits", src: "/top_clients/gold_dry_fruits.jpg" },
+  // { name: "Gold Dry Fruits", src: "/top_clients/gold_dry_fruits.jpg" },
   { name: "Grao Coffee", src: "/top_clients/grao_coffee.avif" },
   { name: "Kababjees", src: "/top_clients/kababjees.webp" },
   { name: "Khan Dry Fruits", src: "/top_clients/khan_dry_fruits.webp" },
   { name: "Lals", src: "/top_clients/lals.webp" },
   { name: "Mahmood Sweets", src: "/top_clients/mahmood_sweets.webp" },
   { name: "Maqbool Ispaghol", src: "/top_clients/maqbool_ispaghol.jpg" },
-  { name: "Melbrew Coffee", src: "/top_clients/melbrew_coffee.png" },
+  // { name: "Melbrew Coffee", src: "/top_clients/melbrew_coffee.png" },
   { name: "Nawab Ganic", src: "/top_clients/nawab_ganic.png" },
   { name: "Nomad Coffee", src: "/top_clients/nomad_coffee.png" },
   { name: "Nutibles", src: "/top_clients/nutibles.jpg" },
@@ -38,10 +38,12 @@ const Sec1 = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-brand-dark tracking-tight">
-            Trusted by <span className="text-brand-orange">Industry Leaders</span>
+            Trusted by{" "}
+            <span className="text-brand-orange">Industry Leaders</span>
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-            Trusted by clients all over Pakistan and dealt with 50+ clients across various sectors.
+            Trusted by clients all over Pakistan and dealt with 50+ clients
+            across various sectors.
           </p>
           <div className="mt-6 h-1 w-20 bg-brand-orange/20 mx-auto rounded-full relative overflow-hidden">
             <div className="absolute inset-0 bg-brand-orange w-1/2 rounded-full"></div>
@@ -57,7 +59,7 @@ const Sec1 = () => {
               <img
                 src={client.src}
                 alt={`${client.name} logo`}
-                className="max-h-16 w-full px-2 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                className="max-h-16 w-full px-2 object-contain filter transition-all duration-300 ease-in-out"
                 loading="lazy"
               />
             </div>

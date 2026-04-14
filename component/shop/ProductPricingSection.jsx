@@ -20,7 +20,7 @@ export default function ProductPricingSection({
 }) {
   const dispatch = useDispatch();
   const quantities = [50, 100, 500, 1000];
-  const [quantity, setQuantity] = useState(100);
+  const [quantity, setQuantity] = useState(1000);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
 
   // Redux State
@@ -29,6 +29,7 @@ export default function ProductPricingSection({
 
   // Fixed Tiered Pricing Logic
   const calculateFinalPrice = (qty) => {
+    if (qty === 50) return basePrice + 2
     if (qty === 500) return basePrice - 2;
     if (qty === 1000) return basePrice - 3;
     return basePrice;
