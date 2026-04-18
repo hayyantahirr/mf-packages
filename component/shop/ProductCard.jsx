@@ -57,7 +57,7 @@ const ProductCard = ({ product }) => {
           src={displayImage}
           alt={product.name}
           fill
-          className="object-cover transition-transform duration-1000 group-hover:scale-110"
+          className="object-cover transition-transform duration-1000"
         />
 
         {/* Badges Overlay */}
