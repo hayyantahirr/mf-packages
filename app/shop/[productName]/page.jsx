@@ -194,7 +194,7 @@ export default async function ProductVariationsPage({ params }) {
                     }
                     alt={`${productName} - ${v.size}`}
                     fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    className="object-cover transition-transform duration-1000 "
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-brand-dark/20 to-transparent"></div>
                 </div>
