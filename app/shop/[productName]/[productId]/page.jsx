@@ -266,6 +266,8 @@ export default async function SingleProductPage({ params }) {
               size={product.size}
               mainImage={product.mainImage}
               basePrice={product.price}
+              useTieredPricing={product.useTieredPricing}
+              tieredPrices={product.tieredPrices}
               printingPrice={product.printingPrice}
               inStock={product.inStock}
               technicalSpecs={product.technicalSpecs}

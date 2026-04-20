@@ -5,6 +5,7 @@ import { addItem } from "@/component/cart/cartSlice";
 import { setCurrency } from "@/config/redux/currencySlice";
 import { ShoppingCart, Truck, Printer, Info, Gift, ChevronDown, AlertCircle } from "lucide-react";
 import { convertPrice, formatPrice, currencies } from "@/config/utils/currencyUtils";
+import { calculateTieredPrice } from "@/config/utils/pricing";
 import { useState } from "react";
 import ProductTechnicalSpecs from "./ProductTechnicalSpecs";
 
@@ -14,6 +15,8 @@ export default function ProductPricingSection({
   size,
   mainImage,
   basePrice,
+  useTieredPricing,
+  tieredPrices,
   printingPrice,
   inStock,
   technicalSpecs,
@@ -29,10 +32,7 @@ export default function ProductPricingSection({
 
   // Fixed Tiered Pricing Logic
   const calculateFinalPrice = (qty) => {
-    if (qty === 50) return basePrice + 2
-    if (qty === 500) return basePrice - 2;
-    if (qty === 1000) return basePrice - 3;
-    return basePrice;
+    return calculateTieredPrice(qty, basePrice, useTieredPricing, tieredPrices);
   };
 
   const currentPricePKR = calculateFinalPrice(quantity);
@@ -131,11 +131,24 @@ export default function ProductPricingSection({
               }`}
             >
               {qty} PCS
-              {qty >= 500 && (
-                <span className="block text-[8px] opacity-70 mt-0.5">
-                  Save {formatPrice(convertPrice(qty === 500 ? 2 : 3, selectedCurrency, exchangeRates), selectedCurrency)} /pc
-                </span>
-              )}
+              {(() => {
+                const tieredPrice = calculateFinalPrice(qty);
+                const saving = basePrice - tieredPrice;
+                if (saving > 0) {
+                  return (
+                    <span className="block text-[8px] opacity-70 mt-0.5">
+                      Save {formatPrice(convertPrice(saving, selectedCurrency, exchangeRates), selectedCurrency)} /pc
+                    </span>
+                  );
+                } else if (saving < 0) {
+                   return (
+                    <span className="block text-[8px] opacity-70 mt-0.5">
+                      +{formatPrice(convertPrice(Math.abs(saving), selectedCurrency, exchangeRates), selectedCurrency)} Surcharge
+                    </span>
+                  );
+                }
+                return null;
+              })()}
             </button>
           ))}
         </div>

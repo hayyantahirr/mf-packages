@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { notFound } from "next/navigation";
+import { calculateTieredPrice } from "@/config/utils/pricing";
 
 export default async function ProductVariationsPage({ params }) {
   const { productName: rawProductName } = await params;
@@ -232,7 +233,7 @@ export default async function ProductVariationsPage({ params }) {
                           Rs.
                         </span>
                         <span className="text-3xl font-black text-brand-dark tracking-tighter">
-                          {v.price -3 || "---"}
+                          {calculateTieredPrice(1000, v.price, v.useTieredPricing, v.tieredPrices) || "---"}
                         </span>
                       </div>
                     </div>

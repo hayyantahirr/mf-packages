@@ -13,6 +13,7 @@ import {
   Home,
 } from "lucide-react";
 import ProductCard from "@/component/shop/ProductCard";
+import { calculateTieredPrice } from "@/config/utils/pricing";
 
 const categories = [
   {
@@ -107,23 +108,33 @@ export default async function ShopPage({ searchParams }) {
 
   const groupedProducts = products.reduce((acc, product) => {
     const { name } = product;
+    
+    // Calculate actual min and max for this specific variation across all tiered quantities
+    const possibleQuantities = [50, 100, 500, 1000];
+    const itemPrices = possibleQuantities.map(qty => 
+      calculateTieredPrice(qty, product.price, product.useTieredPricing, product.tieredPrices)
+    );
+    const itemMin = Math.min(...itemPrices);
+    const itemMax = Math.max(...itemPrices);
+
     if (!acc[name]) {
       acc[name] = {
         ...product,
         variations: [],
-        minPrice: product.price,
-        maxPrice: product.price,
+        minPrice: itemMin,
+        maxPrice: itemMax,
       };
     }
-    acc[name].variations.push(product);
-    acc[name].minPrice = Math.min(
-      acc[name].minPrice,
-      product.price || Infinity,
-    );
-    acc[name].maxPrice = Math.max(
-      acc[name].maxPrice,
-      product.price || -Infinity,
-    );
+    
+    acc[name].variations.push({
+      ...product,
+      itemMin,
+      itemMax
+    });
+    
+    acc[name].minPrice = Math.min(acc[name].minPrice, itemMin);
+    acc[name].maxPrice = Math.max(acc[name].maxPrice, itemMax);
+    
     return acc;
   }, {});
 

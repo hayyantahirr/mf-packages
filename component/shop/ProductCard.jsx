@@ -144,7 +144,7 @@ const ProductCard = ({ product }) => {
                 Full Collection
               </span>
               <span className="text-xl font-black text-brand-text">
-                {product.variations.length} Variants
+                {product.variations.length} Sizes
               </span>
             </div>
             <Link
