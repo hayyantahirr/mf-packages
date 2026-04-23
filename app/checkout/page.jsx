@@ -36,7 +36,7 @@ export default function CheckoutPage() {
   });
 
   // Payment Method State
-  const [paymentMethod, setPaymentMethod] = useState("cod"); // 'cod' or 'bank'
+  const [paymentMethod, setPaymentMethod] = useState("bank"); // Only 'bank' allowed now
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [orderIdRef, setOrderIdRef] = useState("");
@@ -373,25 +373,6 @@ export default function CheckoutPage() {
                   </label>
                   <div className="grid grid-cols-1 gap-4">
                     <label
-                      className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "cod" ? "bg-brand-orange/5 border-brand-orange shadow-sm" : "bg-brand-section border-gray-100 hover:border-gray-200"}`}
-                    >
-                      <input
-                        type="radio"
-                        name="paymentMethod"
-                        value="cod"
-                        checked={paymentMethod === "cod"}
-                        onChange={() => setPaymentMethod("cod")}
-                        className="w-5 h-5 accent-brand-orange"
-                      />
-                      <div className="grow">
-                        <p className="font-black text-brand-dark uppercase text-sm tracking-tight">Cash on Delivery (COD)</p>
-                        <p className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">
-                          Pay when your package arrives
-                        </p>
-                      </div>
-                    </label>
-
-                    <label
                       className={`flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer ${paymentMethod === "bank" ? "bg-brand-orange/5 border-brand-orange shadow-sm" : "bg-brand-section border-gray-100 hover:border-gray-200"}`}
                     >
                       <input
@@ -420,24 +401,31 @@ export default function CheckoutPage() {
                       <h4 className="text-xs font-black text-brand-orange mb-4 uppercase tracking-widest">
                         Bank Account Details
                       </h4>
-                      <div className="space-y-3 text-sm">
-                        <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                          <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Bank Name</span>
-                          <span className="font-black text-brand-dark">Meezan Bank</span>
+                      <div className="space-y-6">
+                        {/* Alfalah Details */}
+                        <div className="space-y-2">
+                          <h5 className="text-[10px] font-black text-brand-dark/50 uppercase tracking-widest border-b border-gray-100 pb-1">Option 1: Bank Alfalah</h5>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Account Title</span>
+                            <span className="font-black text-brand-dark text-xs uppercase">Mf corporation</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Account Number</span>
+                            <span className="font-mono font-black text-brand-dark text-xs">09811007533647</span>
+                          </div>
                         </div>
-                        <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                          <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Account Title</span>
-                          <span className="font-black text-brand-dark">MF PACKAGES</span>
-                        </div>
-                        <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                          <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Account Number</span>
-                          <span className="font-mono font-black text-brand-dark">1234 5678 9012 3456</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">IBAN</span>
-                          <span className="font-mono font-black text-brand-dark text-xs">
-                            PK60 MEZN 0012 3456 7890 1234
-                          </span>
+
+                        {/* Meezan Details */}
+                        <div className="space-y-2 pt-2">
+                          <h5 className="text-[10px] font-black text-brand-dark/50 uppercase tracking-widest border-b border-gray-100 pb-1">Option 2: Meezan Bank</h5>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Account Title</span>
+                            <span className="font-black text-brand-dark text-xs uppercase">Mf corporation</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Account Number</span>
+                            <span className="font-mono font-black text-brand-dark text-xs">99420105704120</span>
+                          </div>
                         </div>
                       </div>
                       <p className="mt-6 p-3 bg-brand-orange/5 rounded-xl border border-brand-orange/10 text-[10px] text-brand-dark font-bold leading-relaxed italic text-center">
