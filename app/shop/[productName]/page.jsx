@@ -154,7 +154,7 @@ export default async function ProductVariationsPage({ params }) {
             </div>
 
             {mainProduct.genImage && (
-              <div className="relative w-full md:w-80 h-fit rounded-4xl overflow-hidden border border-gray-100 shadow-2xl group/main shrink-0 bg-white">
+              <div className="relative hidden md:block w-full md:w-80 h-fit rounded-4xl overflow-hidden border border-gray-100 shadow-2xl group/main shrink-0 bg-white">
                 <Image
                   src={mainProduct.genImage}
                   alt={productName}

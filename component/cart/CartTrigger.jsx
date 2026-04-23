@@ -11,15 +11,15 @@ import { toggleCart } from "./cartSlice";
  */
 const CartTrigger = () => {
   const dispatch = useDispatch();
-  
+
   // Calculate total items in the cart
   const items = useSelector((state) => state.cart.items);
   const totalItems = items.length;
 
   return (
-    <button 
+    <button
       onClick={() => dispatch(toggleCart())}
-      className="relative group focus:outline-none transition-all duration-300" 
+      className="relative group focus:outline-none transition-all duration-300"
       aria-label="Shopping Cart"
     >
       {/* Glow Effect on Hover */}

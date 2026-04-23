@@ -62,13 +62,13 @@ const Navbar = () => {
             {/* Animated Border Glow */}
             {/* <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#D00000]/20 via-transparent to-[#D00000]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
 
-            <div className="relative flex items-center justify-between px-6 py-4">
+            <div className="relative flex items-center justify-between px-3 sm:px-6 py-4">
               {/* Logo Section with Eco Badge */}
               <Link href="/" className="flex items-center space-x-3 group">
                 <div className="relative">
                   <div className="absolute inset-0  rounded-full   transition-all duration-500"></div>
                   <div
-                    className={`relative w-14 h-14  rounded-full p-2 backdrop-blur-md border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2 ${
+                    className={`relative w-10 h-10 sm:w-14 sm:h-14 rounded-full p-1.5 sm:p-2 backdrop-blur-md border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2 ${
                       isScrolled
                         ? "bg-[#fdf2f0]/20 shadow-2xl"
                         : "bg-[#fdf2f0] shadow-xl"
@@ -87,14 +87,14 @@ const Navbar = () => {
                     <Leaf className="w-3 h-3 text-[#f1ead6]" />
                   </div>
                 </div>
-                <div className="hidden sm:block">
-                  <span className="text-2xl font-bold text-brand-dark tracking-tight">
+                {/* <div className="flex flex-col">
+                  <span className="text-base sm:text-2xl font-bold text-brand-dark tracking-tight leading-tight">
                     MF Packages
                   </span>
-                  <p className="text-xs text-brand-dark/70 ">
-                    Eco-Friendly Solutions
+                  <p className="text-[10px] sm:text-xs text-brand-dark/70">
+                    Eco-Friendly
                   </p>
-                </div>
+                </div> */}
               </Link>
 
               {/* Desktop Navigation with Advanced Effects */}
@@ -137,13 +137,13 @@ const Navbar = () => {
                   <button
                     disabled={isCheckout}
                     onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition-all duration-300 backdrop-blur-md ${
+                    className={`flex items-center space-x-1 sm:space-x-2 px-2 py-1 sm:px-3 sm:py-2 rounded-xl border transition-all duration-300 backdrop-blur-md ${
                       isCheckout
                         ? "opacity-50 cursor-not-allowed border-white/10"
                         : "border-white/10 hover:bg-white/10"
                     } text-brand-dark`}
                   >
-                    <span className="text-sm font-bold">
+                    <span className="text-[10px] sm:text-sm font-bold">
                       {
                         currencies.find((c) => c.code === selectedCurrency)
                           ?.flag
@@ -184,7 +184,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden p-3 text-brand-dark hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-md border border-white/10"
+                  className="md:hidden p-2 sm:p-3 text-brand-dark hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-md border border-white/10"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   aria-label="Toggle Menu"
                 >

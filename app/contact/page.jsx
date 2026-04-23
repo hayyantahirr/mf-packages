@@ -74,7 +74,7 @@ const ContactPage = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Side - Contact Form */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-brand-dark/5">
+          <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10 border border-brand-dark/5">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-6">
               Get A Quote
             </h2>
@@ -210,7 +210,7 @@ const ContactPage = () => {
                   <div className="text-sm text-brand-text/50 font-semibold">
                     Call Us
                   </div>
-                  <div className="text-brand-dark font-bold group-hover:text-brand-orange transition-colors">
+                  <div className="text-brand-dark font-bold group-hover:text-brand-orange transition-colors break-all">
                     +92 332 2464729
                   </div>
                 </div>
@@ -228,7 +228,7 @@ const ContactPage = () => {
                   <div className="text-sm text-brand-text/50 font-semibold">
                     Email Us
                   </div>
-                  <div className="text-brand-dark font-bold group-hover:text-brand-orange transition-colors">
+                  <div className="text-brand-dark font-bold group-hover:text-brand-orange transition-colors break-all">
                     info@mfpackages.com
                   </div>
                 </div>
@@ -240,7 +240,7 @@ const ContactPage = () => {
               <h3 className="text-lg font-bold text-brand-dark mb-4">
                 Connect With Us
               </h3>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
                   href="https://wa.me/+923322464729"
                   target="_blank"
@@ -289,11 +289,10 @@ const ContactPage = () => {
             </div>
 
             {/* Map */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-brand-dark/10">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-brand-dark/10 h-[300px] md:h-[450px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.190307190989!2d67.01349307482648!3d24.85734904538311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33dc112238b31%3A0xc8fad6791a9fde81!2sBrown%20Kraft%20paper%20Stand%20up%20Pouch%20for%20packaging%20of%20Spices%2C%20Salt%2C%20Dates%20and%20Dryfruits%20M.F%20Packages!5e0!3m2!1sen!2s!4v1775773073945!5m2!1sen!2s"
-                width="600"
-                height="450"
+                className="w-full h-full"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
