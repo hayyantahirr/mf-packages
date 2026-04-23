@@ -14,9 +14,11 @@ body {
   background-color: var(--color-brand-bg);
   overflow-x: hidden;
 }
+
 /* *{
   border: 1px solid red;
 } */
+
 html {
   scroll-behavior: smooth;
   
