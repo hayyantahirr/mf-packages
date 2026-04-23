@@ -21,9 +21,34 @@ const inter = Inter({
 
 export const metadata = {
   title: "MF - Packages",
-  description: "Sustainable Packaging Solutions",
+  description: "MF Packages provides premium, eco-friendly packaging solutions. From kraft paper pouches to custom foil-lined bags, we help brands scale with quality and style.",
+  authors: [{ name: "MF Packages" }],
+  creator: "MF Packages",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mfpackages.com", // Add your domain
+    title: "MF Packages",
+    description: "Premium Eco-Friendly Packaging Solutions for Global Brands",
+    images: [
+      {
+        url: "/home_banner.png", // Add your OG image URL
+        width: 1200,
+        height: 630,
+        alt: "MF Packages",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MF Packages",
+    description: "Premium Eco-Friendly Packaging Solutions for Global Brands",
+    images: ["/home_banner.png"], // Add your OG image URL
+  },
   appleWebApp: {
     title: "MF Packages",
+    statusBarStyle: "default",
+    touchIcon: "/icon192.png",
   },
   icons: {
     icon: [
