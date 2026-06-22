@@ -15,7 +15,7 @@ import HeroSlideshow from "./HeroSlideshow";
  */
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden bg-brand-bg">
+    <section className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden bg-brand-section">
       {/* ── Left Column: Content ─────────────────────────────────────── */}
       <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 pt-32 lg:pt-36 pb-12 lg:pb-10">
         <div className="max-w-xl w-full space-y-8">

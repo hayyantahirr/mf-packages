@@ -148,10 +148,6 @@ const Sec0 = () => {
 
         {/* ── Carousel ───────────────────────────────────── */}
         <div className="relative">
-          {/* Edge fades */}
-          <div className="absolute inset-y-0 left-0 w-8 bg-linear-to-r from-brand-bg to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-8 bg-linear-to-l from-brand-bg to-transparent z-10 pointer-events-none" />
-
           {/* Track */}
           <div
             ref={trackRef}
@@ -161,7 +157,7 @@ const Sec0 = () => {
               <Link
                 key={idx}
                 href={`/shop?category=${encodeURIComponent(cat.name)}`}
-                className="group relative shrink-0 w-[260px] sm:w-[280px] lg:w-[300px] h-[380px] rounded-4xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-brand-dark/5"
+                className="group relative shrink-0 w-[300px] sm:w-[280px] lg:w-[350px] h-[320px] rounded-4xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-brand-dark/5"
               >
                 {/* Product image — fills the card like the shop page */}
                 <Image

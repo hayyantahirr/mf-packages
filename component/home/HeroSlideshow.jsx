@@ -115,7 +115,7 @@ export default function HeroSlideshow() {
       </div>
 
       {/* ── Image Panel ────────────────────────────────────────────── */}
-      <div className="w-full lg:w-1/2 absolute inset-y-0 right-0 flex items-center justify-center overflow-hidden bg-brand-bg">
+      <div className="w-full lg:w-1/2 absolute inset-y-0 right-0 flex items-center justify-center overflow-hidden bg-brand-section">
         <AnimatePresence mode="wait">
           <motion.div
             key={`img-${currentSlide}`}
