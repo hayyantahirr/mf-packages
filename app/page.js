@@ -1,5 +1,6 @@
 import FAQs from "@/component/FAQs";
 import Hero from "@/component/home/Hero";
+import Sec0 from "@/component/home/Sec0";
 import Sec1 from "@/component/home/Sec1";
 import Sec2 from "@/component/home/Sec2";
 import Sec3 from "@/component/home/Sec3";
@@ -11,6 +12,7 @@ const page = () => {
   return (
     <>
       <Hero />
+      <Sec0/>
       {/* Our printing  */}
       <Sec5/>
       {/* Our Process */}
