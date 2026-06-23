@@ -9,47 +9,47 @@ const categories = [
   {
     name: "Kraft paper standup pouch",
     label: "Kraft Paper Standup Pouch",
-    image: "/categories/kraft_paper_pouches.png",
+    image: "/categories/kraft_paper_pouches.svg",
   },
   {
     name: "Aluminum pouches",
     label: "Aluminum Pouches",
-    image: "/categories/alimunum_pouch.png",
+    image: "/categories/aluminium_pouch.png",
   },
   {
     name: "Flat bottom pouches",
     label: "Flat Bottom Pouches",
-    image: "/categories/flat_bottom_pouch.png",
+    image: "/categories/flat_bottom_pouches.svg",
   },
   {
     name: "Plastic pouches",
     label: "Plastic Pouches",
-    image: "/categories/plastic_pouch.png",
+    image: "/categories/plastic_pouch.svg",
   },
   {
     name: "Retort pouches",
     label: "Retort Pouches",
-    image: "/categories/retort_pouch.png",
+    image: "/categories/retort_pouch.svg",
   },
   {
     name: "Chocolate sheets",
     label: "Chocolate Sheets",
-    image: "/categories/chocolate_paper.png",
+    image: "/categories/chocolate_paper.svg",
   },
   {
     name: "Coffee pouches",
     label: "Coffee Pouches",
-    image: "/categories/coffee_pouch.png",
+    image: "/categories/coffee_pouch.svg",
   },
   {
     name: "PVC shrink capsules",
     label: "PVC Shrink Capsules",
-    image: "/categories/seal_capsule.png",
+    image: "/categories/shrink_capsule.png",
   },
   {
     name: "Spout pouches",
     label: "Spout Pouches",
-    image: "/categories/spout_pouch.png",
+    image: "/categories/spout_pouch.svg",
   },
 ];
 

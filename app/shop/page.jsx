@@ -18,16 +18,16 @@ import { calculateTieredPrice } from "@/config/utils/pricing";
 const categories = [
   {
     name: "Kraft paper standup pouch",
-    image: "/categories/kraft_paper_pouches.png",
+    image: "/categories/kraft_paper_pouches.svg",
   },
-  { name: "Aluminum pouches", image: "/categories/alimunum_pouch.png" },
-  { name: "Flat bottom pouches", image: "/categories/flat_bottom_pouch.png" },
-  { name: "Plastic pouches", image: "/categories/plastic_pouch.png" },
-  { name: "Retort pouches", image: "/categories/retort_pouch.png" },
-  { name: "Chocolate sheets", image: "/categories/chocolate_paper.png" },
-  { name: "Coffee pouches", image: "/categories/coffee_pouch.png" },
-  { name: "PVC shrink capsules", image: "/categories/seal_capsule.png" },
-  { name: "Spout pouches", image: "/categories/spout_pouch.png" },
+  { name: "Aluminum pouches", image: "/categories/aluminium_pouch.png" },
+  { name: "Flat bottom pouches", image: "/categories/flat_bottom_pouches.svg" },
+  { name: "Plastic pouches", image: "/categories/plastic_pouch.svg" },
+  { name: "Retort pouches", image: "/categories/retort_pouch.svg" },
+  { name: "Chocolate sheets", image: "/categories/chocolate_paper.svg" },
+  { name: "Coffee pouches", image: "/categories/coffee_pouch.svg" },
+  { name: "PVC shrink capsules", image: "/categories/shrink_capsule.png" },
+  { name: "Spout pouches", image: "/categories/spout_pouch.svg" },
 ];
 
 const Breadcrumbs = ({ activeCategory }) => (
