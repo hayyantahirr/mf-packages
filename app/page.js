@@ -1,5 +1,6 @@
 import FAQs from "@/component/FAQs";
 import Hero from "@/component/home/Hero";
+import Partnership from "@/component/home/Partnership";
 import Sec0 from "@/component/home/Sec0";
 import Sec1 from "@/component/home/Sec1";
 import Sec2 from "@/component/home/Sec2";
@@ -15,6 +16,8 @@ const page = () => {
       <Sec0/>
       {/* Our printing  */}
       <Sec5/>
+      {/* Partner & Distributor */}
+      <Partnership />
       {/* Our Process */}
       <Sec2 />
       {/* Our Certifications */}
