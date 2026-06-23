@@ -74,6 +74,101 @@ const printingMethods = [
     accentColor: "text-brand-success",
     bgAccent: "bg-brand-success/10",
   },
+  {
+    id: "offset",
+    title: "Offset Printing",
+    subtitle: "Precision Color Matching",
+    badge: "Premium Quality",
+    badgeColor: "bg-blue-600",
+    icon: "🖋️",
+    minQty: "5,000 pcs",
+    minQtyNum: 5000,
+    timeline: "12–18 business days",
+    description:
+      "Offset printing transfers ink from a plate to a rubber blanket and then onto the substrate — delivering exceptionally consistent, high-resolution output with perfect Pantone color matching. Ideal for brands that demand meticulous color accuracy across sophisticated multi-element designs.",
+    highlights: [
+      "Pantone color-matched accuracy",
+      "Crisp fine detail reproduction",
+      "Excellent for complex multi-layer art",
+      "Low ink waste per unit at mid-volume",
+      "Works on paper, board & flexible films",
+      "Cost-efficient for medium run sizes",
+    ],
+    color: "from-blue-500/20 to-blue-500/5",
+    borderColor: "border-blue-500/30",
+    accentColor: "text-blue-600",
+    bgAccent: "bg-blue-500/10",
+  },
+  {
+    id: "single-pass",
+    title: "Single Pass Printing",
+    subtitle: "Fastest Turnaround",
+    badge: "Fastest",
+    badgeColor: "bg-purple-600",
+    icon: "⚡",
+    minQty: "500 pcs",
+    minQtyNum: 500,
+    timeline: "7–12 business days",
+    description:
+      "Single pass (digital inkjet) printing applies all colors simultaneously in a single pass over the substrate, eliminating plate setup entirely. This makes it the fastest route from artwork to finished pouch — perfect for short-run proofs, seasonal designs, and brands that need quick market testing.",
+    highlights: [
+      "No plate or cylinder setup fees",
+      "Fastest production turnaround",
+      "Minimum 500 pcs — ultra-low MOQ",
+      "Full-color variable data printing",
+      "Ideal for short runs & prototyping",
+      "On-demand reprints with no minimum",
+    ],
+    color: "from-purple-500/20 to-purple-500/5",
+    borderColor: "border-purple-500/30",
+    accentColor: "text-purple-600",
+    bgAccent: "bg-purple-500/10",
+  },
+];
+
+const printingSamples = [
+  {
+    image: "/hero-ai-images/coffe_pouch_mockup.svg",
+    label: "Gravure — Coffee Pouch",
+    method: "Gravure",
+    methodColor: "bg-brand-orange",
+    desc: "8-color full-bleed photographic print",
+  },
+  {
+    image: "/hero-ai-images/pet-food-pouches-hero.png",
+    label: "Screen — Pet Food Bags",
+    method: "Screen",
+    methodColor: "bg-brand-success",
+    desc: "Bold 3-color spot logo print",
+  },
+  {
+    image: "/hero-ai-images/transparent-pouch-mockup.png",
+    label: "Offset — Transparent Pouch",
+    method: "Offset",
+    methodColor: "bg-blue-600",
+    desc: "Pantone-matched brand identity",
+  },
+  {
+    image: "/categories/kraft_paper_pouches.svg",
+    label: "Single Pass — Kraft Bags",
+    method: "Single Pass",
+    methodColor: "bg-purple-600",
+    desc: "Short-run full-color digital print",
+  },
+  {
+    image: "/categories/coffee_pouch.svg",
+    label: "Gravure — Specialty Coffee",
+    method: "Gravure",
+    methodColor: "bg-brand-orange",
+    desc: "Metallic ink + gradient design",
+  },
+  {
+    image: "/categories/flat_bottom_pouches.svg",
+    label: "Offset — Flat Bottom Pouch",
+    method: "Offset",
+    methodColor: "bg-blue-600",
+    desc: "Premium Pantone retail packaging",
+  },
 ];
 
 const completedJobs = [
@@ -166,15 +261,6 @@ const processSteps = [
   },
 ];
 
-const stats = [
-  { label: "Gravure Min. Order", value: "10,000", unit: "pcs", icon: "🖨️" },
-  { label: "Screen Print Min.", value: "1,000", unit: "pcs", icon: "🎨" },
-  { label: "Min. Lead Time", value: "15", unit: "days", icon: "⏱️" },
-  { label: "Max Colors (Gravure)", value: "10", unit: "colors", icon: "🌈" },
-  { label: "Jobs Completed", value: "500+", unit: "orders", icon: "✅" },
-  { label: "Happy Clients", value: "200+", unit: "brands", icon: "⭐" },
-];
-
 /* ─── Component ──────────────────────────────────────────── */
 
 export default function PrintingPage() {
@@ -251,33 +337,6 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* ── STATS BAR ───────────────────────────────────────── */}
-      <section className="relative py-0 -mt-1">
-        <div className="bg-brand-dark border-y border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-4">
-              {stats.map((stat, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center text-center group"
-                >
-                  <span className="text-2xl mb-1">{stat.icon}</span>
-                  <div className="text-2xl md:text-3xl font-black text-white leading-none mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-white/40">
-                    {stat.unit}
-                  </div>
-                  <div className="text-[10px] font-medium text-white/60 mt-0.5">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── PRINTING METHODS ────────────────────────────────── */}
       <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -290,19 +349,17 @@ export default function PrintingPage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-brand-dark tracking-tight leading-tight mb-4">
-              Two Methods,{" "}
-              <span className="text-brand-orange">
-                Infinite Possibilities
-              </span>
+              Four Methods,{" "}
+              <span className="text-brand-orange">Infinite Possibilities</span>
             </h2>
             <p className="text-brand-dark/50 text-base md:text-lg font-medium max-w-xl mx-auto">
-              Choose the printing technology that fits your volume, design, and
-              budget — or let our team guide you to the perfect solution.
+              From short-run digital proofs to million-piece gravure campaigns —
+              choose the technology that fits your volume, design, and timeline.
             </p>
           </div>
 
           {/* Method Cards */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {printingMethods.map((method) => (
               <div
                 key={method.id}
@@ -328,7 +385,9 @@ export default function PrintingPage() {
                           <h3 className="text-2xl font-black text-brand-dark leading-none">
                             {method.title}
                           </h3>
-                          <p className={`text-sm font-bold ${method.accentColor} mt-0.5`}>
+                          <p
+                            className={`text-sm font-bold ${method.accentColor} mt-0.5`}
+                          >
                             {method.subtitle}
                           </p>
                         </div>
@@ -338,25 +397,33 @@ export default function PrintingPage() {
 
                   {/* Key Specs */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className={`p-4 rounded-2xl ${method.bgAccent} border ${method.borderColor}`}>
+                    <div
+                      className={`p-4 rounded-2xl ${method.bgAccent} border ${method.borderColor}`}
+                    >
                       <div className="flex items-center gap-2 mb-1">
                         <Package size={14} className={method.accentColor} />
                         <span className="text-[10px] font-black uppercase tracking-widest text-brand-dark/50">
                           Min. Order
                         </span>
                       </div>
-                      <div className={`text-xl font-black ${method.accentColor}`}>
+                      <div
+                        className={`text-xl font-black ${method.accentColor}`}
+                      >
                         {method.minQty}
                       </div>
                     </div>
-                    <div className={`p-4 rounded-2xl ${method.bgAccent} border ${method.borderColor}`}>
+                    <div
+                      className={`p-4 rounded-2xl ${method.bgAccent} border ${method.borderColor}`}
+                    >
                       <div className="flex items-center gap-2 mb-1">
                         <Clock size={14} className={method.accentColor} />
                         <span className="text-[10px] font-black uppercase tracking-widest text-brand-dark/50">
                           Lead Time
                         </span>
                       </div>
-                      <div className={`text-base font-black ${method.accentColor} leading-tight`}>
+                      <div
+                        className={`text-base font-black ${method.accentColor} leading-tight`}
+                      >
                         {method.timeline}
                       </div>
                     </div>
@@ -400,6 +467,78 @@ export default function PrintingPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRINTING SAMPLES GALLERY ─────────────────────────── */}
+      <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-brand-section">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-brand-dark/5 shadow-sm mb-6">
+              <div className="w-2 h-2 bg-brand-orange rounded-full animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-dark">
+                Sample Showcase
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-brand-dark tracking-tight leading-tight mb-4">
+              Printing{" "}
+              <span className="text-brand-orange">Samples & Results</span>
+            </h2>
+            <p className="text-brand-dark/50 text-base font-medium">
+              A visual look at the quality we deliver across our four printing
+              technologies on real packaging.
+            </p>
+          </div>
+
+          {/* Sample Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {printingSamples.map((sample, i) => (
+              <div
+                key={i}
+                className="group relative rounded-3xl overflow-hidden bg-white border border-brand-dark/5 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+              >
+                {/* Image */}
+                <div className="relative h-56 bg-brand-section overflow-hidden">
+                  <Image
+                    src={sample.image}
+                    alt={sample.label}
+                    fill
+                    className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Method badge overlay */}
+                  <div className="absolute top-4 left-4">
+                    <span
+                      className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full text-white ${sample.methodColor}`}
+                    >
+                      {sample.method}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card body */}
+                <div className="p-5">
+                  <h4 className="text-sm font-black text-brand-dark leading-snug mb-1">
+                    {sample.label}
+                  </h4>
+                  <p className="text-[11px] font-medium text-brand-dark/50">
+                    {sample.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2.5 px-8 py-4 bg-brand-dark text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-brand-orange transition-all duration-300 shadow-xl"
+            >
+              Request a Sample Kit
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
@@ -478,19 +617,25 @@ export default function PrintingPage() {
                     <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mb-0.5">
                       Qty
                     </div>
-                    <div className="text-xs font-black text-white">{job.qty}</div>
+                    <div className="text-xs font-black text-white">
+                      {job.qty}
+                    </div>
                   </div>
                   <div>
                     <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mb-0.5">
                       Colors
                     </div>
-                    <div className="text-xs font-black text-white">{job.colors}</div>
+                    <div className="text-xs font-black text-white">
+                      {job.colors}
+                    </div>
                   </div>
                   <div>
                     <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mb-0.5">
                       Time
                     </div>
-                    <div className="text-xs font-black text-white">{job.timeline}</div>
+                    <div className="text-xs font-black text-white">
+                      {job.timeline}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -527,12 +672,17 @@ export default function PrintingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {processSteps.map((step, i) => (
-                <div key={i} className="relative flex flex-col items-center text-center group">
+                <div
+                  key={i}
+                  className="relative flex flex-col items-center text-center group"
+                >
                   {/* Step circle */}
                   <div className="relative w-20 h-20 rounded-full bg-white border-2 border-brand-orange/20 flex items-center justify-center shadow-sm mb-4 group-hover:border-brand-orange group-hover:shadow-lg group-hover:shadow-brand-orange/10 transition-all duration-300">
                     <span className="text-2xl">{step.icon}</span>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center">
-                      <span className="text-[9px] font-black text-white">{step.step}</span>
+                      <span className="text-[9px] font-black text-white">
+                        {step.step}
+                      </span>
                     </div>
                   </div>
                   <h4 className="text-sm font-black text-brand-dark mb-2 leading-snug">
@@ -570,26 +720,42 @@ export default function PrintingPage() {
                     <div className="flex items-center gap-3">
                       <span className="text-xl">🖨️</span>
                       <div>
-                        <div className="text-sm font-black text-brand-dark">Gravure Printing</div>
-                        <div className="text-xs text-brand-dark/40 font-medium">Rotogravure technology</div>
+                        <div className="text-sm font-black text-brand-dark">
+                          Gravure Printing
+                        </div>
+                        <div className="text-xs text-brand-dark/40 font-medium">
+                          Rotogravure technology
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-black text-brand-orange">10,000</div>
-                      <div className="text-[10px] font-bold text-brand-dark/40 uppercase tracking-widest">pcs min.</div>
+                      <div className="text-lg font-black text-brand-orange">
+                        10,000
+                      </div>
+                      <div className="text-[10px] font-bold text-brand-dark/40 uppercase tracking-widest">
+                        pcs min.
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-brand-bg rounded-2xl">
                     <div className="flex items-center gap-3">
                       <span className="text-xl">🎨</span>
                       <div>
-                        <div className="text-sm font-black text-brand-dark">Screen Printing</div>
-                        <div className="text-xs text-brand-dark/40 font-medium">Mesh stencil technology</div>
+                        <div className="text-sm font-black text-brand-dark">
+                          Screen Printing
+                        </div>
+                        <div className="text-xs text-brand-dark/40 font-medium">
+                          Mesh stencil technology
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-black text-brand-success">1,000</div>
-                      <div className="text-[10px] font-bold text-brand-dark/40 uppercase tracking-widest">pcs min.</div>
+                      <div className="text-lg font-black text-brand-success">
+                        1,000
+                      </div>
+                      <div className="text-[10px] font-bold text-brand-dark/40 uppercase tracking-widest">
+                        pcs min.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -639,14 +805,23 @@ export default function PrintingPage() {
                       desc: "Counting, packing, and shipping",
                     },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 rounded-xl hover:bg-brand-bg transition-colors">
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 p-3 rounded-xl hover:bg-brand-bg transition-colors"
+                    >
                       <span className="text-xl shrink-0">{item.icon}</span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-sm font-black text-brand-dark">{item.label}</span>
-                          <span className="text-xs font-black text-brand-success shrink-0">{item.time}</span>
+                          <span className="text-sm font-black text-brand-dark">
+                            {item.label}
+                          </span>
+                          <span className="text-xs font-black text-brand-success shrink-0">
+                            {item.time}
+                          </span>
                         </div>
-                        <p className="text-xs text-brand-dark/40 font-medium mt-0.5">{item.desc}</p>
+                        <p className="text-xs text-brand-dark/40 font-medium mt-0.5">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -654,9 +829,13 @@ export default function PrintingPage() {
                 <div className="mt-6 p-4 bg-brand-orange/5 border border-brand-orange/20 rounded-2xl">
                   <div className="flex items-center gap-2 mb-1">
                     <Zap size={14} className="text-brand-orange" />
-                    <span className="text-xs font-black text-brand-orange uppercase tracking-wider">Total Minimum Lead Time</span>
+                    <span className="text-xs font-black text-brand-orange uppercase tracking-wider">
+                      Total Minimum Lead Time
+                    </span>
                   </div>
-                  <div className="text-2xl font-black text-brand-dark">15 Business Days</div>
+                  <div className="text-2xl font-black text-brand-dark">
+                    15 Business Days
+                  </div>
                   <p className="text-xs text-brand-dark/40 font-medium mt-1">
                     Actual time varies by complexity and order volume.
                   </p>
@@ -704,8 +883,12 @@ export default function PrintingPage() {
                 className="bg-white p-7 rounded-2xl border border-brand-dark/5 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
                 <span className="text-3xl block mb-4">{item.icon}</span>
-                <h4 className="text-sm font-black text-brand-dark mb-2">{item.title}</h4>
-                <p className="text-xs text-brand-dark/50 font-medium leading-relaxed">{item.desc}</p>
+                <h4 className="text-sm font-black text-brand-dark mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-brand-dark/50 font-medium leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>

@@ -3,8 +3,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "@/component/cart/cartSlice";
 import { setCurrency } from "@/config/redux/currencySlice";
-import { ShoppingCart, Truck, Printer, Info, Gift, ChevronDown, AlertCircle } from "lucide-react";
-import { convertPrice, formatPrice, currencies } from "@/config/utils/currencyUtils";
+import {
+  ShoppingCart,
+  Truck,
+  Printer,
+  Info,
+  Gift,
+  ChevronDown,
+  AlertCircle,
+} from "lucide-react";
+import {
+  convertPrice,
+  formatPrice,
+  currencies,
+} from "@/config/utils/currencyUtils";
 import { calculateTieredPrice } from "@/config/utils/pricing";
 import { useState } from "react";
 import ProductTechnicalSpecs from "./ProductTechnicalSpecs";
@@ -27,7 +39,9 @@ export default function ProductPricingSection({
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
 
   // Redux State
-  const { selectedCurrency, exchangeRates } = useSelector((state) => state.currency);
+  const { selectedCurrency, exchangeRates } = useSelector(
+    (state) => state.currency,
+  );
   const { cartCurrency } = useSelector((state) => state.cart);
 
   // Fixed Tiered Pricing Logic
@@ -36,13 +50,17 @@ export default function ProductPricingSection({
   };
 
   const currentPricePKR = calculateFinalPrice(quantity);
-  const convertedPrice = convertPrice(currentPricePKR, selectedCurrency, exchangeRates);
+  const convertedPrice = convertPrice(
+    currentPricePKR,
+    selectedCurrency,
+    exchangeRates,
+  );
 
   const handleAddToCart = () => {
     // SINGLE CURRENCY RULE VALIDATION
     if (cartCurrency && cartCurrency !== selectedCurrency) {
       alert(
-        `You can only checkout using one currency. Please clear your cart or switch back to ${cartCurrency} to continue.`
+        `You can only checkout using one currency. Please clear your cart or switch back to ${cartCurrency} to continue.`,
       );
       return;
     }
@@ -57,7 +75,7 @@ export default function ProductPricingSection({
         basePricePKR: currentPricePKR, // Unified PKR price storage
         currency: selectedCurrency, // Track the lock currency
         mainImage: mainImage || "/placeholder.png",
-      })
+      }),
     );
   };
 
@@ -74,7 +92,7 @@ export default function ProductPricingSection({
               <span className="text-5xl font-black text-brand-dark tracking-tighter transition-all duration-300">
                 {formatPrice(convertedPrice, selectedCurrency)}
               </span>
-              
+
               {/* Currency Dropdown beside Price */}
               <div className="relative mt-2">
                 <button
@@ -82,9 +100,12 @@ export default function ProductPricingSection({
                   className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-brand-dark hover:text-brand-orange transition-colors"
                 >
                   <span className="text-xs font-bold">{selectedCurrency}</span>
-                  <ChevronDown size={14} className={`transition-transform ${isCurrencyOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform ${isCurrencyOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
-                
+
                 {isCurrencyOpen && (
                   <div className="absolute top-full left-0 mt-2 w-24 bg-white border border-gray-100 rounded-xl shadow-2xl z-50 py-1 overflow-hidden">
                     {currencies.map((curr) => (
@@ -95,7 +116,9 @@ export default function ProductPricingSection({
                           setIsCurrencyOpen(false);
                         }}
                         className={`w-full text-left px-4 py-2 text-xs text-brand-dark hover:bg-brand-section transition-colors ${
-                          selectedCurrency === curr.code ? "bg-brand-orange/5 text-brand-orange font-black" : ""
+                          selectedCurrency === curr.code
+                            ? "bg-brand-orange/5 text-brand-orange font-black"
+                            : ""
                         }`}
                       >
                         {curr.code}
@@ -137,13 +160,27 @@ export default function ProductPricingSection({
                 if (saving > 0) {
                   return (
                     <span className="block text-[8px] opacity-70 mt-0.5">
-                      Save {formatPrice(convertPrice(saving, selectedCurrency, exchangeRates), selectedCurrency)} /pc
+                      Save{" "}
+                      {formatPrice(
+                        convertPrice(saving, selectedCurrency, exchangeRates),
+                        selectedCurrency,
+                      )}{" "}
+                      /pc
                     </span>
                   );
                 } else if (saving < 0) {
-                   return (
+                  return (
                     <span className="block text-[8px] opacity-70 mt-0.5">
-                      +{formatPrice(convertPrice(Math.abs(saving), selectedCurrency, exchangeRates), selectedCurrency)} Surcharge
+                      +
+                      {formatPrice(
+                        convertPrice(
+                          Math.abs(saving),
+                          selectedCurrency,
+                          exchangeRates,
+                        ),
+                        selectedCurrency,
+                      )}{" "}
+                      Surcharge
                     </span>
                   );
                 }
@@ -165,8 +202,19 @@ export default function ProductPricingSection({
           </div>
           <p className="text-gray-500 text-xs leading-relaxed font-medium">
             Sample cost is{" "}
-            <span className="text-brand-dark font-black">{formatPrice(convertPrice(50, selectedCurrency, exchangeRates), selectedCurrency)}</span> (any size).
-            Delivery is <span className="text-brand-dark font-black">{formatPrice(convertPrice(250, selectedCurrency, exchangeRates), selectedCurrency)}</span>{" "}
+            <span className="text-brand-dark font-black">
+              {formatPrice(
+                convertPrice(50, selectedCurrency, exchangeRates),
+                selectedCurrency,
+              )}
+            </span>{" "}
+            (any size). Delivery is{" "}
+            <span className="text-brand-dark font-black">
+              {formatPrice(
+                convertPrice(250, selectedCurrency, exchangeRates),
+                selectedCurrency,
+              )}
+            </span>{" "}
             for overnight shipping.
           </p>
         </div>

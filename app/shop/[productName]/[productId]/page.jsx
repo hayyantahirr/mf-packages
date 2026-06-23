@@ -103,9 +103,9 @@ export default async function SingleProductPage({ params }) {
           Back to {productName} Variations
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 animate-fade-in items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 animate-fade-in items-start">
           {/* 1. Image Gallery - Order 1, Column 1 */}
-          <div className="order-1 lg:col-start-1 space-y-12">
+          <div className="order-1 lg:col-start-1 space-y-8">
             <ProductImageGallery images={allImages} productName={productName} />
           </div>
 
@@ -164,7 +164,7 @@ export default async function SingleProductPage({ params }) {
           </div>
 
           {/* 3. Detailed Description & Technical Specifications - Order 3, Column 1 on Desktop */}
-          <div className="order-3 lg:col-start-1 lg:row-start-2 space-y-8 pt-10 lg:border-t border-gray-200">
+          <div className="order-3 lg:col-start-1 lg:row-start-2 space-y-8   border-gray-200">
             <div className="flex items-center gap-2 text-brand-orange font-black text-xs uppercase tracking-[0.2em]">
               <FileText size={16} />
               Technical Specifications
@@ -175,8 +175,8 @@ export default async function SingleProductPage({ params }) {
                 {/* Printing Specifications */}
                 <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
                   <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
-                    <Printer size={12} className="text-brand-orange" />{" "}
-                    Printing Specifications
+                    <Printer size={12} className="text-brand-orange" /> Printing
+                    Specifications
                   </div>
                   <div className="font-bold text-sm leading-relaxed">
                     <div className="flex flex-col gap-3">
@@ -205,9 +205,7 @@ export default async function SingleProductPage({ params }) {
                         <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
                           Lead Time:
                         </span>
-                        <span className="text-brand-dark">
-                          10 Working Days
-                        </span>
+                        <span className="text-brand-dark">10 Working Days</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
