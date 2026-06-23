@@ -85,6 +85,13 @@ const Sec5 = () => {
                 />
               </Link>
               <Link
+                href="/printing"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 bg-white/15 text-white border border-white/30 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-[0.2em] hover:bg-white/25 hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-md"
+              >
+                Our Printing Services
+                <ArrowRight size={14} className="opacity-70" />
+              </Link>
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 bg-white/10 text-white border border-white/20 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-[0.2em] hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-md"
               >
