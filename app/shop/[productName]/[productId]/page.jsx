@@ -110,7 +110,7 @@ export default async function SingleProductPage({ params }) {
           </div>
 
           {/* 2. Product Details & Pricing - Order 2, Column 2 on Desktop, Row 1 on Desktop */}
-          <div className="order-2 lg:col-start-2 lg:row-start-1 space-y-10">
+          <div className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-10">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
@@ -164,7 +164,7 @@ export default async function SingleProductPage({ params }) {
           </div>
 
           {/* 3. Detailed Description & Technical Specifications - Order 3, Column 1 on Desktop */}
-          <div className="order-3 lg:col-start-1 space-y-8 pt-10 lg:border-t border-gray-200">
+          <div className="order-3 lg:col-start-1 lg:row-start-2 space-y-8 pt-10 lg:border-t border-gray-200">
             <div className="flex items-center gap-2 text-brand-orange font-black text-xs uppercase tracking-[0.2em]">
               <FileText size={16} />
               Technical Specifications
