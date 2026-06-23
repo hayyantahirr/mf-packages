@@ -60,7 +60,7 @@ export default function HeroSlideshow() {
     <>
       {/* ── Dynamic Text Block ─────────────────────────────────────── */}
       {/* Badge */}
-      <div className="h-[36px] overflow-hidden relative flex items-center">
+      <div className="h-[36px] overflow-hidden relative flex items-center order-1">
         <AnimatePresence mode="wait">
           <motion.div
             key={`badge-${currentSlide}`}
@@ -79,7 +79,7 @@ export default function HeroSlideshow() {
       </div>
 
       {/* Title: "Premium [WORD] Packaging" — only the middle word animates */}
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-brand-dark tracking-tight leading-[1.1] uppercase flex flex-col justify-start">
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-brand-dark tracking-tight leading-[1.1] uppercase flex flex-col justify-start order-2">
         <span>Premium</span>
         <span className="block text-brand-orange my-1">
           <AnimatePresence mode="wait">
@@ -99,7 +99,7 @@ export default function HeroSlideshow() {
       </h1>
 
       {/* Subtext */}
-      <div className="relative">
+      <div className="relative order-3">
         <AnimatePresence mode="wait">
           <motion.p
             key={`subtext-${currentSlide}`}
@@ -115,7 +115,7 @@ export default function HeroSlideshow() {
       </div>
 
       {/* ── Image Panel ────────────────────────────────────────────── */}
-      <div className="w-full lg:w-1/2 absolute inset-y-0 right-0 flex items-center justify-center overflow-hidden bg-brand-section">
+      <div className="w-full lg:w-1/2 relative lg:absolute lg:inset-y-0 lg:right-0 flex items-center justify-center overflow-hidden bg-brand-section order-6 lg:order-0 h-[320px] sm:h-[450px] lg:h-auto rounded-3xl lg:rounded-none shadow-inner lg:shadow-none">
         <AnimatePresence mode="wait">
           <motion.div
             key={`img-${currentSlide}`}
@@ -123,9 +123,9 @@ export default function HeroSlideshow() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative z-10 flex items-center justify-center w-full h-full px-10 py-20 lg:py-28"
+            className="relative z-10 flex items-center justify-center w-full h-full px-4 py-8 sm:px-10 sm:py-20 lg:py-28"
           >
-            <div className="relative w-full max-w-[380px] lg:max-w-[1200px] aspect-4/3">
+            <div className="relative w-full max-w-[280px] sm:max-w-[380px] lg:max-w-[1200px] aspect-4/3">
               <Image
                 src={slides[currentSlide].image}
                 alt={`${slides[currentSlide].titlePart} Packaging`}

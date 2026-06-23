@@ -80,6 +80,10 @@ html {
   animation: fade-in 1s ease-out forwards;
 }
 
+.animate-fade-in-fast {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
 .animate-draw-line {
   animation: draw-line 2s ease-in-out infinite;
 }

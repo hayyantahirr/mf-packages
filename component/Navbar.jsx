@@ -223,61 +223,62 @@ const Navbar = () => {
 
                         {/* Mega Dropdown Panel */}
                         {isShopDropdownOpen && (
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 min-w-[550px] grid grid-cols-12 gap-4 z-50 animate-fade-in">
-                            {/* Left Column: Categories */}
-                            <div className="col-span-5 border-r border-brand-bg/50 pr-2 space-y-1">
-                              <span className="text-[10px] font-black uppercase tracking-widest text-brand-text/40 px-3 pb-2 block">
-                                Categories
-                              </span>
-                              {shopCategories.map((cat, idx) => (
-                                <button
-                                  key={cat.name}
-                                  type="button"
-                                  onMouseEnter={() =>
-                                    setActiveShopCategory(idx)
-                                  }
-                                  onClick={() => {
-                                    if (cat.query) {
-                                      window.location.href = `/shop?category=${encodeURIComponent(
-                                        cat.query,
-                                      )}`;
-                                    } else {
-                                      window.location.href = "/shop";
-                                    }
-                                    setIsShopDropdownOpen(false);
-                                  }}
-                                  className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-between cursor-pointer ${
-                                    activeShopCategory === idx
-                                      ? "bg-brand-orange/10 text-brand-orange"
-                                      : "text-brand-dark hover:bg-brand-section"
-                                  }`}
-                                >
-                                  <span>{cat.name}</span>
-                                  <ChevronDown className="-rotate-90 w-3 h-3 opacity-60" />
-                                </button>
-                              ))}
-                            </div>
-
-                            {/* Right Column: Subcategories */}
-                            <div className="col-span-7 pl-2 space-y-1.5">
-                              <span className="text-[10px] font-black uppercase tracking-widest text-brand-text/40 pb-2 block">
-                                {shopCategories[activeShopCategory].name}{" "}
-                                Products
-                              </span>
-                              <div className="grid grid-cols-1 gap-1">
-                                {shopCategories[
-                                  activeShopCategory
-                                ].subcategories.map((sub) => (
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50 animate-fade-in-fast">
+                            <div className="bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 min-w-[550px] grid grid-cols-12 gap-4">
+                              {/* Left Column: Categories */}
+                              <div className="col-span-5 border-r border-brand-bg/50 pr-2 space-y-1">
+                                <span className="text-[10px] font-black uppercase tracking-widest text-brand-text/40 px-3 pb-2 block">
+                                  Categories
+                                </span>
+                                {shopCategories.map((cat, idx) => (
                                   <Link
-                                    key={sub.name}
-                                    href={sub.href}
-                                    onClick={() => setIsShopDropdownOpen(false)}
-                                    className="group/sub flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-brand-dark hover:bg-brand-section hover:text-brand-orange transition-all duration-200"
+                                    key={cat.name}
+                                    href={
+                                      cat.query
+                                        ? `/shop?category=${encodeURIComponent(
+                                            cat.query,
+                                          )}`
+                                        : "/shop"
+                                    }
+                                    onMouseEnter={() =>
+                                      setActiveShopCategory(idx)
+                                    }
+                                    onClick={() => {
+                                      setIsShopDropdownOpen(false);
+                                    }}
+                                    className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                                      activeShopCategory === idx
+                                        ? "bg-brand-orange/10 text-brand-orange"
+                                        : "text-brand-dark hover:bg-brand-section"
+                                    }`}
                                   >
-                                    <span>{sub.name}</span>
-                                    <ArrowRight className="w-3.5 h-3.5 text-brand-orange opacity-0 group-hover/sub:opacity-100 transition-opacity duration-200" />
+                                    <span>{cat.name}</span>
+                                    <ChevronDown className="-rotate-90 w-3 h-3 opacity-60" />
                                   </Link>
                                 ))}
+                              </div>
+
+                              {/* Right Column: Subcategories */}
+                              <div className="col-span-7 pl-2 space-y-1.5">
+                                <span className="text-[10px] font-black uppercase tracking-widest text-brand-text/40 pb-2 block">
+                                  {shopCategories[activeShopCategory].name}{" "}
+                                  Products
+                                </span>
+                                <div className="grid grid-cols-1 gap-1">
+                                  {shopCategories[
+                                    activeShopCategory
+                                  ].subcategories.map((sub) => (
+                                    <Link
+                                      key={sub.name}
+                                      href={sub.href}
+                                      onClick={() => setIsShopDropdownOpen(false)}
+                                      className="group/sub flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-brand-dark hover:bg-brand-section hover:text-brand-orange transition-all duration-200"
+                                    >
+                                      <span>{sub.name}</span>
+                                      <ArrowRight className="w-3.5 h-3.5 text-brand-orange opacity-0 group-hover/sub:opacity-100 transition-opacity duration-200" />
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -338,7 +339,7 @@ const Navbar = () => {
                   </button>
 
                   {isCurrencyOpen && !isCheckout && (
-                    <div className="absolute top-full right-0 mt-2 w-32 bg-white/80 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in">
+                    <div className="absolute top-full right-0 mt-2 w-32 bg-white/80 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden py-1 z-50 animate-fade-in-fast">
                       {currencies.map((curr) => (
                         <button
                           key={curr.code}
@@ -411,7 +412,7 @@ const Navbar = () => {
                         </button>
 
                         {isMobileShopOpen && (
-                          <div className="pl-4 pr-2 py-2 space-y-2 border-l-2 border-brand-orange/20 ml-5 animate-fade-in">
+                          <div className="pl-4 pr-2 py-2 space-y-2 border-l-2 border-brand-orange/20 ml-5 animate-fade-in-fast">
                             {shopCategories.map((cat, catIdx) => (
                               <div key={cat.name} className="space-y-1">
                                 <button
@@ -436,7 +437,7 @@ const Navbar = () => {
                                 </button>
 
                                 {activeMobileCategory === catIdx && (
-                                  <div className="pl-3 py-1 space-y-1.5 border-l border-brand-bg ml-3 animate-fade-in flex flex-col">
+                                  <div className="pl-3 py-1 space-y-1.5 border-l border-brand-bg ml-3 animate-fade-in-fast flex flex-col">
                                     {cat.subcategories.map((sub) => (
                                       <Link
                                         key={sub.name}

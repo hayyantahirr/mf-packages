@@ -18,15 +18,17 @@ const Hero = () => {
     <section className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden bg-brand-section">
       {/* ── Left Column: Content ─────────────────────────────────────── */}
       <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 pt-32 lg:pt-36 pb-12 lg:pb-10">
-        <div className="max-w-xl w-full space-y-8">
+        <div className="max-w-xl w-full flex flex-col gap-6 lg:gap-8">
           {/*
            * HeroSlideshow owns the badge + animated title word + subtext + image panel.
            * It is the sole "use client" boundary — everything above this line is SSR'd.
+           * We use CSS ordering (order-X) so that the image panel displays at the bottom
+           * of the text stack on mobile devices.
            */}
           <HeroSlideshow />
 
           {/* CTA Buttons — static, rendered on the server */}
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-4 order-4">
             <Link
               href="/shop"
               className="group relative inline-flex items-center gap-3 px-8 py-4 bg-brand-dark text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-brand-orange transition-all duration-500 shadow-xl shadow-brand-dark/20 overflow-hidden"
@@ -51,7 +53,7 @@ const Hero = () => {
           </div>
 
           {/* Trust Signals — static, rendered on the server */}
-          <div className="flex items-center gap-8 pt-8 border-t border-brand-dark/5">
+          <div className="flex items-center gap-8 pt-8 border-t border-brand-dark/5 order-5">
             <div className="flex items-center gap-3">
               <ShieldCheck className="text-brand-success" size={24} />
               <div className="text-xs font-bold text-brand-dark/60 uppercase tracking-widest leading-tight">
