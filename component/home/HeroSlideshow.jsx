@@ -14,6 +14,20 @@ const slides = [
     badge: "Premium Coffee Pouches",
   },
   {
+    image: "/hero-ai-images/trans_backery_mockup.svg",
+    titlePart: "Bakery",
+    subtext:
+      "Keep your breads, cookies, and pastries oven-fresh and appetizing with our customized grease-resistant bakery packaging.",
+    badge: "Fresh Bakery Packaging",
+  },
+  {
+    image: "/hero-ai-images/trans_aseptic_pouch.svg",
+    titlePart: "Aseptic",
+    subtext:
+      "Ensure sterile and long shelf-life conditions for liquid and fresh food products with our advanced transparent aseptic packaging solutions.",
+    badge: "Sterile Aseptic Packaging",
+  },
+  {
     image: "/hero-ai-images/pet-food-pouches-hero.png",
     titlePart: "Pet Food",
     subtext:
