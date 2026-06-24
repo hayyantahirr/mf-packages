@@ -92,16 +92,28 @@ const shopCategories = [
     name: "Aseptic Packaging",
     query: "Aseptic packaging",
     subcategories: [
-      { name: "All Aseptic Packaging", href: "/shop?category=Aseptic%20packaging" },
-      { name: "Sterile Liquid Packaging", href: "/shop?category=Aseptic%20packaging" },
+      {
+        name: "All Aseptic Packaging",
+        href: "/shop?category=Aseptic%20packaging",
+      },
+      {
+        name: "Sterile Liquid Packaging",
+        href: "/shop?category=Aseptic%20packaging",
+      },
     ],
   },
   {
     name: "Bakery Packaging",
     query: "Bakery packaging",
     subcategories: [
-      { name: "All Bakery Packaging", href: "/shop?category=Bakery%20packaging" },
-      { name: "Bread & Pastry Packaging", href: "/shop?category=Bakery%20packaging" },
+      {
+        name: "All Bakery Packaging",
+        href: "/shop?category=Bakery%20packaging",
+      },
+      {
+        name: "Bread & Pastry Packaging",
+        href: "/shop?category=Bakery%20packaging",
+      },
     ],
   },
   {
@@ -109,7 +121,10 @@ const shopCategories = [
     query: "Vacuum pouches",
     subcategories: [
       { name: "All Vacuum Pouches", href: "/shop?category=Vacuum%20pouches" },
-      { name: "Chamber Vacuum Pouches", href: "/shop?category=Vacuum%20pouches" },
+      {
+        name: "Chamber Vacuum Pouches",
+        href: "/shop?category=Vacuum%20pouches",
+      },
     ],
   },
   {
@@ -303,7 +318,9 @@ const Navbar = () => {
                                     <Link
                                       key={sub.name}
                                       href={sub.href}
-                                      onClick={() => setIsShopDropdownOpen(false)}
+                                      onClick={() =>
+                                        setIsShopDropdownOpen(false)
+                                      }
                                       className="group/sub flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-brand-dark hover:bg-brand-section hover:text-brand-orange transition-all duration-200"
                                     >
                                       <span>{sub.name}</span>
