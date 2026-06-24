@@ -28,6 +28,8 @@ const categories = [
   { name: "Coffee pouches", image: "/categories/coffee_pouch.svg" },
   { name: "PVC shrink capsules", image: "/categories/shrink_capsule.png" },
   { name: "Spout pouches", image: "/categories/spout_pouch.svg" },
+  { name: "Aseptic packaging", image: "/categories/aseptic_category.svg" },
+  { name: "Bakery packaging", image: "/categories/bakery_category.svg" },
 ];
 
 const Breadcrumbs = ({ activeCategory }) => (

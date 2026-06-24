@@ -51,6 +51,16 @@ const categories = [
     label: "Spout Pouches",
     image: "/categories/spout_pouch.svg",
   },
+  {
+    name: "Aseptic packaging",
+    label: "Aseptic Packaging",
+    image: "/categories/aseptic_category.svg",
+  },
+  {
+    name: "Bakery packaging",
+    label: "Bakery Packaging",
+    image: "/categories/bakery_category.svg",
+  },
 ];
 
 const SCROLL_CARDS = 2;

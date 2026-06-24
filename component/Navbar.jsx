@@ -89,6 +89,22 @@ const shopCategories = [
     ],
   },
   {
+    name: "Aseptic Packaging",
+    query: "Aseptic packaging",
+    subcategories: [
+      { name: "All Aseptic Packaging", href: "/shop?category=Aseptic%20packaging" },
+      { name: "Sterile Liquid Packaging", href: "/shop?category=Aseptic%20packaging" },
+    ],
+  },
+  {
+    name: "Bakery Packaging",
+    query: "Bakery packaging",
+    subcategories: [
+      { name: "All Bakery Packaging", href: "/shop?category=Bakery%20packaging" },
+      { name: "Bread & Pastry Packaging", href: "/shop?category=Bakery%20packaging" },
+    ],
+  },
+  {
     name: "Coffee Pouches",
     query: "Coffee pouches",
     subcategories: [
