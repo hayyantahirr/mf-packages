@@ -37,6 +37,11 @@ const pouchesCategories = [
     image: "/categories/coffee_pouch.svg",
   },
   {
+    name: "Aseptic packaging",
+    label: "Aseptic Packaging",
+    image: "/categories/aseptic_category.svg",
+  },
+  {
     name: "Spout pouches",
     label: "Spout Pouches",
     image: "/categories/spout_pouch.svg",
@@ -64,11 +69,7 @@ const specialtyCategories = [
     label: "Bakery Bags",
     image: "/categories/bakery_category.svg",
   },
-  {
-    name: "Aseptic packaging",
-    label: "Aseptic Packaging",
-    image: "/categories/aseptic_category.svg",
-  },
+
   {
     name: "Chocolate sheets",
     label: "Chocolate Sheets",

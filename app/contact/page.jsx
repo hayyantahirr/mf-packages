@@ -38,6 +38,7 @@ const ContactPage = () => {
     try {
       const docRef = await addDoc(collection(db, "contacts"), {
         ...formData,
+        isSeen: false,
         createdAt: serverTimestamp(),
       });
       console.log("Document written with ID: ", docRef.id);

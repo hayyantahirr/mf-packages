@@ -7,7 +7,14 @@ import { Leaf } from "lucide-react";
 
 const slides = [
   {
-    image: "/hero-ai-images/coffe_pouch_mockup.svg",
+    image: "/hero-ai-images/trans_kraft_paper_mockup.svg",
+    titlePart: "Biodegradable Kraft paper",
+    subtext:
+      "Elevate your coffee brand with our high-barrier aroma-locking coffee pouches, built to preserve freshness and lock in aroma.",
+    badge: "Premium Kraft Pouches",
+  },
+  {
+    image: "/hero-ai-images/coffee_pouch_mockup.png",
     titlePart: "Coffee",
     subtext:
       "Elevate your coffee brand with our high-barrier aroma-locking coffee pouches, built to preserve freshness and lock in aroma.",
@@ -35,8 +42,8 @@ const slides = [
     badge: "Food-Safe Pet Pouches",
   },
   {
-    image: "/hero-ai-images/transparent-pouch-mockup.png",
-    titlePart: "Clear View",
+    image: "/hero-ai-images/trans.png",
+    titlePart: "Plastic Standup",
     subtext:
       "Showcase your product quality and build customer trust with our premium transparent and window-cut packaging solutions.",
     badge: "High-Visibility Window",
