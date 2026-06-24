@@ -105,6 +105,14 @@ const shopCategories = [
     ],
   },
   {
+    name: "Vacuum Pouches",
+    query: "Vacuum pouches",
+    subcategories: [
+      { name: "All Vacuum Pouches", href: "/shop?category=Vacuum%20pouches" },
+      { name: "Chamber Vacuum Pouches", href: "/shop?category=Vacuum%20pouches" },
+    ],
+  },
+  {
     name: "Coffee Pouches",
     query: "Coffee pouches",
     subcategories: [
@@ -114,6 +122,14 @@ const shopCategories = [
         href: "/shop?category=Coffee%20pouches",
       },
       { name: "Tin-Tie Coffee Bags", href: "/shop?category=Coffee%20pouches" },
+    ],
+  },
+  {
+    name: "Coffee Filters",
+    query: "Coffee filters",
+    subcategories: [
+      { name: "All Coffee Filters", href: "/shop?category=Coffee%20filters" },
+      { name: "Drip Filter Bags", href: "/shop?category=Coffee%20filters" },
     ],
   },
   {

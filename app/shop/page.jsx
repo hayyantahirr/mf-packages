@@ -30,6 +30,8 @@ const categories = [
   { name: "Spout pouches", image: "/categories/spout_pouch.svg" },
   { name: "Aseptic packaging", image: "/categories/aseptic_category.svg" },
   { name: "Bakery packaging", image: "/categories/bakery_category.svg" },
+  { name: "Vacuum pouches", image: "/categories/vaccum_pouch.png" },
+  { name: "Coffee filters", image: "/categories/coffee_filter.svg" },
 ];
 
 const Breadcrumbs = ({ activeCategory }) => (

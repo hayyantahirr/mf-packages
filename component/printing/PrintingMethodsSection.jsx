@@ -325,9 +325,7 @@ export default function PrintingMethodsSection() {
             className={`relative rounded-3xl border ${method.borderColor} bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}
           >
             {/* Top accent gradient */}
-            <div
-              className={`h-1.5 w-full bg-linear-to-r ${method.color}`}
-            />
+            <div className={`h-1.5 w-full bg-linear-to-r ${method.color}`} />
 
             <div className="p-8 md:p-10">
               {/* Header */}
@@ -365,9 +363,7 @@ export default function PrintingMethodsSection() {
                       Min. Order
                     </span>
                   </div>
-                  <div
-                    className={`text-xl font-black ${method.accentColor}`}
-                  >
+                  <div className={`text-xl font-black ${method.accentColor}`}>
                     {method.minQty}
                   </div>
                 </div>

@@ -61,6 +61,16 @@ const categories = [
     label: "Bakery Packaging",
     image: "/categories/bakery_category.svg",
   },
+  {
+    name: "Vacuum pouches",
+    label: "Vacuum Pouches",
+    image: "/categories/vaccum_pouch.png",
+  },
+  {
+    name: "Coffee filters",
+    label: "Coffee Filters",
+    image: "/categories/coffee_filter.svg",
+  },
 ];
 
 const SCROLL_CARDS = 2;
