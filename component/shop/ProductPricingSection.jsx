@@ -20,7 +20,7 @@ import {
 import { calculateTieredPrice } from "@/config/utils/pricing";
 import { useState } from "react";
 import ProductTechnicalSpecs from "./ProductTechnicalSpecs";
-
+import Link from "next/link";
 export default function ProductPricingSection({
   id,
   name,
@@ -217,6 +217,36 @@ export default function ProductPricingSection({
             </span>{" "}
             for overnight shipping.
           </p>
+        </div>
+
+        {/* Custom Printing & Bulk Orders */}
+        <div className="p-4 rounded-2xl bg-brand-orange/5 border border-brand-orange/10 flex flex-col gap-2 text-left">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-[10px] font-black text-brand-orange uppercase tracking-widest">
+              <Printer size={14} /> Custom Printing
+            </div>
+            <span className="bg-brand-orange/10 text-brand-orange text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+              From 1,000 pcs
+            </span>
+          </div>
+          <p className="text-gray-500 text-xs leading-relaxed font-medium">
+            Personalize these pouches with your brand logo or design. We support
+            Gravure, Screen, Offset, and Single Pass machine printing.
+          </p>
+          <div className="flex items-center justify-between pt-2 border-t border-brand-orange/10 mt-1">
+            <Link
+              href="/printing"
+              className="text-[9px] font-black text-brand-orange hover:text-brand-dark uppercase tracking-wider transition-colors"
+            >
+              See Printing Methods &rarr;
+            </Link>
+            <Link
+              href="/contact"
+              className="text-[9px] font-black text-brand-dark hover:text-brand-orange uppercase tracking-wider transition-colors"
+            >
+              Get Bulk Quote &rarr;
+            </Link>
+          </div>
         </div>
       </div>
 

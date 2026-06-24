@@ -19,6 +19,137 @@ import { notFound } from "next/navigation";
 import ProductImageGallery from "@/component/shop/ProductImageGallery";
 import ProductPricingSection from "@/component/shop/ProductPricingSection";
 
+// Helper Component for Technical Specifications
+function TechnicalSpecs({ product }) {
+  return (
+    <div className="space-y-8 text-left">
+      <div className="flex items-center gap-2 text-brand-orange font-black text-xs uppercase tracking-[0.2em]">
+        <FileText size={16} />
+        Technical Specifications
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start text-brand-dark">
+        <div className="space-y-8">
+          {/* Printing Specifications */}
+          <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
+            <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
+              <Printer size={12} className="text-brand-orange" /> Printing Specifications
+            </div>
+            <div className="font-bold text-sm leading-relaxed">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between py-2 border-b border-gray-50">
+                  <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                    Material Type
+                  </span>
+                  <span className="text-brand-dark text-sm font-black">
+                    {typeof product.materialStructure === "object"
+                      ? "Multi-Layer"
+                      : product.materialStructure}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                    Cost:
+                  </span>
+                  <span className="text-brand-orange">
+                    Rs. {product.printingPrice || "0"}
+                  </span>
+                  <span className="text-gray-400 text-[8px] uppercase">
+                    per color per side
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                    Lead Time:
+                  </span>
+                  <span className="text-brand-dark">10 Working Days</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                    Minimum Order Quantity:
+                  </span>
+                  <span className="text-brand-dark">1,000 PCS</span>
+                </div>
+                <div className="bg-brand-orange/10 border border-brand-orange/20 px-3 py-1.5 rounded-lg inline-flex items-center gap-2 w-fit">
+                  <CheckCircle2 size={12} className="text-brand-success" />
+                  <span className="text-[10px] font-black uppercase text-brand-orange">
+                    No Cylinder Charges
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Material Structure */}
+          <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
+            <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
+              Material Structure
+            </div>
+            <div className="font-bold text-sm leading-relaxed">
+              {typeof product.materialStructure === "object" ? (
+                <div className="flex flex-col gap-2">
+                  {Object.entries(product.materialStructure).map(
+                    ([key, value]) => (
+                      <div
+                        key={key}
+                        className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
+                      >
+                        <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                          {key}
+                        </span>
+                        <span className="text-brand-dark text-sm font-black">
+                          {value} Microns
+                        </span>
+                      </div>
+                    ),
+                  )}
+                </div>
+              ) : (
+                <p className="text-brand-dark">
+                  {product.materialStructure ||
+                    "High-barrier multi-layer composite film."}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Size Guide */}
+        <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
+          <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
+            Size Guide
+          </div>
+          <div className="font-bold text-sm leading-relaxed">
+            {typeof product.capacitySpecs === "object" ? (
+              <div className="flex flex-col gap-3">
+                {Object.entries(product.capacitySpecs).map(
+                  ([key, value]) => (
+                    <div
+                      key={key}
+                      className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
+                    >
+                      <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                        {key}
+                      </span>
+                      <span className="text-brand-dark text-sm font-black text-right">
+                        {value}
+                      </span>
+                    </div>
+                  ),
+                )}
+              </div>
+            ) : (
+              <p className="text-brand-dark">
+                {product.capacitySpecs || "Industrial grade specifications."}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default async function SingleProductPage({ params }) {
   const { productName: rawProductName, productId } = await params;
   const productName = decodeURIComponent(rawProductName);
@@ -103,22 +234,27 @@ export default async function SingleProductPage({ params }) {
           Back to {productName} Variations
         </Link>
 
+        {/* 2-Column Responsive Layout without CSS Grid Auto-Row gaps */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 animate-fade-in items-start">
-          {/* 1. Image Gallery - Order 1, Column 1 */}
-          <div className="order-1 lg:col-start-1 space-y-8">
+          {/* Column 1 (Left on desktop): Image Gallery + Desktop Specs */}
+          <div className="space-y-12">
             <ProductImageGallery images={allImages} productName={productName} />
+            
+            {/* Desktop-only Specs (displays right below images, no gap) */}
+            <div className="hidden lg:block pt-8 border-t border-gray-100">
+              <TechnicalSpecs product={product} />
+            </div>
           </div>
 
-          {/* 2. Product Details & Pricing - Order 2, Column 2 on Desktop, Row 1 on Desktop */}
-          <div className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-10">
-            <div className="space-y-4">
+          {/* Column 2 (Right on desktop): Product Details & Pricing + Mobile Specs */}
+          <div className="space-y-10">
+            <div className="space-y-4 text-left">
               <div className="flex items-center gap-3">
                 <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
                   {product.category}
                 </span>
                 <span className="text-brand-dark/60 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
-                  <ShieldCheck size={12} className="text-brand-success" />{" "}
-                  Verified Quality
+                  <ShieldCheck size={12} className="text-brand-success" /> Verified Quality
                 </span>
               </div>
               <h1 className="text-3xl md:text-5xl font-black text-brand-dark tracking-tight leading-tight uppercase">
@@ -142,7 +278,7 @@ export default async function SingleProductPage({ params }) {
 
             {/* Specifications Grid */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm text-left">
                 <span className="block text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">
                   Item ID
                 </span>
@@ -150,7 +286,7 @@ export default async function SingleProductPage({ params }) {
                   #{product.id.slice(-8)}
                 </span>
               </div>
-              <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm text-left">
                 <span className="block text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">
                   Stock Status
                 </span>
@@ -161,137 +297,9 @@ export default async function SingleProductPage({ params }) {
                 </span>
               </div>
             </div>
-          </div>
 
-          {/* 3. Detailed Description & Technical Specifications - Order 3, Column 1 on Desktop */}
-          <div className="order-3 lg:col-start-1 lg:row-start-2 space-y-8   border-gray-200">
-            <div className="flex items-center gap-2 text-brand-orange font-black text-xs uppercase tracking-[0.2em]">
-              <FileText size={16} />
-              Technical Specifications
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start text-brand-dark">
-              <div className="space-y-8">
-                {/* Printing Specifications */}
-                <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
-                  <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
-                    <Printer size={12} className="text-brand-orange" /> Printing
-                    Specifications
-                  </div>
-                  <div className="font-bold text-sm leading-relaxed">
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-center justify-between py-2 border-b border-gray-50">
-                        <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                          Material Type
-                        </span>
-                        <span className="text-brand-dark text-sm font-black">
-                          {typeof product.materialStructure === "object"
-                            ? "Multi-Layer"
-                            : product.materialStructure}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                          Cost:
-                        </span>
-                        <span className="text-brand-orange">
-                          Rs. {product.printingPrice || "0"}
-                        </span>
-                        <span className="text-gray-400 text-[8px] uppercase">
-                          per color per side
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                          Lead Time:
-                        </span>
-                        <span className="text-brand-dark">10 Working Days</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                          Minimum Order Quantity:
-                        </span>
-                        <span className="text-brand-dark">1000 PCS</span>
-                      </div>
-                      <div className="bg-brand-orange/10 border border-brand-orange/20 px-3 py-1.5 rounded-lg inline-flex items-center gap-2 w-fit">
-                        <CheckCircle2
-                          size={12}
-                          className="text-brand-success"
-                        />
-                        <span className="text-[10px] font-black uppercase text-brand-orange">
-                          No Cylinder Charges
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Material Structure */}
-                <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
-                  <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
-                    Material Structure
-                  </div>
-                  <div className="font-bold text-sm leading-relaxed">
-                    {typeof product.materialStructure === "object" ? (
-                      <div className="flex flex-col gap-2">
-                        {Object.entries(product.materialStructure).map(
-                          ([key, value]) => (
-                            <div
-                              key={key}
-                              className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
-                            >
-                              <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                                {key}
-                              </span>
-                              <span className="text-brand-dark text-sm font-black">
-                                {value} Microns
-                              </span>
-                            </div>
-                          ),
-                        )}
-                      </div>
-                    ) : (
-                      <p className="text-brand-dark">
-                        {product.materialStructure ||
-                          "High-barrier multi-layer composite film."}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Size Guide */}
-              <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
-                <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
-                  Size Guide
-                </div>
-                <div className="font-bold text-sm leading-relaxed">
-                  {typeof product.capacitySpecs === "object" ? (
-                    <div className="flex flex-col gap-3">
-                      {Object.entries(product.capacitySpecs).map(
-                        ([key, value]) => (
-                          <div
-                            key={key}
-                            className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
-                          >
-                            <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                              {key}
-                            </span>
-                            <span className="text-brand-dark text-sm font-black text-right">
-                              {value}
-                            </span>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  ) : (
-                    <p className="text-brand-dark">
-                      {product.capacitySpecs ||
-                        "Industrial grade specifications."}
-                    </p>
-                  )}
-                </div>
-              </div>
+            <div className="block lg:hidden pt-8 border-t border-gray-100">
+              <TechnicalSpecs product={product} />
             </div>
           </div>
         </div>

@@ -14,117 +14,13 @@ import {
   Printer,
   Award,
 } from "lucide-react";
+import PrintingMethodsSection from "@/component/printing/PrintingMethodsSection";
 
 export const metadata = {
   title: "Printing Services | MF Packages",
   description:
     "Explore MF Packages' premium printing services — Gravure and Screen Printing with minimum order quantities, turnaround times, and vibrant custom branding for your packaging.",
 };
-
-/* ─── Data ───────────────────────────────────────────────── */
-
-const printingMethods = [
-  {
-    id: "gravure",
-    title: "Gravure Printing",
-    subtitle: "High-Volume Precision",
-    badge: "Most Popular",
-    badgeColor: "bg-brand-orange",
-    icon: "🖨️",
-    minQty: "10,000 pcs",
-    minQtyNum: 10000,
-    timeline: "15–25 business days",
-    description:
-      "Gravure (rotogravure) printing is our flagship large-volume solution. Using engraved cylinders, each rotation deposits ink directly onto the packaging film, producing exceptionally sharp images and vivid, consistent color across massive print runs — ideal for brands that need flawless shelf appeal at scale.",
-    highlights: [
-      "Ultra-sharp image reproduction",
-      "Consistent color across entire run",
-      "Up to 10-color printing capability",
-      "Ideal for photographic & gradient designs",
-      "Cost-effective at high volumes",
-      "Food-safe, solvent-free inks available",
-    ],
-    color: "from-brand-orange/20 to-brand-orange/5",
-    borderColor: "border-brand-orange/30",
-    accentColor: "text-brand-orange",
-    bgAccent: "bg-brand-orange/10",
-  },
-  {
-    id: "screen",
-    title: "Screen Printing",
-    subtitle: "Bold & Versatile",
-    badge: "Low MOQ",
-    badgeColor: "bg-brand-success",
-    icon: "🎨",
-    minQty: "1,000 pcs",
-    minQtyNum: 1000,
-    timeline: "15–20 business days",
-    description:
-      "Screen printing pushes ink through a fine mesh stencil onto the packaging surface, creating bold, vibrant spot colors with excellent opacity. Perfect for brands with striking single-color or limited-color artwork who need accessible minimum quantities without compromising on impact.",
-    highlights: [
-      "Vibrant, opaque spot colors",
-      "Lower minimum order quantity",
-      "Excellent for bold logo & text designs",
-      "Thick ink laydown for tactile feel",
-      "Great for specialty inks (metallic, glow)",
-      "Suitable for paper & flexible substrates",
-    ],
-    color: "from-brand-success/20 to-brand-success/5",
-    borderColor: "border-brand-success/30",
-    accentColor: "text-brand-success",
-    bgAccent: "bg-brand-success/10",
-  },
-  {
-    id: "offset",
-    title: "Offset Printing",
-    subtitle: "Precision Color Matching",
-    badge: "Premium Quality",
-    badgeColor: "bg-blue-600",
-    icon: "🖋️",
-    minQty: "5,000 pcs",
-    minQtyNum: 5000,
-    timeline: "12–18 business days",
-    description:
-      "Offset printing transfers ink from a plate to a rubber blanket and then onto the substrate — delivering exceptionally consistent, high-resolution output with perfect Pantone color matching. Ideal for brands that demand meticulous color accuracy across sophisticated multi-element designs.",
-    highlights: [
-      "Pantone color-matched accuracy",
-      "Crisp fine detail reproduction",
-      "Excellent for complex multi-layer art",
-      "Low ink waste per unit at mid-volume",
-      "Works on paper, board & flexible films",
-      "Cost-efficient for medium run sizes",
-    ],
-    color: "from-blue-500/20 to-blue-500/5",
-    borderColor: "border-blue-500/30",
-    accentColor: "text-blue-600",
-    bgAccent: "bg-blue-500/10",
-  },
-  {
-    id: "single-pass",
-    title: "Single Pass Printing",
-    subtitle: "Fastest Turnaround",
-    badge: "Fastest",
-    badgeColor: "bg-purple-600",
-    icon: "⚡",
-    minQty: "500 pcs",
-    minQtyNum: 500,
-    timeline: "7–12 business days",
-    description:
-      "Single pass (digital inkjet) printing applies all colors simultaneously in a single pass over the substrate, eliminating plate setup entirely. This makes it the fastest route from artwork to finished pouch — perfect for short-run proofs, seasonal designs, and brands that need quick market testing.",
-    highlights: [
-      "No plate or cylinder setup fees",
-      "Fastest production turnaround",
-      "Minimum 500 pcs — ultra-low MOQ",
-      "Full-color variable data printing",
-      "Ideal for short runs & prototyping",
-      "On-demand reprints with no minimum",
-    ],
-    color: "from-purple-500/20 to-purple-500/5",
-    borderColor: "border-purple-500/30",
-    accentColor: "text-purple-600",
-    bgAccent: "bg-purple-500/10",
-  },
-];
 
 const printingSamples = [
   {
@@ -135,11 +31,25 @@ const printingSamples = [
     desc: "8-color full-bleed photographic print",
   },
   {
+    image: "/categories/coffee_pouch.svg",
+    label: "Gravure — Specialty Coffee",
+    method: "Gravure",
+    methodColor: "bg-brand-orange",
+    desc: "Metallic ink + gradient design",
+  },
+  {
     image: "/hero-ai-images/pet-food-pouches-hero.png",
     label: "Screen — Pet Food Bags",
     method: "Screen",
     methodColor: "bg-brand-success",
     desc: "Bold 3-color spot logo print",
+  },
+  {
+    image: "/categories/kraft_paper_pouches.svg",
+    label: "Screen — Kraft Pouches",
+    method: "Screen",
+    methodColor: "bg-brand-success",
+    desc: "Single-color heritage branding",
   },
   {
     image: "/hero-ai-images/transparent-pouch-mockup.png",
@@ -149,27 +59,28 @@ const printingSamples = [
     desc: "Pantone-matched brand identity",
   },
   {
-    image: "/categories/kraft_paper_pouches.svg",
-    label: "Single Pass — Kraft Bags",
-    method: "Single Pass",
-    methodColor: "bg-purple-600",
-    desc: "Short-run full-color digital print",
-  },
-  {
-    image: "/categories/coffee_pouch.svg",
-    label: "Gravure — Specialty Coffee",
-    method: "Gravure",
-    methodColor: "bg-brand-orange",
-    desc: "Metallic ink + gradient design",
-  },
-  {
     image: "/categories/flat_bottom_pouches.svg",
     label: "Offset — Flat Bottom Pouch",
     method: "Offset",
     methodColor: "bg-blue-600",
     desc: "Premium Pantone retail packaging",
   },
+  {
+    image: "/categories/plastic_pouch.svg",
+    label: "Single Pass — Plastic Pouch",
+    method: "Single Pass",
+    methodColor: "bg-purple-600",
+    desc: "Short-run full-color digital print",
+  },
+  {
+    image: "/categories/retort_pouch.svg",
+    label: "Single Pass — Retort Pouch",
+    method: "Single Pass",
+    methodColor: "bg-purple-600",
+    desc: "Variable data digital inkjet print",
+  },
 ];
+
 
 const completedJobs = [
   {
@@ -358,116 +269,8 @@ export default function PrintingPage() {
             </p>
           </div>
 
-          {/* Method Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {printingMethods.map((method) => (
-              <div
-                key={method.id}
-                className={`relative rounded-3xl border ${method.borderColor} bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}
-              >
-                {/* Top accent gradient */}
-                <div
-                  className={`h-1.5 w-full bg-linear-to-r ${method.color}`}
-                />
-
-                <div className="p-8 md:p-10">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div>
-                      <span
-                        className={`inline-block text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full ${method.badgeColor} text-white mb-3`}
-                      >
-                        {method.badge}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        <span className="text-3xl">{method.icon}</span>
-                        <div>
-                          <h3 className="text-2xl font-black text-brand-dark leading-none">
-                            {method.title}
-                          </h3>
-                          <p
-                            className={`text-sm font-bold ${method.accentColor} mt-0.5`}
-                          >
-                            {method.subtitle}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Key Specs */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div
-                      className={`p-4 rounded-2xl ${method.bgAccent} border ${method.borderColor}`}
-                    >
-                      <div className="flex items-center gap-2 mb-1">
-                        <Package size={14} className={method.accentColor} />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-brand-dark/50">
-                          Min. Order
-                        </span>
-                      </div>
-                      <div
-                        className={`text-xl font-black ${method.accentColor}`}
-                      >
-                        {method.minQty}
-                      </div>
-                    </div>
-                    <div
-                      className={`p-4 rounded-2xl ${method.bgAccent} border ${method.borderColor}`}
-                    >
-                      <div className="flex items-center gap-2 mb-1">
-                        <Clock size={14} className={method.accentColor} />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-brand-dark/50">
-                          Lead Time
-                        </span>
-                      </div>
-                      <div
-                        className={`text-base font-black ${method.accentColor} leading-tight`}
-                      >
-                        {method.timeline}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-brand-dark/60 text-sm font-medium leading-relaxed mb-6">
-                    {method.description}
-                  </p>
-
-                  {/* Highlights */}
-                  <div className="space-y-2.5">
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-dark/40 block mb-3">
-                      What You Get
-                    </span>
-                    {method.highlights.map((h, i) => (
-                      <div key={i} className="flex items-center gap-2.5">
-                        <CheckCircle
-                          size={14}
-                          className={`${method.accentColor} shrink-0`}
-                        />
-                        <span className="text-sm font-medium text-brand-dark/70">
-                          {h}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <Link
-                    href="/contact"
-                    className={`mt-8 w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl font-black text-xs uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-0.5 ${
-                      method.id === "gravure"
-                        ? "bg-brand-orange text-white shadow-lg shadow-brand-orange/20"
-                        : "bg-brand-success text-white shadow-lg shadow-brand-success/20"
-                    }`}
-                  >
-                    Request a Quote
-                    <ArrowRight size={13} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Method Cards — interactive client component with "See Samples" modal */}
+          <PrintingMethodsSection />
         </div>
       </section>
 
@@ -491,7 +294,6 @@ export default function PrintingPage() {
               technologies on real packaging.
             </p>
           </div>
-
           {/* Sample Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {printingSamples.map((sample, i) => (
