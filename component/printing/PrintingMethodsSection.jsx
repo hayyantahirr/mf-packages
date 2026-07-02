@@ -337,7 +337,7 @@ function PrintingMethodCard({ method, openModal }) {
       className={`relative rounded-3xl border ${method.borderColor} bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full`}
     >
       {/* Top accent gradient */}
-      <div className={`h-1.5 w-full bg-gradient-to-r ${method.color}`} />
+      <div className={`h-1.5 w-full bg-linear-to-r ${method.color}`} />
 
       <div className="p-8 md:p-10 flex flex-col grow">
         {/* Header */}

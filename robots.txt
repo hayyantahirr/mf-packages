@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Private Pages to Block
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /login
+Disallow: /drafts/
+
+Sitemap: https://mfpackages.com/sitemap.xml
