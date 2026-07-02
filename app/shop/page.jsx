@@ -112,11 +112,16 @@ export default async function ShopPage({ searchParams }) {
 
   const groupedProducts = products.reduce((acc, product) => {
     const { name } = product;
-    
+
     // Calculate actual min and max for this specific variation across all tiered quantities
     const possibleQuantities = [50, 100, 500, 1000];
-    const itemPrices = possibleQuantities.map(qty => 
-      calculateTieredPrice(qty, product.price, product.useTieredPricing, product.tieredPrices)
+    const itemPrices = possibleQuantities.map((qty) =>
+      calculateTieredPrice(
+        qty,
+        product.price,
+        product.useTieredPricing,
+        product.tieredPrices,
+      ),
     );
     const itemMin = Math.min(...itemPrices);
     const itemMax = Math.max(...itemPrices);
@@ -129,16 +134,16 @@ export default async function ShopPage({ searchParams }) {
         maxPrice: itemMax,
       };
     }
-    
+
     acc[name].variations.push({
       ...product,
       itemMin,
-      itemMax
+      itemMax,
     });
-    
+
     acc[name].minPrice = Math.min(acc[name].minPrice, itemMin);
     acc[name].maxPrice = Math.max(acc[name].maxPrice, itemMax);
-    
+
     return acc;
   }, {});
 
@@ -148,13 +153,11 @@ export default async function ShopPage({ searchParams }) {
     ? collections.filter((c) => c.category === activeCategory)
     : [];
 
-
   return (
     <div className="min-h-screen bg-brand-bg pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-10">
           <Breadcrumbs activeCategory={activeCategory} />
-
         </div>
 
         {/* Conditional Header based on View */}

@@ -33,7 +33,8 @@ function TechnicalSpecs({ product }) {
           {/* Printing Specifications */}
           <div className="space-y-3 p-6 rounded-2xl bg-white border border-gray-100 group hover:border-brand-orange/30 transition-all shadow-sm">
             <div className="flex items-center gap-2 text-brand-dark/40 font-black text-[10px] uppercase tracking-widest">
-              <Printer size={12} className="text-brand-orange" /> Printing Specifications
+              <Printer size={12} className="text-brand-orange" /> Printing
+              Specifications
             </div>
             <div className="font-bold text-sm leading-relaxed">
               <div className="flex flex-col gap-3">
@@ -122,21 +123,19 @@ function TechnicalSpecs({ product }) {
           <div className="font-bold text-sm leading-relaxed">
             {typeof product.capacitySpecs === "object" ? (
               <div className="flex flex-col gap-3">
-                {Object.entries(product.capacitySpecs).map(
-                  ([key, value]) => (
-                    <div
-                      key={key}
-                      className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
-                    >
-                      <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
-                        {key}
-                      </span>
-                      <span className="text-brand-dark text-sm font-black text-right">
-                        {value}
-                      </span>
-                    </div>
-                  ),
-                )}
+                {Object.entries(product.capacitySpecs).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
+                  >
+                    <span className="text-brand-dark/60 text-[10px] uppercase font-bold tracking-wider">
+                      {key}
+                    </span>
+                    <span className="text-brand-dark text-sm font-black text-right">
+                      {value}
+                    </span>
+                  </div>
+                ))}
               </div>
             ) : (
               <p className="text-brand-dark">
@@ -239,7 +238,7 @@ export default async function SingleProductPage({ params }) {
           {/* Column 1 (Left on desktop): Image Gallery + Desktop Specs */}
           <div className="space-y-12">
             <ProductImageGallery images={allImages} productName={productName} />
-            
+
             {/* Desktop-only Specs (displays right below images, no gap) */}
             <div className="hidden lg:block pt-8 border-t border-gray-100">
               <TechnicalSpecs product={product} />
@@ -254,10 +253,11 @@ export default async function SingleProductPage({ params }) {
                   {product.category}
                 </span>
                 <span className="text-brand-dark/60 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
-                  <ShieldCheck size={12} className="text-brand-success" /> Verified Quality
+                  <ShieldCheck size={12} className="text-brand-success" />{" "}
+                  Verified Quality
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-black text-brand-dark tracking-tight leading-tight uppercase">
+              <h1 className="text-3xl md:text-3xl font-black text-brand-dark tracking-tight leading-tight uppercase">
                 {product.size} CM - {productName}
               </h1>
             </div>
