@@ -38,7 +38,7 @@ const Sec5 = () => {
           <div className="hidden sm:flex absolute top-10 right-12 z-20 items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md shadow-xl select-none">
             <div className="relative w-8 h-8 sm:w-10 sm:h-10">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="MF Packages Logo"
                 fill
                 className="object-contain"

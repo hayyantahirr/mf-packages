@@ -24,15 +24,15 @@ import "swiper/css/pagination";
 const Sec3 = () => {
   // Certificate data array
   const certificates = [
-    { id: 1, image: "/certificates/1.jpg", title: "Global ISO Standard" },
-    { id: 2, image: "/certificates/2.jpg", title: "Eco-Friendly Certified" },
-    { id: 3, image: "/certificates/3.jpg", title: "Industrial Grade Quality" },
+    { id: 1, image: "/certificates/1.webp", title: "Global ISO Standard" },
+    { id: 2, image: "/certificates/2.webp", title: "Eco-Friendly Certified" },
+    { id: 3, image: "/certificates/3.webp", title: "Industrial Grade Quality" },
     {
       id: 4,
-      image: "/certificates/4.jpg",
+      image: "/certificates/4.webp",
       title: "Material Safety Compliance",
     },
-    { id: 5, image: "/certificates/5.jpg", title: "Sustainability Award" },
+    { id: 5, image: "/certificates/5.webp", title: "Sustainability Award" },
   ];
 
   const prevRef = useRef(null);

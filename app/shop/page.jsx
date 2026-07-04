@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { db } from "@/config/firebase";
 import { collection, getDocs } from "firebase/firestore";
+
+export const metadata = {
+  title: "Shop Packaging | Certified Kraft Pouches & Custom Bags",
+  description: "Browse our catalog of food-safe, certified, and eco-friendly flexible packaging solutions. Find kraft standup pouches, flat bottom, spout, and retort bags.",
+};
 import {
   ArrowLeft,
   LayoutGrid,
@@ -18,20 +23,20 @@ import { calculateTieredPrice } from "@/config/utils/pricing";
 const categories = [
   {
     name: "Kraft paper standup pouch",
-    image: "/categories/kraft_paper_pouches.svg",
+    image: "/categories/kraft_paper_pouches.webp",
   },
-  { name: "Aluminum pouches", image: "/categories/aluminium_pouch.png" },
-  { name: "Flat bottom pouches", image: "/categories/flat_bottom_pouches.svg" },
-  { name: "Plastic pouches", image: "/categories/plastic_pouch.svg" },
-  { name: "Retort pouches", image: "/categories/retort_pouch.svg" },
-  { name: "Chocolate sheets", image: "/categories/chocolate_paper.svg" },
-  { name: "Coffee pouches", image: "/categories/coffee_pouch.svg" },
-  { name: "PVC shrink capsules", image: "/categories/shrink_capsule.png" },
-  { name: "Spout pouches", image: "/categories/spout_pouch.svg" },
-  { name: "Aseptic packaging", image: "/categories/aseptic_category.svg" },
-  { name: "Bakery packaging", image: "/categories/bakery_category.svg" },
-  { name: "Vacuum pouches", image: "/categories/vaccum_pouch.png" },
-  { name: "Coffee filters", image: "/categories/coffee_filter.svg" },
+  { name: "Aluminum pouches", image: "/categories/aluminium_pouch.webp" },
+  { name: "Flat bottom pouches", image: "/categories/flat_bottom_pouches.webp" },
+  { name: "Plastic pouches", image: "/categories/plastic_pouch.webp" },
+  { name: "Retort pouches", image: "/categories/retort_pouch.webp" },
+  { name: "Chocolate sheets", image: "/categories/chocolate_paper.webp" },
+  { name: "Coffee pouches", image: "/categories/coffee_pouch.webp" },
+  { name: "PVC shrink capsules", image: "/categories/shrink_capsule.webp" },
+  { name: "Spout pouches", image: "/categories/spout_pouch.webp" },
+  { name: "Aseptic packaging", image: "/categories/aseptic_category.webp" },
+  { name: "Bakery packaging", image: "/categories/bakery_category.webp" },
+  { name: "Vacuum pouches", image: "/categories/vaccum_pouch.webp" },
+  { name: "Coffee filters", image: "/categories/coffee_filter.webp" },
 ];
 
 const Breadcrumbs = ({ activeCategory }) => (

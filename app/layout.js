@@ -51,7 +51,7 @@ export const metadata = {
     description: "Certified eco-friendly pouches & custom food packaging. Kraft paper, aluminium foil, retort, coffee & more. Global shipping with fast dispatch.",
     images: [
       {
-        url: "/home_banner.png",
+        url: "/home_banner.webp",
         width: 1200,
         height: 630,
         alt: "MF Packages — Premium Flexible Packaging Solutions",
@@ -62,7 +62,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "MF Packages | Premium Flexible Packaging Solutions",
     description: "Certified eco-friendly pouches & custom food packaging. Kraft paper, aluminium foil, retort, coffee & more. Global shipping with fast dispatch.",
-    images: ["/home_banner.png"],
+    images: ["/home_banner.webp"],
   },
   appleWebApp: {
     title: "MF Packages",
@@ -83,12 +83,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased bg-brand-bg text-brand-text`}
       >

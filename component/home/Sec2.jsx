@@ -46,7 +46,7 @@ const Sec2 = () => {
           <div className="flex items-center space-x-3 md:space-x-6 bg-white/50 backdrop-blur-md rounded-2xl px-5 md:px-8 py-4 shadow-sm border border-gray-100">
             <div className="flex items-center space-x-2">
               <div className="relative w-10 h-6 md:w-12 md:h-8 rounded overflow-hidden shadow-sm border border-gray-100">
-                <Image src="/CN-flag.jpg" alt="China" fill className="object-cover" />
+                <Image src="/CN-flag.webp" alt="China" fill className="object-cover" />
               </div>
               <span className="text-brand-dark font-bold text-xs md:text-sm">China</span>
             </div>
@@ -61,7 +61,7 @@ const Sec2 = () => {
 
             <div className="flex items-center space-x-2">
               <div className="relative w-10 h-6 md:w-12 md:h-8 rounded overflow-hidden shadow-sm border border-gray-100">
-                <Image src="/PK-flag.png" alt="Pakistan" fill className="object-cover" />
+                <Image src="/PK-flag.webp" alt="Pakistan" fill className="object-cover" />
               </div>
               <span className="text-brand-dark font-bold text-xs md:text-sm">Pakistan</span>
             </div>
@@ -82,17 +82,17 @@ const Sec2 = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-sm border border-gray-100 group col-span-2">
-                  <Image src="/factory-display/pic-1.jpg" alt="Production Line" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/factory-display/pic-1.webp" alt="Production Line" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-linear-to-t from-brand-dark/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <p className="text-white font-bold">State-of-the-Art Production</p>
                   </div>
                 </div>
                 <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                  <Image src="/factory-display/pic-2.jpg" alt="Material" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/factory-display/pic-2.webp" alt="Material" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                  <Image src="/factory-display/pic-3.png" alt="QC" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/factory-display/pic-3.webp" alt="QC" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -141,17 +141,17 @@ const Sec2 = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-sm border border-gray-100 group col-span-2">
-                  <Image src="/printing-engineer.png" alt="Printing Engineer" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/printing-engineer.webp" alt="Printing Engineer" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-linear-to-t from-brand-dark/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <p className="text-white font-bold">Expert Custom Branding</p>
                   </div>
                 </div>
                 <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                  <Image src="/factory-display/pic-4.jpg" alt="Printing" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/factory-display/pic-4.webp" alt="Printing" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                  <Image src="/factory-display/pic-5.jpg" alt="Distribution" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src="/factory-display/pic-5.webp" alt="Distribution" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
               </div>
             </div>

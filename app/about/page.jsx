@@ -12,6 +12,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import FAQs from "@/component/FAQs";
+
+export const metadata = {
+  title: "About Us | Sustainable Flexible Packaging Specialists",
+  description: "Discover MF Packages. Operating since 2018 in the USA, China, and Pakistan, we specialize in high-end, FDA & FSC certified flexible packaging solutions.",
+};
+
 /**
  * AboutPage Component
  * A premium, server-side rendered "About Us" page for MF Packages.
@@ -44,7 +50,7 @@ export default async function AboutPage() {
 
           <div className="relative group overflow-hidden rounded-2xl border border-brand-dark/10 shadow-xl max-w-md mx-auto lg:ml-auto lg:mr-0">
             <Image
-              src={"/about/factory.png"}
+              src={"/about/factory.webp"}
               alt="MF Packages Printing Facility"
               width={600}
               height={450}
@@ -174,7 +180,7 @@ export default async function AboutPage() {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative group rounded-3xl overflow-hidden border border-white/10">
             <Image
-              src={"/about/eco_packaging.png"}
+              src={"/about/eco_packaging.webp"}
               alt="Eco-friendly food packaging"
               width={800}
               height={800}
@@ -302,7 +308,7 @@ export default async function AboutPage() {
                 {/* Decorative UI overlay for "tech logistics" look */}
 
                 <Image
-                  src={"/about/global_shipping.png"}
+                  src={"/about/global_shipping.webp"}
                   alt="Global Shipping Logistics"
                   width={600}
                   height={800}

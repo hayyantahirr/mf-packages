@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
     product.genImage ||
     product.variations.find((v) => v.genImage)?.genImage ||
     product.mainImage ||
-    "/carousel/brown-kraft-flat-bottom.png";
+    "/carousel/brown-kraft-flat-bottom.webp";
 
   const formatMinMax = () => {
     const minConverted = convertPrice(

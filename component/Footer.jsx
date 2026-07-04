@@ -57,7 +57,7 @@ const Footer = () => {
               >
                 <div className="relative w-12 h-12 bg-white/5 rounded-full p-2 backdrop-blur-sm border border-white/10 transition-all duration-300 group-hover:scale-110">
                   <Image
-                    src="/logo.png"
+                    src="/logo.webp"
                     alt="MF Packages Logo"
                     fill
                     className="object-contain p-1"

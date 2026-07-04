@@ -7,42 +7,42 @@ import { Leaf } from "lucide-react";
 
 const slides = [
   {
-    image: "/hero-ai-images/trans_kraft_paper_mockup.svg",
+    image: "/hero-ai-images/trans_kraft_paper_mockup.webp",
     titlePart: "Biodegradable Kraft paper",
     subtext:
       "Elevate your coffee brand with our high-barrier aroma-locking coffee pouches, built to preserve freshness and lock in aroma.",
     badge: "Premium Kraft Pouches",
   },
   {
-    image: "/hero-ai-images/coffee_pouch_mockup.png",
+    image: "/hero-ai-images/coffee_pouch_mockup.webp",
     titlePart: "Coffee",
     subtext:
       "Elevate your coffee brand with our high-barrier aroma-locking coffee pouches, built to preserve freshness and lock in aroma.",
     badge: "Premium Coffee Pouches",
   },
   {
-    image: "/hero-ai-images/trans_backery_mockup.svg",
+    image: "/hero-ai-images/trans_backery_mockup.webp",
     titlePart: "Bakery",
     subtext:
       "Keep your breads, cookies, and pastries oven-fresh and appetizing with our customized grease-resistant bakery packaging.",
     badge: "Fresh Bakery Packaging",
   },
   {
-    image: "/hero-ai-images/trans_aseptic_pouch.svg",
+    image: "/hero-ai-images/trans_aseptic_pouch.webp",
     titlePart: "Aseptic",
     subtext:
       "Ensure sterile and long shelf-life conditions for liquid and fresh food products with our advanced transparent aseptic packaging solutions.",
     badge: "Sterile Aseptic Packaging",
   },
   {
-    image: "/hero-ai-images/pet-food-pouches-hero.png",
+    image: "/hero-ai-images/pet-food-pouches-hero.webp",
     titlePart: "Pet Food",
     subtext:
       "Durable and 100% food-safe stand-up pouches designed to keep pet foods and treats fresh, secure, and nutrient-rich.",
     badge: "Food-Safe Pet Pouches",
   },
   {
-    image: "/hero-ai-images/trans.png",
+    image: "/hero-ai-images/trans.webp",
     titlePart: "Plastic Standup",
     subtext:
       "Showcase your product quality and build customer trust with our premium transparent and window-cut packaging solutions.",

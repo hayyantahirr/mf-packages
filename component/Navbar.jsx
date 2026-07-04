@@ -225,7 +225,7 @@ const Navbar = () => {
                     }`}
                   >
                     <Image
-                      src="/logo.png"
+                      src="/logo.webp"
                       alt="MF Packages Logo"
                       fill
                       className="object-contain p-1"

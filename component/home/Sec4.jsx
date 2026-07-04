@@ -8,23 +8,23 @@ const Sec4 = () => {
   const teamMembers = [
     {
       name: "Tauqeer",
-      image: "/team/tauqeer.png",
+      image: "/team/tauqeer.webp",
     },
     {
       name: "Uzair",
-      image: "/team/uzair.png",
+      image: "/team/uzair.webp",
     },
     {
       name: "Lin",
-      image: "/team/lin.png",
+      image: "/team/lin.webp",
     },
     {
       name: "Phoebe",
-      image: "/team/phoebe.png",
+      image: "/team/phoebe.webp",
     },
     {
       name: "Rosa",
-      image: "/team/rosa.png",
+      image: "/team/rosa.webp",
     },
   ];
 

@@ -3,6 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { db } from "@/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
+
+export async function generateMetadata({ params }) {
+  const { productId } = await params;
+  try {
+    const docRef = doc(db, "products", productId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const product = docSnap.data();
+      return {
+        title: `${product.name} (${product.size || ""}) | Custom Printed Pouches`,
+        description: `Buy custom printed ${product.name}. Size: ${product.size || "multiple sizes"}. Minimum Order Qty: ${product.moq || "low MOQ"}. Eco-friendly material structure: ${typeof product.materialStructure === "object" ? "multi-layered laminates" : product.materialStructure}. Get a free quote today.`,
+      };
+    }
+  } catch (err) {
+    console.error("Error generating product metadata:", err);
+  }
+  return {
+    title: "Packaging Product Details | MF Packages",
+  };
+}
 import {
   ArrowLeft,
   ShoppingCart,

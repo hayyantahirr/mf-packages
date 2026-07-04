@@ -92,7 +92,7 @@ export default function ProductImageGallery({ images, productName }) {
         className="relative flex-1 w-full aspect-square rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-2xl bg-white cursor-zoom-in group"
       >
         <Image
-          src={activeImage || "/carousel/brown-kraft-flat-bottom.png"}
+          src={activeImage || "/carousel/brown-kraft-flat-bottom.webp"}
           alt={productName}
           fill
           className="object-contain transition-opacity duration-300"

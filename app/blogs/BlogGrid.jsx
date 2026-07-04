@@ -49,7 +49,7 @@ const BlogGrid = ({ blogs }) => {
               {/* Image */}
               <div className="relative h-64 bg-brand-section overflow-hidden">
                 <Image
-                  src={blog.image || "/carousel/brown-kraft-flat-bottom.png"}
+                  src={blog.image || "/carousel/brown-kraft-flat-bottom.webp"}
                   alt={blog.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"

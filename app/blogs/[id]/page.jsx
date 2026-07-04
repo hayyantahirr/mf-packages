@@ -6,6 +6,27 @@ import { db } from "@/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  try {
+    const blogDoc = await getDoc(doc(db, "blogs", id));
+    if (blogDoc.exists()) {
+      const blog = blogDoc.data();
+      return {
+        title: `${blog.title} | MF Packages Blog`,
+        description: blog.content 
+          ? blog.content.replace(/<[^>]*>/g, "").substring(0, 155) + "..."
+          : "Read the latest packaging article from MF Packages.",
+      };
+    }
+  } catch (err) {
+    console.error("Error generating blog metadata:", err);
+  }
+  return {
+    title: "Blog Post | MF Packages",
+  };
+}
+
 const getCategoryIcon = (category) => {
   switch (category) {
     case "Environment":
@@ -55,7 +76,7 @@ export default async function BlogPage({ params }) {
       {/* Header Section */}
       <div className="relative h-[70vh] w-full overflow-hidden">
         <Image
-          src={blog.image || "/carousel/brown-kraft-flat-bottom.png"}
+          src={blog.image || "/carousel/brown-kraft-flat-bottom.webp"}
           alt={blog.title}
           fill
           className="object-cover"

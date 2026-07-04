@@ -9,47 +9,47 @@ const pouchesCategories = [
   {
     name: "Kraft paper standup pouch",
     label: "Kraft Paper Standup Pouch",
-    image: "/categories/kraft_paper_pouches.svg",
+    image: "/categories/kraft_paper_pouches.webp",
   },
   {
     name: "Aluminum pouches",
     label: "Aluminum Pouches",
-    image: "/categories/aluminium_pouch.png",
+    image: "/categories/aluminium_pouch.webp",
   },
   {
     name: "Flat bottom pouches",
     label: "Flat Bottom Pouches",
-    image: "/categories/flat_bottom_pouches.svg",
+    image: "/categories/flat_bottom_pouches.webp",
   },
   {
     name: "Plastic pouches",
     label: "Plastic Pouches",
-    image: "/categories/plastic_pouch.svg",
+    image: "/categories/plastic_pouch.webp",
   },
   {
     name: "Retort pouches",
     label: "Retort Pouches",
-    image: "/categories/retort_pouch.svg",
+    image: "/categories/retort_pouch.webp",
   },
   {
     name: "Coffee pouches",
     label: "Coffee Pouches",
-    image: "/categories/coffee_pouch.svg",
+    image: "/categories/coffee_pouch.webp",
   },
   {
     name: "Aseptic packaging",
     label: "Aseptic Packaging",
-    image: "/categories/aseptic_category.svg",
+    image: "/categories/aseptic_category.webp",
   },
   {
     name: "Spout pouches",
     label: "Spout Pouches",
-    image: "/categories/spout_pouch.svg",
+    image: "/categories/spout_pouch.webp",
   },
   {
     name: "Vacuum pouches",
     label: "Vacuum Pouches",
-    image: "/categories/vaccum_pouch.png",
+    image: "/categories/vaccum_pouch.webp",
   },
 ];
 
@@ -57,23 +57,23 @@ const specialtyCategories = [
   {
     name: "Coffee filters",
     label: "Coffee Filters",
-    image: "/categories/coffee_filter.svg",
+    image: "/categories/coffee_filter.webp",
   },
   {
     name: "PVC shrink capsules",
     label: "PVC Shrink Capsules",
-    image: "/categories/shrink_capsule.png",
+    image: "/categories/shrink_capsule.webp",
   },
   {
     name: "Bakery packaging",
     label: "Bakery Bags",
-    image: "/categories/bakery_category.svg",
+    image: "/categories/bakery_category.webp",
   },
 
   {
     name: "Chocolate sheets",
     label: "Chocolate Sheets",
-    image: "/categories/chocolate_paper.svg",
+    image: "/categories/chocolate_paper.webp",
   },
 ];
 

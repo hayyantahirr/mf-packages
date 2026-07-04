@@ -15,6 +15,15 @@ import {
 import { notFound } from "next/navigation";
 import { calculateTieredPrice } from "@/config/utils/pricing";
 
+export async function generateMetadata({ params }) {
+  const { productName: rawProductName } = await params;
+  const productName = decodeURIComponent(rawProductName);
+  return {
+    title: `${productName} Variations | Custom Printed Packaging`,
+    description: `Explore customizable choices, sizes, and pricing options for ${productName}. Get high-end printing, low minimum order quantities, and global shipping.`,
+  };
+}
+
 export default async function ProductVariationsPage({ params }) {
   const { productName: rawProductName } = await params;
   const productName = decodeURIComponent(rawProductName);
@@ -191,7 +200,7 @@ export default async function ProductVariationsPage({ params }) {
                     src={
                       v.mainImage ||
                       mainProduct.mainImage ||
-                      "/carousel/brown-kraft-flat-bottom.png"
+                      "/carousel/brown-kraft-flat-bottom.webp"
                     }
                     alt={`${productName} - ${v.size}`}
                     fill
