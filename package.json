@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/generate-samples-registry.js && next dev",
     "seo": "node scripts/generate-seo.js",
-    "build": "next build",
+    "build": "node scripts/generate-samples-registry.js && next build",
     "start": "next start",
     "lint": "eslint"
   },
