@@ -1,19 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Package,
-  Layers,
-  Zap,
-  Shield,
-  Star,
-  ChevronRight,
-  Printer,
-  Award,
-} from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import PrintingMethodsSection from "@/component/printing/PrintingMethodsSection";
 
 export const metadata = {
