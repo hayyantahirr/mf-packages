@@ -62,7 +62,7 @@ const ProductCard = ({ product }) => {
           />
 
           {/* Badges Overlay */}
-          <div className="absolute top-5 left-5 flex flex-col gap-2">
+          {/* <div className="absolute top-5 left-5 flex flex-col gap-2">
             <span className="bg-brand-dark/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
               {product.category || "Uncategorized"}
             </span>
@@ -75,7 +75,7 @@ const ProductCard = ({ product }) => {
                 <XCircle size={10} /> Out of Stock
               </span>
             )}
-          </div>
+          </div> */}
 
           {/* Variation Count Badge */}
           {hasMultipleVariations && (
