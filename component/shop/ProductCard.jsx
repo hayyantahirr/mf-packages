@@ -116,13 +116,13 @@ const ProductCard = ({ product }) => {
         <div className="p-8 flex flex-col grow bg-linear-to-b from-white to-brand-section/30">
           <div className="flex justify-between items-start mb-6">
             <div className="space-y-1">
-              <h2 className="text-2xl font-black text-brand-text tracking-tight group-hover:text-brand-orange transition-colors leading-tight">
+              <h2 className="text-xl  text-brand-text tracking-tight group-hover:text-brand-orange transition-colors leading-tight">
                 {product.name}
               </h2>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-bold text-brand-text/50 uppercase tracking-widest">
-                  Starting from{" "}
-                  <span className="text-brand-orange font-black">
+                  
+                  <span className="text-brand-orange text-lg font-black">
                     {formatMinMax()}
                   </span>
                 </span>
