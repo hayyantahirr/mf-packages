@@ -1,23 +1,15 @@
-"use client";
-
-import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle,
   Clock,
   Package,
-  X,
   Images,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
-import samplesRegistry from "./samples-registry.json";
 
-/* ─── Data (kept here alongside the component so it can be used client-side) ─ */
+/* ─── Data ──────────────────────────────────────────────────────────────────── */
 
-const printingMethods = [
+export const printingMethods = [
   {
     id: "gravure",
     title: "Gravure Printing",
@@ -196,319 +188,9 @@ const printingMethods = [
   },
 ];
 
-const allSamples = [
-  {
-    image: "/hero-ai-images/coffe_pouch_mockup.webp",
-    label: "Gravure — Coffee Pouch",
-    method: "Gravure",
-    methodColor: "bg-brand-orange",
-    desc: "8-color full-bleed photographic print",
-  },
-  {
-    image: "/categories/coffee_pouch.webp",
-    label: "Gravure — Specialty Coffee",
-    method: "Gravure",
-    methodColor: "bg-brand-orange",
-    desc: "Metallic ink + gradient design",
-  },
-  {
-    image: "/hero-ai-images/pet-food-pouches-hero.webp",
-    label: "Screen — Pet Food Bags",
-    method: "Screen",
-    methodColor: "bg-brand-success",
-    desc: "Bold 3-color spot logo print",
-  },
-  {
-    image: "/categories/kraft_paper_pouches.webp",
-    label: "Screen — Kraft Pouches",
-    method: "Screen",
-    methodColor: "bg-brand-success",
-    desc: "Single-color heritage branding",
-  },
-  {
-    image: "/hero-ai-images/transparent-pouch-mockup.webp",
-    label: "Offset — Transparent Pouch",
-    method: "Offset",
-    methodColor: "bg-blue-600",
-    desc: "Pantone-matched brand identity",
-  },
-  {
-    image: "/categories/flat_bottom_pouches.webp",
-    label: "Offset — Flat Bottom Pouch",
-    method: "Offset",
-    methodColor: "bg-blue-600",
-    desc: "Premium Pantone retail packaging",
-  },
-  {
-    image: "/categories/plastic_pouch.webp",
-    label: "Single Pass — Plastic Pouch",
-    method: "Single Pass",
-    methodColor: "bg-purple-600",
-    desc: "Short-run full-color digital print",
-  },
-  {
-    image: "/categories/retort_pouch.webp",
-    label: "Single Pass — Retort Pouch",
-    method: "Single Pass",
-    methodColor: "bg-purple-600",
-    desc: "Variable data digital inkjet print",
-  },
-];
-
-/* ─── Samples Modal ─────────────────────────────────────────────────────────── */
-
-function SamplesModal({ method, onClose }) {
-  const [activeImageIndex, setActiveImageIndex] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(12);
-
-  // Normalize image data list (use folder-based samples first, fallback to static mock samples)
-  const folderImages = samplesRegistry[method.id] || [];
-  const images =
-    folderImages.length > 0
-      ? folderImages.map((src, idx) => ({
-          src,
-          label: `${method.title} Sample ${idx + 1}`,
-          desc: `High-quality production print`,
-        }))
-      : allSamples
-          .filter((s) => s.method === method.samplesKey)
-          .map((s) => ({
-            src: s.image,
-            label: s.label,
-            desc: s.desc,
-          }));
-
-  // Keyboard navigation handler
-  const handleKey = useCallback(
-    (e) => {
-      if (e.key === "Escape") {
-        if (activeImageIndex !== null) {
-          setActiveImageIndex(null);
-        } else {
-          onClose();
-        }
-      } else if (e.key === "ArrowRight" && activeImageIndex !== null) {
-        setActiveImageIndex((prev) => (prev + 1) % images.length);
-      } else if (e.key === "ArrowLeft" && activeImageIndex !== null) {
-        setActiveImageIndex(
-          (prev) => (prev - 1 + images.length) % images.length,
-        );
-      }
-    },
-    [activeImageIndex, images.length, onClose],
-  );
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", handleKey);
-      document.body.style.overflow = "";
-    };
-  }, [handleKey]);
-
-  return (
-    /* Backdrop */
-    <div
-      className="fixed inset-0 z-9999 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      {/* Blurred dark backdrop */}
-      <div className="absolute inset-0 bg-brand-dark/85 backdrop-blur-sm" />
-
-      {/* Modal panel */}
-      <div
-        className="relative z-10 w-full max-w-5xl max-h-[85vh] bg-white rounded-4xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-fast"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 shrink-0">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">{method.icon}</span>
-            <div>
-              <h3 className="text-lg font-black text-brand-dark uppercase tracking-tight leading-none">
-                {method.title} Samples
-              </h3>
-              <p className={`text-xs font-bold mt-0.5 ${method.accentColor}`}>
-                {images.length} sample{images.length !== 1 ? "s" : ""} available
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-9 h-9 rounded-xl bg-brand-bg hover:bg-gray-200 flex items-center justify-center transition-colors duration-200 cursor-pointer"
-            aria-label="Close modal"
-          >
-            <X size={18} className="text-brand-dark" />
-          </button>
-        </div>
-
-        {/* Sample grid container (scrollable) */}
-        <div className="p-8 overflow-y-auto flex-1 bg-brand-bg/5">
-          {images.length === 0 ? (
-            <div className="text-center py-16 text-brand-dark/40">
-              <Images
-                size={40}
-                className="mx-auto mb-3 opacity-40 animate-pulse"
-              />
-              <p className="font-bold text-sm">
-                Sample photos coming soon for this method.
-              </p>
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                {images.slice(0, visibleCount).map((s, i) => (
-                  <div
-                    key={i}
-                    onClick={() => setActiveImageIndex(i)}
-                    className="group rounded-2xl overflow-hidden border border-brand-dark/5 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col"
-                  >
-                    <div className="relative h-48 bg-white overflow-hidden w-full shrink-0">
-                      <Image
-                        src={s.src}
-                        alt={s.label}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      />
-                      <div className="absolute inset-0 bg-brand-dark/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="bg-white text-brand-dark px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider scale-90 group-hover:scale-100 transition-transform duration-300 shadow-md">
-                          View Large
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-4 flex-1 flex flex-col justify-between">
-                      <div>
-                        <p className="text-xs font-black text-brand-dark leading-snug mb-0.5 truncate">
-                          {s.label}
-                        </p>
-                        <p className="text-[10px] font-medium text-brand-dark/50 truncate">
-                          {s.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Load More Button */}
-              {images.length > visibleCount && (
-                <div className="flex justify-center mt-10">
-                  <button
-                    onClick={() => setVisibleCount((prev) => prev + 12)}
-                    className="px-6 py-3 border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white rounded-2xl font-black text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg shadow-brand-orange/10 flex items-center gap-2"
-                  >
-                    Load More Samples ({images.length - visibleCount} left)
-                  </button>
-                </div>
-              )}
-            </>
-          )}
-        </div>
-
-        {/* Footer */}
-        <div className="px-8 py-5 bg-white border-t border-gray-100 flex items-center justify-between gap-4 shrink-0">
-          <p className="text-xs text-brand-dark/50 font-medium">
-            Want a physical sample kit? We ship samples worldwide.
-          </p>
-          <Link
-            href="/contact"
-            onClick={onClose}
-            className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-brand-orange text-white rounded-xl font-black text-[10px] uppercase tracking-wider hover:bg-brand-dark transition-colors duration-300"
-          >
-            Request Quote
-            <ArrowRight size={12} />
-          </Link>
-        </div>
-
-        {/* ─── FULLSCREEN LIGHTBOX ─────────────────────────────────────────── */}
-        {activeImageIndex !== null && (
-          <div
-            className="fixed inset-0 z-10000 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6"
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveImageIndex(null);
-            }}
-          >
-            {/* Lightbox Header */}
-            <div className="flex items-center justify-between w-full text-white z-10">
-              <div className="text-xs sm:text-sm font-bold opacity-85 uppercase tracking-widest">
-                {method.title} — Image {activeImageIndex + 1} of {images.length}
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveImageIndex(null);
-                }}
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 cursor-pointer text-white"
-                aria-label="Close fullscreen view"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            {/* Main content: Prev Button, Image, Next Button */}
-            <div className="relative flex-1 flex items-center justify-between gap-4 max-w-7xl mx-auto w-full">
-              {/* Prev Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveImageIndex(
-                    (prev) => (prev - 1 + images.length) % images.length,
-                  );
-                }}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 hover:scale-105 flex items-center justify-center transition-all duration-200 cursor-pointer text-white shrink-0"
-                aria-label="Previous image"
-              >
-                <ChevronLeft size={24} />
-              </button>
-
-              {/* Active Image */}
-              <div
-                className="relative flex-1 h-full max-h-[75vh] flex items-center justify-center"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Image
-                  src={images[activeImageIndex].src}
-                  alt={images[activeImageIndex].label}
-                  fill
-                  className="object-contain transition-all duration-300"
-                  sizes="(max-width: 768px) 100vw, 85vw"
-                  priority
-                />
-              </div>
-
-              {/* Next Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveImageIndex((prev) => (prev + 1) % images.length);
-                }}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 hover:scale-105 flex items-center justify-center transition-all duration-200 cursor-pointer text-white shrink-0"
-                aria-label="Next image"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-
-            {/* Lightbox Footer */}
-            <div className="text-center text-white/50 text-[11px] font-medium tracking-wide z-10 select-none">
-              Use Left/Right arrow keys or click arrows to navigate. Click
-              anywhere else or press ESC to exit.
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 /* ─── Main Section ──────────────────────────────────────────────────────────── */
 
-function PrintingMethodCard({ method, openModal }) {
-  const [activeTab, setActiveTab] = useState("highlights"); // "highlights" | "timeline"
-
+function PrintingMethodCard({ method }) {
   return (
     <div
       className={`relative rounded-3xl border ${method.borderColor} bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full`}
@@ -578,84 +260,65 @@ function PrintingMethodCard({ method, openModal }) {
           {method.description}
         </p>
 
-        {/* Tab Switcher */}
-        <div className="flex border-b border-brand-dark/5 mb-6">
-          <button
-            onClick={() => setActiveTab("highlights")}
-            className={`flex-1 pb-2.5 text-xs font-black uppercase tracking-widest border-b-2 text-center transition-all duration-300 cursor-pointer ${
-              activeTab === "highlights"
-                ? `${method.borderColor} ${method.accentColor}`
-                : "border-transparent text-brand-dark/40 hover:text-brand-dark"
-            }`}
-          >
-            Highlights
-          </button>
-          <button
-            onClick={() => setActiveTab("timeline")}
-            className={`flex-1 pb-2.5 text-xs font-black uppercase tracking-widest border-b-2 text-center transition-all duration-300 cursor-pointer ${
-              activeTab === "timeline"
-                ? `${method.borderColor} ${method.accentColor}`
-                : "border-transparent text-brand-dark/40 hover:text-brand-dark"
-            }`}
-          >
-            Production Timeline
-          </button>
+        {/* Highlights List */}
+        <div className="mb-6 border-t border-brand-dark/5 pt-6">
+          <h4 className="text-[10px] font-black uppercase tracking-widest text-brand-dark/50 mb-3.5">
+            Key Highlights
+          </h4>
+          <div className="space-y-2.5">
+            {method.highlights.slice(0, 4).map((h, i) => (
+              <div key={i} className="flex items-center gap-2.5">
+                <CheckCircle
+                  size={14}
+                  className={`${method.accentColor} shrink-0`}
+                />
+                <span className="text-sm font-medium text-brand-dark/70">
+                  {h}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Tab Content */}
-        <div className="grow mb-8 min-h-[160px]">
-          {activeTab === "highlights" ? (
-            /* Highlights List */
-            <div className="space-y-2.5">
-              {method.highlights.map((h, i) => (
-                <div key={i} className="flex items-center gap-2.5">
-                  <CheckCircle
-                    size={14}
-                    className={`${method.accentColor} shrink-0`}
+        {/* Production Timeline */}
+        <div className="mb-8 border-t border-brand-dark/5 pt-6 grow">
+          <h4 className="text-[10px] font-black uppercase tracking-widest text-brand-dark/50 mb-4">
+            Production Timeline
+          </h4>
+          <div className="relative pl-6 space-y-4">
+            {/* Vertical timeline connector line */}
+            <div className="absolute left-2.5 top-1 bottom-1 w-0.5 bg-brand-dark/10" />
+
+            {method.timelineBreakdown.map((step, idx) => (
+              <div
+                key={idx}
+                className="relative flex flex-col gap-1"
+              >
+                {/* Timeline point */}
+                <div
+                  className={`absolute -left-6 top-1 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white border-3 ${method.borderColor} z-10 flex items-center justify-center`}
+                >
+                  <div
+                    className={`w-1 h-1 rounded-full ${method.accentColor.replace("text-", "bg-")}`}
                   />
-                  <span className="text-sm font-medium text-brand-dark/70">
-                    {h}
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-start md:items-center justify-between gap-1">
+                  <span className="text-xs font-black text-brand-dark uppercase tracking-wider leading-none">
+                    {step.label}
+                  </span>
+                  <span
+                    className={`text-[9px] font-black uppercase tracking-widest ${method.accentColor} bg-brand-section px-2 py-0.5 rounded-md border ${method.borderColor} w-fit leading-none`}
+                  >
+                    {step.days}
                   </span>
                 </div>
-              ))}
-            </div>
-          ) : (
-            /* Visual Timeline */
-            <div className="relative pl-6 space-y-5">
-              {/* Vertical timeline connector line */}
-              <div className="absolute left-2.5 top-1 bottom-1 w-0.5 bg-brand-dark/10" />
-
-              {method.timelineBreakdown.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="relative flex flex-col gap-1.5 animate-fade-in-fast"
-                >
-                  {/* Timeline point */}
-                  <div
-                    className={`absolute -left-6 top-1 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white border-3 ${method.borderColor} z-10 flex items-center justify-center`}
-                  >
-                    <div
-                      className={`w-1 h-1 rounded-full ${method.accentColor.replace("text-", "bg-")}`}
-                    />
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-start md:items-center justify-between gap-1">
-                    <span className="text-xs font-black text-brand-dark uppercase tracking-wider leading-none">
-                      {step.label}
-                    </span>
-                    <span
-                      className={`text-[9px] font-black uppercase tracking-widest ${method.accentColor} bg-brand-section px-2 py-0.5 rounded-md border ${method.borderColor} w-fit leading-none`}
-                    >
-                      {step.days}
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-brand-dark/50 font-medium leading-snug">
-                    {step.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+                <p className="text-[11px] text-brand-dark/50 font-medium leading-snug">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Dual CTA Buttons */}
@@ -667,13 +330,13 @@ function PrintingMethodCard({ method, openModal }) {
             Request Quote
             <ArrowRight size={13} />
           </Link>
-          <button
-            onClick={() => openModal(method)}
-            className={`inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl font-black text-xs uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-0.5 border-2 ${method.borderColor} ${method.accentColor} hover:${method.bgAccent} bg-transparent cursor-pointer`}
+          <Link
+            href={`/printing/${method.id}`}
+            className={`inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl font-black text-xs uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-0.5 border-2 ${method.borderColor} ${method.accentColor} hover:${method.bgAccent} bg-transparent text-center cursor-pointer`}
           >
             <Images size={13} />
             See Samples
-          </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -681,28 +344,14 @@ function PrintingMethodCard({ method, openModal }) {
 }
 
 export default function PrintingMethodsSection() {
-  const [activeModal, setActiveModal] = useState(null); // method object or null
-
-  const openModal = (method) => setActiveModal(method);
-  const closeModal = () => setActiveModal(null);
-
   return (
-    <>
-      {/* Method Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {printingMethods.map((method) => (
-          <PrintingMethodCard
-            key={method.id}
-            method={method}
-            openModal={openModal}
-          />
-        ))}
-      </div>
-
-      {/* Modal */}
-      {activeModal && (
-        <SamplesModal method={activeModal} onClose={closeModal} />
-      )}
-    </>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      {printingMethods.map((method) => (
+        <PrintingMethodCard
+          key={method.id}
+          method={method}
+        />
+      ))}
+    </div>
   );
 }
