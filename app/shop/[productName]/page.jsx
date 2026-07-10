@@ -152,7 +152,7 @@ export default async function ProductVariationsPage({ params }) {
                   </span>
                 </div>
               </div>
-              <h1 className="text-3xl md:text-5xl font-black text-brand-dark tracking-tight leading-tight uppercase">
+              <h1 className="text-xl md:text-3xl font-black text-brand-dark tracking-tight leading-tight uppercase">
                 {productName}
               </h1>
               {mainProduct.genDescription && (
@@ -163,13 +163,13 @@ export default async function ProductVariationsPage({ params }) {
             </div>
 
             {mainProduct.genImage && (
-              <div className="relative hidden md:block w-full md:w-80 h-fit rounded-4xl overflow-hidden border border-gray-100 shadow-2xl group/main shrink-0 bg-white">
+              <div className="relative hidden md:block w-full md:w-90 h-fit rounded-4xl overflow-hidden shadow-2xl group/main shrink-0 ">
                 <Image
                   src={mainProduct.genImage}
                   alt={productName}
-                  width={320}
-                  height={320}
-                  className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-brand-dark/10 to-transparent pointer-events-none"></div>
               </div>
@@ -227,8 +227,8 @@ export default async function ProductVariationsPage({ params }) {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-2xl font-black text-brand-dark tracking-tight group-hover:text-brand-orange transition-colors uppercase">
-                      {v.size} CM - {productName}
+                    <h3 className="text-2xl  text-brand-dark tracking-tight group-hover:text-brand-orange transition-colors ">
+                      <div className="font-black">{v.size} CM</div>{productName}
                     </h3>
                   </div>
 
