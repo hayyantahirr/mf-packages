@@ -120,11 +120,16 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3 text-sm">
                 <MapPin className="w-5 h-5 text-brand-success shrink-0 mt-0.5" />
-                <span className="text-white">
-                  Pakistan
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=M.F+Packages+Karachi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-brand-orange transition-colors"
+                >
+                  Suit #9, Rafiq Mansion,
                   <br />
-                  Eco-Friendly Packaging Solutions
-                </span>
+                  Jethamal Road, Karachi, Pakistan
+                </a>
               </li>
               <li className="flex items-center space-x-3 text-sm">
                 <Phone className="w-5 h-5 text-brand-success shrink-0" />
@@ -138,10 +143,10 @@ const Footer = () => {
               <li className="flex items-center space-x-3 text-sm">
                 <Mail className="w-5 h-5 text-brand-success shrink-0" />
                 <a
-                  href="mailto:info@mfpackages.com"
+                  href="mailto:mfpackages0@gmail.com"
                   className="text-white hover:text-brand-orange transition-colors"
                 >
-                  info@mfpackages.com
+                  mfpackages0@gmail.com
                 </a>
               </li>
             </ul>

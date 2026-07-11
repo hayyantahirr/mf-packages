@@ -122,7 +122,7 @@ const ProductCard = ({ product }) => {
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-bold text-brand-text/50 uppercase tracking-widest">
                   
-                  <span className="text-brand-orange text-lg font-black">
+                  <span className="text-brand-orange text-lg ">
                     {formatMinMax()}
                   </span>
                 </span>
