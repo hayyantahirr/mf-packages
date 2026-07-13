@@ -24,7 +24,8 @@ export const metadata = {
     default: "MF Packages | Premium Flexible Packaging Solutions",
     template: "%s | MF Packages",
   },
-  description: "Shop certified eco-friendly pouches, kraft paper bags, retort & coffee packaging. Custom branding, global shipping, fast dispatch. Order from MF Packages today.",
+  description:
+    "Shop certified eco-friendly pouches, kraft paper bags, retort & coffee packaging. Custom branding, global shipping, fast dispatch. Order from MF Packages today.",
   keywords: [
     "flexible packaging",
     "kraft paper pouches",
@@ -48,7 +49,8 @@ export const metadata = {
     url: "https://mfpackages.com",
     siteName: "MF Packages",
     title: "MF Packages | Premium Flexible Packaging Solutions",
-    description: "Certified eco-friendly pouches & custom food packaging. Kraft paper, aluminium foil, retort, coffee & more. Global shipping with fast dispatch.",
+    description:
+      "Certified eco-friendly pouches & custom food packaging. Kraft paper, aluminium foil, retort, coffee & more. Global shipping with fast dispatch.",
     images: [
       {
         url: "/home_banner.webp",
@@ -61,7 +63,8 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "MF Packages | Premium Flexible Packaging Solutions",
-    description: "Certified eco-friendly pouches & custom food packaging. Kraft paper, aluminium foil, retort, coffee & more. Global shipping with fast dispatch.",
+    description:
+      "Certified eco-friendly pouches & custom food packaging. Kraft paper, aluminium foil, retort, coffee & more. Global shipping with fast dispatch.",
     images: ["/home_banner.webp"],
   },
   appleWebApp: {
@@ -81,15 +84,60 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "MF Packages",
+    image: "https://mf-packages.com/logo.webp",
+    "@id": "https://mf-packages.com/#localbusiness",
+    url: "https://mf-packages.com",
+    telephone: "+923322464729",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Office #1, Rafiq Mansion, Jethamal Road, Burns Road",
+      addressLocality: "Karachi",
+      addressRegion: "Sindh",
+      postalCode: "74200",
+      addressCountry: "PK",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 24.857349,
+      longitude: 67.013493,
+    },
+    description:
+      "Premium manufacturer of eco-friendly brown kraft paper bags, durable stand-up packaging pouches, custom printed bags, and wholesale flexible packaging solutions in Karachi, Pakistan.",
+    knowsAbout: [
+      "Brown Kraft Paper Bags",
+      "Eco-friendly Food Packaging",
+      "Wholesale Custom Printed Pouches",
+      "Flexible Packaging Solutions",
+    ],
+    makesProduct: [
+      {
+        "@type": "Product",
+        name: "Brown Kraft Paper Bags",
+        description:
+          "Eco-friendly, durable, wholesale, and custom printed paper packaging bags manufactured in Karachi, Pakistan.",
+        category: "Packaging Bags",
+      },
+    ],
+  };
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased bg-brand-bg text-brand-text`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ReduxProvider>
           <Navbar />
           {children}
-          <Footer/>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

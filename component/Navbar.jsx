@@ -214,7 +214,7 @@ const Navbar = () => {
           >
             <div className="relative flex items-center justify-between px-3 sm:px-6 py-4">
               {/* Logo Section with Eco Badge */}
-              <Link href="/" className="flex items-center space-x-3 group">
+              <Link href="/" className="flex items-center space-x-3 group" aria-label="Visit MF Packages homepage">
                 <div className="relative">
                   <div className="absolute inset-0 rounded-full transition-all duration-500"></div>
                   <div
