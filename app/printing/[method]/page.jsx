@@ -84,11 +84,21 @@ const getStepEmoji = (methodId, idx) => {
 export async function generateMetadata({ params }) {
   const { method } = await params;
   const methodData = printingMethods.find((m) => m.id === method);
-  if (!methodData) return { title: "Printing Samples" };
+  if (!methodData) {
+    return {
+      title: "Printing Samples",
+      alternates: {
+        canonical: `/printing/${method}`,
+      },
+    };
+  }
 
   return {
     title: `${methodData.title} Samples | MF Packages`,
     description: `View real production samples of our ${methodData.title} capabilities. High-definition images of custom printed bags, pouches, and specialty packaging.`,
+    alternates: {
+      canonical: `/printing/${method}`,
+    },
   };
 }
 

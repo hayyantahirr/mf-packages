@@ -8,6 +8,9 @@ export const metadata = {
   title: "Printing Services | MF Packages",
   description:
     "Explore MF Packages' premium printing services — Gravure and Screen Printing with minimum order quantities, turnaround times, and vibrant custom branding for your packaging.",
+  alternates: {
+    canonical: "/printing",
+  },
 };
 
 export default function PrintingPage() {

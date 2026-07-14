@@ -16,6 +16,9 @@ import BlogGrid from "./BlogGrid";
 export const metadata = {
   title: "Packaging Blog | Industry Insights & Sustainability Updates",
   description: "Stay up to date with the latest flexible packaging trends, food safety compliance, FDA regulations, and eco-friendly packaging materials.",
+  alternates: {
+    canonical: "/blogs",
+  },
 };
 
 const BlogsPage = async () => {

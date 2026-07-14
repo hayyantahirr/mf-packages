@@ -21,6 +21,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${productName} Variations | Custom Printed Packaging`,
     description: `Explore customizable choices, sizes, and pricing options for ${productName}. Get high-end printing, low minimum order quantities, and global shipping.`,
+    alternates: {
+      canonical: `/shop/${rawProductName}`,
+    },
   };
 }
 

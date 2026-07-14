@@ -16,6 +16,9 @@ import FAQs from "@/component/FAQs";
 export const metadata = {
   title: "About Us | Sustainable Flexible Packaging Specialists",
   description: "Discover MF Packages. Operating since 2018 in the USA, China, and Pakistan, we specialize in high-end, FDA & FSC certified flexible packaging solutions.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 /**

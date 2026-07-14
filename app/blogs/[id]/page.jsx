@@ -17,6 +17,9 @@ export async function generateMetadata({ params }) {
         description: blog.content 
           ? blog.content.replace(/<[^>]*>/g, "").substring(0, 155) + "..."
           : "Read the latest packaging article from MF Packages.",
+        alternates: {
+          canonical: `/blogs/${id}`,
+        },
       };
     }
   } catch (err) {
@@ -24,6 +27,9 @@ export async function generateMetadata({ params }) {
   }
   return {
     title: "Blog Post | MF Packages",
+    alternates: {
+      canonical: `/blogs/${id}`,
+    },
   };
 }
 

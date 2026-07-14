@@ -7,6 +7,9 @@ import { collection, getDocs } from "firebase/firestore";
 export const metadata = {
   title: "Shop Packaging | Certified Kraft Pouches & Custom Bags",
   description: "Browse our catalog of food-safe, certified, and eco-friendly flexible packaging solutions. Find kraft standup pouches, flat bottom, spout, and retort bags.",
+  alternates: {
+    canonical: "/shop",
+  },
 };
 import {
   ArrowLeft,

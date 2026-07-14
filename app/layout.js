@@ -81,6 +81,9 @@ export const metadata = {
     apple: "/apple-icon.png",
   },
   manifest: "/manifest.json",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({ children }) {

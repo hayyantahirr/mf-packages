@@ -5,7 +5,7 @@ import { db } from "@/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 export async function generateMetadata({ params }) {
-  const { productId } = await params;
+  const { productName, productId } = await params;
   try {
     const docRef = doc(db, "products", productId);
     const docSnap = await getDoc(docRef);
@@ -14,6 +14,9 @@ export async function generateMetadata({ params }) {
       return {
         title: `${product.name} (${product.size || ""}) | Custom Printed Pouches`,
         description: `Buy custom printed ${product.name}. Size: ${product.size || "multiple sizes"}. Minimum Order Qty: ${product.moq || "low MOQ"}. Eco-friendly material structure: ${typeof product.materialStructure === "object" ? "multi-layered laminates" : product.materialStructure}. Get a free quote today.`,
+        alternates: {
+          canonical: `/shop/${productName}/${productId}`,
+        },
       };
     }
   } catch (err) {
@@ -21,6 +24,9 @@ export async function generateMetadata({ params }) {
   }
   return {
     title: "Packaging Product Details | MF Packages",
+    alternates: {
+      canonical: `/shop/${productName}/${productId}`,
+    },
   };
 }
 import {
