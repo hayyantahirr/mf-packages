@@ -109,7 +109,8 @@ export default async function SamplesPage({ params }) {
     notFound();
   }
 
-  const folderImages = samplesRegistry[method] || [];
+  const registryKey = method === "screen" ? "screen_printing" : method;
+  const folderImages = samplesRegistry[registryKey] || [];
   const images = folderImages.length > 0
     ? folderImages.map((src, idx) => ({
         src,
