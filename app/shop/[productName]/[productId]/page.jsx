@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { db } from "@/config/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { calculateTieredPrice } from "@/config/utils/pricing";
 
 export async function generateMetadata({ params }) {
   const { productName, productId } = await params;
@@ -205,6 +206,63 @@ export default async function SingleProductPage({ params }) {
         id: docSnap.id,
         ...serializedData,
       };
+
+      // Fetch all variations under this product name to compute AggregateOffer pricing bounds
+      let variations = [];
+      try {
+        const q = query(
+          collection(db, "products"),
+          where("name", "==", productName)
+        );
+        const querySnapshot = await getDocs(q);
+        variations = querySnapshot.docs.map((doc) => {
+          const d = doc.data();
+          const serialized = Object.entries(d).reduce(
+            (acc, [key, value]) => {
+              if (value && typeof value === "object" && "seconds" in value) {
+                acc[key] = new Date(value.seconds * 1000).toISOString();
+              } else {
+                acc[key] = value;
+              }
+              return acc;
+            },
+            {},
+          );
+          return {
+            id: doc.id,
+            ...serialized,
+          };
+        });
+      } catch (variationErr) {
+        console.error("Error fetching product variations for pricing schema:", variationErr);
+      }
+
+      // If variations query failed or returned empty, fallback to the current product variation
+      if (variations.length === 0) {
+        variations = [product];
+      }
+
+      // Compute pricing bounds using pricing engine
+      const quantities = [50, 100, 500, 1000];
+      let minPrice = Infinity;
+      let maxPrice = -Infinity;
+
+      variations.forEach((v) => {
+        quantities.forEach((qty) => {
+          const price = calculateTieredPrice(
+            qty,
+            v.price,
+            v.useTieredPricing,
+            v.tieredPrices
+          );
+          if (price < minPrice) minPrice = price;
+          if (price > maxPrice) maxPrice = price;
+        });
+      });
+
+      product.variationsCount = variations.length;
+      product.minPrice = minPrice === Infinity ? parseFloat(product.price) || 0 : minPrice;
+      product.maxPrice = maxPrice === -Infinity ? parseFloat(product.price) || 0 : maxPrice;
     }
   } catch (err) {
     console.error("Error fetching product detail:", err);
@@ -244,8 +302,37 @@ export default async function SingleProductPage({ params }) {
     ...(product.extraImages || []),
   ].filter(Boolean);
 
+  // Construct JSON-LD Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${productName} (${product.size || "Standard"})`,
+    "image": allImages.map(img => img.startsWith('http') ? img : `https://mfpackages.com${img}`),
+    "description": `Buy custom printed ${product.name || productName}. Size: ${product.size || "multiple sizes"}. Minimum Order Qty: ${product.moq || "low MOQ"}. Eco-friendly material structure: ${typeof product.materialStructure === "object" ? "multi-layered laminates" : product.materialStructure}. Get a free quote today.`,
+    "sku": product.id,
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "PKR",
+      "lowPrice": product.minPrice.toString(),
+      "highPrice": product.maxPrice.toString(),
+      "offerCount": product.variationsCount.toString(),
+      "priceValidUntil": "2027-12-31",
+      "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "url": `https://mfpackages.com/shop/${rawProductName}/${product.id}`
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "MF Packages"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-brand-bg py-16 px-4 sm:px-6 lg:px-8 pt-32">
+      {/* Dynamic JSON-LD Product Schema for GSC SEO compliance */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Navigation */}
         <Link
