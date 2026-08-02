@@ -73,7 +73,7 @@ const Breadcrumbs = ({ activeCategory }) => (
         <li aria-current="page">
           <div className="flex items-center">
             <ChevronRight size={12} className="text-brand-text/10 mx-1" />
-            <span className="text-[10px] uppercase tracking-widest font-black text-brand-orange truncate max-w-[150px] md:max-w-none">
+            <span className="text-[10px] uppercase tracking-widest font-black text-brand-orange truncate max-w-37.5 md:max-w-none">
               {activeCategory}
             </span>
           </div>

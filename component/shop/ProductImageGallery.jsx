@@ -1,14 +1,20 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 export default function ProductImageGallery({ images, productName }) {
-  const [activeImage, setActiveImage] = useState(images[0]);
+  const [activeImage, setActiveImage] = useState(images?.[0]);
   const [zoomStyle, setZoomStyle] = useState({ display: "none" });
   const thumbnailRef = useRef(null);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (images && images.length > 0) {
+      setActiveImage(images[0]);
+    }
+  }, [images]);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;

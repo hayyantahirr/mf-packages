@@ -271,7 +271,7 @@ const Navbar = () => {
                         {/* Mega Dropdown Panel */}
                         {isShopDropdownOpen && (
                           <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50 animate-fade-in-fast">
-                            <div className="bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 min-w-[550px] grid grid-cols-12 gap-4">
+                            <div className="bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 min-w-137.5 grid grid-cols-12 gap-4">
                               {/* Left Column: Categories */}
                               <div className="col-span-5 border-r border-brand-bg/50 pr-2 space-y-1">
                                 <span className="text-[10px] font-black uppercase tracking-widest text-brand-text/40 px-3 pb-2 block">
@@ -432,7 +432,7 @@ const Navbar = () => {
         <div
           className={`md:hidden transition-all duration-500 ease-in-out ${
             isMobileMenuOpen
-              ? "max-h-[800px] opacity-100 mt-4"
+              ? "max-h-200 opacity-100 mt-4"
               : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
