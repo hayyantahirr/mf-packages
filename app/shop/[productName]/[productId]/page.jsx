@@ -11,6 +11,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { calculateTieredPrice } from "@/config/utils/pricing";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 export async function generateMetadata({ params }) {
   const { productName, productId } = await params;
@@ -311,9 +312,12 @@ export default async function SingleProductPage({ params }) {
     );
   }
 
-  const allImages = [product.mainImage, ...(product.extraImages || [])].filter(
-    Boolean,
-  );
+  const allImages = [
+    product.mainImage,
+    ...(product.extraImages || []),
+  ]
+    .filter(Boolean)
+    .map((img) => getOptimizedImageUrl(img));
 
   // Construct JSON-LD Structured Data
   const jsonLd = {

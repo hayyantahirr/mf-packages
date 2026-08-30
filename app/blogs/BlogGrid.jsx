@@ -9,6 +9,7 @@ import {
   Recycle,
   Globe,
 } from "lucide-react";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 const BlogGrid = ({ blogs }) => {
   const getCategoryIcon = (category) => {
@@ -49,7 +50,10 @@ const BlogGrid = ({ blogs }) => {
               {/* Image */}
               <div className="relative h-64 bg-brand-section overflow-hidden">
                 <Image
-                  src={blog.image || "/carousel/brown-kraft-flat-bottom.webp"}
+                  src={getOptimizedImageUrl(
+                    blog.image || "/carousel/brown-kraft-flat-bottom.webp",
+                    { width: 800 }
+                  )}
                   alt={blog.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"

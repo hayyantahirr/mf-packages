@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 export default function ProductImageGallery({ images, productName }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
@@ -59,7 +60,7 @@ export default function ProductImageGallery({ images, productName }) {
 
           <div
             ref={thumbnailRef}
-            className="flex flex-row md:flex-col gap-4 w-full h-auto md:max-h-[420px] overflow-x-auto md:overflow-y-auto no-scrollbar scroll-smooth snap-y"
+            className="flex flex-row md:flex-col gap-4 w-full h-auto md:max-h-105 overflow-x-auto md:overflow-y-auto no-scrollbar scroll-smooth snap-y"
           >
             {images.map((img, idx) => (
               <button
@@ -72,7 +73,7 @@ export default function ProductImageGallery({ images, productName }) {
                 }`}
               >
                 <Image
-                  src={img}
+                  src={getOptimizedImageUrl(img, { width: 200 })}
                   alt={`${productName} thumbnail ${idx + 1}`}
                   fill
                   className="object-cover"
@@ -98,7 +99,7 @@ export default function ProductImageGallery({ images, productName }) {
         className="relative flex-1 w-full aspect-square rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-2xl bg-white cursor-zoom-in group"
       >
         <Image
-          src={activeImage || "/carousel/brown-kraft-flat-bottom.webp"}
+          src={getOptimizedImageUrl(activeImage || "/carousel/brown-kraft-flat-bottom.webp", { width: 1000 })}
           alt={productName}
           fill
           className="object-contain transition-opacity duration-300"
@@ -109,7 +110,7 @@ export default function ProductImageGallery({ images, productName }) {
           className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 bg-white"
           style={{
             ...zoomStyle,
-            backgroundImage: `url(${activeImage})`,
+            backgroundImage: `url(${getOptimizedImageUrl(activeImage)})`,
             backgroundSize: "250%",
             backgroundPosition: zoomStyle.transformOrigin
               ? `${zoomStyle.transformOrigin.split(" ")[0]} ${zoomStyle.transformOrigin.split(" ")[1]}`

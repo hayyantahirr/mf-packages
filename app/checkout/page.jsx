@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { convertPrice, formatPrice } from "@/config/utils/currencyUtils";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 /**
  * MF-Packages Checkout Page
@@ -222,7 +223,7 @@ export default function CheckoutPage() {
                       <div className="w-24 h-24 bg-brand-section rounded-xl overflow-hidden shrink-0 relative border border-gray-100">
                         {item.mainImage ? (
                           <Image
-                            src={item.mainImage}
+                            src={getOptimizedImageUrl(item.mainImage, { width: 200 })}
                             alt={item.name}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"

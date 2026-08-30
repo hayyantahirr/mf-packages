@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { removeItem, toggleCart, setCartOpen } from "./cartSlice";
 import { convertPrice, formatPrice } from "@/config/utils/currencyUtils";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 import { AlertCircle } from "lucide-react";
 
 /**
@@ -106,7 +107,7 @@ const CartDropdown = () => {
                 {/* Product Image */}
                 <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
                   <Image 
-                    src={item.mainImage} 
+                    src={getOptimizedImageUrl(item.mainImage, { width: 200 })} 
                     alt={item.name} 
                     fill 
                     className="object-contain p-2"

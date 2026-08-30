@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft, Leaf, Recycle, Globe } from "lucide-react";
 import { db } from "@/config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { notFound } from "next/navigation";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -82,7 +83,9 @@ export default async function BlogPage({ params }) {
       {/* Header Section */}
       <div className="relative h-[70vh] w-full overflow-hidden">
         <Image
-          src={blog.image || "/carousel/brown-kraft-flat-bottom.webp"}
+          src={getOptimizedImageUrl(
+            blog.image || "/carousel/brown-kraft-flat-bottom.webp"
+          )}
           alt={blog.title}
           fill
           className="object-cover"

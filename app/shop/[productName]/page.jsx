@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { calculateTieredPrice } from "@/config/utils/pricing";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 export async function generateMetadata({ params }) {
   const { productName: rawProductName } = await params;
@@ -168,7 +169,7 @@ export default async function ProductVariationsPage({ params }) {
             {mainProduct.genImage && (
               <div className="relative hidden md:block w-full md:w-90 h-fit rounded-4xl overflow-hidden shadow-2xl group/main shrink-0 ">
                 <Image
-                  src={mainProduct.genImage}
+                  src={getOptimizedImageUrl(mainProduct.genImage, { width: 800 })}
                   alt={productName}
                   width={400}
                   height={400}
@@ -200,11 +201,11 @@ export default async function ProductVariationsPage({ params }) {
                 {/* Product Visual */}
                 <div className="relative aspect-square overflow-hidden bg-brand-section">
                   <Image
-                    src={
+                    src={getOptimizedImageUrl(
                       v.mainImage ||
                       mainProduct.mainImage ||
                       "/carousel/brown-kraft-flat-bottom.webp"
-                    }
+                    )}
                     alt={`${productName} - ${v.size}`}
                     fill
                     className="object-cover transition-transform duration-1000 "

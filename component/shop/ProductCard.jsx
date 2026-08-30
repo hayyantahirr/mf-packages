@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CheckCircle2, XCircle, ChevronRight } from "lucide-react";
 import { useSelector } from "react-redux";
 import { convertPrice, formatPrice } from "@/config/utils/currencyUtils";
+import { getOptimizedImageUrl } from "@/config/utils/imageUtils";
 
 const ProductCard = ({ product }) => {
   // Variation state
@@ -26,11 +27,12 @@ const ProductCard = ({ product }) => {
     product.description ||
     "Premium quality biodegradable packaging solution.";
 
-  const displayImage =
+  const displayImage = getOptimizedImageUrl(
     product.genImage ||
     product.variations.find((v) => v.genImage)?.genImage ||
     product.mainImage ||
-    "/carousel/brown-kraft-flat-bottom.webp";
+    "/carousel/brown-kraft-flat-bottom.webp"
+  );
 
   const formatMinMax = () => {
     const minConverted = convertPrice(
@@ -96,7 +98,7 @@ const ProductCard = ({ product }) => {
                   className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-xl ring-2 ring-brand-dark/10"
                 >
                   <Image
-                    src={img}
+                    src={getOptimizedImageUrl(img, { width: 100 })}
                     alt={`${product.name} view ${idx + 1}`}
                     fill
                     className="object-cover"
