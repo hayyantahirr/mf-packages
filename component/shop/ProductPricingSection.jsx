@@ -34,8 +34,15 @@ export default function ProductPricingSection({
   technicalSpecs,
 }) {
   const dispatch = useDispatch();
-  const quantities = [50, 100, 500, 1000];
-  const [quantity, setQuantity] = useState(1000);
+  const quantities =
+    useTieredPricing && tieredPrices && Object.keys(tieredPrices).length > 0
+      ? Object.keys(tieredPrices)
+          .map(Number)
+          .sort((a, b) => a - b)
+      : [50, 100, 500, 1000];
+  const [quantity, setQuantity] = useState(
+    quantities.includes(1000) ? 1000 : quantities[quantities.length - 1] || 50,
+  );
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
 
   // Redux State

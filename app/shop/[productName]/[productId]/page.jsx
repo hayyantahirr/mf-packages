@@ -255,7 +255,13 @@ export default async function SingleProductPage({ params }) {
       let maxPrice = -Infinity;
 
       variations.forEach((v) => {
-        quantities.forEach((qty) => {
+        const vQuantities =
+          v.useTieredPricing &&
+          v.tieredPrices &&
+          Object.keys(v.tieredPrices).length > 0
+            ? Object.keys(v.tieredPrices).map(Number)
+            : [50, 100, 500, 1000];
+        vQuantities.forEach((qty) => {
           const price = calculateTieredPrice(
             qty,
             v.price,

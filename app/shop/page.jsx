@@ -122,7 +122,12 @@ export default async function ShopPage({ searchParams }) {
     const { name } = product;
 
     // Calculate actual min and max for this specific variation across all tiered quantities
-    const possibleQuantities = [50, 100, 500, 1000];
+    const possibleQuantities =
+      product.useTieredPricing &&
+      product.tieredPrices &&
+      Object.keys(product.tieredPrices).length > 0
+        ? Object.keys(product.tieredPrices).map(Number)
+        : [50, 100, 500, 1000];
     const itemPrices = possibleQuantities.map((qty) =>
       calculateTieredPrice(
         qty,
